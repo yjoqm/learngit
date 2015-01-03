@@ -8,4 +8,8 @@ testtestset
 
 12345 
 the last
+<<<<<<< HEAD
 master new
+=======
+creating a new brankch is quick adn simple
+>>>>>>> feature1
