@@ -1,0 +1,129 @@
+xslt_req_1: &xslt_req
+    name: qa_test_1
+    memo: james
+    template: 1
+    xslt: 123diasjfoaojf
+    advertiser_id: 1
+    sample_path: '/home/james/hahah.xml'
+
+xslt_req_2:
+    <<: *xslt_req
+    name: qa_test_2
+    template: 0
+
+
+xslt_req_3:
+    <<: *xslt_req
+    name: qa_test_3
+    memo: max
+    template: 1
+    xslt: |
+        <?xml version="1.0" encoding="utf-8"?>
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output method="xml" encoding="UTF-8" indent="yes" cdata-section-elements="loc name outerID image price"/>
+          <xsl:template match="/">
+            <productList>
+              <xsl:apply-templates select="goods_list" />
+            </productList>
+          </xsl:template>
+          <xsl:template match="goods">
+            <product>
+               <xsl:apply-templates select="goods_url" />
+               <xsl:apply-templates select="goods_name" />
+               <xsl:apply-templates select="goods_id" />
+               <xsl:apply-templates select="material_url" />
+               <xsl:apply-templates select="current_price" />
+            </product>
+          </xsl:template>
+          <xsl:template match ="goods_url">
+            <loc>
+              <xsl:value-of select="." />
+            </loc>
+          </xsl:template>
+          <xsl:template match ="goods_name">
+            <name>
+              <xsl:value-of select="." />
+            </name>
+          </xsl:template>
+          <xsl:template match ="goods_id">
+            <outerID>
+              <xsl:value-of select="." />
+            </outerID>
+          </xsl:template>
+          <xsl:template match ="material_url">
+            <image>
+              <xsl:value-of select="." />
+            </image>
+          </xsl:template>
+          <xsl:template match ="current_price">
+            <price>
+              <xsl:value-of select="." />
+            </price>
+          </xsl:template>
+        </xsl:stylesheet>
+
+xslt_resp_1: &xslt_resp
+    name: qa_test_1
+    status: 0
+    memo: james
+    template: 1
+    xslt: 123diasjfoaojf
+    advertiser_id: 1
+    sample_path: '/home/james/hahah.xml'
+
+xslt_resp_2:
+    <<: *xslt_resp
+    name: qa_test_2
+    template: 0
+
+
+xslt_resp_3:
+    <<: *xslt_resp
+    name: qa_test_3
+    memo: max
+    template: 1
+    xslt: |
+        <?xml version="1.0" encoding="utf-8"?>
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:output method="xml" encoding="UTF-8" indent="yes" cdata-section-elements="loc name outerID image price"/>
+          <xsl:template match="/">
+            <productList>
+              <xsl:apply-templates select="goods_list" />
+            </productList>
+          </xsl:template>
+          <xsl:template match="goods">
+            <product>
+               <xsl:apply-templates select="goods_url" />
+               <xsl:apply-templates select="goods_name" />
+               <xsl:apply-templates select="goods_id" />
+               <xsl:apply-templates select="material_url" />
+               <xsl:apply-templates select="current_price" />
+            </product>
+          </xsl:template>
+          <xsl:template match ="goods_url">
+            <loc>
+              <xsl:value-of select="." />
+            </loc>
+          </xsl:template>
+          <xsl:template match ="goods_name">
+            <name>
+              <xsl:value-of select="." />
+            </name>
+          </xsl:template>
+          <xsl:template match ="goods_id">
+            <outerID>
+              <xsl:value-of select="." />
+            </outerID>
+          </xsl:template>
+          <xsl:template match ="material_url">
+            <image>
+              <xsl:value-of select="." />
+            </image>
+          </xsl:template>
+          <xsl:template match ="current_price">
+            <price>
+              <xsl:value-of select="." />
+            </price>
+          </xsl:template>
+        </xsl:stylesheet>
+

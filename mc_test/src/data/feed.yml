@@ -1,0 +1,40 @@
+feed_req_1: &feed_req
+    name: james
+    advertiser_id: 1
+    fetch_type: 0
+    index_type: 0
+    xslt: 1
+    url: http://www.baidu.com
+    update_config: "* * * * *"
+    click_prefix: seraph
+    click_suffix: max
+    merchant_type: 123
+    size_sensitive: True
+    auto_fetch_type: 1
+
+feed_resp_1: &feed_resp
+    crawler_sizzle: 0
+    merchant_type: 123
+    job_status: 0
+    status: 0
+    crawler_sizzle_name: ''
+    size_sensitive: True
+    fetch_type: 0
+    index_type: 0
+    xslt_name: 'qa_test_1'
+    update_report: ''
+    update_config: '* * * * *'
+    next_check_time: 0
+    xslt: 1
+    click_prefix: 'seraph'
+    advertiser_id: 1
+    auto_fetch_type: 1
+    verify_model: 0
+    name: 'james'
+    url: 'http://www.baidu.com'
+    click_suffix: 'max'
+
+
+feed_resp_2:
+    <<: *feed_resp
+    xslt_name: qa_test_3

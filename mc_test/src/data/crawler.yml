@@ -1,0 +1,17 @@
+crawler_req_1: &crawler_req
+    advertiser_id: 1
+    name: james
+    condition_sizzle: '.james .test'
+    condition_val: seraph
+    is_default: True
+    items: jiajofndaof
+
+
+crawler_resp_1: &crawler_resp
+    status: 1
+    advertiser_id: 1
+    name: james
+    items: jiajofndaof
+    is_default: True
+    condition_sizzle: '.james .test'
+    condition_val: seraph

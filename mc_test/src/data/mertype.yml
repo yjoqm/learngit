@@ -1,0 +1,9 @@
+mertype_req_1: &mertype_req
+    advertiser_id: 1
+    name: seraph
+
+
+mertype_resp_1: &mertype_resp
+    name: seraph
+    status: 1
+    advertiser_id: 1
