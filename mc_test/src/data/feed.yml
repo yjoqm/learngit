@@ -12,6 +12,11 @@ feed_req_1: &feed_req
     size_sensitive: True
     auto_fetch_type: 1
 
+feed_req_3: 
+    <<: *feed_req
+    name: yjoqm
+    url: http://www.123456.com
+
 feed_resp_1: &feed_resp
     crawler_sizzle: 0
     merchant_type: 123
@@ -34,7 +39,12 @@ feed_resp_1: &feed_resp
     url: 'http://www.baidu.com'
     click_suffix: 'max'
 
-
 feed_resp_2:
     <<: *feed_resp
     xslt_name: qa_test_3
+
+feed_resp_3:
+    <<: *feed_resp
+    name: 'yjoqm'
+    url: 'http://www.123456.com'
+

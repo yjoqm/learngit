@@ -87,16 +87,18 @@ class McKeywords(object):
         files = {
                 'material':(data['material'],open(os.path.join(img_path,data['material']),'rb'),'image/jpeg')
                 }
-        del data['material']
+        post_data = data.copy()
+        del post_data['material']
         req = self._cache.switch(req_alias)
-        return req.post(url,data,files=files)
+        return req.post(url,post_data,files=files)
 
 
     def xml_post(self,url,data,req_alias='mc'):
         req = self._cache.switch(req_alias)
         xml = data['xml']
-        del data['xml']
-        return req.post(url,params=data,data=xml)
+        post_data = data.copy()
+        del post_data['xml']
+        return req.post(url,params=post_data,data=xml)
 
 
     def get(self,url,params={},req_alias='mc'):
@@ -106,8 +108,11 @@ class McKeywords(object):
 
     def put(self,url,data,req_alias='mc'):
         req = self._cache.switch(req_alias)
-        return req.put(url,data)
-
+        return req.put(url,json.dumps(data))
+    
+    def mer_put(self,url,data,req_alias='mc'):
+        req = self._cache.switch(req_alias)
+        return req.put(url,data=data)
 
     def delete(self,url,req_alias='mc'):
         req = self._cache.switch(req_alias)

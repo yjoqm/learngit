@@ -7,6 +7,7 @@ import json
 dir_path = os.path.dirname(os.path.abspath(__file__))
 dir_list = os.listdir(dir_path)
 
+
 for f in dir_list:
     fs = f.split('.')
     if len(fs) == 2 and fs[1] == 'yml':

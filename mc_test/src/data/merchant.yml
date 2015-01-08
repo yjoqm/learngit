@@ -9,11 +9,23 @@ merchant_item_1: &merchant_item
     clickUrl: http://www.sina.com
     _id: 1
 
+
 merchant_req_1: &merchant_req
     material: 1114_JD_dajiadian_336x280.jpg
     merchant: *merchant_item
     offline: False
     advertiser_id: 1
+
+merchant_req_2: 
+    <<: *merchant_req
+    merchant:
+        <<: *merchant_item
+        outerID: '1234'
+        name: yjoqm
+    offline: False
+    advertiser_id: 1
+
+
 
 merchant_resp_1: &merchant_resp
     loc: http://www.baidu.com
@@ -25,3 +37,8 @@ merchant_resp_1: &merchant_resp
     outerID: '123'
     appDownloadLoc: http://www.chinadep.com
     imageSize: '336x280'
+
+merchant_resp_2:
+    <<: *merchant_resp
+    outerID: '1234'
+    name: yjoqm

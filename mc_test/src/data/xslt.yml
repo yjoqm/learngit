@@ -6,11 +6,11 @@ xslt_req_1: &xslt_req
     advertiser_id: 1
     sample_path: '/home/james/hahah.xml'
 
+
 xslt_req_2:
     <<: *xslt_req
     name: qa_test_2
     template: 0
-
 
 xslt_req_3:
     <<: *xslt_req

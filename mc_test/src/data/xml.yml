@@ -4,6 +4,8 @@ xml_req_1: &xml_req
     operator: 0
     xml: xml_req_1.xml
 
+xml_put_1: &xml_put
+    status: 11
 
 xml_resp_1: &xml_resp
     trans_path: ''
@@ -13,5 +15,7 @@ xml_resp_1: &xml_resp
     feed_id: 1
     operator: 0
     status: 0
-    
 
+xml_resp_2: 
+    <<: *xml_resp
+    status: 11
