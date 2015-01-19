@@ -1,4 +1,0 @@
-recursive-include test *.yml *.html *.css *.js *.png *.jpg *.gif *.sh *.robot CabinetManager-remote
-include requirements.txt
-include env.sh
-include run.sh
