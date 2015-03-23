@@ -1,12 +1,6 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import pymongo
-import json
-
+import sys
 PROJECT_ID = 23
-advertiser_id = int(raw_input("input advertiser_id: ").strip())
-material_id = int(raw_input("input material_id: ").strip())
 
 def gen_48mid(advertiser_id, merchant_id):
     return (advertiser_id << 32) + merchant_id
@@ -28,17 +22,14 @@ def l64id2l48(long_id):
 def gen_64mid(advertiser_id, merchant_id):
     long48mid = gen_48mid(int(advertiser_id), int(merchant_id))
     return gen_64id(long48mid)
-print "64id is: %s" % gen_64mid(advertiser_id,material_id)
 
 def l64mid2l32(long_id):
     version, project_id, l48_id = l64id2l48(long_id)
     advertiser_id, merchant_id = l48mid2l32(l48_id)
     return version, project_id, advertiser_id, merchant_id
 
-def material_info(advertiser_id,material_id):
-    merchant_db = pymongo.MongoClient("mongodb://XX:XX@192.168.0.000/merchant").get_default_database()
-    col = merchant_db["merchant_online_%s" % advertiser_id]
-    for item in col.find({"_id":material_id}):
-        test1 = json.dumps(item,sort_keys=True,indent=4,encoding="utf-8")
-        return test1
-print material_info(advertiser_id, material_id)
+if __name__ == '__main__':
+    #args = sys.argv
+    test = l48mid2l32(1231453078944055793)
+    print test
+   
