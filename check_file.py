@@ -22,9 +22,28 @@ def main():
         print '[-]Usage:' + str(sys.argv[0]) + 'filename'
         exit(0)
     readfile(filename)
-    
+
+#skip header 
+def skip_header(r):
+    line = r.readline()
+    while line.startswith('#'):
+        line = r.readline()
+    return line
+#process file 
+def process_file(r):
+    line = skip_header(r).strip()
+    print line
+    for line in r:
+        line = line.strip()
+        print line
+
+
 if __name__ == '__main__':
     main()
+    input_file = open(sys.argv[1], 'r')
+    process_file(input_file)
+    input_file.close()
+
 
 
 
