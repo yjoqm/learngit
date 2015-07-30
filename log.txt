@@ -7,3 +7,25 @@ DEBUG:root:this is a message
 2015-05-22 15:20:58,675-ERROR:error
 2015-05-22 15:21:18,765-WARNING:warnning
 2015-05-22 15:21:18,765-ERROR:error
+DEBUG:root:this is a message
+DEBUG:root:debug
+WARNING:root:warning
+ERROR:root:error
+WARNING:thhhhhhest:warnning
+ERROR:thhhhhhest:error
+ERROR:root.test:exception
+Traceback (most recent call last):
+  File "logging_test.py", line 25, in <module>
+    raise Exception, 'this is a Exception'
+Exception: this is a Exception
+DEBUG:root:this is a message
+DEBUG:root:debug
+WARNING:root:warning
+ERROR:root:error
+WARNING:thhhhhhest:warnning
+ERROR:thhhhhhest:error
+ERROR:root.test:exception
+Traceback (most recent call last):
+  File "logging_test.py", line 27, in <module>
+    raise Exception, 'this is a Exception'
+Exception: this is a Exception

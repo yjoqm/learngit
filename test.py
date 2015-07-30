@@ -12,4 +12,3 @@ def out_max(*values):
 if __name__=='__main__':
     test = out_max(2,1,3,5,67,3,-1)
     print test
-
