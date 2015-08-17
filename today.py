@@ -1,14 +1,12 @@
 #!/usr/bin/env python
 #encoding:utf-8
-
-import os
 import datetime
 import MySQLdb
 
-DBHost = '221.228.208.58'
-DBUser = 'exposer'
-DBPwd = 'exposer123'
-DBName = 'z_kup'
+DBHost = '08.58'
+DBUser = 'eser'
+DBPwd = 'expose3'
+DBName = 'zup'
 
 sql_fetch = '''
 replace  into hub_data_source_view_day (`client_id`,  `code_id`, `file_path`, `status`, `process_date`, `data_time`, `process_result`, `process_count`, `process_success`, `process_fail`, `access_flag`, `click`, `meta_type_id`, `import_type_id`, `update_time`, `track_id`) 
