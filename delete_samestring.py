@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 # coding=utf-8
+import os
+base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+print base_dir
+aaaa = os.path.join(base_dir,'tmp')
+print aaaa
+print 'test:', os.path.dirname(os.path.abspath(__file__))
 list = ['a','d','f','b','d','d','e']
 print "the list is: ", list
 
