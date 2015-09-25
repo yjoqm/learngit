@@ -1,0 +1,208 @@
+request:
+    id:
+        - string
+        - 'google_id'
+        - 唯一请求id 16bytes长度
+    ip:
+        - string
+        - '58.247.81.182'
+        - 请求ip地址
+    google_user_id:
+        - string
+        - 'CAESEKZ_Qy516EpDwetORM7JMbw'
+        - google服务器识别用户的唯一id
+    cookie_version:
+        - int
+        - 1
+        - google_user_id的版本号
+    cookie_age_seconds:
+        - int
+        - 300
+        - google_user_id创建之后的cookie持续时间
+    user_agent:
+        - string
+        - 'google_user_agent'
+        - 用来唯一识别浏览器和设备类型的字符串
+    geo_criteria_id:
+        - int
+        - 1003434
+        - geo信息id,貌似有个geo-talbe.csv文件
+    timezone_offset:
+        - int
+        - 300
+        - 用户时间与GMT时间的分钟级别偏移,如GMT+10 = timezone_offset = 600
+    encrypted_hyperlocal_set:
+        - string
+        - '1132334'
+        - 详细信息请访问 https://developers.google.com/ad-exchange/rtb/response-guide/decrypt-hyperlocal
+    user_vertical:
+        - list
+        - '1,2'
+        - 用户位置列表
+    user_list:id:
+        - int
+        - 99
+        - user_list
+    user_list:age_seconds:
+        - int
+        - 500
+        - google_user_id创建到现在的秒钟数
+    anonymous_id:
+        - string
+        - 'google_anonymous_id'
+        - 页面域名id
+    url:
+        - string
+        - 'http://www.xxxqqqqq22233.com'
+        - url
+    detected_language:
+        - list
+        - 'fr'
+        - 语言
+    detected_vertical:id:
+        - int
+        - 88
+        - 发现位置id
+    detected_vertical:weight:
+        - float
+        - 1.0
+        - 位置宽度
+    vertical_dictionary_version:
+        - int
+        - 1
+        - 用在发现位置的版本字典
+    detected_content_label:
+        - list
+        - '1,2'
+        - List of detected content labels
+    site_list_id:
+        - list
+        - '3,4'
+        - Site lists that apply to this publisher
+    adslot:id:
+        - int
+        - 123
+        - An arbitrarily assigned slot id that is unique on a given page and usually starts counting from 1
+    adslot:ad_block_key:
+        - int
+        - 12345
+        - A stable identifier for the combination of publisher, ad slot, and page
+    adslot:width:
+        - list
+        - 300
+        - The width and height in pixels of the allowed ad sizes.
+    adslot:height:
+        - list
+        - 250
+        - The width and height in pixels of the allowed ad sizes.
+    adslot:excluded_attribute:
+        - list
+        - ''
+        - The disallowed attribute ids for the ads that can show in this slot
+    adslot:slot_visibility:
+        - int
+        - 1
+        - NO_DETECTION = 0; ABOVE_THE_FOLD = 1; BELOW_THE_FOLD = 2;
+    adslot:matching_ad_data:adgroup_id:
+        - int
+        - 100
+        - Id of the adgroup to attribute this impression to
+    adslot:matching_ad_data:minimum_cpm_micros:
+        - int
+        - 0
+        - The minimum CPM value that you can bid to not be filtered before the action
+    mobile:platform:
+        - string
+        - 'android'
+        - The platform of the mobile device.  Examples: android, iphone, palm
+    mobile:brand:
+        - string
+        - 'Samsung'
+        - The brand of the mobile device, e.g. Nokia, Samsung.
+    mobile:model:
+        - string
+        - 'Galaxy'
+        - The model of the mobile device, e.g. N70, Galaxy.
+    mobile:carrier_id:
+        - int
+        - 24
+        - This is the identifier uniquely identifies the mobile carrier
+    mobile:os_version:os_version_major:
+        - int
+        - 3
+        - For iPhone 3.3.1, os_version_major=3
+    mobile:os_version:os_version_minor:
+        - int
+        - 3
+        - For iPhone 3.3.1, os_version_minor=3
+    mobile:os_version:os_version_micro:
+        - int
+        - 1
+        - For iPhone 3.3.1, os_version_micro=1
+    mobile:is_app:
+        - int
+        - 1
+        - If true, then this request is from a mobile application.
+    mobile:app_id:
+        - string
+        - 'com.cybergate.toilets'
+        - The identifier of the mobile app when this ad query comes from a mobile app
+    mobile:screen_width:
+        - int
+        - 320
+        - The height of the mobile device screen in pixels
+    mobile:screen_height:
+        - int
+        - 50
+        - The height of the mobile device screen in pixels
+    mobile:screen_orientation:
+        - int
+        - 0
+        - SCREEN_ORIENTATION_UNKNOWN = 0; SCREEN_ORIENTATION_PORTRAIT = 1; SCREEN_ORIENTATION_LANDSCAPE = 2;
+    mobile:is_interstitial_request:
+        - int
+        - 0
+        - If true, then this is a mobile full screen ad request
+    mobile:app_category_ids:
+        - list
+        - '1,2'
+        - This field contains the IDs of categories to which the current mobile app belongs
+    mobile:encrypted_hashed_idfa:
+        - string
+        - 'U+n6nwAMq2kKvSdLAQCAFzrafNGnSa4OGjNxaxCFo+6Uv2Lk'
+        - Apple's identifier for advertising (IDFA) as described 
+    bid_response_feedback:request_id:
+        - string
+        - 'google_id'
+        - The unique id from BidRequest.id
+    bid_response_feedback:creative_index:
+        - int
+        - 9
+        - The index of the creative within the BidResponse if there was more than one
+    bid_response_feedback:creative_status_code:
+        - int
+        - 10
+        - The status code for the ad
+    bid_response_feedback:cpm_micros:
+        - int
+        - 1
+        - The second price cpm in micros of your account currency if your bid won the auction
+
+
+target_url: http://192.168.0.169:19800/rtb/?vendor=VENDOR_ADX_MOBILE
+
+headers:
+    Content-Type: application/x-protobuf;charset=UTF-8
+    Host: mob.zampdsp.com
+
+macro_dict:
+    '%%CLICK_URL_UNESC%%': 'http://www.baidu.com/'
+    'cdn.zampdsp.com/v3/merchant': 'mc.zampda.net/merchant'
+    '%%SETTLE_PRICE%%': '&serap=seraphAQrtCCAAAFOukiF2XQA9ZB1nOsvGbluSyg%3D%3D'
+
+type: pb
+method: post
+
+ad_property: ad
+pb_module: realtime_bidding_pb2
+

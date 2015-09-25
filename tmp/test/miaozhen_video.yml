@@ -1,0 +1,92 @@
+request:
+    id:
+        - string
+        - "requestid123"
+    device:ip:
+        - string
+        - "58.247.81.182"
+    device:ua:
+        - string
+        - "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.6; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16"
+    device:didmd5:
+        - string
+        - "ehrhhh"
+    device:make:
+        - string
+        - "Apple"
+    device:model:
+        - string
+        - "iphone"
+    device:os:
+        - string
+        - "ios"
+    device:osv:
+        - string
+        - "5.1.5"
+    device:connectiontype:
+        - int
+        - 4
+    device:devicetype:
+        - int
+        - 1
+    device:carrier:
+        - string
+        - "46003"
+    imp:video:w:
+        - int
+        - 300
+    imp:video:h:
+        - int
+        - 250
+    imp:video:mimes:
+        - list
+        - "image/jpg,video/x-flv,image/png"
+    imp:video:linearity:
+        - int
+        - 4
+    imp:bidfloor:
+        - float
+        - 0.1000000014901161
+    imp:id:
+        - string
+        - "3456"
+    imp:tagid:
+        - string
+        - "slotid_1234"
+    site:name:
+        - string
+        - "sina"
+    site:page:
+        - string
+        - "http://www.sina.com"
+    site:ref:
+        - string
+        - "http://www.baidu.com"
+    user:id:
+        - string
+        - "EHr7TSkHExAer57YJ533E"
+    app:name:
+        - string
+        - "app111"
+    app:ext:sdk:
+        - string
+        - "1234"
+    app:ext:appid:
+        - string
+        - "123131"
+
+target_url: http://192.168.0.169:19800/rtb/?vendor=VENDOR_MIAOZHEN
+
+headers:
+    Content-Type: application/json;charset=UTF-8
+    Host: mzmob.zampdsp.com
+
+macro_dict:
+    '%%CLICK_URL_ESC%%': ''
+    '%%SETTLE_PRICE%%': '&serap=seraphAQrtCCAAAFOukiF2XQA9ZB1nOsvGbluSyg%3D%3D'
+    "cdn.zampdsp.com/v3/merchant": "mc.zampda.net/merchant"
+
+type: json
+method: post
+ad_property: seatbid
+pb_module: ''
