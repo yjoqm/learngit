@@ -50,6 +50,26 @@ print "soup is:", soup
 soup = BeautifulSoup('<b class="boldest">Extremely bold</b>')
 tag = soup.b
 print type(tag)
+print "tag name is: ",tag.name  #u'b 打印tag的名字
+print "tag attributes is: ", tag['class'] #.tag的属性操作方法与字典相同 tag attributes is:  ['boldest']
+print "tag attributes is: ", tag.attrs #.tag的属性操作方法与字典相同 {'class': ['boldest']}
+#tag的属性可以添加，删除与修改，属性操作方法与字典一样
+tag['class'] = 'verybold'
+tag['id'] = 1
+del tag['id']
+print 'tag is: ', tag
+
+#多值属性返回一个list
+css_soup = BeautifulSoup('<p class="body strikeout"></p>')
+css_soup.p['class']
+# ["body", "strikeout"]
+#将tag 转换成字符串时，多值属性会合并为一个值
+rel_soup = BeautifulSoup('<p>Back to the <a rel="index">homepage</a></p>')
+rel_soup.a['rel'] #['index']
+rel_soup.a['rel'] = ['index','contents']
+print rel_soup.p # <p>Back to the <a rel="index contents">homepage</a></p>
+
+
 
 
 
