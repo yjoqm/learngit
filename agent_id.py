@@ -5,15 +5,15 @@ import os
 import MySQLdb
 
 # db config
-DBHost = '192.168.0.169'
-DBUser = 'root'
-DBPwd = '123456'
-DBName = 'sso'
+DBHost = '192.168.0.1'
+DBUser = 'ro'
+DBPwd = '12356'
+DBName = 'ss'
 
-NDBHost = '192.168.0.169'
-NDBUser = 'root'
+NDBHost = '192.168.0.69'
+NDBUser = 'rsjot'
 NDBPwd = '123456'
-NDBName = 'sso_spring'
+NDBName = 'sss_spring'
 
 
 
