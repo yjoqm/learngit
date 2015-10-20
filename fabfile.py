@@ -15,6 +15,11 @@ def setting_ci():
         local("git commit -m 'test for fab'")
         local('git push origin master')
         local('git merge origin master')
+
+
+
+
+
     
 
 
