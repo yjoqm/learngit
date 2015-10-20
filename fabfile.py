@@ -13,8 +13,8 @@ def setting_ci():
     with lcd('.'):
         local('git add .')
         local("git commit -m 'test for fab'")
-        local('git push origin/master')
-        local('git merge origin/master')
+        local('git push origin master')
+        local('git merge origin master')
     
 
 
