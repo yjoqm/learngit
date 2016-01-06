@@ -1,0 +1,88 @@
+Bundle 'git://github.com/Lokaltog/vim-powerline.git'
+Bundle 'https://github.com/vim-scripts/The-NERD-tree'
+Bundle 'https://github.com/vim-scripts/The-NERD-Commenter'
+Bundle 'https://github.com/Valloric/YouCompleteMe'
+Bundle 'https://github.com/spf13/vim-autoclose'
+Bundle 'https://github.com/vim-scripts/Solarized'
+Bundle 'https://github.com/vim-scripts/pyflakes.vim'
+Bundle 'https://github.com/vim-scripts/Emmet.vim'
+Bundle 'https://github.com/vim-scripts/Markdown'
+Bundle 'https://github.com/mfukar/robotframework-vim'
+Bundle 'Bundle 'https://github.com/kien/ctrlp.vim'
+
+
+
+
+
+
+
+
+et nu!）加列号
+（set fencs=utf-8,gdk）当前文件打开和保存的编码方式
+（set wrap）（默认）自动折行，指长的一行用多行显示
+（set whichwrap=b,s,<,>,[,]）允许命令在多行中移动
+（set tabstop=XX）（set softtabstop=XX）（set shiftwidth=XX）缩进相关，建议将XX设置为相同的值
+（set expandtab）扩展tab为多个空格
+（set smartindent）设置自动缩进
+（set foldmethod=indent）设置根据缩进代码折叠
+（syntax on）打开高亮
+（set hlsearch）打开search是高亮
+（set laststatus=2）开启状态栏显示
+（set statusline+=XX）定义状态栏格式
+（:colorscheme desert）设置语法高亮主题
+(:cw)打开quickfix窗口
+（:ccl）关闭quickfix窗口
+（nnoremap <C-x> :MRU<cr>）定义键位映射示例之ctrl+x
+ (nnoremap<F2> :ccl<cr>)定义键位映射示例之Fx
+ 
+2.插件
+通常只关心本地插件，放在~/.vim/plugin/
+
+命令
+ 
+ 
+插件
+（仅描述特点，详细使用方式见www.vim.org）
+1.acp.vim
+描述：
+用于自动补全。补全来源于当前编辑文件上下文（所有窗口）。
+ 
+缺点：
+打开比如说超大的日志文件并编辑时，会极大影响输入速度。
+ 
+使用方式：
+安装：扔入.vim/plugin/
+ 
+2、mru.vim
+描述：
+可以查看并跳入最近打开的文件
+ 
+安装：
+扔入.vim/plugin/
+ 
+使用：
+:MRU<cr>
+ 
+3. grep.vim
+描述：
+用于在项目中grep查找，并可快速的跳到结果
+ 
+安装：
+扔入.vim/plugin/
+ 
+重要变量：
+Grep_Default_Filelist = '*.cpp *.h *.hpp *.c *.cc *.py *.scala *.sh'
+ 
+命令：
+:Rgrep<cr>等
+ 
+4.fuf.vim
+描述：
+灵活查找文件并跳入
+ 
+安装：
+扔入.vim/plugin/
+ 
+命令：
+:FufCoverageFile<cr> 列出当前文件树
+:FufFile<cr> 列出当前文件
