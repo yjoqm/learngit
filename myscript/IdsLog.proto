@@ -1,0 +1,13 @@
+option java_package = "com.zamplus.protobuf.uclog";
+
+message Pid{
+    required int32 venderId = 1;//vender id
+    required string id = 2;//id值
+}
+
+message PlatformIds {
+    required string zid = 1;//zid
+    repeated Pid pids = 2;//各平台id列表
+    required int64 timestamp = 3;//tracking记录的用户访问时间戳
+    required int32 adverId = 4;//广告主id
+}
