@@ -13,4 +13,5 @@ def fun_var_args2(farg,**args):
     for key in args:
         print "key is %s and it's value is %s" %(key,args[key])
 
-fun_var_args2(2,a=3,c=4)
+if __name__=='__main__':
+    fun_var_args2(2,a=3,c=4)
