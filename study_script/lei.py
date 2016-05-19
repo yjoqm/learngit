@@ -34,4 +34,9 @@ if __name__ == '__main__':
     sfo.calcTotal()
     sfo = HotelRoomRate(189,0.086,0.058)
     sfo.calcTotal()
-
+'''
+if __name__ == '__main__':
+    test = B('yj')
+    print test.getName() #('B:', 'yj')
+    print test.name #yj
+'''

@@ -6,6 +6,7 @@ import sys
 import re
 import json
 
+#打开文件中符合要求的链接 
 def open_url(file):
     for line in fileinput.input(file):
         r = re.compile(r'130.*jpg')

@@ -1,6 +1,4 @@
-﻿
-# python2
-
+﻿# python2 
 import socket
 
 def server():

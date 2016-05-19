@@ -34,3 +34,10 @@ In [19]: test = {"a":1,"b":2,"b":4}
 In [20]: invert_dict(test)
 Out[20]: {1: 'a', 4: 'b'}
 '''
+
+
+if __name__ == '__main__':
+    dic = {'a':1,'b':2,'c':3}
+    t = sub_dict(dic,'a')
+    print 't',t
+

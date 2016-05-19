@@ -16,6 +16,6 @@ import glob
 import sys, string
 
 for line in fileinput.input(glob.glob("*.txt")):
-    if fileinput.isfirstline():　
+    if fileinput.isfirstline():
         sys.stderr.write("----reading %s ---\n" % fileinput.filename())
     sys.stdout.write(str(fileinput.lineno()) + " " + string.upper(line))　#lineno返回当前读取的行的行号

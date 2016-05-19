@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 #1. 
 class Triangle(object):
     def __init__(self,angle1,angle2,angle3):

@@ -7,13 +7,16 @@ def odd(n):
 allnum = []
 for eachnum in range(9):
     allnum.append(randint(1,99))
-print filter(odd,allnum)
+print  'filter:', filter(odd,allnum)
 #list替换
 allnum = []
 for eachnum in range(9):
     allnum.append(randint(1,99))
-    print [n for n in allnum if n%2]
+print  'list:', [n for n in allnum if n%2]
 
+
+#filter: [69, 85, 77, 29]
+#list: [33, 65, 71, 53, 67]
 
 #map()
 

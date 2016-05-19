@@ -7,8 +7,9 @@ for file in os.listdir("."):
     if os.path.splitext(file)[1] == '.py':
         print file
         shutil.copy(file,os.path.join('/home/ellen/backup/',file))
-#列出当前目录下的文件,如果文件是以py结束那么输入文件名,使用join将文件名称变为backup/filename.py,将file文件copy到backup/#filename.py内
 
+
+#列出当前目录下的文件,如果文件是以py结束那么输入文件名,使用join将文件名称变为backup/filename.py,将file文件copy到backup/#filename.py内
 
 #
 #n代码:

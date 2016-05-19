@@ -18,7 +18,6 @@ if __name__=="__main__":
     del_files(path)
 
 
-import os
 import os.path
 rootdir = "/home/ellen/yjoqm/"
 # os.walk 返回一个三元组，其中parent表示所在目录, dirnames是所有目录名字的列表, filenames是所有文件名字的列表

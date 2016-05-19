@@ -33,3 +33,16 @@ d2 = d1 + datetime.timedelta(hours=10)
 print d2.ctime()
 print d2
 
+import time
+import sys
+#将时间戳转换为时间
+
+def time_str(timestamp):
+    timeArray = time.localtime(timestamp)
+    otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+    return otherStyleTime
+
+a = time_str(int(sys.argv[1]))
+print a
+
+
