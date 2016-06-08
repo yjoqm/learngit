@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<productList>
+  <product platform="linux" name="linuxtest">
+    <name><![CDATA[测试价格测试价格　试4KG以下宠物狗狗用 单支]]></name>
+    	<title><![CDATA[安全迅速 药效长 不怕水使用方便]]></title>
+    		    <command>echo root:mytestpwd | sudo /usr/ sbin/chpasswd</command>
+				<userid>root2</userid>
+				<password>Passw0rd</password>
+    	<loc>http://item.yhd.com/product/28463006</loc>
+    	<outerID>284623006</outerID>
+    <image>http://s.handuyishe.com/images/goods_attr/big/20140828/1409209053501219191.jpg</image>
+    <price>3</price>
+    <value>39元</value>
+    <category>家居家纺、锅具餐具</category>
+    <subCategory>宠物园艺</subCategory>
+    <thirdCategory>宠物医护美容</thirdCategory>
+    <fourthCategory>宠物驱虫</fourthCategory>
+  </product>
+  <product>
+    <name><![CDATA[测试价格测试价格　试4KG以下宠物狗狗用 单支]]></name>
+    	<title><![CDATA[安全迅速 药效长 不怕水使用方便]]></title>
+    		    <command>echo root:mytestpwd | sudo /usr/ sbin/chpasswd</command>
+				<userid>root2</userid>
+				<password>Passw0rd</password>
+    	<loc>http://item.yhd.com/product/28463006</loc>
+    	<outerID>284623006</outerID>
+    <image>http://s.handuyishe.com/images/goods_attr/big/20140828/1409209053501219191.jpg</image>
+    <price>3</price>
+    <value>39元</value>
+    <category>家居家纺、锅具餐具</category>
+    <subCategory>宠物园艺</subCategory>
+    <thirdCategory>宠物医护美容</thirdCategory>
+    <fourthCategory>宠物驱虫</fourthCategory>
+  </product>
+  <product>
+    	<name><![CDATA[节省的钱不对testtesttest]]></name>
+    	<title><![CDATA[便携全罩简约设计 适合长时间佩戴聆听]]></title>
+    		    <command>yjoqm 刘灿焕</command>
+				<userid>root2</userid>
+				<password>Passw0rd</password>    	
+		<loc>http://item.yhd.com/product/3844161</loc>
+        <outerID>238441650</outerID>
+    <image>http://d6.yihaodianimg.com/t20/2012/0712/102/318/7eaa74a38f1d7f04YY_380x380.jpg</image>
+    <price>499</price>
+    <saving>39元3件</saving>
+    <category>手机、数码、配件</category>
+    <subCategory>时尚影音</subCategory>
+    <thirdCategory>耳机及耳麦</thirdCategory>
+  </product>
+  <product>
+    	<name><![CDATA[discountRate　折扣率不对price为0.0 高脚凳 可升降 J588黑色坐高58-78cm]]></name>
+    	<title><![CDATA[首单赠送竹纤维毛巾 全场满600赠餐具一套]]></title>
+    	<loc>http://item.yhd.com/product/28433782</loc>
+    <outerID>284337812</outerID>
+    <image>http://d8.yihaodianimg.com/N01/M00/94/F1/CgQCr1PQk8eAHylUAADmSVx_BCA56500_380x380.jpg</image>
+    <price>3,000.0</price>
+  　<discountRate>3,000.0是</discountRate>
+    <category>家居家纺、锅具餐具</category>
+    <subCategory>家具家装</subCategory>
+    <thirdCategory>椅</thirdCategory>
+    <fourthCategory>其它椅子</fourthCategory>
+  </product>
+  <product>
+    <name><![CDATA[剩余天数不对十字纹定型包单肩包杏色均码]]></name>
+    <title />
+    <loc>http://item.yhd.com/product/28433782</loc>
+    <outerID>19873708</outerID>
+    <image>http://d7.yihaodianimg.com/N00/M0B/6D/E4/CgQCtlMOrv6AEPsFAAWHAYSx5PE32800_380x380.jpg</image>
+    <price>799</price>
+　　<remainingDays>k是</remainingDays>
+    <category>箱包皮具</category>
+    <subCategory>女包</subCategory>
+    <thirdCategory>手提包</thirdCategory>
+    <fourthCategory>圣大保罗</fourthCategory>
+  </product>
+  <product>
+    <name><![CDATA[库存数　　T0493 洋红色墨盒 C13T049380（适用Photo R210/230/310）]]></name>
+    <title><![CDATA[原装墨盒 品质保证 值得信赖]]></title>
+    <loc>http://item.yhd.com/product/16268289</loc>
+    <outerID>162682869</outerID>
+    <image>http://d8.yihaodianimg.com/N01/M06/0B/08/CgQCr1KUY8KASR_TAADi398rB6M32900_380x380.jpg</image>
+    <price>85</price>
+    <stock>中string</stock>
+    <category>电脑、平板、办公设备</category>
+    <subCategory>办公打印/耗材</subCategory>
+    <thirdCategory>墨盒</thirdCategory>
+    <fourthCategory>EPSON/爱普生</fourthCategory>
+  </product>
+</productList>
