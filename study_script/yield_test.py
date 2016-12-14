@@ -1,16 +1,35 @@
 #!/usr/bin/env python
 # coding=utf-8
-#yield指令,可以暂停一个函数并返回中间结果
-def gen():
-    for x in range(4):
-        tmp = yield x
-        if x == 'hello':
-            print 'world'
-        else:
-            str(tmp)
+class Fib:
+    def __init__(self,max):
+        self.max = max
+    def __iter__(self):
+        self.a=0
+        self.b=1
+        return self
+    def next(self):
+        fib=self.a
+        if fib>self.max:
+            raise StopIteration
+        self.a,self.b=self.b, self.a + self.b
+        return fib
 
-t = gen()
-#print t.next()
-#print t.next()
-print t.send('hello')
+#for n in Fib(100):
+#    print n
+def fib(max):
+    a,b=0,1
+    while a<max:
+        yield a
+        a,b=b,a+b
+test = fib(100)
+#for i in test:
+#    print i
 
+def h():
+    print 'hello1'
+    yield 5
+    print 'hello222'
+
+c = h()
+print c.next()
+print c.next()
