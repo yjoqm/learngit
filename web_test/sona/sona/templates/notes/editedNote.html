@@ -1,0 +1,23 @@
+{% extends "notes/notes_base.html" %}
+{% block content %}
+<h1>
+    add a Note
+</h1>
+
+<form id = 'notes' action= "" method = 'POST'>
+
+<p>Title:</p>
+<input type = 'text' size='60' name = 'title' placeholder = 'Title'>
+</br>
+</br>
+
+
+<p>Content:</p>
+<textarea name="content" rows="5" cols="100" placeholder = 'Notes (required)'></textarea></p>
+<br>
+<input class='button' type='submit' value='save'>
+
+</form>
+{% endblock %}
+
+

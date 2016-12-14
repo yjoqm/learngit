@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        Charisma v1.0.0
+
+        Copyright 2012 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+    -->
+    <meta charset="utf-8">
+    <title>
+        {%block title%}yjoqm{%endblock%}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="要协调">
+    <meta name="author" content="ellen">
+
+    <!-- The styles -->
+    <link id="bs-css" href="/static/css/bootstrap-cerulean.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+        padding-bottom: 40px;
+    }
+    .sidebar-nav {
+        padding: 9px 0;
+    }
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/charisma-app.css" rel="stylesheet">
+    <link href="/static/css/jquery-ui-1.8.21.custom.css" rel="stylesheet">
+    <link href='/static/css/fullcalendar.css' rel='stylesheet'>
+    <link href='/static/css/fullcalendar.print.css' rel='stylesheet'  media='print'>
+    <link href='/static/css/chosen.css' rel='stylesheet'>
+    <link href='/static/css/uniform.default.css' rel='stylesheet'>
+    <link href='/static/css/colorbox.css' rel='stylesheet'>
+    <link href='/static/css/jquery.cleditor.css' rel='stylesheet'>
+    <link href='/static/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/static/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/static/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/static/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='/static/css/opa-icons.css' rel='stylesheet'>
+    <link href='/static/css/uploadify.css' rel='stylesheet'>
+    <link href='/static/css/self.css' rel='stylesheet'>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <script src="/static/js/jquery.js"></script>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+    <div class="alert alert-{{category}}" style="margin-bottom: 0px">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- topbar starts -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/"> <img alt="Charisma Logo" src="/static/img/logo20.png" />
+                    <span>moon</span>
+                </a>
+                <div class="top-nav nav-collapse">
+                <ul class="nav">
+                    <li><a href="/accounts">Accounts</a></li>
+                    <li><a href="/exchange">Exchange</a></li>
+                    <li><a href="/qita">Qita</a></li>
+                    <li><a href="/flaskr">Flaskr</a></li>
+                    <li><a href="/idhelper">Idhelper</a></li>
+                </ul>
+                </div>
+                <!-- user dropdown starts -->
+                <div class="btn-group pull-right">
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="icon-user"></i>
+                        <span class="hidden-phone">{{ current_user.username}}</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/accounts/logout">Logout</a></li>
+                    </ul>
+                </div>
+                <!-- user dropdown ends -->
+            </div>
+        </div>
+    </div>
+
+    <!-- topbar ends -->
+    <div class="container-fluid">
+        <div class="row-fluid">
+            {% block leftmenu %}
+            <!-- left menu starts -->
+            <div class="span2 main-menu-span">
+                <div class="well nav-collapse sidebar-nav">
+                    <ul class="nav nav-tabs nav-stacked main-menu">
+                        {% for category, platform_list in full_platform_list.items() %}
+                        <li class="nav-header hidden-tablet">{{category}}平台流量模拟</li>
+                            {% for platform in platform_list %}
+                        <li>
+                            <a class="ajax-link" href="{{platform[1]}}">
+                                <i class="icon-home"></i><span class="hidden-tablet">{{platform[0]}}</span>
+                            </a>
+                        </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div><!--/.well -->
+            </div><!--/span-->
+            <!-- left menu ends -->
+            {%endblock%}
+
+            <div id="content" class="span10">
+            {% block content %}
+                <h1>请点击左侧标签</h1>
+                <hr>
+                <h3>绑定host: </h3>
+                <table class="table">
+                    <tr>
+                        <td>10.8.8.229</td>
+                        <td>cms.gtags.net(cookie mapping)</td>
+                    </tr>
+                    <tr>
+                        <td>10.8.8.229</td>
+                        <td>mc.zampda.net</td>
+                    </tr>
+                </table>
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- external javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- jQuery -->
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="/static/js/jquery-ui-1.8.21.custom.min.js"></script>
+    <!-- transition / effect library -->
+    <script src="/static/js/bootstrap-transition.js"></script>
+    <!-- alert enhancer library -->
+    <script src="/static/js/bootstrap-alert.js"></script>
+    <!-- modal / dialog library -->
+    <script src="/static/js/bootstrap-modal.js"></script>
+    <!-- custom dropdown library -->
+    <script src="/static/js/bootstrap-dropdown.js"></script>
+    <!-- scrolspy library -->
+    <script src="/static/js/bootstrap-scrollspy.js"></script>
+    <!-- library for creating tabs -->
+    <script src="/static/js/bootstrap-tab.js"></script>
+    <!-- library for advanced tooltip -->
+    <script src="/static/js/bootstrap-tooltip.js"></script>
+    <!-- popover effect library -->
+    <script src="/static/js/bootstrap-popover.js"></script>
+    <!-- button enhancer library -->
+    <script src="/static/js/bootstrap-button.js"></script>
+    <!-- accordion library (optional, not used in demo) -->
+    <script src="/static/js/bootstrap-collapse.js"></script>
+    <!-- carousel slideshow library (optional, not used in demo) -->
+    <script src="/static/js/bootstrap-carousel.js"></script>
+    <!-- autocomplete library -->
+    <script src="/static/js/bootstrap-typeahead.js"></script>
+    <!-- tour library -->
+    <script src="/static/js/bootstrap-tour.js"></script>
+    <!-- library for cookie management -->
+    <script src="/static/js/jquery.cookie.js"></script>
+    <!-- calander plugin -->
+    <script src='/static/js/fullcalendar.min.js'></script>
+    <!-- data table plugin -->
+    <script src='/static/js/jquery.dataTables.min.js'></script>
+
+    <!-- chart libraries start -->
+    <script src="/static/js/excanvas.js"></script>
+    <script src="/static/js/jquery.flot.min.js"></script>
+    <script src="/static/js/jquery.flot.pie.min.js"></script>
+    <script src="/static/js/jquery.flot.stack.js"></script>
+    <script src="/static/js/jquery.flot.resize.min.js"></script>
+    <!-- chart libraries end -->
+
+    <!-- select or dropdown enhancer -->
+    <script src="/static/js/jquery.chosen.min.js"></script>
+    <!-- checkbox, radio, and file input styler -->
+    <script src="/static/js/jquery.uniform.min.js"></script>
+    <!-- plugin for gallery image view -->
+    <script src="/static/js/jquery.colorbox.min.js"></script>
+    <!-- rich text editor library -->
+    <script src="/static/js/jquery.cleditor.min.js"></script>
+    <!-- notification plugin -->
+    <script src="/static/js/jquery.noty.js"></script>
+    <!-- file manager library -->
+    <script src="/static/js/jquery.elfinder.min.js"></script>
+    <!-- star rating plugin -->
+    <script src="/static/js/jquery.raty.min.js"></script>
+    <!-- for iOS style toggle switch -->
+    <script src="/static/js/jquery.iphone.toggle.js"></script>
+    <!-- autogrowing textarea plugin -->
+    <script src="/static/js/jquery.autogrow-textarea.js"></script>
+    <!-- multiple file upload plugin -->
+    <script src="/static/js/jquery.uploadify-3.1.min.js"></script>
+    <!-- history.js for cross-browser state change on ajax -->
+    <script src="/static/js/jquery.history.js"></script>
+    <!-- application script for Charisma demo -->
+    <script src="/static/js/charisma.js"></script>
+
+  {%block script%}
+  {%endblock%}
+
+</body>
+</html>
+
+

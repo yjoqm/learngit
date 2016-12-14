@@ -1,0 +1,32 @@
+{%extends "idhelper/idhelper_base.html"%}
+{% block content %}
+<form id="idform_j2d" action="" method='POST'>
+  <div class="control-group">
+    <label class="control-label" for="appendedInputButton"> 请输入需要转换的json字符串 </label>
+      <div class="controls">
+        <div class="input-append">
+          <div><textarea id="appendedInputButton" name='json_data' rows="10" style="width:100%;overflow:visible"></textarea></div>
+          <div><button class="btn" type="submit"> json2yaml </button></div>
+          <div><button class="btn" type="submit"> save </button></div>
+        </div>
+      </div>
+  </div>
+</form>
+<form id="idform_sent_dict" action="" method='POST'>
+  <div class="control-group">
+    <label class="control-label" for="appendedInputButton"> 请输入需要转换的json字符串 </label>
+      <div class="controls">
+        <div class="input-append">
+          <div><textarea id="appendedInputButton_dict" name='json_data' rows="10" style="width:100%;overflow:visible"></textarea></div>
+          <div><button class="btn" type="submit"> json2yaml </button></div>
+          <div><button class="btn" type="submit"> save </button></div>
+        </div>
+      </div>
+  </div>
+</form>
+{% if yaml_format %}
+<pre>
+{{ yaml_format }}
+</pre>
+{% endif %}
+{% endblock %}

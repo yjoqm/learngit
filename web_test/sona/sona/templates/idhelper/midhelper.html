@@ -1,0 +1,40 @@
+{%extends "idhelper/idhelper_base.html"%}
+{%block content%}
+<form id="idform" action="" method='POST'>
+  <div class="control-group">
+    <label class="control-label" for="appendedInputButton">请输入id</label>
+      <div class="controls">
+        <div class="input-append">
+          Advertiser ID:<input id="appendedInputButton" name='advertiser_id' size="16" type="text" placeholder="advertiser_id"/>
+          <br>
+          Merchant ID:  <input id="appendedInputButton" name='merchant_id' size="16" type="text" placeholder="merchant_id"/>
+          <br>
+          Version:      <input id="appendedInputButton" name='version' size="8" type="text" placeholder="version" value="1"/>
+          <br>
+          DFS ID:       <input id="appendedInputButton" name='dfs_id' size="8" type="text" placeholder="dfs_id" value="2"/>
+          <br>
+          Project ID:   <input id="appendedInputButton" name='project_id' size="8" type="text" placeholder="project_id" value="23"/>
+          <br>
+          <button class="btn" type="submit">submit!</button>
+        </div>
+      </div>
+  </div>
+</form>
+<div class='J_idshow'>
+</div>
+{%endblock%}
+{%block script%}
+<script type="text/javascript">
+$(document).ready(function(){
+  var data = null;
+      base_url = document.location.origin + document.location.pathname;
+  $('#idform').submit(function(){
+    data = $('#idform').serialize();
+    $.post(base_url,data,function(json){
+      $('.J_idshow').replaceWith('<div class="J_idshow"><h2>'+json['nid']+'</h2></div>')
+      });
+    return false;
+    });
+});
+</script>
+{%endblock%}
