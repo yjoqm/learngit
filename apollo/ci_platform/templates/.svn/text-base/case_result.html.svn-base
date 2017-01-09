@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Welcome to CI platform</title>
+    </head>
+    <body>
+        {% for case in case_result_list %}
+        <table border="1">
+        <tr>
+        <td>测试开始时间</td>
+        <td>{{ case.started_at|date:"F j, Y H:i:s" }}</td>
+        </tr>
+        <tr>
+        <td>测试持续时间</td>
+        <td>{{ case.duration }}</td>
+        </tr>
+        <tr>
+        <td>执行结果</td>
+        <td>{{ case.result }}</td>
+        </tr>
+        <tr>
+        <td>日志信息</td>
+        <td>
+        {% if case.log_info %}
+            {{ case.log_info|safe }}
+        {% else %}
+            &nbsp;
+        {% endif %}
+        </td>
+        </tr>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+    </body>
+</html>

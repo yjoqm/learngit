@@ -1,0 +1,2055 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Biz Keyword Pyweb</title>
+</head>
+<body>
+<h1>Biz Keyword Pyweb</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">pyweb \ 业务层使用的一些关键字</td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../vdnagen/trunk/testlib/VdnagenLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check instance info with db data">check instance info with db data</a></td>
+<td>[Arguments]</td>
+<td>${return_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Get Json Element</td>
+<td>${return_result}</td>
+<td>body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.instance_id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_name} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.instance_name</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_format} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.file_format</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.created_at</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.updated_at</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${source} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.source</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration} =</td>
+<td>Get Json Element</td>
+<td>${body}</td>
+<td>body.duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_name_db} =</td>
+<td>mysql_query</td>
+<td>select instance_name from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_format_db} =</td>
+<td>mysql_query</td>
+<td>select file_format from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at_db} =</td>
+<td>mysql_query</td>
+<td>select created_at from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at_db} =</td>
+<td>datetime to str</td>
+<td>${created_at_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at_db} =</td>
+<td>mysql_query</td>
+<td>select updated_at from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at_db} =</td>
+<td>datetime to str</td>
+<td>${updated_at_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${source_db} =</td>
+<td>mysql_query</td>
+<td>select source from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration_db} =</td>
+<td>mysql_query</td>
+<td>select duration from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${inst_name}</td>
+<td>${inst_name_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${file_format}</td>
+<td>${file_format_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${created_at}</td>
+<td>${created_at_db}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${updated_at}</td>
+<td>${updated_at_db}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${source}</td>
+<td>${source_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${duration}</td>
+<td>${duration_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check local dna with server">check local dna with server</a></td>
+<td>[Arguments]</td>
+<td>${local_dna}</td>
+<td>${dna_type}=video</td>
+<td>${instance_uuid}=1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td># dna_type=video/audio</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">校验本地的原始dna与服务器保存的dna是否一致</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${remote_path}=</td>
+<td>Set Variable</td>
+<td>${REMOTE_DNA_FILE_PATH}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${server_dna} =</td>
+<td>Set Variable</td>
+<td>${remote_path}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.0.dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${server_dna} =</td>
+<td>Set Variable If</td>
+<td>'${dna_type}' == 'audio'</td>
+<td>${remote_path}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.1.adna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${server_dna}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${local_dna}</td>
+<td>${server_dna}</td>
+<td>${VDDB_NODE_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${REMOTE_RUN_CMD_PORT}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check rsp_code">check rsp_code</a></td>
+<td>[Arguments]</td>
+<td>${return}</td>
+<td>${correct_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">用于校验返回结果response 中的 code与预期是否一致</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${code} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${code}'</td>
+<td>'${correct_code}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_create meta list">create meta list</a></td>
+<td>[Arguments]</td>
+<td>${token}</td>
+<td>${movie_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>:FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${movie_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>@{meta_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_del meta and instance">del meta and instance</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}=a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">根据 meta_uuid,instance_uuid 掉接口删除数据</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete meta</td>
+<td>${meta_uuid}</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${PYWEB_PROTOCOL}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>have del ${meta_uuid} finished.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${inst_uuid}' != 'a'</td>
+<td>delete instance</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${PYWEB_PROTOCOL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_del_dna_list">del_dna_list</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">一次批量删除多个 dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete meta list</td>
+<td>${meta_uuid_list}</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${PYWEB_PROTOCOL}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get customer values">get customer values</a></td>
+<td>[Arguments]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id_type} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${customer_ref_id}</td>
+<td>${customer_ref_id_type}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get instance uuid from db">get instance uuid from db</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">从数据库获取meta_uuid对应的 instance_uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select instance_uuid from mediaContentInstance where meta_id='${meta_id}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${inst_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface attach dna">interface attach dna</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td>${dna_file}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${attach_type}=attach_inst_distinct_dna</td>
+<td>${method}=POST</td>
+<td># attach_type=attach_inst_distinct_dna/attach_inst_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.7.6. attach_inst_dna\n<br>
+2.7.6.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 在指定meta下挂载一个instance dna,(可重复)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/instances/dna\n<br>
+">https://host:port/mediawise/contents/{uuid}/instances/dna\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/${meta_uuid}/instances/distinct/dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${attach_type}'=='attach_inst_dna'</td>
+<td>/mediawise/contents/${meta_uuid}/instances/dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${attach_type}'=='attach_inst_dna'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/mediawise/contents/${meta_uuid}/instances/dna</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Dna Ingest</td>
+<td>${method}</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dna_file}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface auth token">interface auth token</a></td>
+<td>[Arguments]</td>
+<td>${user}=None</td>
+<td>${password}=None</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">生成测试过程中的 token,并校验返回结果</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${user}=</td>
+<td>Set Variable if</td>
+<td>'${user}'=='None'</td>
+<td>${VDDB_NODE_USER_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${user}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${password}=</td>
+<td>Set Variable if</td>
+<td>'${password}'=='None'</td>
+<td>${VDDB_NODE_PASSWD_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${password}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "protocols": [${PYWEB_PROTOCOL}], \ \ \ \ \ "user": "${user}", \ \ \ \ \ "password": "${password}" }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>header.set-cookie</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${token}</td>
+<td># 请求获取token</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface download dna">interface download dna</a></td>
+<td>[Arguments]</td>
+<td>${download_type}</td>
+<td>${token}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_uuid}=1</td>
+<td>${trace_no}=1</td>
+<td>${serial_no}=1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td># download_type=avonly_dna/dna/frame_dna</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">download_dna\n<br>
+\n<br>
+2.6.2.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance uuid 下载dna (for audio, video, frame)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/dna\n<br>
+">https://host:port/mediawise/instances/{uuid}/dna\n<br>
+</a> \ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+2.6.2. download_dna\n<br>
+2.6.2.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance uuid 下载dna (for audio, video, frame)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/dna\n<br>
+">https://host:port/mediawise/instances/{uuid}/dna\n<br>
+</a> \ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+2.6.3. download_frame_dna\n<br>
+2.6.3.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance uuid 下载dna (only for frame dna)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/tracks/{track">https://host:port/mediawise/instances/{uuid}/tracks/{track</a> no}/dna/{serial no}\n<br>
+\ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+\n<br>
+2.12.4. thumbnail_manager\n<br>
+2.12.4.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 通过meta的{uuid}获取meta的图片(get)， 通过meta的{uuid}修改现有meta的图片(put)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/thumbnail\n<br>
+">https://host:port/mediawise/contents/{uuid}/thumbnail\n<br>
+</a> \ \ \ 方法: get, put\n<br>
+\ \ \ 开始支持版本: get：5.0， put：5.1 \n<br>
+</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/instances/${inst_uuid}/dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_url}=</td>
+<td>Set Variable</td>
+<td>${DOWNLOAD_PATH}/${inst_uuid}.0.dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${download_type}'=='avonly_dna'</td>
+<td>/mediawise/instances/${inst_uuid}/dna/avonly</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${download_type}'=='frame_dna'</td>
+<td>/mediawise/instances/{inst_uuid}/tracks/${track no}/dna/${serial no}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${download_type}'=='thumbnail_dna'</td>
+<td>/mediawise/contents/${meta_uuid}/thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_url}=</td>
+<td>Set Variable If</td>
+<td>'${download_type}'=='thumbnail_dna'</td>
+<td>${DOWNLOAD_PATH}/${meta_uuid}_thumbnail.jpg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${path_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>Download dna</td>
+<td>GET</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${path_url}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface get privilege">interface get privilege</a></td>
+<td>[Arguments]</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">\ \ \ 获得用户的访问权限\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/privilege\n<br>
+">https://host:port/mediawise/privilege\n<br>
+</a> \ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.2.6.0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>GET</td>
+<td>/mediawise/privilege</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${privilege} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${privilege}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface instance">interface instance</a></td>
+<td>[Arguments]</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+<td>${md5}=1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${inst_type}= non_live_send_dna</td>
+<td>${inst_uuid}=inst_uuid</td>
+<td>${method}=POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${edit_name}=1</td>
+<td># inst_type= non_live_send_dna/non_live_instance_manager/edit_instance/delete_instance/non_live_new_inst/non_live_inst_eof</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.11. instance 相关接口\n<br>
+\n<br>
+2.11.1. non_live_distinct_new_inst\n<br>
+2.11.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ nonlive 创建instance(不可重复)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/instances/distinct/dna/{serial">https://host:port/mediawise/contents/{uuid}/instances/distinct/dna/{serial</a> num}?md5={md5}&amp;frame_rate={frame_rate}\n<br>
+\ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.2.5 \n<br>
+\n<br>
+\n<br>
+2.11.5. non_live_instance_manager :入参 token,meta_uuid,\n<br>
+2.11.5.1. 接口介绍\n<br>
+\n<br>
+\ \ \ nonlive 修改instance 信息(put) 和 nonlive 获取instance 信息(get)，该接口仅支持非image类型的\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/{uuid}/instances/{uuid}/meta\n<br>
+">https://host:port/mediawise/{uuid}/instances/{uuid}/meta\n<br>
+</a> \ \ \ 方法: put, get\n<br>
+\ \ \ 开始支持版本: 5.2.5 \n<br>
+\n<br>
+\n<br>
+2.11.8. non_live_new_inst\n<br>
+2.11.8.1. 接口介绍\n<br>
+\n<br>
+\ \ \ nonlive 创建instance(可重复)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/instances/dna/{serial">https://host:port/mediawise/contents/{uuid}/instances/dna/{serial</a> num}\n<br>
+\ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.2.5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/${meta_uuid}/instances/distinct/dna/1?md5=${md5}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Set Variable</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${header}=</td>
+<td>Set Variable</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${inst_type}'=='non_live_instance_manager' or \ '${inst_type}'=='edit_instance'</td>
+<td>/mediawise/${meta_uuid}/instances/${inst_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Set Variable If</td>
+<td>'${inst_type}'=='edit_instance'</td>
+<td>{ \ \ \ \ "name":"${edit_name}" }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${inst_type}'=='del_instance'</td>
+<td>/mediawise/instances/${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${inst_type}'=='non_live_new_inst'</td>
+<td>/mediawise/contents/${meta_uuid}/instances/dna/1?md5=${random_str}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${inst_type}'=='non_live_inst_eof'</td>
+<td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/eof</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#请求pyweb接口</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>pyweb api call</td>
+<td>${method}</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${body}</td>
+<td>${header}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface meta">interface meta</a></td>
+<td>[Arguments]</td>
+<td>${meta_type}</td>
+<td>${token}</td>
+<td>${method}=POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_uuid}=meta_uuid</td>
+<td># meta_type=movie_meta/tv_meta/music_meta</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.2. meta 相关接口\n<br>
+\n<br>
+2.2.1. new meta\n<br>
+2.2.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 创建meta\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/meta\n<br>
+">https://host:port/mediawise/contents/meta\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/meta</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Set Variable</td>
+<td>${META_INFO_MOVIE}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Set Variable If</td>
+<td>'${meta_type}'=='tv_meta'</td>
+<td>${META_INFO_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}=</td>
+<td>Set Variable If</td>
+<td>'${meta_type}'=='music_meta'</td>
+<td>${META_INFO_MUSIC}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>pyweb api call</td>
+<td>${method}</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${body}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface send dna">interface send dna</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${dna_type}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+<td>${md5}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${expect_code}=200</td>
+<td># upload_type=distinct_dna/ingest_dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.7. dna上传 相关接口\n<br>
+\n<br>
+2.7.4. non_live_send_dna\n<br>
+2.7.4.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 分段入库\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/instances/{uuid}/dna/{serial">https://host:port/mediawise/contents/{uuid}/instances/{uuid}/dna/{serial</a> num}\n<br>
+\ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.2.5 \n<br>
+</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/1?md5=${md5}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>send dna</td>
+<td>POST</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dna_file}</td>
+<td>${dna_type}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp code</td>
+<td>${return}</td>
+<td>${expect_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface thumbnail">interface thumbnail</a></td>
+<td>[Arguments]</td>
+<td>${thumbnail_file}</td>
+<td>${token}</td>
+<td>${expect_code}=303</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${thumbnail_type}=xxx</td>
+<td>${meta_uuid}=1</td>
+<td>${method}=POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.12. thumbnail 相关接口\n<br>
+2.12.1. new thumbnail meta\n<br>
+2.12.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 通过一张图片创建一个meta\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/thumbnail\n<br>
+">https://host:port/mediawise/contents/thumbnail\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+\n<br>
+2.12.3. new thumbnail meta\n<br>
+2.12.3.1. 接口介绍[edit] ¶\n<br>
+\n<br>
+\ \ \ 创建thumbnail meta\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/thumbnail\n<br>
+">https://host:port/mediawise/contents/thumbnail\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.0 \n<br>
+\n<br>
+2.12.4. thumbnail_manager\n<br>
+2.12.4.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 通过meta的{uuid}获取meta的图片(get)， 通过meta的{uuid}修改现有meta的图片(put)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/thumbnail\n<br>
+">https://host:port/mediawise/contents/{uuid}/thumbnail\n<br>
+</a> \ \ \ 方法: get, put\n<br>
+\ \ \ 开始支持版本: get：5.0， put：5.1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/thumbnail</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable if</td>
+<td>'${thumbnail_type}'=='thumbnail_manager_put'</td>
+<td>/mediawise/contents/${meta_uuid}/thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Dna Ingest</td>
+<td>${method}</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${thumbnail_file}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${expect_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_interface upload dna">interface upload dna</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${upload_type}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${expect_code}=303</td>
+<td>${meta_uuid}=meta_uuid</td>
+<td># upload_type=ingest_dna/distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">2.7. dna上传 相关接口\n<br>
+\n<br>
+\n<br>
+\n<br>
+2.7.1. ingest distinct dna\n<br>
+2.7.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 创建meta, 入库dna (不可重复)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/distinct/dna\n<br>
+">https://host:port/mediawise/contents/distinct/dna\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+2.7.2. ingest dna[edit]\n<br>
+2.7.2.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 创建meta, 入库dna(可重复)\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/dna\n<br>
+">https://host:port/mediawise/contents/dna\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.1 \n<br>
+\n<br>
+2.7.4. non_live_send_dna\n<br>
+2.7.4.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 分段入库\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/{uuid}/instances/{uuid}/dna/{serial">https://host:port/mediawise/contents/{uuid}/instances/{uuid}/dna/{serial</a> num}\n<br>
+\ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.2.5 \n<br>
+</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url} =</td>
+<td>Set Variable</td>
+<td>/mediawise/contents/dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${upload_type}'=='distinct_dna'</td>
+<td>/mediawise/contents/distinct/dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${interface_url}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${interface_url}=</td>
+<td>Set Variable If</td>
+<td>'${upload_type}'=='ingest_dna'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/mediawise/contents/dna</td>
+<td>${interface_url}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>dna_ingest</td>
+<td>POST</td>
+<td>${interface_url}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dna_file}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#考虑到运行异常的情况</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${code} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>Set Variable</td>
+<td>123</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>run keyword if</td>
+<td>'${code}'=='409'</td>
+<td>get json element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return}</td>
+<td>body.content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${code}'=='409'</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${expect_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_mysql_exe">mysql_exe</a></td>
+<td>[Arguments]</td>
+<td>${db_name}</td>
+<td>${sql}</td>
+<td>${is_query}=true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">根据配置设置host,user,passwrd连接数据库</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_DBUSERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_DBPASSWD}</td>
+<td>${db_name}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${is_query}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_mysql_query">mysql_query</a></td>
+<td>[Arguments]</td>
+<td>${sql}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">输入 sql 进行数据的 查询操作</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MDDB}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_mysql_update">mysql_update</a></td>
+<td>[Arguments]</td>
+<td>${sql}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">执行 Update sql 命令</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MDDB}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_pyweb ingest dna">pyweb ingest dna</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${token}</td>
+<td>${is_verify_return}=false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">调用接口入库 dna，返回 meta_uuid,根据配置是否进行 返回code校验是否为${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>Set Variable</td>
+<td>Hello, world!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>dna_ingest</td>
+<td>POST</td>
+<td>/mediawise/contents/distinct/dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dna_file}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${code}=</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>Run Keyword If</td>
+<td>'${code}' != '303'</td>
+<td>get json element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return}</td>
+<td>body.content_id</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>'${is_verify_return}'=='true' and \ '${code}' != '303'</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>'${is_verify_return}'=='true'</td>
+<td>check rsp_code</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${303}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set pyweb env">set pyweb env</a></td>
+<td>config_pyweb</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_PORT}</td>
+<td>${SSL}</td>
+</tr>
+</table>
+</body>
+</html>

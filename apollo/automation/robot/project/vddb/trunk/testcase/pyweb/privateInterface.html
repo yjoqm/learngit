@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>privateInterface</title>
+</head>
+<body>
+<h1>privateInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${SAMPLE_TEST_SNAPSHOT}</td>
+<td>${SEALS_PATH}/snapshot/video_snapshots_1/1351_45045.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1996:上传snapshot(save_snapshot)">vdna-1996:上传snapshot(save_snapshot)</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1996:上传snapshot（save_snapshot）——video\n<br>
+\n<br>
+\n<br>
+2.14.3. save_snapshot\n<br>
+2.14.3.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 上传snapshot\n<br>
+\ \ \ 接口: \ <a href="https://host:port//mw-int/tracks/{meta_type}/{instance_uuid}/{track_no}/snapshots/{save_file_name}/{save_file_format}\n<br>
+">https://host:port//mw-int/tracks/{meta_type}/{instance_uuid}/{track_no}/snapshots/{save_file_name}/{save_file_format}\n<br>
+</a> \ \ \ 方法: put\n<br>
+\ \ \ 开始支持版本: TODO</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>vdna-1996</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口： \ \ \ 接口: \ <a href="https://host:port//mw-int/tracks/{meta_type}/{instance_uuid}/{track_no}/snapshots/{save_file_name}/{save_file_format}upload上传">https://host:port//mw-int/tracks/{meta_type}/{instance_uuid}/{track_no}/snapshots/{save_file_name}/{save_file_format}upload上传</a> snapshot</td>
+<td>#expect:上传成功，返回200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${type} =</td>
+<td>Catenate</td>
+<td>video</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${track_no} =</td>
+<td>Catenate</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_format} =</td>
+<td>Catenate</td>
+<td>jpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_name} =</td>
+<td>Catenate</td>
+<td>1351_45045</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${SAMPLE_TEST_SNAPSHOT}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Dna Ingest</td>
+<td>PUT</td>
+<td>/mw-int/tracks/video/${inst_uuid}/${track_no}/snapshots/${file_name}/${file_format}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SAMPLE_TEST_SNAPSHOT}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:check本地snapshot与server snapshot</td>
+<td>#expect:文件 md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${snapshot_remote} =</td>
+<td>Run Keyword If</td>
+<td>'${type}' == 'video'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SNAPSHOT_FILE_NODE}/${inst_uuid[6:8]}/${inst_uuid[21:23]}/${inst_uuid}.0/${file_name}.${file_format}</td>
+<td>ELSE IF</td>
+<td>'${type}' == 'audio'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Catenate</td>
+<td>${SNAPSHOT_FILE_NODE}/${inst_uuid[6:8]}/${inst_uuid[21:23]}/${inst_uuid}.1/${file_name}.${file_format}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${REMOTE_RUN_CMD_PORT}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>md5sum ${snapshot_remote}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Call Method</td>
+<td>${return}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SPACE}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${md5_remote} =</td>
+<td>Catenate</td>
+<td>${return[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>Run Cmd</td>
+<td>md5sum \ ${SAMPLE_TEST_SNAPSHOT}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>Call Method</td>
+<td>${return_2}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SPACE}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${md5_local} =</td>
+<td>Catenate</td>
+<td>${return_2[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${md5_remote}</td>
+<td>${md5_local}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+</table>
+</body>
+</html>

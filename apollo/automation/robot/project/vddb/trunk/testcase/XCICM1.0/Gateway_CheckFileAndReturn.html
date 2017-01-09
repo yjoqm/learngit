@@ -1,0 +1,1027 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Gateway CheckFileAndReturn</title>
+</head>
+<body>
+<h1>Gateway CheckFileAndReturn</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">url不同文件/torrent文件的不同返回结果的校验</td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/InterGateway.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_thunder.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="1">Test Cases</th>
+<th class="name" colspan="1">${case_no}</th>
+<th class="name" colspan="1">${result}</th>
+<th class="name" colspan="1">${X-URL}</th>
+<th class="name" colspan="1">${hash}</th>
+<th class="name" colspan="1">${digest}</th>
+<th class="name" colspan="1">${user-agent}</th>
+<th class="name" colspan="1">${key}</th>
+<th class="name" colspan="1">${digest-algorithm}</th>
+<th class="name" colspan="1">${Referer}</th>
+<th class="name" colspan="1">${X-Progress}</th>
+<th class="name" colspan="1">${X-Client-Address}</th>
+<th class="name" colspan="1">${X-Client-ID}</th>
+<th class="name" colspan="1">${X-File-Name}</th>
+<th class="name" colspan="1">${X-File-Size}</th>
+<th class="name" colspan="1">${X-Mime-Type}</th>
+<th class="name" colspan="1">${seed_file}</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Debug">Debug</a></td>
+<td>[Template]</td>
+<td>template_gateway_get_single</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>zip</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_pcm_s16le.wav.ccczip">http://10.162.207.221/sample/audio_pcm_s16le.wav.ccczip</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_pcm_s16le.wav.zip</td>
+<td>123456</td>
+<td>application/zip</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase_Get请求结果鉴别">TestCase_Get请求结果鉴别</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">各种url的结果鉴别</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Template]</td>
+<td>template_gateway_get_single</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1-req-请求鉴别返回:侵权</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 0}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg513792066</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.f4v</td>
+<td>123456</td>
+<td>video/x-flv</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2req-请求鉴别返回:未知</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg403973757</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.f4v</td>
+<td>123456</td>
+<td>video/x-flv</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3-req-请求鉴别返回:侵权--音频文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 0}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.mp3">http://10.162.207.221/sample/Lady测试素材1.mp3</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg405011582</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.mp3</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4-req-请求鉴别返回:未知--音频文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.mp3">http://10.162.207.221/sample/Lady测试素材1.mp3</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg154349370</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.mp3</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5-req-请求鉴别返回:侵权--视频文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 0}}']</td>
+<td><a href="http://10.162.207.221/sample/xxxx.avi">http://10.162.207.221/sample/xxxx.avi</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg983080064</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxxx.avi</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6-req-请求鉴别返回:未知--视频文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/xxxx.avi">http://10.162.207.221/sample/xxxx.avi</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg631727886</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxxx.avi</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7-req-请求鉴别返回:侵权--压缩文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 0}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.zip">http://10.162.207.221/sample/xxx.zip</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg841658105</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.zip</td>
+<td>123456</td>
+<td>application/zip</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8-req-请求鉴别返回:未知--压缩文件(暂时有bug)</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.zip">http://10.162.207.221/sample/xxx.zip</a></td>
+<td>${EMPTY}</td>
+<td>abcdefg631727886</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.zip</td>
+<td>123456</td>
+<td>application/zip</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9-req-url请求-带thunder_hash:返回0</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 0}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.zip">http://10.162.207.221/sample/xxx.zip</a></td>
+<td>xabcdefg45349100</td>
+<td>abcdefg6317278861</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.zip</td>
+<td>123456</td>
+<td>application/zip</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>10-req-url请求-带thunder_hash:返回1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.avi">http://10.162.207.221/sample/xxx.avi</a></td>
+<td>xabcdefg635920455</td>
+<td>abcdefg635920455</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.avi</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>11-req-url请求-带thunder_hash:返回3</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.avi">http://10.162.207.221/sample/xxx.avi</a></td>
+<td>xabcdefg635920455123</td>
+<td>abcdefg635920455123</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.avi</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12-req-url请求-带thunder_hash:返回1(url_hash命中,thunder_hash未命中)</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="http://10.162.207.221/sample/xxx.avi">http://10.162.207.221/sample/xxx.avi</a></td>
+<td>xabcdefg6359204551</td>
+<td>abcdefg635920455</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>xxx.avi</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase_Post请求结果鉴别">TestCase_Post请求结果鉴别</a></td>
+<td>[Template]</td>
+<td>template_gateway_post_single</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1-req-请求鉴别返回:侵权--local种子文件</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 0}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>${EMPTY}</td>
+<td>sabcdefg886275872</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.f4v</td>
+<td>123456</td>
+<td>application/x-bittorrent</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2-req-post请求-带thunder_hash:返回0(种子文件)</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 0}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>xabcdefg83648702</td>
+<td>abcdefg5137920661</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.f4v</td>
+<td>123456</td>
+<td>application/x-bittorrent</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3-req-post请求-带thunder_hash:返回1(种子文件)</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 1}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>xabcdefg257500755</td>
+<td>sabcdefg257500755</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>Lady测试素材1.f4v</td>
+<td>123456</td>
+<td>application/x-bittorrent</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4-req-post请求-带thunder_hash:返回3(种子文件)</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>xabcdefg2575007552</td>
+<td>sabcdefg2575007552</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>application/x-bittorrent</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase_Get_不同文件下载测试">TestCase_Get_不同文件下载测试</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">各种url的结果鉴别</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Template]</td>
+<td>template_gateway_get_single</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>asf</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/wmv2_320x240_wmav2.asf">http://10.162.207.221/sample/wmv2_320x240_wmav2.asf</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>wmv2_320x240_wmav2.asf</td>
+<td>123456</td>
+<td>video/x-ms-asf</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>avi</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/mjpeg_640x480_pcm_mulaw.avi">http://10.162.207.221/sample/mjpeg_640x480_pcm_mulaw.avi</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>mjpeg_640x480_pcm_mulaw.avi</td>
+<td>123456</td>
+<td>video/x-msvideo</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>flv</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/flv1_320x240_mp3.flv">http://10.162.207.221/sample/flv1_320x240_mp3.flv</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>flv1_320x240_mp3.flv</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>f4v</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/URATA">http://10.162.207.221/sample/URATA</a> NAOYA-ANother song.f4v</td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>URATA NAOYA-ANother song.f4v</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mkv</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/h264_3840x2160.mkv">http://10.162.207.221/sample/h264_3840x2160.mkv</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>h264_3840x2160.mkv</td>
+<td>123456</td>
+<td>video/avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mov</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/h264_640x340_aac.mov">http://10.162.207.221/sample/h264_640x340_aac.mov</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>h264_640x340_aac.mov</td>
+<td>123456</td>
+<td>video/x-sgi-movie</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mpeg</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/mpeg1video_352x240_mp2.mpeg">http://10.162.207.221/sample/mpeg1video_352x240_mp2.mpeg</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>mpeg1video_352x240_mp2.mpeg</td>
+<td>123456</td>
+<td>video/mpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mpg</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/mpeg1video_352x240_mp2.mpg">http://10.162.207.221/sample/mpeg1video_352x240_mp2.mpg</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>mpeg1video_352x240_mp2.mpg</td>
+<td>123456</td>
+<td>video/mpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mp4</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/mpeg4_512x288_aac.mp4">http://10.162.207.221/sample/mpeg4_512x288_aac.mp4</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>mpeg4_512x288_aac.mp4</td>
+<td>123456</td>
+<td>video/mpeg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>rm</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_cook.rm">http://10.162.207.221/sample/audio_cook.rm</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_cook.rm</td>
+<td>123456</td>
+<td>audio/x-pn-realaudio</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>rmvb</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/rv40_672x504_cook.rmvb">http://10.162.207.221/sample/rv40_672x504_cook.rmvb</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>rv40_672x504_cook.rmvb</td>
+<td>123456</td>
+<td>application/vnd.rn-realmedia</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>ts</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/mpeg2video_1280x720_mp2.ts">http://10.162.207.221/sample/mpeg2video_1280x720_mp2.ts</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>mpeg2video_1280x720_mp2.ts</td>
+<td>123456</td>
+<td>application/vnd.rn-realmedia</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>wmv</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/wmv1_512x2881_wmav1.wmv">http://10.162.207.221/sample/wmv1_512x2881_wmav1.wmv</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>wmv1_512x2881_wmav1.wmv</td>
+<td>123456</td>
+<td>application/vnd.rn-realmedia</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3gp</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/h263_176x144_amr_nb.3gp">http://10.162.207.221/sample/h263_176x144_amr_nb.3gp</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>h263_176x144_amr_nb.3gp</td>
+<td>123456</td>
+<td>application/vnd.rn-realmedia</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mp2</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_mp2.mp2">http://10.162.207.221/sample/audio_mp2.mp2</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_mp2.mp2</td>
+<td>123456</td>
+<td>video/x-mpeq2a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mp3</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_mp3.mp3">http://10.162.207.221/sample/audio_mp3.mp3</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_mp3.mp3</td>
+<td>123456</td>
+<td>audio/x-mpeg-3</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>wma</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_wmav2.wma">http://10.162.207.221/sample/audio_wmav2.wma</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_wmav2.wma</td>
+<td>123456</td>
+<td>audio/x-wav</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>wav</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_pcm_s16le.wav">http://10.162.207.221/sample/audio_pcm_s16le.wav</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_pcm_s16le.wav</td>
+<td>123456</td>
+<td>audio/x-wav</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>zip</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_pcm_s16le.wav.zip">http://10.162.207.221/sample/audio_pcm_s16le.wav.zip</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_pcm_s16le.wav.zip</td>
+<td>123456</td>
+<td>application/zip</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>rar</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"status": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/audio_mp3.rar">http://10.162.207.221/sample/audio_mp3.rar</a></td>
+<td>${EMPTY}</td>
+<td>1</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>10</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>audio_mp3.rar</td>
+<td>123456</td>
+<td>application/x-rar-compressed</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

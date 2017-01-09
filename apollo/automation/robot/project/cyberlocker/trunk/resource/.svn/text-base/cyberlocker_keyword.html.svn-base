@@ -1,0 +1,649 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Cyberlocker Keyword</title>
+</head>
+<body>
+<h1>Cyberlocker Keyword</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>cyberlocker_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/CyberlockerLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Connect to trackerDB">Connect to trackerDB</a></td>
+<td>Connect To Database</td>
+<td>pymysql</td>
+<td>tracker3</td>
+<td>root</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>vobile</td>
+<td>192.168.1.19</td>
+<td>3306</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Connect to db">Connect to db</a></td>
+<td>Connect To Database</td>
+<td>pymysql</td>
+<td>${DB_Database}</td>
+<td>${DB_UserName}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DB_Password}</td>
+<td>${DB_Host}</td>
+<td>${DB_Port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Clear log">Clear log</a></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>echo ""&gt;${Logdir}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close All Connections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Disconnect from db">Disconnect from db</a></td>
+<td>Disconnect From Database</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_init rabbitmq">init rabbitmq</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">init rabbitmq , get rabbitmq connection</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>init queue</td>
+<td>${RabbitMq_Host}</td>
+<td>${RabbitMq_UserName}</td>
+<td>${RabbitMq_Password}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${RabbitMq_Exchange}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Login in">Login in</a></td>
+<td>Open Connection</td>
+<td>${HostIP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}=</td>
+<td>Login</td>
+<td>${User}</td>
+<td>${Password}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Last login:</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy691 data">Recover cy691 data</a></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set file_size=413,is_synced='false',synced_at=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy563 data">Recover cy563 data</a></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from matchedFileItem where download_url='http://netload.in/dateiT8g64nHkPqaaa.htm';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>truncate table workingRefreshTask;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from matchedFileItem where clip_url='http://netload.in/dateiT8g64nHkPqaaa.htm';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy712 data">Recover cy712 data</a></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>insert into companySiteRedList(company_id,trackingWebsite_id) values(2,60010)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Restart cyberlocker">Restart cyberlocker</a></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>bash ${Cyber_Path}/bin/service.sh restart</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Set matchconfig">Set matchconfig</a></td>
+<td>login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>cd ${Cyber_Path}/bin</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>${a}</td>
+<td>write</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>Log</td>
+<td>${a}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>echo 'args="resourceExtractExecutor resourceService resourceMatchExecutor pageExecutor linkUrlMatchExecutor"' &gt; service.conf</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Set refreshconfig">Set refreshconfig</a></td>
+<td>login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>cd ${Cyber_Path}/bin</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>${a}</td>
+<td>write</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>Log</td>
+<td>${a}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>echo 'args="refreshDispatcherTaskExecutor refresherExecutor"' &gt; service.conf</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Set syncoutconfig">Set syncoutconfig</a></td>
+<td>login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>cd ${Cyber_Path}/bin</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>${a}</td>
+<td>write</td>
+<td>pwd</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>Log</td>
+<td>${a}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>write</td>
+<td>echo 'args="syncOutExecutor syncOutDispatcherTaskExecutor"' &gt; service.conf</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy708 data">Recover cy708 data</a></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redList set website_name='movie4k',website_domain='movie4k.to' where id=7;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy711 data">Recover cy711 data</a></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set match_level='fake_fp';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Recover cy710 data">Recover cy710 data</a></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update metaExtraInfo set stop_at=0 where meta_id=426</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

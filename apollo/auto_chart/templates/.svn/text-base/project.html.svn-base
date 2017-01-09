@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>project</title></head><body style="background:#F5F5F5;">
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/highcharts.js"></script>
+  <script src="/static/js/exporting.js"></script>
+  <script language="javascript">
+			function getxAxisCategories(tabData){
+				var xAxisCategories = new Array();
+				for(var i=0; i<tabData.length-1; i++){
+						xAxisCategories[i] = tabData[i][0]
+				}
+				return xAxisCategories;
+			}
+			
+			function getLineSeriesData(tabData,numerator,denominator){
+				var newFinishCount = 0;
+				var totalCount = 0;
+				var lineSeriesData = new Array();
+				for(var i=0; i<tabData.length-1; i++){
+					newFinishCount = newFinishCount + Number(tabData[i][numerator]);
+					totalCount = totalCount + Number(tabData[i][denominator]);
+					lineSeriesData[i] = Number((newFinishCount/totalCount).toFixed(2) * 100); //保留两位小数点
+				}
+				//document.write(lineSeriesData);
+				return lineSeriesData;
+			}
+			
+			function getDataByColumn(tabData,column){
+				var columnData = new Array();
+				for(var i=0; i<tabData.length-1; i++){
+					columnData[i] = Number(tabData[i][column]);
+				}
+				return columnData;
+			}
+			
+			function getSeriesDataByBugCount(tabData,column){
+				var addCount = 0;
+				var columnData = new Array();
+				var len = arguments.length;
+				//document.write(len);
+				if (3==len){
+					var sColumn = arguments[2];
+					for(var i=0; i<tabData.length-1; i++){
+						columnData[i] = Number(tabData[i][sColumn]) - Number(tabData[i][column]);
+					}
+				}
+				else {
+					for(var i=0; i<tabData.length-1; i++){
+						addCount = Number(tabData[i][column])
+						columnData[i] = addCount
+					}
+				}
+				return columnData
+			}
+			
+		
+			
+		</script>
+<script language="JavaScript">
+    function checkinput() 
+    { 
+        if (confirm("确定删除")) 
+            return true; 
+        else 
+            return false; 
+    }
+    
+    function elementDisplay(target, control, msg)
+    {
+        var target = document.getElementById(target);
+        if (! target.style.display)
+        {
+            target.style.display = "none";
+            control.value = "显示" + msg;
+        }
+        else
+        {
+            target.style.display = "";
+            control.value = "隐藏" + msg;
+        }
+    }
+</script>
+<input type=button onclick="window.location='../../../roadmap'" value="回到首页">
+<input id="pjtable_control" type=button onclick="elementDisplay('pjtable', this, '表格');" value="隐藏表格">
+<input id="pjchart_control" type=button onclick="elementDisplay('spline', this, '报表');elementDisplay('column', this, '报表');" value="隐藏报表">
+<br><br>
+{% if add_err %} 
+<font color="red">{{ add_err_msg }}</font> <br>
+{% endif %}
+<form method="post" action="." name="add">
+  <table style="text-align: left; width: 100%; font-size:12px" border="1" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top;">&#39033;&#30446;&#21517;&#31216;
+        </td>
+        <td style="vertical-align: top;">&#29256;&#26412;&#21495;
+        </td>
+        <td style="vertical-align: top;">&#36131;&#20219;&#20154;
+        </td>
+        <td style="vertical-align: top;">&#20135;&#21697;&#20998;&#31867;
+        </td>
+        <td style="vertical-align: top;">&#39033;&#30446;&#20998;&#31867;
+        </td>
+<td style="vertical-align: top;">&#24635;&#29992;&#20363;&#25968;
+        </td>
+        <td style="vertical-align: top;">&#26032;&#22686;&#29992;&#20363;&#25968;
+        </td>
+        <td style="vertical-align: top;">&#24635;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;
+        </td>
+        <td style="vertical-align: top;">&#35745;&#21010;&#26032;&#22686;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;
+        </td>
+        <td style="vertical-align: top;">&#24050;&#23436;&#25104;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;
+        </td>
+        <td style="vertical-align: top;">&#24320;&#21457;&#26102;&#38388;&#65288;&#20154;&#22825;&#65289;<br>
+        </td>
+        <td style="vertical-align: top;">&#24635;Bug&#25968;
+        </td>
+        <td style="vertical-align: top;">&#33258;&#21160;&#21270;Bug&#25968;
+        </td>
+        <td style="vertical-align: top;">
+        </td>
+      </tr>
+      <tr>
+        <td style="vertical-align: top;"><input name="project_name" size="7">
+        </td>
+        <td style="vertical-align: top;"><input  name="fir" type="text" style="width:20px"> <input name="sec" type="text" style="width:20px"> <input name="thir" type="text" style="width:20px"> <input name="four" type="text" style="width:20px">
+        <select name="patch">
+        <option value="null">&#26080;</option>
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="ab">ab</option>
+        <option value="ac">ac</option>
+        <option value="bc">bc</option>
+        <option value="abc">abc</option>
+        </select>
+        </td>
+        <td style="vertical-align: top;">
+        <select name="owner">
+        <option></option>
+        {% for member in member_list %}
+        <option value="{{ member.id }}">{{ member.name }}</option>
+        {% endfor %}
+        </select>
+        </td>
+        <td style="vertical-align: top;">{{ plt_name }}
+        </td>
+        <td style="vertical-align: top;">{{ pd_name }}
+        </td>
+        <td style="vertical-align: top;"><input name="total_case" style="width:42px">
+        </td>
+        <td style="vertical-align: top;"><input name="new_case" style="width:54px">
+        </td>
+        <td style="vertical-align: top;"><input name="total_auto" style="width:78px">
+        </td>
+        <td style="vertical-align: top;"><input name="new_auto" style="width:114px">
+        </td>
+        <td style="vertical-align: top;"><input name="finished" style="width:102px">
+        </td>
+        <td style="vertical-align: top;"><input name="time" style="width:90px">
+        </td>
+        <td style="vertical-align: top;"><input name="total_bug" style="width:38px">
+        </td>
+        <td style="vertical-align: top;"><input name="auto_bug" style="width:62px">
+        </td>
+        <td style="vertical-align: top;"><input name="sub" value="Add" type="submit">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+</form>
+
+<div id="spline" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<div id="column" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<br>
+
+<br>
+
+
+  
+  <table id="pjtable" style="text-align: left; width: 100%; font-size:12px" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">&#29256;&#26412;&#21517;<br>
+      </td>
+      <td style="vertical-align: top;">&#36131;&#20219;&#20154;</td>
+      <td style="vertical-align: top;">&#20135;&#21697;&#20998;&#31867;</td>
+      <td style="vertical-align: top;">&#39033;&#30446;&#20998;&#31867;</td>
+      <td style="vertical-align: top;">&#24635;&#29992;&#20363;&#25968;</td>
+      <td style="vertical-align: top;">&#26032;&#22686;&#29992;&#20363;&#25968;</td>
+      <td style="vertical-align: top;">&#24635;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;</td>
+      <td style="vertical-align: top;">&#35745;&#21010;&#26032;&#22686;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;</td>
+      <td style="vertical-align: top;">&#24050;&#23436;&#25104;&#33258;&#21160;&#21270;&#29992;&#20363;&#25968;</td>
+      <td style="vertical-align: top;">&#24320;&#21457;&#26102;&#38388;&#65288;&#20154;&#22825;&#65289;</td>
+      <td style="vertical-align: top;">&#24635;Bug&#25968;</td>
+      <td style="vertical-align: top;">&#33258;&#21160;&#21270;Bug&#25968;</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    {% for project in project_list%}
+    <form method="post" action="."> 
+    <tr>
+        <td style="vertical-align: top;">
+        {{ project.project_name }}
+        <input name="pjid" value="{{ project.id }}" type="hidden"></td>
+        <td style="vertical-align: top;">
+        {{ project.member_id }}
+        </td>
+        <td style="vertical-align: top;">{{ plt_name }}
+        </td>
+        <td style="vertical-align: top;">{{ pd_name }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.total_case }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.new_case }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.total_auto_case }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.new_auto_case }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.finished_auto_case }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.develop_time }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.total_bugs }}
+        </td>
+        <td style="vertical-align: top;">
+        {{ project.auto_bugs }}
+        </td>
+        <td style="vertical-align: top;">
+        <input name="sub" value="Delete" onclick="return checkinput();" type="submit">
+        </td>
+    </tr>
+    </form>
+    {% endfor %}
+    
+    </tbody>
+</table>
+
+<br>
+
+<br>
+<script language="javascript">
+			var tabData = new Array();
+      var tab=document.getElementById('pjtable');
+      var tabLength = tab.rows.length;
+      //document.write(tabLength);
+      var ii = 0;       
+      for(var i=tabLength-1; i>=0; i--){
+      	var jj = 0;
+      	var cellLength = tab.rows[i].cells.length;
+      	tabData[ii] = new Array();
+      	for(var j=0; j<cellLength; j++){
+      		//document.write(ii);
+      		//document.write(jj);
+      		tabData[ii][jj] = tab.rows[i].cells[j].innerHTML;
+      		jj++;
+      		//document.write(tab.rows[i].cells[j].innerHTML);
+      	}
+      	ii++;
+      	var jj = 0;
+      }
+      var chart;
+      var options = {
+					chart: {
+						//在画图的时候指定
+					},
+					title: {
+						//在画图时指定
+					},
+					credits : {
+						enabled:false//不显示highCharts版权信息
+					},
+					xAxis: {
+						title: {
+							text: ' ',
+							enabled: true
+						},
+						labels: {
+							enabled: true						
+						}
+						
+					},
+					yAxis: {
+						title: {
+							text:'' //在画图时指定	
+						},
+						labels: {
+                formatter: function() {
+                    return (this.value) +'%';
+                }
+            },
+            stackLabels: {  
+                enabled: false,
+                formatter: function () {
+                 return (this.total) + "%";
+             		}                 
+            } 
+					}, 
+					plotOptions: {  
+            column: {  
+                stacking: 'percentage',  
+                dataLabels: {  
+                    enabled: true, 
+                }  
+            },
+	    spline:{ 
+                dataLabels:{ 
+                  enabled:false,  //在数据点上显示对应的数据值 
+                  formatter: function () {
+               			return (this.y*100).toFixed(0) + '%';
+               		}
+            		},
+            		tooltip: {
+			            pointFormat: '{series.name}: <b>{point.y}</b><br/>',
+			            valueSuffix: ' %',
+			            shared: true,
+			            valueDecimals:0
+        				}		
+            }
+	    
+        },  
+					series: []
+			};
+			var xAxisCategories = getxAxisCategories(tabData);
+			var lineSeriesData = getLineSeriesData(tabData,8,5);
+			$(document).ready(function() {
+				options.series = new Array();
+				options.series[0] = new Object();
+				options.series[0].name = '{{ pd_name }}';
+				options.chart.renderTo = 'spline';
+				options.chart.type = 'spline';
+				options.title.text = '项目自动化比例趋势图'
+				options.xAxis.labels.enabled = false;
+				chart = new Highcharts.Chart(options);
+				chart.series[0].setData(lineSeriesData);
+				chart.xAxis[0].setCategories(xAxisCategories);
+			});
+			$(document).ready(function() {
+				newBugCount = getSeriesDataByBugCount(tabData,11);
+				totalBugCount = getSeriesDataByBugCount(tabData,11,10);
+				options.series = new Array();
+				options.series[0] = new Object();
+				options.series[0].name = '手工bug数';	
+				options.series[0].color = '#69A2E7'			
+				options.series[1] = new Object();
+				options.series[1].name = '自动化bug数';
+				options.series[1].color = '#77EC86'
+				options.chart.renderTo = 'column';
+				options.chart.type = 'column';
+				options.title.text = '自动化Bug产出表';
+				options.xAxis.labels.enabled = true;
+				options.yAxis.labels = {};
+				//options.xAxis.title.text = '11111';
+				chart = new Highcharts.Chart(options);
+				chart.series[0].setData(totalBugCount);	
+				chart.series[1].setData(newBugCount);							
+				chart.xAxis[0].setCategories(xAxisCategories);
+			});
+		</script>
+
+</body></html>

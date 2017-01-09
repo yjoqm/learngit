@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>MailLib 关键字</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJEBoACtnfgA5cYYAERsiAEx2lAAbKkQAcazBACZCVwAcM1cAK0ucAAMDBQAnQncASG+FABkoVQAyWmgA6f8SgvH/Ij99+GLyIinyJfn/Yi//KSLzUy9iZogpIld3/4JVVTkid7vyUjNVNVJEAGOZ6Z7pXwAABpmZkRiLAAAGiJZpmGAAAEEt3SXdxAAATC7o/u3EAAC8MRZpjasAAAY1VVVTYAAABKqqqqpAAAAADKqq4AAAAAAAv4sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMADAADgAwAA4AcAAOAHAADgBwAAwAcAAOAHAADgDwAA8A8AAPg/AAD+fwAA" />
+  <style media="all" type="text/css">
+  body {
+    background: white;
+    color: black;
+    font-size: small;
+    font-family: sans-serif;
+    padding: 0 0.5em;
+  }
+  .metadata th {
+    text-align: left;
+    padding-right: 1em;
+  }
+  a.name, span.name {
+    font-style: italic;
+  }
+  a, a:link, a:visited {
+    color: #c30;
+  }
+  a img {
+    border: 1px solid #c30 !important;
+  }
+  a:hover, a:active {
+    text-decoration: underline;
+    color: black;
+  }
+  div.shortcuts {
+    margin: 1em 0;
+    font-size: 0.9em;
+  }
+  div.shortcuts a {
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    color: black;
+  }
+  div.shortcuts a::first-letter {
+    font-weight: bold;
+    font-size: 1.05em;
+    letter-spacing: 0.1em;
+  }
+  div.shortcuts a:hover {
+    text-decoration: underline;
+  }
+  table.keywords {
+    border: 2px solid black;
+    border-collapse: collapse;
+    empty-cells: show;
+    margin: 0.3em 0;
+    width: 100%;
+  }
+  table.keywords th, table.keywords td {
+    border: 2px solid black;
+    padding: 0.2em;
+    vertical-align: top;
+  }
+  table.keywords th {
+    background: #bbb;
+    color: black;
+  }
+  table.keywords td.kw {
+    width: 150px;
+    font-weight: bold;
+  }
+  table.keywords td.arg {
+    width: 300px;
+    font-style: italic;
+  }
+  /*table.keywords td.author {
+    width: 300px;
+    font-style: italic;
+  }*/
+  .footer {
+    font-size: 0.9em;
+  }
+/* Docs originating from HTML and reST are wrapped to divs. */
+.doc div > *:first-child {
+    margin-top: 0;
+}
+.doc div > *:last-child {    /* Does not work with IE8. */
+    margin-bottom: 0;
+}
+  </style>
+  <style media="print" type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 8pt;
+}
+a {
+    text-decoration: none;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+#javascript-disabled {
+    width: 600px;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    color: #2A2A2E;
+    border: 1px solid #9A9A9E;
+    background: #FAFAFF;
+}
+#javascript-disabled h1 {
+    width: 100%;
+    float: none;
+}
+#javascript-disabled ul {
+    font-size: 1.2em;
+}
+#javascript-disabled li {
+    margin: 0.5em 0;
+}
+#javascript-disabled b {
+    font-style: italic;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+.doc > * {
+    margin: 0.7em 1em 0.1em 1em;
+    padding: 0;
+}
+.doc > p, .doc > h1, .doc > h2, .doc > h3, .doc > h4 {
+    margin: 0.7em 0 0.1em 0;
+}
+.doc > *:first-child {
+    margin-top: 0.1em;
+}
+.doc table {
+    border: 1px solid gray;
+    background: transparent;
+    border-collapse: collapse;
+    empty-cells: show;
+    font-size: 0.9em;
+}
+.doc table th, .doc table td {
+    border: 1px solid gray;
+    background: transparent;
+    padding: 0.1em 0.3em;
+    height: 1.2em;
+}
+.doc table th {
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.doc pre {
+    font-size: 1.1em;
+    background: #F4F4FF;
+}
+.doc li {
+    list-style-position: inside;
+    list-style-type: square;
+}
+.doc img {
+    border: 1px solid gray;
+}
+.doc hr {
+    background: gray;
+    height: 1px;
+    border: 0;
+}
+  </style>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body>
+<h1>MailLib</h1>
+<table class="metadata">
+<tbody>
+<tr>
+<th>Library version:</th>
+<td>1.0.0</td>
+</tr>
+<tr>
+<th>Library scope:</th>
+<td>global</td>
+</tr>
+<tr>
+<th>Named arguments:</th>
+<td>supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Introduction">Introduction</h2>
+<div>
+<p>本库用于imap邮箱的收取，暂时不支持发送功能，如果邮件正文为html格式则不进行任何解析，保存原文实体<a href="http://jaist.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.win32-py2.7.exe"></a><br />
+ 
+</p>
+</div>
+<h2 id="Shortcuts">Shortcuts</h2>
+<div class="shortcuts">
+<a href="#Logout Server">Logout Server</a>
+·
+<a href="#Save Attachments">Save Attachments</a>
+·
+<a href="#Select Mail">Select Mail</a>
+·
+<a href="#Set Mail Server">Set Mail Server</a></div>
+<table class="keywords" border="1" width="100%">
+  <tbody>
+    <tr>
+      <th class="keywords" align="center" width="11%">关键字 </th>
+      <th class="author" align="center" width="6%">作者 </th>
+      <th class="arg" align="center" width="8%">参数</th>
+      <th class="ret" align="center" width="10%">返回值 </th>
+      <th class="doc" align="center" width="65%">说明和示例 </th>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Logout Server"></a>Logout Server</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"></td>
+      <td class="ret">无</td>
+      <td class="doc">
+      注销用户，请在使用完后调用该关键字完成注销
+      </td>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Save Attachments"></a>Save Attachments</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">path, index, override=&quot;true&quot;</td>
+      <td class="ret">无</td>
+      <td class="doc">保存邮件中的附件<br />
+      path: 保存的路径，为一个目录。附件的保存的名字与附件原名相同<br />
+      index: 要保存的邮件的编号，index为"all"表示保存所有检索出的邮件中的附件。index格式可以是[1,2,3],表示保存第2，3，4封邮件中的附件，如果有的话。index格式可以是[1:]，或者[:4]，表示保存从xxx到xxx的邮件的附件，序号都是从0开始，切片方式与python语法的切片方法相同。
+      override: 是否覆盖同名文件，"true"为覆盖，其他为不覆盖。<br />
+      </td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Select Mail"></a>Select Mail</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">from_addr, order=&quot;desc&quot;, limit=&quot;all&quot;</td>
+      <td class="ret">[{&quot;subject&quot;:&quot;xxx&quot;,&quot;to&quot;:&quot;xx&quot;,&quot;from&quot;:&quot;xx&quot;,&quot;cc&quot;:&quot;xxx&quot;,&quot;content&quot;:&quot;xxx&quot;}]</td>
+      <td class="doc">读取邮件，并返回一个列表，列表中的每个元素为一个字典类型包含邮件的主题，发件人，收件人，抄送，正文。<br />
+      from_addr: 收件人地址。<br />
+      order: 排序，asc为时间正序，desc为时间倒序，默认为desc。<br />
+      limit: 检索个数，默认为"all"表示检索出全部，如果只需要检索出前5条则limit=5。<br />
+example:<br />
+      <table style="text-align: left; width: 547px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">${ret} =</td>
+            <td style="vertical-align: top; width: 20%;">Select Mail</td>
+            <td style="vertical-align: top; width: 20%;">yan_jiawei@vobile.cn</td>
+            <td style="vertical-align: top; width: 20%;">desc</td>
+            <td style="vertical-align: top; width: 20%;">1</td>
+          </tr>
+          </tbody>
+      </table>
+      ${ret}返回的结果为<br />
+      [{'cc': '179811667@qq.com', 'to': 'yan_jiawei@vobile.cn', 'content': u'\u53d1\u7ed9\u5bf9\u65b9\u79d1\u76ee\u4f60\u8bf4\u7684\u98c\u683cvnkdfgkvndfga\u6492\u65e6\u6cd5\r\n\r\n', 'from': 'yan_jiawei@vobile.cn', 'subject': u'\u8fd9\u662f\u4e00\u5c01\u6d4b\u8bd5\u90ae\u4ef6\uff01\uff01\uff01\uff01\uff01'}]<br />
+      </td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Set Mail Server"></a>Set Mail Server</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">username, password, host, port=&quot;default&quot;, ssl=&quot;ssl&quot;
+      <td class="ret">无</td>
+      <td class="doc">配置邮件服务器<br />
+      username: 邮箱用户名。<br />
+      password: 邮箱密码。<br />
+      host: 邮箱服务器。<br />
+      port: 邮箱端口号。默认填写"default"，系统会根绝是否加密自动选择端口号。<br />
+      ssl： 邮箱是否采用ssl加密，默认值为"ssl"表示采用ssl加密，如果不采用ssl加密使用“none”。<br />
+      example:<br />
+      <table border="1" cellpadding="2" cellspacing="2" style="text-align: left; width: 1000px;">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 16.67%;">Set Mail Server</td>
+          
+            <td style="vertical-align: top; width: 16.67%;">yan_jiawei@vobile.cn</td>
+            <td style="vertical-align: top; width: 16.67%;">xxxxxx</td>
+            <td style="vertical-align: top; width: 16.67%;">mail.vobile.cn</td>
+            <td style="vertical-align: top; width: 16.67%;">143</td>
+            <td style="vertical-align: top; width: 16.67%;">none</td>
+          </tr>
+           <tr>
+            <td style="vertical-align: top; width: 16.67%;">Set Mail Server</td>
+            <td style="vertical-align: top; width: 16.67%;">yan_jiawei@vobile.cn</td>
+            <td style="vertical-align: top; width: 16.67%;">xxxxxx</td>
+            <td style="vertical-align: top; width: 16.67%;">mail.vobile.cn</td>
+            <td style="vertical-align: top; width: 16.67%;"></td>
+            <td style="vertical-align: top; width: 16.67%;"></td>
+          </tr>
+        </tbody>
+    </table></td>
+    </tr>
+  </tbody>
+</table>
+<p class="footer">
+Altogether 4 keywords.
+<br>
+Generated by
+<a href="http://code.google.com/p/robotframework/wiki/LibraryDocumentationTool">libdoc</a>
+on 2014-08-18 17:35:30.
+</p>
+
+</body></html>

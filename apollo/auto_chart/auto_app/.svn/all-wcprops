@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app
+END
+project.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/project.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/tests.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/models.py
+END
+roadmap.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/QA/!svn/ver/5703/auto_test/apollo/auto_chart/auto_app/roadmap.py
+END

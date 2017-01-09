@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0
+END
+Gateway_CheckFileAndReturn.html
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/Gateway_CheckFileAndReturn.html
+END
+Gateway_CheckParams.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/QA/!svn/ver/5884/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/Gateway_CheckParams.html
+END
+Sdk_proxy.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/Sdk_proxy.html
+END
+VDDB_MatchesInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/VDDB_MatchesInterface.html
+END
+sdk_win7.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/sdk_win7.html
+END
+Gateway_CheckCombin.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/QA/!svn/ver/5911/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/Gateway_CheckCombin.html
+END
+sdk_winXP.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/QA/!svn/ver/5869/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/sdk_winXP.html
+END
+sdk_win81.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/QA/!svn/ver/5869/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/sdk_win81.html
+END
+QueryBroker.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/QA/!svn/ver/5820/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/XCICM1.0/QueryBroker.html
+END

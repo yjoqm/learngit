@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Vddb Resource</title>
+</head>
+<body>
+<h1>Vddb Resource</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">用户设置和配置 TestCase全局使用的变量</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_HOST}</td>
+<td>192.168.1.14</td>
+<td># center模式-服务器host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_PORT}</td>
+<td>88</td>
+<td># center模式-服务器端口</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBHOST}</td>
+<td>192.168.1.14</td>
+<td># center模式-db host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBUSERNAME}</td>
+<td>vdna</td>
+<td># center模式-db user</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBPASSWD}</td>
+<td>123456</td>
+<td># center模式-db password</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DB_MDDB}</td>
+<td>mddb</td>
+<td># center模式-db mddb</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_USER}</td>
+<td>admin</td>
+<td># center模式-调用接口服务的帐号</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_PASSWD}</td>
+<td>admin123</td>
+<td># center模式-调用接口服务的帐号对应的密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_HOST}</td>
+<td>192.168.1.14</td>
+<td># node模式-服务器主机host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PORT}</td>
+<td>88</td>
+<td># node模式-服务器主机 port 端口</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBHOST}</td>
+<td>192.168.1.14</td>
+<td># node模式-db host</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBUSERNAME}</td>
+<td>vdna</td>
+<td># node模式-db user</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBPASSWD}</td>
+<td>123456</td>
+<td># node模式-db password</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DB_MDDB}</td>
+<td>mddb_local</td>
+<td># node模式-db name :mddb_local</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DB_MEDIADNA}</td>
+<td>mediaDNA</td>
+<td># node模式-db name :mediaDNA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DB_USERMANAGER}</td>
+<td>usermanager</td>
+<td># node模式-db name :usermanager</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_USER}</td>
+<td>admin</td>
+<td># node模式-接口访问帐号 由于存在使用的地方，后面优化</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PASSWD}</td>
+<td>admin123</td>
+<td># node模式-接口访问密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_USER_2}</td>
+<td>admin</td>
+<td># node模式-接口访问帐号2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PASSWD_2}</td>
+<td>admin123</td>
+<td># node模式-接口访问帐号2的密码</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PYWEB_SUT_FILE}</td>
+<td>project/vddb/trunk/sut/pyweb.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSL}</td>
+<td>http</td>
+<td># pyweb 接口请求协议</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PYWEB_PROTOCOL}</td>
+<td>"5.2.6","5.5.0"</td>
+<td># pyweb请求版本协议</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MOVIE}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"auto_test"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","country":"country","sub_type":"Movie","track_no":0,"director":"director","alternate_url":"alternate_url","alternate_info":"alternate_info"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"Movie","release_date":"2013-03-06","refresh_updated_at":"true","company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MUSIC}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"director":"director","composer":"director","album_name":"","metalink":"metalink","description":"description","country":"country","sub_type":"'Music Only'/'Music Video'/'Spoken Word'","track_no":0,"album_no":0,"alternate_url":"alternate_url","alternate_info":"alternate_info"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"Music","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":0},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_IMAGE}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"description":"description","author":"author"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"image","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MANGA}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"category":"","main_character":"","chapter_no":0,"description":"","cartoonist":"","volume_no":0,"publish_owner":"","chapter_title":"","publish_magazine":""},"studio_owner":"test_studio_owner","cast":"test_cast","type":"manga","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DOWNLOAD_PATH}</td>
+<td>/tmp</td>
+<td># 下载dna存放的临时路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SEALS_PATH}</td>
+<td>/home/li_jian/robotworkspace/seals_autotest/data</td>
+<td># 配置 vddb所有的data根路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DNA_TOOL_LOCAL}</td>
+<td>${SEALS_PATH}/test_tools/dna_tools32</td>
+<td>#用于获取本地 dna 文件的信息与服务器dna 进对比等</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TOOLS_VDNA_QUERY_V5.8.1.0}</td>
+<td>${SEALS_PATH}/test_tools/vdna_query_v5.8.1.0_linux_x86_32/bin/vdna_query</td>
+<td># 配置本地 vdna_query 5.8.1.0的所在路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TOOLS_VDNA_QUERY_V5.7.0.0}</td>
+<td>${SEALS_PATH}/test_tools/vdna_query_v5.7.0.0_linux_x86_32/bin/vdna_query</td>
+<td># 配置本地 vdna_query 5.7.0.0的所在路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_PATH}</td>
+<td>${SEALS_PATH}/dna</td>
+<td># 配置 vddb所有的dna的路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOTE_DNA_FILE_PATH}</td>
+<td>/vobiledata/vdna/dna</td>
+<td># 服务器上 dna存放的绝对路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOTE_RUN_CMD_PORT}</td>
+<td>9999</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOTE_DNA_TOOL_PATH}</td>
+<td>/vobiledata/vdnaserver/pyweb/bin/tools</td>
+<td>#服务器上pyweb tools 所在路径</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOTE_SNAPSHOT_PATH}</td>
+<td>/vobiledata/vdna/snapshots</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${THEMPLATE_JSON}</td>
+<td>{"scheme":"http","host":"182.92.9.187","port":8080,"key":"this-is-TMP-apikey","X-Progress": "10","X-Client-Address": "192.168.1.1","X-Client-ID": "client_id123456","X-File-Name":"qa_test","X-File-Size": "123456","X-Mime-Type": "video/mp4","hash": "","digest": "018e206e00bdc68374ff32bb0245d98ea703090e","digest-algorithm": "sha1","Referer":"http:www.test.net","method": "GET","url": "<a href="http://115.29.36.65/clips/youku_28.flv&quot;,&quot;seed_file&quot;:&quot;123.torrent&quot;,&quot;seed_encoded&quot;:&quot;true&quot;,&quot;user-agent&quot;:&quot;Thunder">http://115.29.36.65/clips/youku_28.flv","seed_file":"123.torrent","seed_encoded":"true","user-agent":"Thunder</a> Windows Client 7.0"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TORRENT_FILE}</td>
+<td>${SEALS_PATH}/torrent/test.torrent</td>
+<td># 测试种子文件</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

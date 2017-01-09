@@ -1,0 +1,724 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>VDDB MatchesInterface</title>
+</head>
+<body>
+<h1>VDDB MatchesInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">vddb_async的请求和校验\n<br>
+\n<br>
+\ \ \接口名称： matches\n<br>
+\n<br>
+\ \ \ \方法: GET\n<br>
+\n<br>
+\ \ \ URL: \ <a href="http://host:port/vddb-async/matches?site_asset_id=url_hash#f8fabdde-e0f4-11e3-b471-fa163e4c5cc4&amp;all_matches=True">http://host:port/vddb-async/matches?site_asset_id=url_hash#f8fabdde-e0f4-11e3-b471-fa163e4c5cc4&amp;all_matches=True</a> \n<br>
+\n<br>
+\ \ \ \\参数说明：\n<br>
+\ \ \ \\\ \ \ \ site_asset_id为实际的hash，hash的种类可以是url_hash, thunder_hash, seed_hash, dna_hash\n<br>
+\n<br>
+\ \ \ \\\ \ \ \ all_matches False表示只返回系统自己产生的结果， 不返回除系统自己产生外的结果（如人工提交的），True表示返回所有结果（包括人工提交） \ 默认情况下all_matches是True\n<br>
+\n<br>
+\ \ \\\ 匹配结果里面 status 0表示处理完有匹配，1表示处理完没有匹配，2表示无法判断, 3表示正在处理。</td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set vddb async connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_thunder.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/InterGateway.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/RequestMQ.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase:提交dna查询:url_hash+1个dna_bash--match_size&gt;0">TestCase:提交dna查询:url_hash+1个dna_bash--match_size&gt;0</a></td>
+<td>${url_hash}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_hash}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_id}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${client_id}</td>
+<td>set variable</td>
+<td>ljautotest123</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_hash}</td>
+<td>get random str</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_random}</td>
+<td>get random str</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extra_info}</td>
+<td>Create Dictionary</td>
+<td>url_hash=url_hash#${url_hash}</td>
+<td>url=http://www.test.test/123${http_random}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>client_id</td>
+<td>${client_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>file_path</td>
+<td>./lj_test/${path_hash}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>digest</td>
+<td>${url_hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>seed_hash</td>
+<td>${None}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${site_asset_id}</td>
+<td>Create List</td>
+<td>url_hash#${url_hash}</td>
+<td>file_hash#${file_hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 请求MQ</td>
+<td>#expect返回MQ 请求的数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${resutl}</td>
+<td>send_one_MQMsg</td>
+<td>both_2</td>
+<td>${task_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${site_asset_id}</td>
+<td>${extra_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${resutl}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 查询结果</td>
+<td>#expect 返回 result</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${params}</td>
+<td>Create Dictionary</td>
+<td>site_asset_id=url_hash#${url_hash}</td>
+<td>all_matches=true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_result}</td>
+<td>http_result_management</td>
+<td>${params}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_1_status}</td>
+<td>get json element</td>
+<td>${tasks[0]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${task_1_status}'=='3'</td>
+<td>sleep</td>
+<td>60</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>log</td>
+<td>query finished.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_result}</td>
+<td>http_result_management</td>
+<td>${params}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks_count}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks_count</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_1_status}</td>
+<td>get json element</td>
+<td>${tasks[0]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 结果校验</td>
+<td>#expect 返回 status=0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'0'</td>
+<td>'${task_1_status}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'1'</td>
+<td>'${tasks_count}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase:提交dna查询:url_hash+2个及以上dna_hash--match_size&gt;0">TestCase:提交dna查询:url_hash+2个及以上dna_hash--match_size&gt;0</a></td>
+<td>${url_hash}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_hash}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_hash_2}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_id}</td>
+<td>get random str</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_random}</td>
+<td>get random str</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extra_info}</td>
+<td>Create Dictionary</td>
+<td>url_hash=url_hash#${url_hash}</td>
+<td>url=http://www.test.test/123${http_random}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>client_id</td>
+<td>ljautotest123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>file_path</td>
+<td>./lj_test/${file_hash}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>digest</td>
+<td>${url_hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info}</td>
+<td>seed_hash</td>
+<td>${None}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extra_info_2}</td>
+<td>Create Dictionary</td>
+<td>url_hash=url_hash#${url_hash}</td>
+<td>url=http://www.test.test/123${http_random}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info_2}</td>
+<td>client_id</td>
+<td>ljautotest123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info_2}</td>
+<td>file_path</td>
+<td>./lj_test/${file_hash_2}.avi</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info_2}</td>
+<td>digest</td>
+<td>${url_hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set To Dictionary </td>
+<td>${extra_info_2}</td>
+<td>seed_hash</td>
+<td>${None}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${site_asset_id}</td>
+<td>Create List</td>
+<td>url_hash#${url_hash}-file_hash#${file_hash}</td>
+<td>file_hash#${file_hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${site_asset_id_2}</td>
+<td>Create List</td>
+<td>url_hash#${url_hash}_file_hash#${file_hash_2}</td>
+<td>file_hash#${file_hash_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${temp_parent_info}</td>
+<td>Create Dictionary</td>
+<td>url_hash#${url_hash}=2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${parent_info}</td>
+<td>Create List</td>
+<td>${temp_parent_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 请求MQ</td>
+<td>#expect返回MQ 请求的数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>send_one_MQMsg</td>
+<td>both_2</td>
+<td>${task_id}</td>
+<td>${site_asset_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${extra_info}</td>
+<td>${parent_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>send_one_MQMsg</td>
+<td>both_2</td>
+<td>${task_id}</td>
+<td>${site_asset_id_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${extra_info_2}</td>
+<td>${parent_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>60</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 查询结果</td>
+<td>#expect 返回 result</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${params}</td>
+<td>Create Dictionary</td>
+<td>site_asset_id=url_hash#${url_hash}</td>
+<td>all_matches=true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_result}</td>
+<td>http_result_management</td>
+<td>${params}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_1_status}</td>
+<td>get json element</td>
+<td>${tasks[0]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_1_status}</td>
+<td>get json element</td>
+<td>${tasks[1]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${task_1_status}'=='3'</td>
+<td>sleep</td>
+<td>60</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>log</td>
+<td>query finished.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${task_2_status}'=='3'</td>
+<td>sleep</td>
+<td>60</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>log</td>
+<td>query finished.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${http_result}</td>
+<td>http_result_management</td>
+<td>${params}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${tasks_count}</td>
+<td>get json element</td>
+<td>${http_result[1]}</td>
+<td>result.tasks_count</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_1_status}</td>
+<td>get json element</td>
+<td>${tasks[0]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${task_2_status}</td>
+<td>get json element</td>
+<td>${tasks[1]}</td>
+<td>status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action 结果校验</td>
+<td>#expect 返回 status=0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'0'</td>
+<td>'${task_1_status}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'0'</td>
+<td>'${task_2_status}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'2'</td>
+<td>'${tasks_count}'</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

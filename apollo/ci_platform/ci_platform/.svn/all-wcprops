@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/__init__.py
+END
+settings.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/settings.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/urls.py
+END
+index.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/index.py
+END
+wsgi.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/wsgi.py
+END
+wsgi_apache.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_platform/wsgi_apache.py
+END

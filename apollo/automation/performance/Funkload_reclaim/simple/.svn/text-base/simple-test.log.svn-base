@@ -1,0 +1,125 @@
+2014-07-30 16:54:00,356 INFO test_common: [test_common] description not found
+2014-07-30 16:54:00,357 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 16:58:07,785 INFO test_common: [test_common] description not found
+2014-07-30 16:58:07,785 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:06:46,559 INFO test_common: [test_common] description not found
+2014-07-30 17:06:46,560 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:10:03,258 INFO test_common: [test_common] description not found
+2014-07-30 17:10:03,258 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:10:08,908 INFO test_common: [test_common] description not found
+2014-07-30 17:10:08,909 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:12:03,000 INFO test_common: [test_common] description not found
+2014-07-30 17:12:03,000 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:12:07,622 INFO test_common: [test_common] description not found
+2014-07-30 17:12:07,622 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:13:05,768 INFO test_common: [test_common] description not found
+2014-07-30 17:13:05,768 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:18:02,438 INFO test_common: [test_common] description not found
+2014-07-30 17:18:02,438 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:20:39,911 INFO test_common: [test_common] description not found
+2014-07-30 17:20:39,911 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:20:39,911 INFO test_common: [page_0_section] headers not found
+2014-07-30 17:20:39,912 DEBUG test_common: POST: http://192.168.1.67:8080/claimWeb/api/upload [(u'video', <webunit.utility.Upload instance at 0x8fc65cc>), (u'customer', u'Snagfilms'), (u'videoType', u'Web Video'), (u'mrss', u'http://www.snagfilms.com/feeds/'), (u'title', u'2.txt'), (u'publishDate', u''), (u'duration', u'12345'), (u'episodeTitle', u''), (u'episodeNumber', u''), (u'seasonNumber', u''), (u'description', u'way'), (u'tags', u''), (u'imdb', u''), (u'isan', u''), (u'eidr', u''), (u'tmsId', u''), (u'customId', u'00000146-bacf-d7ae-ab7e-ffef9ff90000')]
+	Page 1: http://192.168.1.67:8080/claimWeb/api/upload ...
+2014-07-30 17:20:39,928 DEBUG test_common:  Failed in 0.017s
+2014-07-30 17:23:12,710 INFO test_common: [test_common] description not found
+2014-07-30 17:23:12,710 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:23:12,711 INFO test_common: [page_0_section] headers not found
+2014-07-30 17:23:12,711 DEBUG test_common: POST: http://192.168.1.67:8080/claimWeb/api/upload [(u'video', <webunit.utility.Upload instance at 0x8ae55cc>), (u'customer', u'Snagfilms'), (u'videoType', u'Web Video'), (u'mrss', u'http://www.snagfilms.com/feeds/'), (u'title', u'2.txt'), (u'publishDate', u''), (u'duration', u'12345'), (u'episodeTitle', u''), (u'episodeNumber', u''), (u'seasonNumber', u''), (u'description', u'way'), (u'tags', u''), (u'imdb', u''), (u'isan', u''), (u'eidr', u''), (u'tmsId', u''), (u'customId', u'00000146-bacf-d7ae-ab7e-ffef9ff90000')]
+	Page 1: http://192.168.1.67:8080/claimWeb/api/upload ...
+2014-07-30 17:23:12,725 DEBUG test_common:  Failed in 0.014s
+2014-07-30 17:26:38,307 INFO test_common: [test_common] description not found
+2014-07-30 17:26:38,307 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:27:03,824 INFO test_common: [test_common] description not found
+2014-07-30 17:27:03,824 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:33:48,803 INFO test_common: [test_common] description not found
+2014-07-30 17:33:48,804 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:34:44,236 INFO test_common: [test_common] description not found
+2014-07-30 17:34:44,236 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:35:42,145 INFO test_common: [test_common] description not found
+2014-07-30 17:35:42,145 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:36:23,934 INFO test_common: [test_common] description not found
+2014-07-30 17:36:23,934 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:37:50,010 INFO test_common: [test_common] description not found
+2014-07-30 17:37:50,010 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:38:02,524 INFO test_common: [test_common] description not found
+2014-07-30 17:38:02,524 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:39:03,486 INFO test_common: [test_common] description not found
+2014-07-30 17:39:03,486 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:39:21,210 INFO test_common: [test_common] description not found
+2014-07-30 17:39:21,210 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:40:00,538 INFO test_common: [test_common] description not found
+2014-07-30 17:40:00,538 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:41:13,666 INFO test_common: [test_common] description not found
+2014-07-30 17:41:13,666 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:43:17,339 INFO test_common: [test_common] description not found
+2014-07-30 17:43:17,340 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:43:56,091 INFO test_common: [test_common] description not found
+2014-07-30 17:43:56,091 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:44:05,685 INFO test_common: [test_common] description not found
+2014-07-30 17:44:05,685 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:45:12,906 INFO test_common: [test_common] description not found
+2014-07-30 17:45:12,907 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:45:20,232 INFO test_common: [test_common] description not found
+2014-07-30 17:45:20,233 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:46:59,957 INFO test_common: [test_common] description not found
+2014-07-30 17:46:59,957 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:47:34,056 INFO test_common: [test_common] description not found
+2014-07-30 17:47:34,057 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:47:58,274 INFO test_common: [test_common] description not found
+2014-07-30 17:47:58,274 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:51:18,525 INFO test_common: [test_common] description not found
+2014-07-30 17:51:18,525 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:54:41,012 INFO test_common: [test_common] description not found
+2014-07-30 17:54:41,012 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:55:33,055 INFO test_common: [test_common] description not found
+2014-07-30 17:55:33,055 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:55:33,055 DEBUG test_common: POST: http://192.168.1.67:8080/claimWeb/api/upload [(u'video', <webunit.utility.Upload instance at 0xa0167ec>), (u'customer', u'Snagfilms'), (u'videoType', u'Web Video'), (u'mrss', u'http://www.snagfilms.com/feeds/'), (u'title', u'2.txt'), (u'publishDate', u''), (u'duration', u'12345'), (u'episodeTitle', u''), (u'episodeNumber', u''), (u'seasonNumber', u''), (u'description', u'way'), (u'tags', u''), (u'imdb', u''), (u'isan', u''), (u'eidr', u''), (u'tmsId', u''), (u'customId', u'00000146-bacf-d7ae-ab7e-ffef9ff90000')]
+	Page 1: http://192.168.1.67:8080/claimWeb/api/upload ...
+2014-07-30 17:55:33,087 DEBUG test_common:  Done in 0.032s
+2014-07-30 17:55:59,202 INFO test_common: [test_common] description not found
+2014-07-30 17:55:59,202 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:55:59,203 DEBUG test_common: POST: http://192.168.1.67:8080/claimWeb/api/upload [(u'video', <webunit.utility.Upload instance at 0xa16e7ec>), (u'customer', u'Snagfilms'), (u'videoType', u'Web Video'), (u'mrss', u'http://www.snagfilms.com/feeds/'), (u'title', u'2.txt'), (u'publishDate', u''), (u'duration', u'12345'), (u'episodeTitle', u''), (u'episodeNumber', u''), (u'seasonNumber', u''), (u'description', u'way'), (u'tags', u''), (u'imdb', u''), (u'isan', u''), (u'eidr', u''), (u'tmsId', u''), (u'customId', u'00000146-bacf-d7ae-ab7e-ffef9ff90000')]
+	Page 1: http://192.168.1.67:8080/claimWeb/api/upload ...
+2014-07-30 17:55:59,233 DEBUG test_common:  Done in 0.030s
+2014-07-30 17:56:27,803 INFO test_common: [test_common] description not found
+2014-07-30 17:56:27,803 DEBUG test_common: Starting -----------------------------------
+	
+2014-07-30 17:56:27,803 DEBUG test_common: POST: http://192.168.1.67:8080/claimWeb/api/upload [(u'video', <webunit.utility.Upload instance at 0x89b07ec>), (u'customer', u'Snagfilms'), (u'videoType', u'Web Video'), (u'mrss', u'http://www.snagfilms.com/feeds/'), (u'title', u'2.txt'), (u'publishDate', u''), (u'duration', u'12345'), (u'episodeTitle', u''), (u'episodeNumber', u''), (u'seasonNumber', u''), (u'description', u'way'), (u'tags', u''), (u'imdb', u''), (u'isan', u''), (u'eidr', u''), (u'tmsId', u''), (u'customId', u'00000146-bacf-d7ae-ab7e-ffef9ff90000')]
+	Page 1: http://192.168.1.67:8080/claimWeb/api/upload ...
+2014-07-30 17:56:27,833 DEBUG test_common:  Failed in 0.030s

@@ -1,0 +1,7429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>VDNAGen Testcase</title>
+</head>
+<body>
+<h1>VDNAGen Testcase</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td>${SCRIPT_ROOT}/${PYWEB_SUT_FILE}</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>${VDDB_INGEST_PORT}</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>${SSL}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/VdnagenLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/vdnagen_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/vndagen_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_batch_ingest_vddb">batch_ingest_vddb</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">本地多文件同时入库,根据meta_uuid 找到 instance_uuid并dna_status检测状态是否正确</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>batch_ingest_vddb</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{dna_file_path_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>ingest for batch</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>${VDDB_INGEST_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_INGEST_PASSWD}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${r}</td>
+<td>IN</td>
+<td>@{result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${ErrorCode}</td>
+<td>${ErrorMsg}</td>
+<td>${VobileRefID} =</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>check ingest result</td>
+<td>${r}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${meta_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${r}</td>
+<td>IN</td>
+<td>@{result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${VobileRefID} =</td>
+<td>check ingest result</td>
+<td>${r}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta_uuid}</td>
+<td>IN</td>
+<td>@{meta_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id in (select id from meta where meta_uuid = "${meta_uuid}");</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${dna_path} =</td>
+<td>get dna file path</td>
+<td>${instance_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${dna_file_path_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${dna_path}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${path}</td>
+<td>IN</td>
+<td>@{dna_file_path_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>192.168.1.200</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>9999</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${path}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Log Many</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete metalist</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1169/1172">VDNAGen-1169/1172</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">该用例是输入一个media文件,会解压far文件,读取dna \ 的状态,并且比对dna length是否与ffmpeg -i media_file 中的duration是否相等.\n<br>
+注意:　dna_status读出来的length与ffmpeg 出来的duriton是存在３s之内的误差,如果相差很大,需要咨询研发.　\n<br>
+dna_status读取dna的长度,而且ffmpeg读取media的长度.　dna的长度与media的长度不一定相等.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1169/1172</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}/h264_mp3_640x480_5s.avi.far \ ${SOURCE_FILE_PATH}/h264_mp3_640x480_5s.avi --idna -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far_split}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/h264_mp3_640x480_5s.avi.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_far_split}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_dna_split}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i ${GENERATOR_FAR_PATH}/merged.dna -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_dna_status}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_dna_status}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_dna_status}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_dna_status}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_dna_status}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i \ ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_dna_status}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_ffmeg_durtion}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/h264_mp3_640x480_5s.avi</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${check_dna_status}</td>
+<td>${check_ffmeg_durtion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1055">VDNAGen-1055</a></td>
+<td>[Tags]</td>
+<td>VDNAGen-1055</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>192.168.1.91</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/a.asx -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID} =</td>
+<td>check ingest result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id in(select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path} =</td>
+<td>get dna file path</td>
+<td>${instance_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.200</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i find ${DNA_FILE_PATH} -name {instance_uuid}*' -type f | grep 'adna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats} =</td>
+<td>parse dna status result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${video} =</td>
+<td>Call Method</td>
+<td>${checkdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>LENGTH</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${video} =</td>
+<td>Call Method</td>
+<td>${checkdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>AUDIO</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>192.168.1.200</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1173">VDNAGen-1173</a></td>
+<td>[Tags]</td>
+<td>VDNAGen-1173</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_adress}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${media_file}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}${media_file}.far ${SOURCE_FILE_PATH}/${media_file} --idna -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${media_file}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${checkfar}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${idna_status}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls -rt \ ${GENERATOR_FAR_PATH}/frame_idna_1/0/* |xargs idna_parse |head -n 12</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${idna_status}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${media_file} 2&gt;&amp;1 |grep 'Duration:'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${file_time}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${chechffstatus} =</td>
+<td>parse ffmpeg result</td>
+<td>${file_time}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration} =</td>
+<td>Call Method</td>
+<td>${chechffstatus}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkidna}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls -l ${GENERATOR_FAR_PATH}/frame_idna_1/0/* |wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>Convert to integer</td>
+<td>${duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkidna}=</td>
+<td>Evaluate</td>
+<td>int(${checkidna}/2)</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${checkidna}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Be Equal</td>
+<td>${file_time}</td>
+<td>${checkidna}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1174">VDNAGen-1174</a></td>
+<td>[Tags]</td>
+<td>VDNAGen-1174:检测Far文件中的screenshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_adress}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${media_file}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \${GENERATOR_FAR_PATH}/${media_file}.far \ ${SOURCE_FILE_PATH}/${media_file} \ --screenshot -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${media_file}.far \ -d \ ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${checkfar}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${screenshot_fenbianlv}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/screenshot_1/0/* | head -n 1 |xargs -Ixxx ffmpeg -i xxx 2&gt;&amp;1 |grep 'Stream' |awk -F ',' {'print $3'}|awk -F ' ' {'print $1'}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${screenshot_fenbianlv}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${media_file} 2&gt;&amp;1 |grep 'Stream' |awk -F ',' {'print $3'}|awk -F ' ' {'print $1'}|awk 'NR==1{print}'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${ffmeg}</td>
+<td>${screenshot_fenbianlv}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${media_file} 2&gt;&amp;1 |grep 'Duration:'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>parse ffmpeg result</td>
+<td>${file_time}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>Call Method</td>
+<td>${file_time}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${file_time}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkscreenshot}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls -l ${GENERATOR_FAR_PATH}/screenshot_1/0/* |wc -l</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_time}=</td>
+<td>Convert to integer</td>
+<td>${file_time}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkscreenshot}=</td>
+<td>Evaluate</td>
+<td>int(${checkscreenshot}/2)</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${checkscreenshot}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Be Equal</td>
+<td>${checkscreenshot}</td>
+<td>${file_time}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${screenshot_format}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/screenshot_1/0/ |head -n 1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1175">VDNAGen-1175</a></td>
+<td>[Tags]</td>
+<td>VDNAGen-1175:检测Far文件中的snapshot</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}/h264_mp3_640x480_5s.avi.far \ ${SOURCE_FILE_PATH}/h264_mp3_640x480_5s.avi \ --screenshot -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/h264_mp3_640x480_5s.avi.far \ -d \ ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checksnapshot}=</td>
+<td>remote run cmd</td>
+<td>192.168.1.14</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls -l ${GENERATOR_FAR_PATH}/video_snapshots_1/* |wc -l</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${checksnapshot}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1169-1172">VDNAGen-1169-1172</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video生成far文件并检测dna、vdna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>生成far文件，检测far文件的DNA状态</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}/${video_name}.far \ ${SOURCE_FILE_PATH}/${video_name} \ -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkvdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkvdnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${checkvdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1178-1180">VDNAGen-1178-1180</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video基本入库操作及检测video入库后的adna、dna文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>基本入库操作，检测入库后的dna、adna文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path}=</td>
+<td>get dna file path</td>
+<td>${instance_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${find_vdna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep '0.dna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_vdna_status}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_vdna_status}=</td>
+<td>Parse Dna Status Result</td>
+<td>${check_vdna_status}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${check_vdna_status}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}</td>
+<td>convert to string</td>
+<td>${vdnaversion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${find_adna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep '1.adna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Parse Dna Status Result</td>
+<td>${check_adna_status}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${check_adna_status}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}</td>
+<td>convert to string</td>
+<td>${adnaversion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1181">VDNAGen-1181</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测video带参数--screenshot --screenshotrate num入库后的screenshot文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>检测入库后的screenshot文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} --screenshot --screenshotrate 1 -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_screenshot}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${VDDB_SCREENSHOT_PATH} -name '${instance_uuid}*' -type f | grep 'jpg$' | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg_duration}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Be Equal</td>
+<td>${num_screenshot}</td>
+<td>${ffmpeg_duration}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1183">VDNAGen-1183</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测video带参数--idna --idnarate num入库后的idna文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>检测video文件入库后的idna文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} --idna --idnarate 1 -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_idna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep 'idna$' | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg_duration}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${num_idna}</td>
+<td>${ffmpeg_duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1184">VDNAGen-1184</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测video带参数-m入库后的movieContent记录</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>查询入库后的movieContent记录</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/meta.xml -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_meta} =</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select meta_id,content_sub_type,country,director,description,metalink,alternate_url,alternate_info from movieContent where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${sql_meta}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${xml_meta}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1187">VDNAGen-1187</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测video入库后，查看入库的clientInfo记录</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>查询入库的clientInfo记录</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${far_result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${far_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${far_split}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${far_split}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ingest_result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/meta.xml -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${ingest_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${clientInfo} =</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid,os_name,os_arch,cpu,memory,ip_address,mac_address,client_program_name,client_program_version,commandLine from clientInfo where instance_uuid = '87486cd2-b4c0-11e3-b722-00e04d13def5';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${stats}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${clientInfo}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${stats}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1177">VDNAGen-1177</a></td>
+<td>[Tags]</td>
+<td>检测Far文件中的stats文件-video</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_adress}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${media_file}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}/${media_file}.far ${SOURCE_FILE_PATH}/${media_file} \ -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${media_file}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_xml}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_xml}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${media_file}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>check video stats</td>
+<td>${meta_xml}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1176">VDNAGen-1176</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">该用例需要指定-m参数.　然后修改-m指定的xml文件的一些信息.\n<br>
+１.　检查有无meta文件存在.\n<br>
+２.　需要查看xml文件记录的信息是否是修改过后的文件.\n<br>
+\n<br>
+备注:由于不清楚会case执行者修改了哪些xml信息,所以case里面我会把meta文件内的信息全部列出来,然后通过人工确认meta文件里面记录的是否为修改过后的信息.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>检测Far文件中的meta文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_adress}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${media_file}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_xml}</td>
+<td>movie_meta_sample.xml</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o \ ${GENERATOR_FAR_PATH}/${media_file}.far \ ${SOURCE_FILE_PATH}/${media_file}\ -m \ ${SOURCE_META_FILE_PATH}/movie_meta_sample.xml \ -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far_split}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/k.flv.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_far_split}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_check}=</td>
+<td>remote run cmd</td>
+<td>${ip_adress}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_check}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_delete meta for vdnagen">delete meta for vdnagen</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">删除入库后的meta信息，方便测试，非用例</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>delete meta for vdnagen</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_uuid}</td>
+<td>7ef6318e-2678-11e4-8672-f01fafe2f9e4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>delete meta for vdnagen</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_test">test</a></td>
+<td>[Tags]</td>
+<td>test</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.10.93</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>@{videos}=</td>
+<td>Create List</td>
+<td>h264_480x270_aac_3.4.5bug1.mp4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>h264_480x270_aac_3.4.5bug5.mp4</td>
+<td>h264_480x270_aac_3.4.5bug6.mp4</td>
+<td>h264_640x360_aac_3.4.5bug2.mp4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>h264_640x480_aac_3.4.5bug3.mp4</td>
+<td>h264_640x480_aac_3.4.5bug4.mp4</td>
+<td>overlap_1.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>overlap_2.flv</td>
+<td>overlap_3.flv</td>
+<td>overlap_4.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>overlap_5.flv</td>
+<td>overlap_6.flv</td>
+<td>youku_1.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>youku_10.flv</td>
+<td>youku_11.flv</td>
+<td>youku_12.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>youku_13.flv</td>
+<td>youku_14.flv</td>
+<td>youku_21.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>youku_25.flv</td>
+<td>youku_30.flv</td>
+<td>youku_33.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>youku_37.flv</td>
+<td>youku_4.flv</td>
+<td>youku_6.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>youku_9.flv</td>
+<td>cavs_720x576_mp2.avs</td>
+<td>mpeg1video_352x240_mp2_first_10s_nosound.mpg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>mpeg2video_512x256_adpcm_ea_r2.mpc</td>
+<td>mpeg2video_720x576_noaudio.avi</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>@{audios}=</td>
+<td>Create List</td>
+<td>audio_aac.caf</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_adpcm_ima_apc.APC</td>
+<td>audio_amr_nb.amr</td>
+<td>audio_ape.ape</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_atrac3.oma</td>
+<td>audio_cook.rm</td>
+<td>audio_dts.dts</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_eac3.eac3</td>
+<td>audio_flac.flac</td>
+<td>audio_mp2.mp2</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_mp3.mp3</td>
+<td>audio_mp3.mpga</td>
+<td>audio_mp3.wav</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_pcm_s16be.au</td>
+<td>audio_pcm_s16le.wav</td>
+<td>audio_vorbis.ogg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_wmav2.wma</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>: FOR</td>
+<td>${media}</td>
+<td>IN</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{videos}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Log Many</td>
+<td>${media}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Run Keyword And Continue On Failure</td>
+<td>check video far</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${media}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>: FOR</td>
+<td>${media}</td>
+<td>IN</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{audios}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Log Many</td>
+<td>${media}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Run Keyword And Continue On Failure</td>
+<td>check audio far</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${media}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>: FOR</td>
+<td>${media}</td>
+<td>IN</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{images}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Log Many</td>
+<td>${media}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Run Keyword And Continue On Failure</td>
+<td>check image far</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${media}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.1.14</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Set Test Variable</td>
+<td>${vdnagen_i}</td>
+<td>Assert_ID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Set Test Variable</td>
+<td>${vdnagen_r}</td>
+<td>Publish_URL</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Set Test Variable</td>
+<td>${vdnagen_t}</td>
+<td>2014-07-28 12:00:00</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>@{medias}=</td>
+<td>Create List</td>
+<td>h264_640x360_aac_3.4.5bug2.mp4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>h264_640x480_aac_3.4.5bug3.mp4</td>
+<td>h264_640x480_aac_3.4.5bug4.mp4</td>
+<td>youku_2.flv</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>nologo_2.flv</td>
+<td>audio_aac.caf</td>
+<td>audio_ape.ape</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>audio_cook.rm</td>
+<td>audio_mp2.mp2</td>
+<td>audio_mp3.mp3</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>image_gif_128x128.gif</td>
+<td>image_gif_352x288.gif</td>
+<td>image_mjpeg_1500x917.jpg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>image_mjpeg_854x1200.jpg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>:FOR</td>
+<td>${video_name}</td>
+<td>IN</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{medias}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Log Many</td>
+<td>${video_name}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>9999</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1176-1177_video">VDNAGen-1176-1177_video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测video带参数-m生成far文件并检测dna状态、meta文件内容、stats文件内容，结束时删除生成的文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1176-1177_video</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:VDNAGen -o ${video_name}.far ${video_name} -m movie_meta.xml -q</td>
+<td>#expect:#expect:有far文件生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、vdna、adna状态</td>
+<td>#expect:dna、vdna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkvdnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkvdnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${checkvdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/movie_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check video stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1176-1177_audio">VDNAGen-1176-1177_audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">a检测audio带参数-m生成far文件并检测dna状态、meta文件内容、stats文件内容，结束时删除生成的文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1176-1177_audio</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${AUDIO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:VDNAGen -o ${video_name}.far ${video_name} -m movie_meta.xml -q</td>
+<td>#expect:有far文件生成</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${ffmpeg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、adna状态</td>
+<td>#expect:dna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/audio_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check audio stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1176-1177_image">VDNAGen-1176-1177_image</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">检测image带参数-m生成far文件并检测idna、meta文件内容、stats文件内容，结束时删除生成的文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1176-1177_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${IMAGE_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:VDNAGen -o ${video_name}.far ${video_name} -m movie_meta.xml -q</td>
+<td>#expect:有far文件生成</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/image_meta.xml -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测idna文件</td>
+<td>#expect:idna文件包含good idna或bad idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>idna_parse ${GENERATOR_FAR_PATH}/image.idna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_idna}</td>
+<td>good idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/image_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image_snapshots ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/image.idna ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1158">VDNAGen-1158</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vobilecloud9包，检测video带参数-i、-r、-t、-d、-h、-v</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1158</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_h}</td>
+<td>Usage:\n<br>
+\tVDNAGen [-d] [-i &lt;asset_id&gt;] [-m &lt;meta_file&gt;] [-r &lt;publish_url&gt;] [-t &lt;upload_time&gt;] [{--receipt &lt;receipt_file&gt; -D &lt;receipt_directory&gt;}] \n<br>
+\t\t[-f &lt;temporary_directory&gt;] -o &lt;far_file&gt; media_file</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_v}</td>
+<td>VDNAGen 3.4.5.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_i}</td>
+<td>Assert_ID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_r}</td>
+<td>Publish_URL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_t}</td>
+<td>2014-04-17 12:00:00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -h</td>
+<td>#expect:显示VDNAGen的帮助信息</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_h}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -h</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_h}</td>
+<td>${vdnagen_h}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -v</td>
+<td>#expect:显示VDNAGen的版本信息3.4.5.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_v}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -v</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_v}</td>
+<td>${vdnagen_v}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:VDNAGen -i vdnagen_i -r vdnagen_r -t 'vdnagen_t' -d -o far_file video_file -q</td>
+<td>#expect:有far文件生成</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t '${vdnagen_t}' -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats} =</td>
+<td>Parse Xml</td>
+<td>${check_stats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的AssetID、PublishURL、UploadTime及log文件</td>
+<td>#expect:AssetID、PublishURL、UploadTime与输入相同，存在api_log文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${vdnagen_i}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_PublishURL}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>PublishURL</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_PublishURL}</td>
+<td>${vdnagen_r}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_UploadTime}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>UploadTime</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_UploadTime}</td>
+<td>${vdnagen_t}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnagen_d}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${GENERATOR_FAR_PATH} -name api_log | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${vdnagen_d}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/api_log ${GENERATOR_FAR_PATH}/image_snapshots ${GENERATOR_FAR_PATH}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1169-1177_video">VDNAGen-1169-1177_video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video带参数-m XXX.xml --idna --idnarate num --screenshot --screenshotrate num生成far文件，并检测文件内容</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1169-1177_video</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.1.14</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>vp8_320x240_vorbis.web</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${idna_num}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${screenshot_num}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -o far_file media_file -m movie_meta.xml --idna --idnarate num --screenshot --screenshotrate num -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>timeout=600</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、vdna、adna状态</td>
+<td>#expect:dna、vdna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkvdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkvdnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${checkvdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/movie_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check video stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测snapshot文件</td>
+<td>#expect:每隔15s截取一张snapshot图片，存在duration/15张图片</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg_duration}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${snapshot_ffm}=</td>
+<td>Evaluate</td>
+<td>int(${ffmpeg_duration}/15)</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_snapshot}=</td>
+<td>Run Keyword If</td>
+<td>${snapshot_ffm} == 0</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>0</td>
+<td>ELSE</td>
+<td>Remote Run Cmd</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>ls ${GENERATOR_FAR_PATH}/video_snapshots_1/* |wc -l</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Numbers</td>
+<td>${snapshot_ffm}</td>
+<td>${check_snapshot}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测screenshot文件</td>
+<td>#expect:存在num*duration张screenshot图片</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${screenshot}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/screenshot_1/0/ |head -n 1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_screenshot_num}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/screenshot_1/0/ | wc -l</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg_duration}=</td>
+<td>Convert to integer</td>
+<td>${ffmpeg_duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_screenshot_num}=</td>
+<td>Evaluate</td>
+<td>int(${check_screenshot_num}/${screenshot_num})</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${ffmpeg_duration}</td>
+<td>${check_screenshot_num}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测idna文件</td>
+<td>#expect:存在num*duration个idna文件，idna_parse检测idna文件包含good idna或bad idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${frame_idna}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/frame_idna_1/0/ | head -n 1</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_frame_idna}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>idna_parse ${GENERATOR_FAR_PATH}/frame_idna_1/0/${frame_idna}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_frame_idna}</td>
+<td>good idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna_num}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/frame_idna_1/0/ | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna_num}=</td>
+<td>Evaluate</td>
+<td>int(${check_idna_num}/${idna_num})</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${ffmpeg_duration}</td>
+<td>${check_idna_num}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna* ${GENERATOR_FAR_PATH}/screenshot* ${GENERATOR_FAR_PATH}/video_snapshots_1 ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1178-1193_video">VDNAGen-1178-1193_video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video带参数-m XXX.xml --idna --idnarate num --screenshot --screenshotrate num入库,检测video入库后的adna、dna文件、screenshot文件、idna文件，检测入库的表movieContent、clientInfo记录</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1178-1193_video</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${VIDEO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${idna_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${screenshot_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>#expect:入库成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ingest_result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success及VobileRefID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${ingest_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna文件</td>
+<td>#expect:在指定目录下存在0.dan、1.adna文件，且dna_status查看文件ersion为2或4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path}=</td>
+<td>get dna file path</td>
+<td>${instance_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${find_vdna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep '0.dna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_vdna_status}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_vdna_status}=</td>
+<td>Parse Dna Status Result</td>
+<td>${check_vdna_status}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${check_vdna_status}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}</td>
+<td>convert to string</td>
+<td>${vdnaversion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${find_adna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep '1.adna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Parse Dna Status Result</td>
+<td>${check_adna_status}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${check_adna_status}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}</td>
+<td>convert to string</td>
+<td>${adnaversion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测入库后的idna文件</td>
+<td>#expect:存在相应的idna文件，且文件个数为duration*num，idna_parse查看文件包含good idna或bad idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_idna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep 'idna$' | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_idna}=</td>
+<td>Evaluate</td>
+<td>int(${num_idna}/${idna_num})</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg_duration}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${num_idna}</td>
+<td>${ffmpeg_duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${idna_path} =</td>
+<td>Catenate</td>
+<td>${instance_uuid[6:8]}/${instance_uuid[11:13]}/${instance_uuid}.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna_num}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls -l ${DNA_FILE_PATH}/${idna_path} |awk '$5==0 {print $0}'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${idna_name}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${DNA_FILE_PATH}/${idna_path} | head -n 1</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>idna_parse ${DNA_FILE_PATH}/${idna_path}/${idna_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_idna}</td>
+<td>good idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测screenshot文件</td>
+<td>#expect:存在num*duration张screenshot图片</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_screenshot}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${VDDB_SCREENSHOT_PATH} -name '${instance_uuid}*' -type f | grep 'jpg$' | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num_screenshot}=</td>
+<td>Evaluate</td>
+<td>int(${num_screenshot}/${screenshot_num})</td>
+<td>math</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${num_screenshot}</td>
+<td>${ffmpeg_duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:入库的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/movie_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${xml_meta}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_meta} =</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select meta_id,content_sub_type,country,director,description,metalink,alternate_url,alternate_info from movieContent where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1169-1177_audio">VDNAGen-1169-1177_audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">DAM_VDNAGen检测video带生成far文件并检测dna状态、stats文件内容、snapshot、screenshot、idna，结束时删除生成的文件</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1169-1177_audio</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${AUDIO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${dam_vdnagen}</td>
+<td>VDNAGen</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${idna_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${screenshot_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -o far_file media_file -m movie_meta.xml --idna --idnarate num --screenshot --screenshotrate num -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dam_vdnagen} -q --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_far}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、adna状态</td>
+<td>#expect:dna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${ffmpeg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/audio_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check audio stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna_1 ${GENERATOR_FAR_PATH}/screenshot_1 ${GENERATOR_FAR_PATH}/video_snapshots_1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1166">VDNAGen-1166</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">性能测试</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1166</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.1.11</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{performance_medias}=</td>
+<td>Create List</td>
+<td>720p.ts</td>
+<td>gedouzhiwang.rmvb</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>h264_480x360_25fps.flv</td>
+<td>h264_640x480_25fps.mp4</td>
+<td>sony_video.mov</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_speed_all}</td>
+<td>vdnagen_speed</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${real_time_all}</td>
+<td>real_time</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${far_size_all}</td>
+<td>far_size</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${performance_media}</td>
+<td>IN</td>
+<td>@{performance_medias}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${VDNAGen_cmd_norate}</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${performance_media}.far ${SOURCE_FILE_PATH}/${performance_media} -q</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>9999</td>
+<td>/usr/bin/time -p ${VDNAGen_cmd_norate} 2&gt;${GENERATOR_FAR_PATH}/${performance_media}.time</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${chechffstatus} =</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>9999</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${performance_media}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${chechffstatus} =</td>
+<td>parse ffmpeg result</td>
+<td>${chechffstatus}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Log Many</td>
+<td>${performance_media}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${duration} =</td>
+<td>Call Method</td>
+<td>${chechffstatus}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>get</td>
+<td>Duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${real_time}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>9999</td>
+<td>cat ${GENERATOR_FAR_PATH}/${performance_media}.time \ | grep real | awk -F ' ' '{print $2}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${vdnagen_speed}=</td>
+<td>Evaluate</td>
+<td>${duration}/${real_time}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>math</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${far_size}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>9999</td>
+<td>ls -lk ${GENERATOR_FAR_PATH}/${performance_media}.far | awk -F ' ' '{print $5}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${vdnagen_speed_all}=</td>
+<td>Catenate</td>
+<td>SEPARATOR= |</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${vdnagen_speed_all}</td>
+<td>${vdnagen_speed}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${real_time_all}=</td>
+<td>Catenate</td>
+<td>SEPARATOR= |</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${real_time_all}</td>
+<td>${real_time}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${far_size_all}=</td>
+<td>Catenate</td>
+<td>SEPARATOR= |</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${far_size_all}</td>
+<td>${far_size}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${vdnagen_speed_all}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${real_time_all}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${far_size_all}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1178-1193_audio">VDNAGen-1178-1193_audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video带参数-m XXX.xml --idna --idnarate num --screenshot --screenshotrate num入库,检测video入库后的adna、dna文件、screenshot文件、idna文件，检测入库的表movieContent、clientInfo记录</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1178-1193_audio</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${AUDIO_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${idna_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${screenshot_num}</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>#expect:入库成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ingest_result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -s${VDDB_INGEST_HOST} -u${VDDB_INGEST_USER} -p${VDDB_INGEST_PASSWD} ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success及VobileRefID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID}</td>
+<td>check ingest result</td>
+<td>${ingest_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna文件</td>
+<td>#expect:在指定目录下存在1.adna文件，且dna_status查看文件ersion为2或4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_uuid} =</td>
+<td>get instance uuid</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+<td>select instance_uuid from mediaContentInstance where meta_id = (select id from meta where meta_uuid = '${VobileRefID}');</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path}=</td>
+<td>get dna file path</td>
+<td>${instance_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${find_adna}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>find ${DNA_FILE_PATH} -name '${instance_uuid}*' -type f | grep '1.adna$'</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Remote Run Cmd</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${DNA_FILE_PATH}/${dna_path}.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check dna</td>
+<td>${check_adna_status}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_adna_status}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_adna_status}=</td>
+<td>Parse Dna Status Result</td>
+<td>${check_adna_status}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${check_adna_status}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}</td>
+<td>convert to string</td>
+<td>${adnaversion}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${sql_meta} =</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${VDDB_NODE_NAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>select meta_id, content_sub_type, album_number, track_number, album_name, director, composer, country, desciption, metalink, alternate_url, alternate_info from musicContent where meta_id in (select id from meta where meta_uuid='${VobileRefID}')</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta for vdnagen</td>
+<td>${VobileRefID}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1169-1177_image">VDNAGen-1169-1177_image</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">video带参数-m XXX.xml --idna --idnarate num --screenshot --screenshotrate num入库,检测video入库后的adna、dna文件、screenshot文件、idna文件，检测入库的表movieContent、clientInfo记录</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1169-1177_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>${TEST_IP_ADDRESS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>${IMAGE_NAME}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${db_name}</td>
+<td>mddb_local</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${idna_num}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${screenshot_num}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -o far_file media_file -m movie_meta.xml --idna --idnarate num --screenshot --screenshotrate num -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --idna --idnarate ${idna_num} --screenshot --screenshotrate ${screenshot_num} -q</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测生成far文件输出结果</td>
+<td>#expect:成功，输出0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/movie_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测snapshot文件</td>
+<td>#expect:有一张snapshot图片</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_snapshot}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/image_snapshots/</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测idna文件</td>
+<td>#expect:idna文件包含good idna或bad idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>idna_parse ${GENERATOR_FAR_PATH}/image.idna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${check_idna}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_idna}</td>
+<td>good idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}.far ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna* ${GENERATOR_FAR_PATH}/screenshot* ${GENERATOR_FAR_PATH}/video_snapshots_1 ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1214-1223_video">VDNAGen-1214-1223_video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">测试video文件，各参数测试\n<br>
+备注：\n<br>
+调用参数-i，stats文件的AssetID字段不再是video的名字，是-i后面带的内容，调用check video stats时屏蔽检测文件名称字段</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1214-1223_video</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.10.93</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>rv40_672x504_cook.rmvb</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_h}</td>
+<td>Usage:\n<br>
+\tVDNAGen [-d] [-i &lt;asset_id&gt;] [-m &lt;meta_file&gt;] [-r &lt;publish_url&gt;] [-t &lt;upload_time&gt;] [{--receipt &lt;receipt_file&gt; -D &lt;receipt_directory&gt;}] \n<br>
+\t\t[-f &lt;temporary_directory&gt;] -o &lt;far_file&gt; media_file</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_v}</td>
+<td>VDNAGen 3.4.6.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_i}</td>
+<td>Assert_ID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_r}</td>
+<td>Publish_URL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_t}</td>
+<td>2014-07-28 12:00:00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -h</td>
+<td>#expect:显示VDNAGen的帮助信息</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_h}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -h</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Contain</td>
+<td>${check_h}</td>
+<td>${vdnagen_h}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -v</td>
+<td>#expect:显示VDNAGen的版本信息3.4.5.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_v}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -v</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_v}</td>
+<td>${vdnagen_v}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t '${vdnagen_t}' -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测调用--receipt、-D生成far文件输出结果</td>
+<td>#expect:对应目录下有对应文件生成，文件内容对应的结果为0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>150机器</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>9999</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d C://${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、vdna、adna状态</td>
+<td>#expect:dna、vdna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkvdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkvdnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkvdnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnaversion}=</td>
+<td>Call Method</td>
+<td>${checkvdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${vdnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.1.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/movie_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check video stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats} =</td>
+<td>Parse Xml</td>
+<td>${check_stats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的AssetID、PublishURL、UploadTime及log文件</td>
+<td>#expect:AssetID、PublishURL、UploadTime与输入相同，存在api_log文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${vdnagen_i}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_PublishURL}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>PublishURL</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_PublishURL}</td>
+<td>${vdnagen_r}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_UploadTime}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>UploadTime</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_UploadTime}</td>
+<td>${vdnagen_t}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnagen_d}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/api_log | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${vdnagen_d}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}* ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna* ${GENERATOR_FAR_PATH}/screenshot* ${GENERATOR_FAR_PATH}/video_snapshots_1 ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1214-1223_audio">VDNAGen-1214-1223_audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">测试video文件，各参数测试\n<br>
+备注：\n<br>
+调用参数-i，stats文件的AssetID字段不再是video的名字，是-i后面带的内容，调用check video stats时屏蔽检测文件名称字段</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1214-1223_audio</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.1.14</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>audio_aac.caf</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_h}</td>
+<td>Usage:\n<br>
+\tVDNAGen [-d] [-i &lt;asset_id&gt;] [-m &lt;meta_file&gt;] [-r &lt;publish_url&gt;] [-t &lt;upload_time&gt;] [{--receipt &lt;receipt_file&gt; -D &lt;receipt_directory&gt;}] \n<br>
+\t\t[-f &lt;temporary_directory&gt;] -o &lt;far_file&gt; media_file</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_v}</td>
+<td>VDNAGen 3.4.6.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_i}</td>
+<td>Assert_ID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_r}</td>
+<td>Publish_URL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_t}</td>
+<td>2014-07-28 12:00:00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -h</td>
+<td>#expect:显示VDNAGen的帮助信息</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_h}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -h</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Contain</td>
+<td>${check_h}</td>
+<td>${vdnagen_h}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -v</td>
+<td>#expect:显示VDNAGen的版本信息3.4.5.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_v}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -v</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_v}</td>
+<td>${vdnagen_v}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t '${vdnagen_t}' -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/movie_meta.xml -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测调用--receipt、-D生成far文件输出结果</td>
+<td>#expect:对应目录下有对应文件生成，文件内容对应的结果为0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i ${GENERATOR_FAR_PATH}/${video_name}.far -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测dna、vdna、adna状态</td>
+<td>#expect:dna、vdna、adna长度与素材长度相等；定义adna为old audio算法的version值为2，定义adna为new audio 算法的version值为4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkmerge}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_split -i \ ${GENERATOR_FAR_PATH}/merged.dna \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ffmpeg -i ${SOURCE_FILE_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkdnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna_status -i ${GENERATOR_FAR_PATH}/merged.dna.0.adna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adna_ffmpeg}=</td>
+<td>check dna</td>
+<td>${checkadnastats}</td>
+<td>${ffmpeg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkadnastats}=</td>
+<td>parse dna status result</td>
+<td>${checkadnastats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adnaversion}=</td>
+<td>Call Method</td>
+<td>${checkadnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>version is</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${adnaversion}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/audio_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件中的video/audio/DetailFileInfo信息内容</td>
+<td>#expect:stats信息与ffmpeg查看的信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check audio stats</td>
+<td>${check_stats}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats} =</td>
+<td>Parse Xml</td>
+<td>${check_stats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的AssetID、PublishURL、UploadTime及log文件</td>
+<td>#expect:AssetID、PublishURL、UploadTime与输入相同，存在api_log文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${vdnagen_i}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_PublishURL}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>PublishURL</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_PublishURL}</td>
+<td>${vdnagen_r}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_UploadTime}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>UploadTime</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_UploadTime}</td>
+<td>${vdnagen_t}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnagen_d}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/api_log | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${vdnagen_d}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}* ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna* ${GENERATOR_FAR_PATH}/screenshot* ${GENERATOR_FAR_PATH}/video_snapshots_1 ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_VDNAGen-1214-1223_image">VDNAGen-1214-1223_image</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">测试video文件，各参数测试\n<br>
+备注：\n<br>
+调用参数-i，stats文件的AssetID字段不再是video的名字，是-i后面带的内容，调用check video stats时屏蔽检测文件名称字段</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>VDNAGen-1214-1223_image</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${ip_address}</td>
+<td>192.168.1.150</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${video_name}</td>
+<td>image_mjpeg_1500x917.jpg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_h}</td>
+<td>Usage:\n<br>
+\tVDNAGen [-d] [-i &lt;asset_id&gt;] [-m &lt;meta_file&gt;] [-r &lt;publish_url&gt;] [-t &lt;upload_time&gt;] [{--receipt &lt;receipt_file&gt; -D &lt;receipt_directory&gt;}] \n<br>
+\t\t[-f &lt;temporary_directory&gt;] -o &lt;far_file&gt; media_file</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_v}</td>
+<td>VDNAGen 3.4.6.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_i}</td>
+<td>Assert_ID</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_r}</td>
+<td>Publish_URL</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${vdnagen_t}</td>
+<td>2014-07-28 12:00:00</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -h</td>
+<td>#expect:显示VDNAGen的帮助信息</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_h}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -h</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_h}</td>
+<td>${vdnagen_h}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -v</td>
+<td>#expect:显示VDNAGen的版本信息3.4.6.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_v}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -v</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_v}</td>
+<td>${vdnagen_v}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t “${vdnagen_t}” -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td>#expect:生成far文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9998</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>VDNAGen -i ${vdnagen_i} -r ${vdnagen_r} -t "${vdnagen_t}" -d -o ${GENERATOR_FAR_PATH}/${video_name}.far ${SOURCE_FILE_PATH}/${video_name} -m ${SOURCE_FILE_PATH}/audio_meta.xml --receipt ${video_name} -D ${GENERATOR_FAR_PATH} -q</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测调用--receipt、-D生成far文件输出结果</td>
+<td>#expect:对应目录下有对应文件生成，文件内容对应的结果为0、Success</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/${video_name}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check far result</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkfar}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>far_split -i \ ${GENERATOR_FAR_PATH}/${video_name}.far \ -d ${GENERATOR_FAR_PATH}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测far文件中的meta文件</td>
+<td>#expect:生成的meta的信息与设置的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/meta</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_meta}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${SOURCE_FILE_PATH}/image_meta.xml</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${check_meta}</td>
+<td>${xml_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的machine信息</td>
+<td>#expect:stats信息与机器信息一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>cat ${GENERATOR_FAR_PATH}/stats</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check stats machine</td>
+<td>${check_stats}</td>
+<td>${ip_address}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测snapshot文件</td>
+<td>#expect:有一张snapshot图片</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_snapshot}=</td>
+<td>Remote Run Cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/image_snapshots/ | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${check_snapshot}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测idna文件</td>
+<td>#expect:idna文件包含good idna或bad idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_idna}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>idna_parse ${GENERATOR_FAR_PATH}/image.idna</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${check_idna}</td>
+<td>good idna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检测stats文件的AssetID、PublishURL、UploadTime及log文件</td>
+<td>#expect:AssetID、PublishURL、UploadTime与输入相同，存在api_log文件</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_stats} =</td>
+<td>Parse Xml</td>
+<td>${check_stats}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${vdnagen_i}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_PublishURL}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>PublishURL</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_PublishURL}</td>
+<td>${vdnagen_r}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_UploadTime}=</td>
+<td>Get Element Text</td>
+<td>${check_stats}</td>
+<td>UploadTime</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_UploadTime}</td>
+<td>${vdnagen_t}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnagen_d}=</td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ls ${GENERATOR_FAR_PATH}/api_log | wc -l</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Integers</td>
+<td>${vdnagen_d}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:清空测试数据</td>
+<td>#expect:执行用例后产生的数据被删除干净</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>remote run cmd</td>
+<td>${ip_address}</td>
+<td>9999</td>
+<td>rm -rf ${GENERATOR_FAR_PATH}/${video_name}* ${GENERATOR_FAR_PATH}/far.tar ${GENERATOR_FAR_PATH}/image* ${GENERATOR_FAR_PATH}/meta ${GENERATOR_FAR_PATH}/stats ${GENERATOR_FAR_PATH}/frame_idna* ${GENERATOR_FAR_PATH}/video_snapshots_1 ${GENERATOR_FAR_PATH}/merged.dna* ${GENERATOR_FAR_PATH}/api_log</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td>true</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

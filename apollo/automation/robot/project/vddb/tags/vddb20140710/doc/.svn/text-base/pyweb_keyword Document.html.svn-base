@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Pyweb_keyword 关键字</title>
+</head>
+
+<body>
+<h1>Pyweb_keyword 关键字</h1>
+<p>依赖库：<br />
+CommonLib.py, common_keywords.html</p>
+<h2 id="Shortcuts">Shortcuts</h2>
+<p><a href="#Check Instance Info With Db Data">Check Instance Info With Db Data</a>, <a href="#Check Meta Info">Check Meta Info</a>, <a href="#Delete Instance">Delete Instance</a>, <a href="#Delete Meta">Delete Meta</a>, <a href="#Delete Meta List">Delete Meta List</a>, <a href="#Get Instance Uuid From Api Return">Get Instance Uuid From Api Return</a>, <a href="#Get Meta Uuid From Api Return">Get Meta Uuid From Api Return</a>, </p>
+<table width="100%" height="302" border="1">
+  <tr>
+    <td width="50" align="center">关键字</td>
+    <td width="53" align="center">作者</td>
+    <td width="112" align="center">参数</td>
+    <td width="135" align="center">返回值</td>
+    <td width="714" align="center">说明和示例</td>
+  </tr>
+  <tr>
+    <td><a name="Check Instance Info With Db Data">Check Instance Info With Db Data</a></td>
+    <td>严嘉蔚</td>
+    <td>db_host, db_user, db_passwd, db_dbname, body_msg</td>
+    <td>无</td>
+    <td><p>校验show instance接口返回的内容是否和数据库中的一致</p>
+    <p>db_host：db的ip地址<br />
+      db_user：db的登录帐号<br />
+      db_passwd：db的登录密码<br />
+      db_dbname：数据库名<br />
+      body_msg：show instance接口返回的body体，格是为<br />
+      {&quot;msg&quot;: &quot;Successful&quot;, &quot;body&quot;: {&quot;instance_id&quot;: &quot;d2885892-b056-11e3-9910-74d43546cff3&quot;, &quot;file_format&quot;: &quot;dna&quot;, &quot;created_at&quot;: &quot;2014-03-20 17:41:09&quot;, &quot;updated_at&quot;: &quot;2014-03-20 17:41:09&quot;, &quot;instance_name&quot;: &quot;&quot;, &quot;source&quot;: &quot;&quot;, &quot;duration&quot;: 100}, &quot;code&quot;: 0}</p>
+    <p>示例：      </p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${return} =</td>
+        <td>pyweb api call</td>
+        <td>GET</td>
+        <td>/mediawise/${meta_uuid}/instances/${inst_uuid}/meta</td>
+        <td>None</td>
+        <td>{&quot;Content-type&quot;:&quot;application/x-www-form-urlencoded&quot;,&quot;Cookie&quot;: &quot;${token}&quot;}</td>
+      </tr>
+      <tr>
+        <td>${body} =</td>
+        <td>Get Json Element</td>
+        <td>${return}</td>
+        <td>body</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>check instance info with db data</td>
+        <td>192.168.1.19</td>
+        <td>vddb</td>
+        <td>123</td>
+        <td>mddb_local</td>
+        <td>${body}</td>
+      </tr>
+    </table>
+    <p><br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><a name="Check Meta Info">Check Meta Info</a></td>
+    <td>王杰</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="Delete Instance">Delete Instance</a></td>
+    <td>严嘉蔚</td>
+    <td>inst_uuid, user, passwd, protocol, token=None</td>
+    <td>无</td>
+    <td><p>调用pyweb接口删除一个instance</p>
+    <p>inst_uuid：需要删除的instance uuid<br />
+    user：pyweb的用户名<br />
+    passwd：pyweb的密码    <br />
+    protocol：pyweb协议。用法是&quot;5.2.6&quot;或者&quot;5.1&quot;,&quot;5.2.6&quot;<br />
+    token：默认为None，如果给出token则使用token直接调用删除instance接口，如果没有给出token则使用给出的user和password先获取token</p>
+    <p>示例：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>Delete Instance</td>
+        <td>xxxx-xxx-xxx</td>
+        <td>zhang_jin</td>
+        <td>123</td>
+        <td>&quot;5.1&quot;,&quot;5.2.6&quot;</td>
+      </tr>
+    </table>
+    <p> <br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><a name="Delete Meta">Delete Meta</a></td>
+    <td>严嘉蔚</td>
+    <td>meta_uuid, user, passwd, protocol, token=None</td>
+    <td>无</td>
+    <td><p>调用pyweb接口删除一个Meta</p>
+      <p>Meta_uuid：需要删除的meta uuid<br />
+        user：pyweb的用户名<br />
+        passwd：pyweb的密码 <br />
+        protocol：pyweb协议。用法是&quot;5.2.6&quot;或者&quot;5.1&quot;,&quot;5.2.6&quot;<br />
+        token：默认为None，如果给出token则使用token直接调用删除instance接口，如果没有给出token则使用给出的user和password先获取token</p>
+      <p>示例：</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>Delete Meta</td>
+          <td>xxxx-xxx-xxx</td>
+          <td>zhang_jin</td>
+          <td>123</td>
+          <td>&quot;5.1&quot;,&quot;5.2.6&quot;</td>
+        </tr>
+      </table>
+    <p> </p></td>
+  </tr>
+  <tr>
+    <td><a name="Delete Meta List">Delete Meta List</a></td>
+    <td>严嘉蔚</td>
+    <td>meta_uuid_list, user, passwd, protocol, token=None</td>
+    <td>无</td>
+    <td><p>调用pyweb接口删除一个Meta</p>
+      <p>meta_uuid_list：需要删除的meta uuid列表<br />
+        user：pyweb的用户名<br />
+        passwd：pyweb的密码 <br />
+        protocol：pyweb协议。用法是&quot;5.2.6&quot;或者&quot;5.1&quot;,&quot;5.2.6&quot;<br />
+        token：默认为None，如果给出token则使用token直接调用删除instance接口，如果没有给出token则使用给出的user和password先获取token</p>
+    <p>示例：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>@{meta_list} =</td>
+        <td>Set Variable</td>
+        <td>xxx-xxx-xxx</td>
+        <td>xxx-xxx-xxx</td>
+        <td>xxx-xxx-xxx</td>
+      </tr>
+      <tr>
+        <td>Delete Meta List</td>
+        <td>${meta_list}</td>
+        <td>zhang_jin</td>
+        <td>123</td>
+        <td>&quot;5.1&quot;,&quot;5.2.6&quot;</td>
+        </tr>
+    </table>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Get Instance Uuid From Api Return">Get Instance Uuid From Api Return</a></td>
+    <td>严嘉蔚</td>
+    <td>api_return</td>
+    <td>instance_uuid</td>
+    <td><p>将Pyweb Api Call调用new instance接口返回的信息进行解析获取instance_uuid</p>
+    <p>示例：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${return} =</td>
+        <td>pyweb api call</td>
+        <td>POST</td>
+        <td>/mediawise/contents/${meta_uuid}/instances/distinct/dna/1?md5=123456</td>
+        <td>None</td>
+        <td>{&quot;Content-type&quot;:&quot;application/x-www-form-urlencoded&quot;,&quot;Cookie&quot;: &quot;${token}&quot;}</td>
+      </tr>
+      <tr>
+        <td>${inst_uuid} =</td>
+        <td>get instance uuid from api return</td>
+        <td>${return}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <p>得到结果：<br />
+    ${inst_uuid}的值为    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</p></td>
+  </tr>
+  <tr>
+    <td><a name="Get Meta Uuid From Api Return">Get Meta Uuid From Api Return</a></td>
+    <td>严嘉蔚</td>
+    <td>api_return</td>
+    <td>meta_uuid</td>
+    <td><p>将Pyweb Api Call调用new meta接口返回的信息进行解析获取meta_uuid</p>
+      <p>示例：</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${return} =</td>
+          <td>pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/contents/meta</td>
+          <td>${META_INFO_MOVIE}</td>
+          <td>{&quot;Content-type&quot;:&quot;application/x-www-form-urlencoded&quot;,&quot;Cookie&quot;: &quot;${token}&quot;}</td>
+        </tr>
+        <tr>
+          <td>${meta_uuid} =</td>
+          <td>get meta uuid from api return</td>
+          <td>${return}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <p>得到结果：<br />
+    ${meta_uuid}的值为    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</p></td>
+  </tr>
+  <tr>
+    <td>non live new meta</td>
+    <td>王杰</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Set Pyweb Env</td>
+    <td>严嘉蔚</td>
+    <td>sut_file, host, port, ssl</td>
+    <td>无</td>
+    <td><p>设置pyweb环境<br />
+    目前设置pyweb的端口和sut文件，必须在用例起始前调用，所以建议放在setup中调用</p></td>
+  </tr>
+</table>
+</body>
+</html>

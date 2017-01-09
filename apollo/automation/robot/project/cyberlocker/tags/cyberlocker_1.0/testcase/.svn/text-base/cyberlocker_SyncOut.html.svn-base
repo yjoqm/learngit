@@ -1,0 +1,2427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>cyberlocker SyncOut</title>
+</head>
+<body>
+<h1>cyberlocker SyncOut</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Set syncoutconfig</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_cy566-sync out success">cy566-sync out success</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">sync out测试时先把配置文件中sync的频率改为2</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy566</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedFile a,matchedFileItem b where a.id=b.matchedFile_id and a.uuid='78a4166c-67b9-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online',is_synced='false',retry_count=0,taisan_synced='false',synced_at=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile_trackingMeta set is_synced='false',retry_count=0 ,sync_at=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2min</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where is_synced='true' and matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta where is_synced='true' and matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile where uuid='78a4166c-67b9-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy568-meta stop tracking--not pass">cy568-meta stop tracking--not pass</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">meta停止监测需要修改VT的表，暂不调试</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy568</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedFile a,matchedFileItem b where a.id=b.matchedFile_id and a.uuid='78a4166c-67b9-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update metaExtraInfo set stop_at='2012-12-12' where meta_id=5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set is_synced='false',synced_at=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile_trackingMeta set is_synced='false',sync_at=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where is_synced='false' and matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00002" ${Cyber_Path}logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Retrun Code [ SY00002 ],Return Info [ match level is empty ]!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy569-meta is deleted--not pass">cy569-meta is deleted--not pass</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">需要删除VT的数据，暂不调试</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy569</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=30;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=9,next_active_time='2012-12-12' where matchedFileItem_id=30</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta where is_synced='false' and id=30</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy570-match is existed">cy570-match is existed</a></td>
+<td>[Tags]</td>
+<td>cy570</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online', is_synced='false',retry_count=0,taisan_synced='false',synced_at=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile_trackingMeta set is_synced='false' ,retry_count=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2min</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where is_synced='true' and matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta where is_synced='true' and matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile where uuid='78a4166c-67b9-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy571-interface error---not pass">cy571-interface error---not pass</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">需要停止VT的接口，暂不调试</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy571</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=30;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=9,next_active_time='2012-12-12' where matchedFileItem_id=30</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta where is_synced='false' and id=30</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy684-website is not tracking--not pass">cy684-website is not tracking--not pass</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">需要修改VT的表，暂不调试</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy684</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedFile a,matchedFileItem b where a.id=b.matchedFile_id and a.uuid='79e33986-67af-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from trackingMeta_trackingWebsite where trackingMeta_id=1326 and trackingWebsite_id=46;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set is_synced='false',taisan_synced='false',synced_at=0 where matchedFile_id=102;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile_trackingMeta set is_synced='false' where matchedFile_id=102;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2min</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where is_synced='true' and matchedFile_id=102;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta where is_synced='true' and matchedFile_id=102;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>insert into trackingMeta_trackingWebsite(companyid,trackingMeta_id,trackingWebsite_id,priority,created_at,updated_at)values(116,1326,46,'low',now(),now());</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFile where uuid='79e33986-67af-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}=</td>
+<td>Execute Command</td>
+<td>bash /data/cyberlocker/cyberlocker/bin/service.sh restart</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy685-unknown not need syncout">cy685-unknown not need syncout</a></td>
+<td>[Tags]</td>
+<td>cy685</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFileItem where status='unknown' and is_synced='true';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy686-initialize not need syncout">cy686-initialize not need syncout</a></td>
+<td>[Tags]</td>
+<td>cy686</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFileItem where status='initialize' and is_synced='true';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy687-need confirm not need syncout">cy687-need confirm not need syncout</a></td>
+<td>[Tags]</td>
+<td>cy687</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFileItem a,matchedFile_trackingMeta b where a.status='online' and a.is_synced='true' and b.need_confirm='true' and a.matchedFile_id=b.matchedFile_id;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy563-add a matchedFileItem">cy563-add a matchedFileItem</a></td>
+<td>[Tags]</td>
+<td>cy563</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedFile a,matchedFileItem b where a.id=b.matchedFile_id and a.uuid='78a4166c-67b9-11e3-a635-fa163e4349ff';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online',is_synced='false',retry_count=0,taisan_synced='false',synced_at=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile_trackingMeta set is_synced='false',retry_count=0 ,sync_at=0 where matchedFile_id=112;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2min</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>insert into matchedFileItem (matchedFile_id,trackingWebsite_id,key_id,download_url,download_url_md5,status,file_size,file_name,is_synced)values(112,25,'dateiT8g64nHkPqaaa','http://netload.in/dateiT8g64nHkPqaaa.htm',md5('http://netload.in/dateiT8g64nHkPqaaa.htm'),'online',11120034,'testadditem','false');</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where clip_url='http://netload.in/dateiT8g64nHkPqaaa.htm' and file_name='testadditem';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>清理数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from matchedFileItem where download_url='http://netload.in/dateiT8g64nHkPqaaa.htm'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from matchedFileItem where clip_url='http://netload.in/dateiT8g64nHkPqaaa.htm';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy689-delete a matchedFileItem--F">cy689-delete a matchedFileItem--F</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">cyberlocker后台删除匹配，不会同步到VT前台，需要前台自己删除</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy689</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute sql string</td>
+<td>select id from matchedFileItem where download_url='http://rapidshare.com/files/12285940626/Transformers.Revenge.of.the.Fallen.720p.BluRay.x264-HUBRiS_tehPARADOX.COM.part11.rar';</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from workingRefreshTask where matchedFileItem_id=${output[0][0]};</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from matchedFileItem where download_url='http://rapidshare.com/files/12285940626/Transformers.Revenge.of.the.Fallen.720p.BluRay.x264-HUBRiS_tehPARADOX.COM.part11.rar';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where clip_url='http://rapidshare.com/files/12285940626/Transformers.Revenge.of.the.Fallen.720p.BluRay.x264-HUBRiS_tehPARADOX.COM.part11.rar';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy690-update matchedFileItem's cliptitle--not pass">cy690-update matchedFileItem's cliptitle--not pass</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">cliptitle修改不会同步</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy690</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile set clip_title='testupdatecliptitle' where id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online',is_synced='false',synced_at=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile where uuid='78a4166c-67b9-11e3-a635-fa163e4349ff' and clip_title='testupdatecliptitle'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFile set clip_title='clips927' where id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy691-update matchedFileItem's filesize">cy691-update matchedFileItem's filesize</a></td>
+<td>[Tags]</td>
+<td>cy691</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online',file_size=120001200,is_synced='false',synced_at=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}</td>
+<td>Query</td>
+<td>select file_size from matchedFileItem where clip_url='http://freakshare.com/files/5520wquc/clips927.part2.rar.html'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log</td>
+<td>${result[0][0]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Strings</td>
+<td>${result[0][0]}</td>
+<td>120001200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Recover cy691 data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy692-update matchedFileItem's status">cy692-update matchedFileItem's status</a></td>
+<td>[Tags]</td>
+<td>cy692</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='offline',is_synced='false',synced_at=0,takeoff_time='2014-01-21 00:00:00' where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where clip_url='http://freakshare.com/files/5520wquc/clips927.part2.rar.html' and takeoff_type='offline'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online',is_synced='false',synced_at=0,takeoff_time=0 where matchedFile_id=112</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy572-redlist sync out success">cy572-redlist sync out success</a></td>
+<td>[Tags]</td>
+<td>cy572</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_retry_count=0,vt_synced_at=0 where redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='true' and redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedVideoRedList where clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy573-redlist metauuid not exist">cy573-redlist metauuid not exist</a></td>
+<td>[Tags]</td>
+<td>cy573</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_retry_count=0,vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_retry_count=0,vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and vt_retry_count=13 and redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00006" ${Cyber_Path}/logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Retrun Code [ SY00006 ],Return Info [ this meta_uuid: aa can't get meta ]!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy707-redlist json error">cy707-redlist json error</a></td>
+<td>[Tags]</td>
+<td>cy707</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/details/1623880/Transformers+2+Cam+nl+subs+NLT+Release.html';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.19:8080/VTService/service/addRedListMatches</td>
+<td>data_json={ \ \ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"AddRedListMatchesService", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type": "cyberlocker", \ \ \ \ \ \ \ \ \ \ "match": \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "page_title": "Download Transformers 2 (2009)Cam nl subs NLT-Release (DivX) torrent - BTScene Torrents", \ \ \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/details/1623880/Transformers+2+Cam+nl+subs+NLT+Release.html">http://www.movie4k.to/details/1623880/Transformers+2+Cam+nl+subs+NLT+Release.html</a>", \ \ \ \ \ \ \ \ "meta_uuid": "6a5ed81e-addf-11e3-b00f-74d43546cff3", \ \ \ \ \ \ \ "key_id": "c57b700e2ddfa2ee21de1aa6ed86495e", \ \ \ \ \ \ \ \ "website_domain": "movie4k.to", \ \ \ \ \ \ \ \ "match_level": "fake_fp", \ \ \ \ \ \ \ \ \ "match_score": 70, \ \ \ \ \ \ \ \ "search_engine_domain": "google.com" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log</td>
+<td>${response}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${response}</td>
+<td>"return_code":"SY00001"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy708-redlist website not exist">cy708-redlist website not exist</a></td>
+<td>[Tags]</td>
+<td>cy708</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redList set website_name='aaa',website_domain='aaa' where id=7;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and vt_retry_count=13 and redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00005" ${Cyber_Path}/logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Retrun Code [ SY00005 ],Return Info [ this website is not exist ]!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Recover cy708 data</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy709-redlist match already exist">cy709-redlist match already exist</a></td>
+<td>[Tags]</td>
+<td>cy709</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and vt_retry_count=20 and redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00009" ${Cyber_Path}/logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>this match is exist and all contents is same</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy710-redlist meta not tracking--F">cy710-redlist meta not tracking--F</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">需要修改VT的表，需要重启</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy710</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>Execute sql string</td>
+<td>update trackingMeta set stop_at='2013-12-12' where meta_uuid='6a5ed81e-addf-11e3-b00f-74d43546cff3'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update metaExtraInfo set stop_at='2012-12-12' where meta_id=426</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and vt_retry_count=15 and redMatch_id=42</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00008" ${Cyber_Path}/logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>this meta_uuid: 6a5ed81e-addf-11e3-b00f-74d43546cff3 is not tracking</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy711-redlist match level is null">cy711-redlist match level is null</a></td>
+<td>[Tags]</td>
+<td>cy711</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set match_level='',vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set match_level='fake_fp';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00002" ${Cyber_Path}logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Retrun Code [ SY00002 ],Return Info [ match level is empty ]!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy712-redlist website not in redlist">cy712-redlist website not in redlist</a></td>
+<td>[Tags]</td>
+<td>cy712</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Clear log</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_trackingMeta set vt_synced='false',vt_synced_at=0,vt_retry_count=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update redMatch_searchEngine set vt_synced='false',vt_synced_at=0 where redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to trackerDB</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete a.*,b.* from matchedVideoRedList a,matchedVideoRedList_searchEngine b where a.id=b.matchedVideoRedList_id and a.clip_url='http://www.movie4k.to/movies.php?list=cast&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Chris+Sanders&amp;search=&amp;securekey=sk1022797702';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from companySiteRedList where company_id=2 and trackingWebsite_id=60010</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch_trackingMeta where vt_synced='false' and vt_retry_count=16 and redMatch_id=42;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login in</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}</td>
+<td>Execute Command</td>
+<td>grep "SY00017" ${Cyber_Path}logs/cyberlocker.log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Contain</td>
+<td>${output}</td>
+<td>Retrun Code [ SY00017 ],Return Info [ this website is not in redList ]!</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close Connection</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Recover cy712 data</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Vdnagen Resource</title>
+</head>
+<body>
+<h1>Vdnagen Resource</h1>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${SOURCE_FILE_PATH}</td>
+<td>/root/data/source_file</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PYWEB_SUT_FILE}</td>
+<td>project/vddb/trunk/sut/pyweb.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_INGEST_HOST}</td>
+<td>192.168.1.14</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_INGEST_PORT}</td>
+<td>88</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSL}</td>
+<td>http</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_INGEST_USER}</td>
+<td>zhang_jin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_INGEST_PASSWD}</td>
+<td>123</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DNA_FILE_PATH}</td>
+<td>/opt/vobiledata/dna/dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_HOST}</td>
+<td>192.168.1.37</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_USER}</td>
+<td>vdna4x</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PASSWD}</td>
+<td>123456</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_NAME}</td>
+<td>mddb_local</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${GENERATOR_FAR_PATH}</td>
+<td>/root/data/generator_far</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_SCREENSHOT_PATH}</td>
+<td>/opt/vobiledata/screenshot</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${GENERATOR_FAR_PATH_WINDOWS}</td>
+<td>c:\\root\\data\\generator_far</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SOURCE_FILE_PATH_WINDOWS}</td>
+<td>c:\\root\\data\\source_file</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_IP_ADDRESS}</td>
+<td>192.168.10.127</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VIDEO_NAME}</td>
+<td>h264_mp3_640x480_5s.avi</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${AUDIO_NAME}</td>
+<td>audio_aac.caf</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${IMAGE_NAME}</td>
+<td>image_gif_128x128.gif</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

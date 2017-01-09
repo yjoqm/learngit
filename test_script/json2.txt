@@ -1,0 +1,49 @@
+[
+    {
+        "vendor_id": 2,
+        "api_key": "7b94d8be4cee87d3458c28a1e5f96a83",
+        "nihao": [
+            "c4fa3e22362f301c28692d9cc4e3c374",
+            "459656c5e042f41f685cbac619557c4b",
+            "18d6a1cb63286591efe9d311fec37074",
+            "68d75444c95441b5a51755d844969381",
+            "9f7dcb0f50137eba29b45a3d296cedb9"
+        ],
+        "update_time": 1471314989
+    },
+    {
+        "vendor_id": 4,
+        "api_key": "20f2c50e4c3ac8f321e6556049581ff9",
+        "apps": [
+            "1a795cd91f8ed05899e4ae312caf3d15",
+            "25d1671f39acd1759c83b83cb4960380"
+        ],
+        "update_time": 1472189351
+    },
+    {
+        "nihao": {
+            "am": 1,
+            "b": 2
+        },
+        "api_key": "807f7a4f7d2991f6221b675aa2db9d96",
+        "apps": [
+            "42375cef2686519f2f5dc64a35255041"
+        ],
+        "update_time": 1472189361
+    },
+    {
+        "vendor_id": 6,
+        "api_key": "081e5d4c39e626507f8957cff5d85f4e",
+        "apps": [
+            "66c1988ed9974fab53f0854127f6fee6",
+            "9ede2f452b21de52483a5232e60058dc",
+            "4836443494044be9a5473640d94988d3",
+            "5671f7d8e9aceba4344a40a5be46593f",
+            "14c7832bf98f3b8b0ed4379ecb4a1718",
+            "57c27e37b7c8a0ea68b3304802018a8f",
+            "81a526d357b93b1a6d4688c300a39b5b",
+            "b644a2767f74dc908f867521266f8bf9"
+        ],
+        "update_time": 1472210167
+    }
+]

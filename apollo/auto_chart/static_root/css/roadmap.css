@@ -1,0 +1,42 @@
+@-webkit-keyframes greenPulse {
+  from { background-color: #749a02; -moz-box-shadow: 0 0 9px #333; }
+  50% { background-color: #91bd09; -moz-box-shadow: 0 0 18px #91bd09; }
+  to { background-color: #749a02; -moz-box-shadow: 0 0 9px #333; }
+}
+
+.green.button {
+  -webkit-animation-name: greenPulse;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.deving {
+  background: #91bd09;
+  color: yellow;
+  width:60%;
+  height:100%;
+}
+
+.new {
+  background: red;
+  color: white;
+  width:60%;
+  height:100%;
+}
+
+.button {
+  font-size:20px;
+}
+
+h1 {
+    text-align:center;
+    font-size:1cm;
+}
+
+th {
+    text-align:center;
+}
+
+.table_call {
+    text-align:center;
+}

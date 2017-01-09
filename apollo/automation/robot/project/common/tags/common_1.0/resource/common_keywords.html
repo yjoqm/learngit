@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Common Keywords</title>
+</head>
+<body>
+<h1>Common Keywords</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${DEFAULT_MYSQL_PORT}</td>
+<td>3306</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ACCOUNT_NAME}</td>
+<td>test</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Execute Sql">Execute Sql</a></td>
+<td>[Arguments]</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_name}</td>
+<td>${sql_string}</td>
+<td>${is_query}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql connect</td>
+<td>${db_name}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_host}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Run Keyword If</td>
+<td>'${is_query}' == 'true'</td>
+<td>Query</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${sql_string}</td>
+<td>ELSE</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>none</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>'${is_query}' != 'true'</td>
+<td>Execute Sql String</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect From Database</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check data from db">check data from db</a></td>
+<td>[Arguments]</td>
+<td>${key}</td>
+<td>${e_result}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_name}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${r} =</td>
+<td>parse data from db</td>
+<td>${return}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${a_result} =</td>
+<td>Call Method</td>
+<td>${r}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${key}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${e_result}</td>
+<td>${a_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_mysql connect">mysql connect</a></td>
+<td>[Arguments]</td>
+<td>${dbname}</td>
+<td>${name}</td>
+<td>${passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${host}</td>
+<td>${dbport}=${DEFAULT_MYSQL_PORT}</td>
+<td>${charset}=utf8</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Connect To Database</td>
+<td>MySQLdb</td>
+<td>${dbname}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${name}</td>
+<td>${passwd}</td>
+<td>${host}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dbport}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Connect To Database Using Custom Params</td>
+<td>MySQLdb</td>
+<td>host="${host}", user="${name}", passwd="${passwd}", db="${dbname}",charset='${charset}'</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

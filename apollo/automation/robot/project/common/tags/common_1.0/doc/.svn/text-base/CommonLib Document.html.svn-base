@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>CommonLib 关键字</title>
+</head>
+
+<body>
+<h1>CommonLib 关键字</h1>
+<h2 id="Shortcuts">Shortcuts</h2>
+<p><a href="#Deep Copy">Deep Copy</a>, <a href="#Get Json Element">Get Json Element</a>, <a href="#Get Sorted File List">Get Sorted File List</a>, <a href="#Json Dumps">Json Dumps</a>, <a href="#Json Loads">Json Loads</a>, <a href="#Log Warn">Log Warn</a>, <a href="#Print Type">Print Type</a>, <a href="#Remote Run Cmd">Remote Run Cmd</a>, </p>
+<table width="100%" border="1">
+  <tr>
+    <td width="11%" align="center">关键字</td>
+    <td width="6%" align="center">作者</td>
+    <td width="8%" align="center">参数</td>
+    <td width="10%" align="center">返回值</td>
+    <td width="65%" align="center">说明和示例</td>
+  </tr>
+  <tr>
+    <td>cat_cmd</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>convert_to_dict</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="Deep Copy">Deep Copy</a></td>
+    <td>严嘉蔚</td>
+    <td>src</td>
+    <td>dst</td>
+    <td><p>将src的对象完整拷贝一份到dst并返回dst</p>
+    <p>示例：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${aaa} =</td>
+        <td>Catenate</td>
+        <td>this is string</td>
+      </tr>
+      <tr>
+        <td>${bbb} =</td>
+        <td>Deep Copy</td>
+        <td>${aaa}</td>
+      </tr>
+      <tr>
+        <td>Log Many</td>
+        <td>${bbb}</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br />
+    输出this is string</td>
+  </tr>
+  <tr>
+    <td><a name="Get Json Element">Get Json Element</a></td>
+    <td>严嘉蔚</td>
+    <td>body, element_name</td>
+    <td>value</td>
+    <td><p>或者json格式字典或者字符串某个key的value值，如果value是json格式可通过“.”深入访问</p>
+    <p>示例：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${a} =</td>
+        <td>Get Json Element</td>
+        <td><p>{&quot;a&quot; : &quot;test a&quot;,&quot;b&quot; : &quot;test b&quot;}
+        </p></td>
+        <td>a</td>
+      </tr>
+    </table>
+    <p>则${a}为test a</p>
+    <p>示例2：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${b} =</td>
+        <td>Get Json Element</td>
+        <td>{&quot;a&quot; :{&quot;c&quot; : &quot;test c&quot;},&quot;b&quot; : &quot;test b&quot;} </td>
+        <td>a.c</td>
+      </tr>
+    </table>
+    <p>则${b}为test c</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Get Sorted File List">Get Sorted File List</a></td>
+    <td>严嘉蔚</td>
+    <td>file_dir, extra=&quot;&quot;, fun_name=&quot;&quot;</td>
+    <td>file_list</td>
+    <td>获取一个经过排序的文件列表<br />
+    file_dir：文件夹路径<br />  
+        extra：后缀，非该后缀的文件将不被写入在列表中，默认为空，如果为空则取出所有文件<br />        
+    fun_name：排序方法名。默认为空，为空则使用默认排序方法。<br />
+    示例；<br />
+    <table width="100%" border="1">
+      <tr>
+        <td>${idna_list} =</td>
+        <td>Get Sorted File List</td>
+        <td>/xxxx/xxxx/xxxx</td>
+        <td>idna</td>
+        <td>idna_sort_func</td>
+      </tr>
+    </table>
+    <p><br />
+      输出：<br />
+      ['/xxx/xxx/frame_idna_66.idna', '/xxx/xxx/frame_idna_267.idna', '/xxx/xxx/frame_idna_500.idna', '/xxx/xxx/frame_idna_767.idna', '/xxx/xxx/frame_idna_1001.idna', '/xxx/xxx/frame_idna_1268.idna']</p>
+    <p>排序方法说明：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td align="center">方法名</td>
+        <td align="center">说明</td>
+      </tr>
+      <tr>
+        <td>idna_sort_func</td>
+        <td>该排序方法适用于farsplit解压出来的screeshot和idna的命名规则，规则为*_123.idna。该方法通过比较最后一个下划线后的数字大小，从小到大进行排序，如果文件名中不含下划线，或者最后一个下划线后的字符不为数字则会出错</td>
+      </tr>
+    </table>
+    <p><br />
+    </p></td>
+  </tr>
+  <tr>
+    <td>get_uuid</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="Json Dumps">Json Dumps</a></td>
+    <td>严嘉蔚</td>
+    <td>dict</td>
+    <td>string</td>
+    <td>调用json.dumps将字典类型的变量转成字符串</td>
+  </tr>
+  <tr>
+    <td><a name="Json Loads">Json Loads</a></td>
+    <td>严嘉蔚</td>
+    <td>string</td>
+    <td>dict</td>
+    <td>调用json.loads将json格式的字符串转正字典类型</td>
+  </tr>
+  <tr>
+    <td><a name="Log Warn">Log Warn</a></td>
+    <td>严嘉蔚</td>
+    <td>string</td>
+    <td>无</td>
+    <td>打印string为warn级别的信息</td>
+  </tr>
+  <tr>
+    <td>parse_data_from_db</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="23"><a name="Print Type">Print Type</a></td>
+    <td>严嘉蔚</td>
+    <td>object</td>
+    <td>无</td>
+    <td><p>打印以warn级别打印object的类型</p></td>
+  </tr>
+  <tr>
+    <td><a name="Remote Run Cmd">Remote Run Cmd</a></td>
+    <td>严嘉蔚</td>
+    <td>host, port, cmd, stdout = &quot;true&quot;, stderr = &quot;false&quot;</td>
+    <td>命令执行时的标准输出</td>
+    <td><p>远程执行后台命令。需要在目标机上部署配套的server脚本。<br />
+      host：目标机的ip地址<br />
+      port：目标机的端口号<br />
+      cmd：需要执行命令行<br />
+      stdout：是否返回打印在stdout中的内容，默认为true<br />
+      stderr：是否返回打印在stderr中的内容，默认为false</p>
+      <p>如果strout和stderr都为true的话stderr的内容跟在stdout后面</p>
+      <p>示例：</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${aaa} =</td>
+          <td>Remote Run Cmd</td>
+          <td>192.168.1.19</td>
+          <td>9999</td>
+          <td>ls -l /home</td>
+        </tr>
+        <tr>
+          <td>Log Many</td>
+          <td>${aaa}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <p>输出：</p>
+      <p>total 36<br />
+        drwxr-xr-x 6 cyberlocker cyberlocker  4096 Mar 24 11:52 cyberlocker<br />
+        drwx------ 2 root        root        16384 Jan 20 05:59 lost+found<br />
+        drwxr-xr-x 4 vdash       vdash        4096 Mar  4 10:41 vdash<br />
+        drwxr-xr-x 8 vdna        vdna         4096 Mar 20 12:30 vdna<br />
+        drwxr-xr-x 2 vobile      vobile       4096 Jan 20 06:01 vobile<br />
+      drwxr-xr-x 5 vt          vt           4096 Feb 11 11:24 vt</p>
+      <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td>run_cmd</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>run_different_cmds</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>run_same_cmds</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,3407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Vtservice Testcase</title>
+</head>
+<body>
+<h1>Vtservice Testcase</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set vtservice interface</td>
+<td>${ADDMATCH_HOST}</td>
+<td>${PORT_HOST}</td>
+<td>${SSL}</td>
+</tr>
+<tr>
+<td class="name">...</td>
+<td>${SCRIPT_ROOT}/${VTSERVICE_SUT_FILE}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/VTServiceLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/vtservice_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/vtservice_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_test">test</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 180, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "c4c4b0c2-05f7-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule205_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 40, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 80, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "c4c4b0c2-05f7-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule205_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "c467dd70-05f7-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 80, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>c4c4b0c2-05f7-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>c4c4b0c2-05f7-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"sample_offset":107,"match_video_duration": 180,"video_score": 99,"reference_offset": 7017,"instance_title": "Auto_Rule205_Movie","match_audio_duration": 40,"audio_score": 80,"meta_uuid": "c467dd70-05f7-11e1-9808-080027cf46d6"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 80}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-10188">AddMatch-10188</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"author": "yyamfamcullen","sample_offset":107,"match_video_duration": 181,"video_score": 99,"reference_offset": 7017,"instance_title": "08 Goodnight","match_audio_duration": 182,"audio_score": 99,"meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 38}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-9823">AddMatch-9823</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fn" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{pending_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>0aeef6dc-046f-11e1-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>success.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoPending where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoPending where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"author": "yyamfamcullen","sample_offset":107,"match_video_duration": 181,"video_score": 99,"reference_offset": 7017,"instance_title": "08 Goodnight","match_audio_duration": 182,"audio_score": 99,"meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoPendingCollateral where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 38}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-9824">AddMatch-9824</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 29, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 80, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b8152732-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule303_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 29, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 80, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b8152732-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule303_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "b7d29ebc-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 100, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fn" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2224, Rule303_Movie,Video+Audio匹配，满足rule303,最终执行rule303", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{pending_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>b7d29ebc-fede-11e0-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>success.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoPending where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b8152732-fede-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b8152732-fede-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9824-1</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoPending where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9824-2</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoPendingCollateral where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-9826">AddMatch-9826</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 29, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 80, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b8152732-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule303_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 29, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 80, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b8152732-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule303_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "b7d29ebc-fede-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 100, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2224, Rule303_Movie,Video+Audio匹配，满足rule303,最终执行rule303", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoConfirmWrong where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b8152732-fede-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoConfirmWrongDetail where matchedVideo_id in (select id from matchedVideoConfirmWrong where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b8152732-fede-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoConfirmWrongDetail where matchedVideo_id in (select id from matchedVideoConfirmWrong where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9824-1</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoConfirmWrong where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9824-2</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoConfirmWrongCollateral where matchedVideo_id in (select id from matchedVideoConfirmWrong where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideoConfirmWrong where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-9827">AddMatch-9827</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 59, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 90, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b2c4d9ae-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule102_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 59, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 86, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b2c4d9ae-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule102_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "b28d8990-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 100, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fn" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{pending_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>b28d8990-feec-11e0-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>success.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoPending where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b2c4d9ae-feec-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b2c4d9ae-feec-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9826-1</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoPending where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9826-2</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoPendingCollateral where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-9890">AddMatch-9890</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 59, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 90, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b2c4d9ae-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule102_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 59, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 86, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "b2c4d9ae-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule102_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "b28d8990-feec-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 100, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{pending_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>b28d8990-feec-11e0-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>success.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoPending where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b2c4d9ae-feec-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>b2c4d9ae-feec-11e0-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9826-1</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoPending where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9826-2</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoPendingCollateral where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideoPending where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-10189">AddMatch-10189</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube1", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00005</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-10190">AddMatch-10190</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d4", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00003</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{failed_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>SY00006</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>0aeef6dc-046f-11e1-9808-080027cf46d4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>meta uuid: 0aeef6dc-046f-11e1-9808-080027cf46d4 is not exists.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-10191">AddMatch-10191</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "3124s235ewes665423", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "66ba0f86-fed1-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule201_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "66ba0f86-fed1-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule201_Movie" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "667339ee-fed1-11e0-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00003</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{failed_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>SY00008</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>667339ee-fed1-11e0-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>meta uuid: 667339ee-fed1-11e0-9808-080027cf46d6 is not tracking.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-10192">AddMatch-10192</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "3124s235saewes665423", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 35, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "22c22a5e-051e-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule203_TV" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 35, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "22c22a5e-051e-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Auto_Rule203_TV" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "2262b934-051e-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00003</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{failed_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>SY00008</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>2262b934-051e-11e1-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>meta uuid: 2262b934-051e-11e1-9808-080027cf46d6 is not tracking.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12057">AddMatch-12057</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahj", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_t～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahjs=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_t～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahjs=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahj" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahj" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtr&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtr&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahjen">http://www.youtube.com/user/y0～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahjen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "～！@#￥%……&amp;*（）——+|：“《》？，。/；‘【】$^*:&lt;&gt;?大声叫道32/.,;'dsahj", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12057-1</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 38}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12058">AddMatch-12058</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00002</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>123</td>
+<td>tracker5</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video';</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>123</td>
+<td>tracker5</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>123</td>
+<td>tracker5</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{"author": "","sample_offset":107,"match_video_duration": 181,"video_score": 99,"reference_offset": 7017,"instance_title": "08 Goodnight","match_audio_duration": 182,"audio_score": 99,"meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6"}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{"text_rating_score": 38}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12059">AddMatch-12059</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "3124s235ewes665423", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00003</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 0 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{failed_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>SY00009</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>0aeef6dc-046f-11e1-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>matched is exists. meta uuid: 0aeef6dc-046f-11e1-9808-080027cf46d6 keyid: 3124s235ewes665423 website: youtube. add 0 adUrls, 0 linkUrls, 0 searchEngineUrls. \</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12060">AddMatch-12060</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"author": "yyamfamcullen","sample_offset":107,"match_video_duration": 181,"video_score": 99,"reference_offset": 7017,"instance_title": "08 Goodnight","match_audio_duration": 182,"audio_score": 99,"meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 38}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12061">AddMatch-12061</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.234", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00099</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>unknown exception</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12063">AddMatch-12063</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.234", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>SY00099</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>unknown exception</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12062">AddMatch-12062</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 100, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 100, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 81, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "002c8b72-5930-11e1-a862-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 1000, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Nightwish-Feel" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 100, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 100, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 81, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "002c8b72-5930-11e1-a862-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 1000, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "Nightwish-Feel" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video' and instance_uuid='0b13eb86-046f-11e1-9808-080027cf46d6';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio' and instance_uuid='0b13eb86-046f-11e1-9808-080027cf46d6';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>002c8b72-5930-11e1-a862-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video' and instance_uuid='002c8b72-5930-11e1-a862-080027cf46d6';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>002c8b72-5930-11e1-a862-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio' and instance_uuid='002c8b72-5930-11e1-a862-080027cf46d6';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12062-1</td>
+<td>select clip_offset,matched_duration,score,meta_offset from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Video' and instance_uuid='002c8b72-5930-11e1-a862-080027cf46d6';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12062-1</td>
+<td>select clip_offset,matched_duration,score,meta_offset from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio' and instance_uuid='002c8b72-5930-11e1-a862-080027cf46d6';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideo ugc data</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,matched_audio_duration,score_video,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"author": "yyamfamcullen","sample_offset":107,"match_video_duration": 181,"video_score": 99,"reference_offset": 7017,"instance_title": "08 Goodnight","match_audio_duration": 182,"audio_score": 99,"meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check matchedvideocollateral ugc data</td>
+<td>select title_similarity,matched_media_domain,matched_storage_date,matched_media_suffix from matchedVideoCollateral where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}");</td>
+<td>${DEFAULT_DATA}</td>
+<td>{"text_rating_score": 38}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check websitename data</td>
+<td>select website_name \ from mddb.trackingWebsite where id in (select trackingWebsite_id from matchedVideo where key_id="${keyid}");</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12064">AddMatch-12064</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12065-video">AddMatch-12065-video</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "video", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 181, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN</td>
+<td>@{pending_metas}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${index_returncode} =</td>
+<td>get json element</td>
+<td>${index}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>returnCode</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>should be equal</td>
+<td>${index_returncode}</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_uuid} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_uuid}</td>
+<td>0aeef6dc-046f-11e1-9808-080027cf46d6</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_extraInfo} =</td>
+<td>get json element</td>
+<td>${index}</td>
+<td>extraInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${index_extraInfo}</td>
+<td>success.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideoPending where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoPendingDetail where matchedVideo_id in (select id from matchedVideoPending where key_id="${keyid}") and track_type='Video';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12065-video</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_video_duration,score_video,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideoPending where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_AddMatch-12065-audio">AddMatch-12065-audio</a></td>
+<td>${keyid}</td>
+<td>get uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>vts http api call</td>
+<td>POST</td>
+<td>/VTService/service/addMatches</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "author": "yyamfamcullen", \ \ \ \ "keyid": "${keyid}", \ \ \ \ "post_date": "2012-04-18 00:00:00", \ \ \ \ "url": "<a href="http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0">http://www.youtube.com/watch?v=771_txmdapbits=mD0tch?v=771_txmdaythrottle-factor&amp;itag=5&amp;ipbits=throttle-factor&amp;ita5&amp;ipbits=mD0</a>", \ \ \ \ "source_type":"taisan", \ \ \ \ "matches": [ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ "details": [ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "sample_offset": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_type": "audio", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "track_id": 1, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "match_duration": 182, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "length": 107, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "score": 99, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_uuid": "0b13eb86-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "reference_offset": 7017, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "instance_title": "08 Goodnight" \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ \ \ ], \ \ \ \ \ \ \ \ \ \ \ \ "meta_uuid": "0aeef6dc-046f-11e1-9808-080027cf46d6", \ \ \ \ \ \ \ \ \ \ \ \ "text_rating_score": 38, \ \ \ \ \ \ \ \ \ \ \ \ "query_profile" : "less_fp" \ \ \ \ \ \ \ \ } \ \ \ \ ], \ \ \ \ "view_count": 45321, \ \ \ \ "download_duration": 225, \ \ \ \ "duration": 225, \ \ \ \ "download_url": "<a href="http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3">http://v6.lscache6.c.youtubehrottle-factor&amp;itag=5&amp;ipbits=mD0tle-factor&amp;itag=5&amp;ipbits=8&amp;burst=40&amp;sver=3</a>", \ \ \ \ "contributor": "taisan", \ \ \ \ "author_url": "<a href="http://www.youtube.com/user/y0cullen">http://www.youtube.com/user/y0cullen</a>", \ \ \ \ "matched_media_domain": "192.168.1.23", \ \ \ \ "matched_storage_date": "2012-02-25", \ \ \ \ "film_size": 3584724, \ \ \ \ "title": "CaseNo:2334, Audio+Video匹配，满足MetaDuration &gt; 900 &amp;&amp; (MatchDuration &gt; 180 || MR &gt; 5) &amp;&amp; AS == 99 &amp;&amp; VS == 99条件，执行rule201规则", \ \ \ \ "website": "youtube", \ \ \ \ "matched_storage_domain": "192.168.1.23", \ \ \ \ "matched_media_suffix": "flv", \ \ \ \ "is_snapshot_generated": true }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${retruncode} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.return_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${retruncode}</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${extrainfo} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.extra_info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${extrainfo}</td>
+<td>add 1 matches.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${failed_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.failed_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${failed_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${pending_metas} =</td>
+<td>get json element</td>
+<td>${return}</td>
+<td>body.pending_metas</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>'${pending_metas}'</td>
+<td>'[]'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>key_id</td>
+<td>${keyid}</td>
+<td>select key_id from matchedVideo \ where key_id="${keyid}";</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check data from db</td>
+<td>instance_uuid</td>
+<td>0b13eb86-046f-11e1-9808-080027cf46d6</td>
+<td>select instance_uuid from matchedVideoDetail where matchedVideo_id in (select id from matchedVideo where key_id="${keyid}") and track_type='Audio';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>192.168.1.212</td>
+<td>abc</td>
+<td>123</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>tracker5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12065-audio</td>
+<td>select poster,post_date,clip_url,contributor,clip_offset,matched_audio_duration,score_audio,meta_offset,instance_title,meta_uuid,view_count,clip_duration,download_url,posterID_url,clip_size,clip_title,matched_storage_domain,is_snapshot_generated from matchedVideo where key_id="${keyid}";</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+</table>
+</body>
+</html>

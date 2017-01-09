@@ -1,0 +1,77 @@
+10
+
+dir
+5915
+http://192.168.10.10/svn/QA/auto_test/apollo/auto_chart
+http://192.168.10.10/svn/QA
+
+
+
+2014-05-26T10:32:32.647643Z
+5703
+yan_jiawei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+79b6836a-105b-4f17-8112-b8533a6536cf
+
+templates
+dir
+
+manage.py
+file
+
+
+
+
+2014-09-04T02:53:01.976611Z
+8427d763ca1e71ce24d6eacfeb692c1c
+2014-05-26T10:32:32.647643Z
+5703
+yan_jiawei
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+253
+
+static
+dir
+
+auto_app
+dir
+
+auto_chart
+dir
+
+static_root
+dir
+

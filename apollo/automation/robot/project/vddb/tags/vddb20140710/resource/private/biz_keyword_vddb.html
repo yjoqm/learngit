@@ -1,0 +1,806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Biz Keyword Vddb</title>
+</head>
+<body>
+<h1>Biz Keyword Vddb</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">vddb使用的一些关键字</td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../vdnagen/trunk/testlib/VdnagenLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_assert ingest result">assert ingest result</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td>${dna_type}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">验证入库结果</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check ingest testdata result</td>
+<td>${VDDB_CENTRAL_DBHOST}</td>
+<td>${VDDB_CENTRAL_DBUSERNAME}</td>
+<td>${VDDB_CENTRAL_DBPASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_DB_MDDB}</td>
+<td>${meta_uuid}</td>
+<td>${dna_type}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_assert many result">assert many result</a></td>
+<td>[Arguments]</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+<td>${verify_type}=new</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{meta_uuid_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">多个dna入库，验证查询多个matchs结果</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_list} =</td>
+<td>parse vdna query result</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${verify_type}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check vdna query result list</td>
+<td>${VDDB_CENTRAL_DBHOST}</td>
+<td>${VDDB_CENTRAL_DBUSERNAME}</td>
+<td>${VDDB_CENTRAL_DBPASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_DBNAME}</td>
+<td>${result_list}</td>
+<td>${meta_uuid_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_assert query result">assert query result</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${verify_type}=new</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">一个dna入库，验证一个meta对应的返回match结果</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_list} =</td>
+<td>parse vdna query result</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${verify_type}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check vdna query result</td>
+<td>${VDDB_CENTRAL_DBHOST}</td>
+<td>${VDDB_CENTRAL_DBUSERNAME}</td>
+<td>${VDDB_CENTRAL_DBPASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_DB_MDDB}</td>
+<td>${result_list}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_insert_query_assert">insert_query_assert</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${dna_type}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${profile}=Common</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">模板：\n<br>
+vdna_query 5.8.1.0 version\n<br>
+入库-&gt;查询-&gt;校验</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:入库dna</td>
+<td>#expect:获取到 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>start_ingest</td>
+<td>${dna_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验入库</td>
+<td>#expect:校验数据库 meta/mediaContentInstance,videoInstanceTrack/audioInstanceTrack存在一条对应的记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>assert ingest result</td>
+<td>${meta_uuid}</td>
+<td>${dna_type}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:dna 查询</td>
+<td>#expect:返回xml 格式 结果</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${query_result}=</td>
+<td>start_query</td>
+<td>${dna_file}</td>
+<td>${profile}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验查询结果</td>
+<td>#expect:match size与预期的值一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>assert query result</td>
+<td>${meta_uuid}</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_insert_query_assert_for_old_version">insert_query_assert_for_old_version</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${dna_type}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${profile}=Common</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">模板：\n<br>
+vdna_query 5.7.0.0 version\n<br>
+入库-&gt;查询-&gt;校验</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:入库dna</td>
+<td>#expect:获取到 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>start_ingest</td>
+<td>${dna_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验入库</td>
+<td>#expect:校验数据库 meta/mediaContentInstance,videoInstanceTrack/audioInstanceTrack存在一条对应的记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>assert ingest result</td>
+<td>${meta_uuid}</td>
+<td>${dna_type}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:dna 查询</td>
+<td>#expect:返回xml 格式 结果</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${query_result}=</td>
+<td>start_v5700_query</td>
+<td>${dna_file}</td>
+<td>${profile}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验查询结果</td>
+<td>#expect:match size与预期的值一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>assert query result</td>
+<td>${meta_uuid}</td>
+<td>${query_result}</td>
+<td>${match_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>old</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_start_ingest">start_ingest</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">\#action:用vdna_ingest入库一个片子,结果判断\n<br>
+\n<br>
+返回 meta_uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_xml} =</td>
+<td>ingest vddb testdata vdna ingest</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${dna_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorCode} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>item/Status</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorMsg} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>item/ErrorType</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>item/VobileRefID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${ErrorMsg}' != 'Duplicate instance' and '${ErrorMsg}' != 'No error'</td>
+<td>fail</td>
+<td>Ingest ${media} fail:${ErrorMsg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword if</td>
+<td>'${ErrorMsg}'!='Duplicate instance'</td>
+<td>sleep</td>
+<td>85</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_start_ingest_many">start_ingest_many</a></td>
+<td>[Arguments]</td>
+<td>@{dna_file_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">调用接口插入多个dna 文件,返回：meta_uuid_list</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_uuid_list}</td>
+<td>Set test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${dna_file}</td>
+<td>IN</td>
+<td>@{dna_file_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>ingest vddb testdata by vdna ingest</td>
+<td>${VDDB_NODE_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${dna_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Append To List</td>
+<td>${meta_uuid_list}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>85</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>@{meta_uuid_list}</td>
+<td># 返回meta_uuid列表</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_start_query">start_query</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${profile}=Common</td>
+<td># profile:Common/Exact/Highprecision</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">使用vdna query查询该片,返回查询结果</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${host}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_HOST}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${username}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_USER}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${password}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${query_result} =</td>
+<td>vdna query</td>
+<td>${TOOLS_VDNA_QUERY_V5.8.1.0}</td>
+<td>host=${host}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>username=${username}</td>
+<td>password=${password}</td>
+<td>dna_file=${dna_file}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>--profile=${profile}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${query_result}</td>
+<td># 返回查询结果</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_start_v5700_query">start_v5700_query</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td>${profile}=Common</td>
+<td># profile:Common/Exact/Highprecision</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${host}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_HOST}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${username}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_USER}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${password}</td>
+<td>Set Variable</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${query_result} =</td>
+<td>vdna query</td>
+<td>${TOOLS_VDNA_QUERY_V5.7.0.0}</td>
+<td>host=${host}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>username=${username}</td>
+<td>password=${password}</td>
+<td>dna_file=${dna_file}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>--profile=${profile}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${query_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_start_vdnagen">start_vdnagen</a></td>
+<td>[Arguments]</td>
+<td>${dna_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>ingest vddb testdata by vdnagen</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${dna_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>85</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

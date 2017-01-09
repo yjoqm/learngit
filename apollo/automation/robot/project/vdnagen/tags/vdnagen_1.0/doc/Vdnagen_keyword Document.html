@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<h1>Vdnagen 关键字
+</h1>
+<p><a href="#Check Vdnagen Ver">Check Vdnagen Ver</a>, <a href="#Generator Far">Generator Far</a>, <a href="#Generator Far Dna">Generator Far Dna</a>, <a href="#Generator Far For Batch">Generator Far For Batch</a>, <a href="#Generator Far Media">Generator Far Media</a>, <a href="#Ingest Media File">Ingest Media File</a>, <a href="#Parse Dna Status Result">Parse Dna Status Result</a>, <a href="#Parse Ffmpeg Result">Parse Ffmpeg Result</a></p>
+<table width="100%" border="1">
+  <tr>
+    <td width="14%" align="center" valign="middle"><p>关键字</p></td>
+    <td width="2%" align="center" valign="middle"><p>作者</p></td>
+    <td width="22%" align="center" valign="middle"><p>参数</p></td>
+    <td width="14%" align="center" valign="middle"><p>返回值</p></td>
+    <td width="48%" align="center" valign="middle"><p>说明和示例</p></td>
+  </tr>
+  <tr>
+    <td><a name="Check Vdnagen Ver">Check Vdnagen Ver</a></td>
+    <td>王杰</td>
+    <td>无</td>
+    <td>返回一串字符，为VDNAGen -v的输出</td>
+    <td><table width="296" border="1">
+      <tr>
+        <td width="92">${result} =</td>
+        <td width="188">Check Vdnagen Ver</td>
+      </tr>
+    </table>
+      <p>=&gt;</p>
+      <p>${result} = &quot;VDNAGen 3.4.4.0&quot;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Generator Far">Generator Far</a></td>
+    <td>王杰</td>
+    <td>cmd，dir_far，media_file</td>
+    <td>VDNAGen的标准输出，格式为xml</td>
+    <td><p>可以作为VDNAGen中的任何Generator使用，指定目录结构，具体目录结构如下：<br>
+      dir_far目录：CI_SCRIPT_ROOT/data/VDNAGen_data/source_file/<br>
+      media_file目录：CI_SCRIPT_ROOT/data/VDNAGen_data/generator_far/<br>
+      CI_SCRIPT_ROOT：该目录在搭建自动化测试环境时，需要在系统的环境变量中配置      </p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${result} =</td>
+          <td>Generator Far</td>
+          <td>VDNAGen</td>
+          <td>c.flv.far</td>
+          <td>c.flv</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result} =      &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+&lt;receipt&gt;<br>
+&lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+&lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+&lt;/receipt&gt;<br>
+    </p></td>
+  </tr>
+  <tr>
+    <td><a name="Generator Far Dna">Generator Far Dna</a></td>
+    <td>王杰</td>
+    <td>media_file，dir_far</td>
+    <td>VDNAGen的标准输出，格式为xml</td>
+    <td><p>作为VDNAGen命令中的将dna文件生成far文件使用，命令自带-TDNA参数<br>
+      media_file和dir_far参数会自带CI_SCRIPT_ROOT目录，该目录在搭建自动化测试环境时，需要在系统的环境变量中配置<br>
+    </p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${result} =</td>
+          <td>Generator Far</td>
+          <td>data/c.flv.dna</td>
+          <td>far/c.flv.far</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result} =     &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+        &lt;receipt&gt;<br>
+&lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+&lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+&lt;/receipt&gt;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Generator Far For Batch">Generator Far For Batch</a></td>
+    <td>王杰</td>
+    <td>无</td>
+    <td>返回格式为列表，列表里包含一个或多个VDNAGen的标准输出，格式为xml</td>
+    <td><p>批量执行VDNAGen中的将media文件生成far使用，指定目录结果，具体目录结果如下：<br>
+      原文件目录：CI_SCRIPT_ROOT/data/VDNAGen_data/source_file/<br>
+      生成far文件的目录：CI_SCRIPT_ROOT + '/data/VDNAGen_data/generator_far<br>
+      每个far文件的命名为：原文件名 + .far</p>
+      <table width="296" border="1">
+        <tr>
+          <td width="92">${result} =</td>
+          <td width="188">Check Vdnagen Ver</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result} =</p> 
+      [&quot;    &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+&lt;receipt&gt;<br>
+&lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+&lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+&lt;/receipt&gt;&quot;,<br>
+&quot;    &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+&lt;receipt&gt;<br>
+&lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+&lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+&lt;/receipt&gt;&quot;]<br></td>
+  </tr>
+  <tr>
+    <td><a name="Generator Far Media">Generator Far Media</a></td>
+    <td>王杰</td>
+    <td>media_file，dir_far</td>
+    <td>VDNAGen的标准输出，格式为xml</td>
+    <td><p>作为VDNAGen命令中的将media文件生成far文件使用<br>
+    media_file和dir_far参数会自带CI_SCRIPT_ROOT目录，该目录在搭建自动化测试环境时，需要在系统的环境变量中配置</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${result} =</td>
+          <td>Generator Far Media</td>
+          <td>data/c.flv</td>
+          <td>far/c.flv.far</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result} = &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+  &lt;receipt&gt;<br>
+  &lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+  &lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+  &lt;/receipt&gt;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Ingest Media File">Ingest Media File</a></td>
+    <td>王杰</td>
+    <td>host，username，password，media_file</td>
+    <td>VDNAGen的标准输出，格式为xml</td>
+    <td><p>作为VDNAGen命令中的入库操作使用，入库文件为media<br>
+      media_file参数会自带CI_SCRIPT_ROOT目录，该目录在搭建自动化测试环境时，需要在系统的环境变量中配置<br>
+    </p>
+      <table width="100%" border="1">
+        <tr>
+          <td width="65">${result} =</td>
+          <td width="157">Check Vdnagen Ver</td>
+          <td width="103">192.168.1.200</td>
+          <td width="57">test</td>
+          <td width="104">123</td>
+          <td width="220">data/c.flv</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result} = &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;<br>
+        &lt;receipt&gt;<br>
+        &lt;CustomerID&gt;zhang_jin&lt;/CustomerID&gt;<br>
+        &lt;CustomerRefID&gt;&lt;/CustomerRefID&gt;<br>
+        &lt;FilePath&gt;a.f4v&lt;/FilePath&gt;<br>
+        &lt;Timestamp&gt;2014-03-26 07:53:11 UTC&lt;/Timestamp&gt;<br>
+        &lt;ErrorCode&gt;0&lt;/ErrorCode&gt;<br>
+        &lt;ErrorMsg&gt;Success&lt;/ErrorMsg&gt;<br>
+        &lt;MetaInfoError&gt;No error&lt;/MetaInfoError&gt;<br>
+        &lt;VobileRefID&gt;1ac6bbce-b4b9-11e3-9906-0800279652da&lt;/VobileRefID&gt;<br>
+        &lt;/receipt&gt;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Parse Dna Status Result">Parse Dna Status Result</a></td>
+    <td>王杰</td>
+    <td>data</td>
+    <td>以字典的格式输出</td>
+    <td>把dna_status工具解析出来的输出进行一定程度上的解析，然后按字典的格式返回<br>      
+    目前该返回值包含的key有：LENGTH，Total length is，version is，VIDEO<br>    
+    所有的values均为str格式<br></td>
+  </tr>
+  <tr>
+    <td><a name="Parse Ffmpeg Result">Parse Ffmpeg Result</a></td>
+    <td>王杰</td>
+    <td>data</td>
+    <td>以字典的格式输出</td>
+    <td>把ffmpeg工具解析出来的输出进行一定程度上的解析，然后按字典的格式返回<br>      
+    目前该返回值包含的key有：Duration（在Duration以转换成秒，且返回格式为str）<br></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<h2>&nbsp;</h2>
+</body>
+</html>

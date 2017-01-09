@@ -1,0 +1,875 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>instanceInterface</title>
+</head>
+<body>
+<h1>instanceInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>.../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1742:创建nonlive distinct instance">vdna-1742:创建nonlive distinct instance</a></td>
+<td>${md5}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>new_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${md5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,返回码409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${md5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1971:show instance">vdna-1971:show instance</a></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>new_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口:non_live_instance_manager</td>
+<td>#expect:返回http格式response,返回结果：</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>non_live_instance_manager</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>GET</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check instance info with db data</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1978:edit instance">vdna-1978:edit instance</a></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${edit_name}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>new_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口:non_live_instance_manager,edit instance</td>
+<td>#expect:返回http格式response,返回结果：200,且根据instance_uuid查询数据库 instance_name与随机生成的一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>edit_instance</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>PUT</td>
+<td>${edit_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${name} =</td>
+<td>mysql_query</td>
+<td>select instance_name from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${name[0][0]}</td>
+<td>${edit_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1972:delete instance">vdna-1972:delete instance</a></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>new_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口:non_live_instance_manager,delete instance</td>
+<td>#expect:返回http格式response,返回结果：200,且根据instance_uuid查询数据库记录的状态为delete</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>del_instance</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>DELETE</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${is_valid} =</td>
+<td>mysql_query</td>
+<td>select is_valid from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${is_valid[0][0]}</td>
+<td>delete</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1973:创建nonlive instance（可重复）">vdna-1973:创建nonlive instance（可重复）</a></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>new_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 Instance接口:non_live_new_inst</td>
+<td>#expect:返回http response,返回码 303，从返回结果获取 instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>non_live_new_inst</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调整instance_uuid数据库的状态为 valid</td>
+<td>#expect:成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 Instance接口:non_live_new_inst</td>
+<td>#expect:返回http response,返回码 303，从返回结果获取 instance_uuid2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>non_live_new_inst</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid2} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调整instance_uuid数据库的状态为 valid</td>
+<td>#expect:成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid2}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid = '${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>mysql_query</td>
+<td>select count(*) from mediaContentInstance where meta_id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验数据库</td>
+<td>#expect meta_uuid对应2个instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count[0][0]}</td>
+<td>${2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+</table>
+</body>
+</html>

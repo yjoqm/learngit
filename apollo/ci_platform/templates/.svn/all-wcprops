@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/templates
+END
+index.html
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/templates/index.html
+END
+schedule_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/templates/schedule_list.html
+END
+case_result.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/templates/case_result.html
+END
+schedule_result.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/templates/schedule_result.html
+END

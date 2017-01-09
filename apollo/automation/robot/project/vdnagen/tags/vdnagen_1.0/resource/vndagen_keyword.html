@@ -1,0 +1,1449 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Vndagen Keyword</title>
+</head>
+<body>
+<h1>Vndagen Keyword</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../vddb/trunk/testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../tools/remote_run_cmd/remote_run_cmd.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_parse result data">parse result data</a></td>
+<td>[Arguments]</td>
+<td>${return_xml}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorCode} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>ErrorCode</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorMsg} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>ErrorMsg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>VobileRefID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${ErrorCode}</td>
+<td>${ErrorMsg}</td>
+<td>${VobileRefID}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_delete meta for vdnagen">delete meta for vdnagen</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{"protocols": ["5.2.6"], "user": "zhang_jin", "password": "123" }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Get Json Element</td>
+<td>${return_msg}</td>
+<td>header.set-cookie</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/contents/${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return_msg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set pyweb env">set pyweb env</a></td>
+<td>[Arguments]</td>
+<td>${sut_file}</td>
+<td>${host}</td>
+<td>${port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ssl}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb sut file</td>
+<td>${sut_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb host</td>
+<td>${host}</td>
+<td>${port}</td>
+<td>${ssl}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_delete metalist">delete metalist</a></td>
+<td>[Arguments]</td>
+<td>${metalist}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta}</td>
+<td>IN</td>
+<td>@{metalist}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>delete meta for vdnagen</td>
+<td>${meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get dna file path">get dna file path</a></td>
+<td>[Arguments]</td>
+<td>${instance_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path} =</td>
+<td>Catenate</td>
+<td>${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${dna_path}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get instance uuid">get instance uuid</a></td>
+<td>[Arguments]</td>
+<td>${host}</td>
+<td>${user}</td>
+<td>${passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${dbname}</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log Many</td>
+<td>${sql}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>Execute sql</td>
+<td>${host}</td>
+<td>${user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${passwd}</td>
+<td>${dbname}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${result[0][0]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_far keyword">far keyword</a></td>
+<td>[Arguments]</td>
+<td>${return_xml}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${num} =</td>
+<td>Get Element Count</td>
+<td>${return_xml}</td>
+<td>ErrorCode</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorCode}</td>
+<td>Run Keyword If</td>
+<td>'${num}' == '1'</td>
+<td>Get Element Text</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return_xml}</td>
+<td>ErrorCode</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>error_code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorMsg}</td>
+<td>Run Keyword If</td>
+<td>'${num}' == '1'</td>
+<td>Get Element Text</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return_xml}</td>
+<td>ErrorMsg</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>error_msg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${ErrorCode}</td>
+<td>${ErrorMsg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check dna">check dna</a></td>
+<td>[Arguments]</td>
+<td>${dna}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${checkdnastats} =</td>
+<td>parse dna status result</td>
+<td>${dna}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${chechffstatus} =</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${t_length} =</td>
+<td>Call Method</td>
+<td>${checkdnastats}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>LENGTH</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration} =</td>
+<td>Call Method</td>
+<td>${chechffstatus}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${t_length}</td>
+<td>${duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check video stats">check video stats</a></td>
+<td>[Arguments]</td>
+<td>${meta_xml}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_xml} =</td>
+<td>Parse Xml</td>
+<td>${meta_xml}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_name}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>media_name</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${ffm_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Version}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Version</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_Version}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_QuickMD5}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/QuickMD5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_QuickMD5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Duration}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${xml_Duration}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_Duration} =</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_Duration}=</td>
+<td>Run Keyword If</td>
+<td>'${xml_Duration}' == ''</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no Duration</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_Duration}</td>
+<td>${ffm_Duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoCodec}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoCodec</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoCodec}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_codec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_VideoCodec}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_VideoCodec}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no VideoCodec</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_VideoCodec}</td>
+<td>${ffm_VideoCodec}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoWidth}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoWidth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoWidth}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_width</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_VideoWidth}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_VideoWidth}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no VideoWidth</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_VideoWidth}</td>
+<td>${ffm_VideoWidth}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoHeight}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoHeight</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoHeight}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_height</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_VideoHeight}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_VideoHeight}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no VideoHeight</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_VideoHeight}</td>
+<td>${ffm_VideoHeight}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoFPS}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoFPS</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoFPS}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_fps</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_VideoFPS}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_VideoFPS}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no video_fps</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_VideoFPS}</td>
+<td>${ffm_VideoFPS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioCodec}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioCodec</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioCodec}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_codec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_AudioCodec}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_AudioCodec}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no audio_codec</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_AudioCodec}</td>
+<td>${ffm_AudioCodec}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioRate}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioRate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioRate}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_bit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_AudioRate}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_AudioRate}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no audio_rate</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_AudioRate}</td>
+<td>${ffm_AudioRate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check machine">check machine</a></td>
+<td>[Arguments]</td>
+<td>${meta_xml}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_xml} =</td>
+<td>Parse Xml</td>
+<td>${meta_xml}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_CPUInfo}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/CPUInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_WordLength}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/WordLength</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_OperateSystem}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/OperateSystem</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_MemeryTotal}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/MemeryTotal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_IpAddress}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/IpAddress</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_MacAddress}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Machine/MacAddress</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${xml_CPUInfo}</td>
+<td>${xml_WordLength}</td>
+<td>${xml_OperateSystem}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_MemeryTotal}</td>
+<td>${xml_IpAddress}</td>
+<td>${xml_MacAddress}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check video stats 2">check video stats 2</a></td>
+<td>[Arguments]</td>
+<td>${meta_xml}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_xml} =</td>
+<td>Parse Xml</td>
+<td>${meta_xml}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${ffmpeg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_name}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>media_name</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${ffm_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Version}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Version</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_Version}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_QuickMD5}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/QuickMD5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_QuickMD5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Duration}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${xml_Duration}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_Duration} =</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_Duration}</td>
+<td>${ffm_Duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoCodec}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoCodec</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoCodec}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_codec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_VideoCodec}</td>
+<td>${ffm_VideoCodec}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoWidth}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoWidth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoWidth}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_width</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_VideoWidth}</td>
+<td>${ffm_VideoWidth}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoHeight}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoHeight</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoHeight}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_height</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_VideoHeight}</td>
+<td>${ffm_VideoHeight}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_VideoFPS}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Video/VideoFPS</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_VideoFPS}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>video_fps</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_VideoFPS}</td>
+<td>${ffm_VideoFPS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioCodec}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioCodec</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioCodec}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_codec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AudioCodec}</td>
+<td>${ffm_AudioCodec}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioRate}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioRate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioRate}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_bit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AudioRate}</td>
+<td>${ffm_AudioRate}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check audio stats">check audio stats</a></td>
+<td>[Arguments]</td>
+<td>${meta_xml}</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_xml} =</td>
+<td>Parse Xml</td>
+<td>${meta_xml}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffmpeg}=</td>
+<td>parse ffmpeg result</td>
+<td>${ffmpeg}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AssetID}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>AssetID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_name}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>media_name</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${xml_AssetID}</td>
+<td>${ffm_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Version}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>Version</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_Version}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_QuickMD5}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/QuickMD5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Not Be Empty</td>
+<td>${xml_QuickMD5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_Duration}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${xml_Duration}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_Duration} =</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Duration</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_Duration}=</td>
+<td>Run Keyword If</td>
+<td>'${xml_Duration}' == ''</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no Duration</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_Duration}</td>
+<td>${ffm_Duration}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioCodec}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioCodec</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioCodec}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_codec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_AudioCodec}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_AudioCodec}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no audio_codec</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_AudioCodec}</td>
+<td>${ffm_AudioCodec}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${xml_AudioRate}=</td>
+<td>Get Element Text</td>
+<td>${meta_xml}</td>
+<td>ProcessFile/DetailFileInfo/Audio/AudioTrack/AudioRate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ffm_AudioRate}=</td>
+<td>Call Method</td>
+<td>${ffmpeg}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>auido_bit</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_AudioRate}=</td>
+<td>Run Keyword If</td>
+<td>'${ffm_AudioRate}' == 'None'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>no audio_rate</td>
+<td>ELSE</td>
+<td>Should Be Equal</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${xml_AudioRate}</td>
+<td>${ffm_AudioRate}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

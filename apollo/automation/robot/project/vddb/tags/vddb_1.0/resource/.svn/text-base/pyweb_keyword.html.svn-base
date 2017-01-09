@@ -1,0 +1,1192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Pyweb Keyword</title>
+</head>
+<body>
+<h1>Pyweb Keyword</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check instance info with db data">check instance info with db data</a></td>
+<td>[Arguments]</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_name}</td>
+<td>${show_inst_return_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.instance_id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_name} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.instance_name</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_format} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.file_format</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.created_at</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.updated_at</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${source} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.source</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration} =</td>
+<td>Get Json Element</td>
+<td>${show_inst_return_body}</td>
+<td>body.duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_name_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select instance_name from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_format_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select file_format from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select created_at from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${created_at_db} =</td>
+<td>datetime to str</td>
+<td>${created_at_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select updated_at from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${updated_at_db} =</td>
+<td>datetime to str</td>
+<td>${updated_at_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${source_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select source from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${duration_db} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td>select duration from mediaContentInstance where instance_uuid = '${inst_uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${inst_name}</td>
+<td>${inst_name_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${file_format}</td>
+<td>${file_format_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${created_at}</td>
+<td>${created_at_db}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${updated_at}</td>
+<td>${updated_at_db}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${source}</td>
+<td>${source_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${duration}</td>
+<td>${duration_db[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check meta info">check meta info</a></td>
+<td>[Arguments]</td>
+<td>${key}</td>
+<td>${e_result}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Execute Sql</td>
+<td>${VDDB_NODE_HOST}</td>
+<td>${VDDB_NODE_DBUSERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_DBPASSWD}</td>
+<td>${VDDB_NODE_DBNAME}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${r} =</td>
+<td>parse meta attribute from db</td>
+<td>${return}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${a_result} =</td>
+<td>Call Method</td>
+<td>${r}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${key}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${e_result}</td>
+<td>${a_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_delete instance">delete instance</a></td>
+<td>[Arguments]</td>
+<td>${inst_uuid}</td>
+<td>${user}</td>
+<td>${passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${protocol}</td>
+<td>${token}=None</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>pyweb api call</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+<td>{ \ \ \ \ "protocols": [${protocol}], \ \ \ \ \ "user": "${user}", \ \ \ \ \ "password": "${passwd}" }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>Get Json Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return_msg}</td>
+<td>header.set-cookie</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Catenate</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/instances/${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_delete meta">delete meta</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid}</td>
+<td>${user}</td>
+<td>${passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${protocol}</td>
+<td>${token}=None</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>pyweb api call</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+<td>{ \ \ \ \ "protocols": [${protocol}], \ \ \ \ \ "user": "${user}", \ \ \ \ \ "password": "${passwd}" }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>Get Json Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return_msg}</td>
+<td>header.set-cookie</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Catenate</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/contents/${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_delete meta list">delete meta list</a></td>
+<td>[Arguments]</td>
+<td>${meta_uuid_list}</td>
+<td>${user}</td>
+<td>${passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${protocol}</td>
+<td>${token}=None</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>pyweb api call</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+<td>{ \ \ \ \ "protocols": [${protocol}], \ \ \ \ \ "user": "${user}", \ \ \ \ \ "password": "${passwd}" }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Run Keyword If</td>
+<td>'${token}' == 'None'</td>
+<td>Get Json Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${return_msg}</td>
+<td>header.set-cookie</td>
+<td>ELSE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Catenate</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta_uuid}</td>
+<td>IN</td>
+<td>@{meta_uuid_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/${meta_uuid}</td>
+<td>None</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get instance uuid from api return">get instance uuid from api return</a></td>
+<td>[Arguments]</td>
+<td>${return_msg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${location} =</td>
+<td>get json element</td>
+<td>${return_msg}</td>
+<td>header.location</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_a} =</td>
+<td>call method</td>
+<td>${location}</td>
+<td>find</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/instances/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_b} =</td>
+<td>call method</td>
+<td>${location}</td>
+<td>find</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/meta</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Catenate</td>
+<td>${location[${index_a}+11:${index_b}]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${inst_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get meta uuid from api return">get meta uuid from api return</a></td>
+<td>[Arguments]</td>
+<td>${return_msg}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${location} =</td>
+<td>get json element</td>
+<td>${return_msg}</td>
+<td>header.location</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_a} =</td>
+<td>call method</td>
+<td>${location}</td>
+<td>find</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/mediawise/contents/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${index_b} =</td>
+<td>call method</td>
+<td>${location}</td>
+<td>find</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/meta</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>Catenate</td>
+<td>${location[${index_a}+20:${index_b}]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_non live new meta">non live new meta</a></td>
+<td>[Arguments]</td>
+<td>${pyweb_protocol}</td>
+<td>${vddb_node_user}</td>
+<td>${vddb_node_passwd}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_type}</td>
+<td>${meta_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "protocols": [${pyweb_protocol}], \ \ \ \ \ "user": "${vddb_node_user}", \ \ \ \ \ "password": "${vddb_node_passwd}" }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>header.set-cookie</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/contents/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_info}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql} =</td>
+<td>Catenate</td>
+<td>select id,meta_uuid,company_id,subCompany_id,meta_type,meta_title,customer_ref_id,status,is_live,is_valid,customer_ref_id_type,right_owner,studio_owner,cast,tag,genre,rating,duration,release_date,tracking_protocol,vtweb_tracking_start_time,vtweb_tracking_stop_time,created_at,created_by,updated_at,client_updated_at,updated_by,remote_version,local_version from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check meta info</td>
+<td>meta_title</td>
+<td>global_test</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check meta info</td>
+<td>meta_type</td>
+<td>${meta_type}</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set pyweb env">set pyweb env</a></td>
+<td>[Arguments]</td>
+<td>${sut_file}</td>
+<td>${host}</td>
+<td>${port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ssl}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb sut file</td>
+<td>${sut_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb host</td>
+<td>${host}</td>
+<td>${port}</td>
+<td>${ssl}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check err_code">check err_code</a></td>
+<td>[Arguments]</td>
+<td>${return}</td>
+<td>${correct_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${code} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${code}</td>
+<td>${correct_code}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check return message">check return message</a></td>
+<td>Comment</td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>get</td>
+<td>body</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>get</td>
+<td>msg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${message} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>${msg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${message}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_check dna">check dna</a></td>
+<td>[Arguments]</td>
+<td>${dna_path_1}</td>
+<td>${dna_path_2}</td>
+<td>${vddb_host}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${remote_run_cmd_port}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>run_cmd</td>
+<td>${DNA_TOOL_LOCAL}/dna_status -i ${dna_path_1}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>Remote Run Cmd</td>
+<td>${vddb_host}</td>
+<td>${remote_run_cmd_port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DNA_TOOL_NODE}/dna_status -i ${dna_path_2}</td>
+<td>true</td>
+<td>true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}</td>
+<td>call method</td>
+<td>${return}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>\n<br>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2}</td>
+<td>call method</td>
+<td>${return_2}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>\n<br>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return[0]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return[1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return[2]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return[7]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${return[0]}</td>
+<td>${return_2[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${return[1]}</td>
+<td>${return_2[1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${return[2]}</td>
+<td>${return_2[2]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${return[7]}</td>
+<td>${return_2[7]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get dna file path">get dna file path</a></td>
+<td>[Arguments]</td>
+<td>${instance_uuid}</td>
+<td>${dna_type}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_path} =</td>
+<td>Run Keyword If</td>
+<td>'${dna_type}' == 'video'</td>
+<td>Catenate</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DNA_FILE_NODE}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.0.dna</td>
+<td>ELSE IF</td>
+<td>'${dna_type}' == 'audio'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Catenate</td>
+<td>${DNA_FILE_NODE}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.1.adna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${dna_path}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${dna_path}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_get far file">get far file</a></td>
+<td>[Arguments]</td>
+<td>${instance_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${dna_file} =</td>
+<td>Catenate</td>
+<td>${DNA_FILE_NODE}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.0.dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${adna_file} =</td>
+<td>Catenate</td>
+<td>${DNA_FILE_NODE}/${instance_uuid[6:8]}/${instance_uuid[21:23]}/${instance_uuid}.1.adna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${dna_file}</td>
+<td>${adna_file}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

@@ -11,12 +11,8 @@ print('3 / 2 =', 3 / 2)
 def avg(x):
     return sum(x)/len(x)
 def drop_first_last(grades):
-    first, *middle, last = grades
+    first,*middle,last = grades
     return avg(middle)
-
-
-#
-
 
 
 

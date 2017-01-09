@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/QA/!svn/ver/5801/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb
+END
+authInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/QA/!svn/ver/5783/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/authInterface.html
+END
+otherInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/QA/!svn/ver/5794/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/otherInterface.html
+END
+thumbnailInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/QA/!svn/ver/5794/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/thumbnailInterface.html
+END
+instanceInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/QA/!svn/ver/5789/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/instanceInterface.html
+END
+trackInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/QA/!svn/ver/5790/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/trackInterface.html
+END
+metaInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/QA/!svn/ver/5801/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/metaInterface.html
+END
+dnaUploadInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/QA/!svn/ver/5788/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/dnaUploadInterface.html
+END
+dnaDownloadInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/QA/!svn/ver/5788/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/dnaDownloadInterface.html
+END
+privateInterface.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/QA/!svn/ver/5794/auto_test/apollo/automation/robot/project/vddb/trunk/testcase/pyweb/privateInterface.html
+END

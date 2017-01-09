@@ -1,0 +1,2225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>cyberlocker Match</title>
+</head>
+<body>
+<h1>cyberlocker Match</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Set matchconfig</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_cy759-redlist fakefp-pagetitle">cy759-redlist fakefp-pagetitle</a></td>
+<td>[Tags]</td>
+<td>cy759</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>${post_url}</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy758-redlist positive match failed">cy758-redlist positive match failed</a></td>
+<td>[Tags]</td>
+<td>cy758</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy756-redlist fakefp -metas">cy756-redlist fakefp -metas</a></td>
+<td>[Tags]</td>
+<td>cy756</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy578-redlist fakefp -imdbid">cy578-redlist fakefp -imdbid</a></td>
+<td>[Tags]</td>
+<td>cy758</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009">http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "e7c3f0ac-ca46-11e0-9aba-080027cf46d6", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009">http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy748-redlist positive -imdbid not match">cy748-redlist positive -imdbid not match</a></td>
+<td>[Tags]</td>
+<td>cy748</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy549-redlist pagetitle filter">cy549-redlist pagetitle filter</a></td>
+<td>[Tags]</td>
+<td>cy549</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update metaExtraInfo set filter_file_name='xxx;parody;pdf;book;vol;ost;iclone;xbox;psp;ufc;busty;megapack;Suite;pc;reloaded;ps3;festival;cracked;software;video game;watch' where meta_id=1297</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/Transformers-watch-movie-926372.html" and b.match_type='pagetitle' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update metaExtraInfo set filter_file_name='xxx;parody;pdf;book;vol;ost;iclone;xbox;psp;ufc;busty;megapack;Suite;pc;reloaded;ps3;festival;cracked;software;video game' where meta_id=1297</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy749-redlist confident matched by metas">cy749-redlist confident matched by metas</a></td>
+<td>[Tags]</td>
+<td>cy749</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watch32.com/?ilc=1">http://www.watch32.com/?ilc=1</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watch32.com/?ilc=1">http://www.watch32.com/?ilc=1</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watch32.com" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watch32.com/?ilc=1" and b.match_type='imdbid' and b.match_level='metas';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy750-redlist matched by pagetitle">cy750-redlist matched by pagetitle</a></td>
+<td>[Tags]</td>
+<td>cy750</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/Transformers-watch-movie-926372.html" and b.match_type='pagetitle' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy535-redlist positive matched by metas">cy535-redlist positive matched by metas</a></td>
+<td>[Tags]</td>
+<td>cy535</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.19:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "6c98eeb2-ade9-11e3-b00f-74d43546cff3", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/search/transformers/">http://www.watchfreemovies.ch/search/transformers/</a>", \ \ \ \ \ \ "keyword":" The Transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/search/transformers/" and b.match_type='metas' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy643-linking site type is black">cy643-linking site type is black</a></td>
+<td>[Tags]</td>
+<td>cy643</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.adocine.net/file/3B7V9Omi/The_TransFormers_-cy643.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.adocine.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.adocine.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.adocine.net/duEriAdkmGrIonM0dr4oNB">http://www.adocine.net/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_good_-cy456", \ \ \ \ "downloadUrl": "<a href="http://www.adocine.net/file/3B7V9Omi/The_TransFormers_-cy456.html">http://www.adocine.net/file/3B7V9Omi/The_TransFormers_-cy456.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFile_trackingMeta a ,matchedFileItem b where a.matchedFile_id=b.matchedFile_id and b.download_url="http://www.adocine.net/file/3B7V9Omi/The_TransFormers_-cy643.html" and a.need_confirm='false'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy625-clip title intercept">cy625-clip title intercept</a></td>
+<td>[Tags]</td>
+<td>cy625</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_cy625_.rar") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB">http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_TransFormers_cy625_.rar", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_cy625_.rar">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_cy625_.rar</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile a ,matchedFileItem b where a.id=b.matchedFile_id and b.download_url="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_cy625_.rar" and a.clip_title='The_TransFormers_cy625_'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy639-matched by sourcetitle(imdbid is null)">cy639-matched by sourcetitle(imdbid is null)</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">cy-378</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy639</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy639.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={"pageTitle": " Prime 04 de 04 L9D download free","clipTitle": " Prime 04 de 04 L9D download","sourceTitle": "the transformers prime 04 de 04 l9d - free download from 4shared - 4shared.net","sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html&quot;,&quot;sourceUrl">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html","sourceUrl</a>": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB&quot;,&quot;publishDate">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB","publishDate</a>": "2014-12-31 17:00:00", "trackingWebsiteId": 18,"keyId": "3B7V9Omi","fileName": "The_good_-cy378","downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy639.html&quot;,&quot;fileSize">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy639.html","fileSize</a>": 0,"searchKeyword": "The Transformers","sourceType": "colander","imdbId": "","errorCode": 1998}</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy639.html") and matched_field='source_title'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy642-not matched by imdbid(multiple meta)">cy642-not matched by imdbid(multiple meta)</a></td>
+<td>[Tags]</td>
+<td>cy642</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": " Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": " Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the croods prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9fsOmi", \ \ \ \ "fileName": "The_good_-_Prime_01_de", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html">http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "481499", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${output}=</td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html") and matched_field='imdbid'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${output}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update trackingMeta set imdbid='' where id=929;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log</td>
+<td>"修改其中一个的imdbid为空，需要重启"</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Restart cyberlocker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${output}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>90s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": " Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": " Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the croods prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-06-18 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9fsOmi", \ \ \ \ "fileName": "The_good_-_Prime_01_de", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html">http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "0481499", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword And Continue On Failure</td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy642.html") and matched_field='imdbid'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update trackingMeta set imdbid='0481499' where id=929;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy640-matched by imdbid(multiple meta)">cy640-matched by imdbid(multiple meta)</a></td>
+<td>[Tags]</td>
+<td>cy640</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/edu23ad/The_Croods_-cy640.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": " Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": " Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the croods prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXfsadJ1B2vD559RB/The-Croods-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9fsOmi", \ \ \ \ "fileName": "The_good_-_Prime_01_de", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy640.html">http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy640.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "0481499", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and \ a.download_url_md5=md5("http://www.4shared.com/file/3B7V9fsOmi/The_Croods_-cy640.html") and matched_field='imdbid'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy637-matched by filename and imdbid not match">cy637-matched by filename and imdbid not match</a></td>
+<td>[Tags]</td>
+<td>cy637</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy637.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_TransFormers_-cy637", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy637.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy637.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "12345", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy637.html") and matched_field='file_name'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy630-linking site not in linksitelist">cy630-linking site not in linksitelist</a></td>
+<td>[Tags]</td>
+<td>cy630</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.baidu.com/file/3B7V9Omi/The_TransFormers_-cy630.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.baidu.com/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.baidu.com/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.baidu.com/duEriAdkmGrIonM0dr4oNB">http://www.baidu.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_good_-cy630", \ \ \ \ "downloadUrl": "<a href="http://www.baidu.com/file/3B7V9Omi/The_TransFormers_-cy630.html">http://www.baidu.com/file/3B7V9Omi/The_TransFormers_-cy630.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * \ from matchedFile_trackingMeta a ,matchedFileItem b where a.matchedFile_id=b.matchedFile_id and b.download_url="http://www.baidu.com/file/3B7V9Omi/The_TransFormers_-cy630.html" and a.need_confirm='true'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy628-filter by stop keyword">cy628-filter by stop keyword</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">prison break ,meta_id=1301,meta_uuid=86add698-c909-11e2-9095-fa163e26fbcc</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy628</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omiaf/Prison Break_S1_E2_Allen_cy628.rar") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The movie Prime 04 de 04 L9D download free", \ \ \ \ "sourceTitle": "watcher_trans_S1_E2_Allen - free download from 4shared - 4shared.net", \ \ \ \ "sourceUrl": "<a href="http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB">http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omiaf", \ \ \ \ "fileName": "prisonbreak_S1_E2_Allen_2008_cy628", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omiaf/Prison">http://www.4shared.com/file/3B7V9Omiaf/Prison</a> Break_S1_E2_Allen_cy628.rar", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select need_confirm ,download_url ,matched_field from matchedFile_trackingMeta a ,matchedFileItem b where a.matchedFile_id=b.matchedFile_id and b.download_url="http://www.4shared.com/file/3B7V9Omiaf/Prison Break_S1_E2_Allen_cy628.rar"</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy377-matched by filename">cy377-matched by filename</a></td>
+<td>[Tags]</td>
+<td>cy377</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy377.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_TransFormers_-cy377", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy377.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy377.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id \ and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy377.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy609-matched by imdbid">cy609-matched by imdbid</a></td>
+<td>[Tags]</td>
+<td>cy609</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy609.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": " Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": " Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the transformers prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_good_-_Prime_01_de", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy609.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy609.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "418279", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy609.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy378-matched by sourcetitle">cy378-matched by sourcetitle</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">cy-378</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy378</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://extabit.com/file/27t1uf0c4i3qa") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "The \ Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "The TransFormers prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceUrl": "<a href="hhttp://rapid-search-engine.com/?s=cache:99708213:The+Transformers">hhttp://rapid-search-engine.com/?s=cache:99708213:The+Transformers</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 46, \ \ \ \ "keyId": "27t1uf0c4i3qa", \ \ \ \ "fileName": "Brazil.Butt....n.Victor.wmv", \ \ \ \ "downloadUrl": "<a href="http://extabit.com/file/27t1uf0c4i3qa">http://extabit.com/file/27t1uf0c4i3qa</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://extabit.com/file/27t1uf0c4i3qa") and matched_field='source_title'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy641-unmatched by imdbid-singlemeta">cy641-unmatched by imdbid-singlemeta</a></td>
+<td>[Tags]</td>
+<td>cy641</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy641.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": " Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": " Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the good prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_good_-_Prime_01_de", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy641.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy641.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "041827934", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy641.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy179-filter by filename">cy179-filter by filename</a></td>
+<td>[Tags]</td>
+<td>cy179</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179.rar") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download free", \ \ \ \ "clipTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download", \ \ \ \ "sourceTitle": "[ul] sum 41 - screaming bloody murder", \ \ \ \ "sourceLink": "<a href="http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html">http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW">http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW</a>", \ \ \ \ "publishDate": "2014-12-31 07:22:25", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "9whzb22v", \ \ \ \ "fileName": "Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179", \ \ \ \ "downloadUrl": "<a href="http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179.rar">http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179.rar</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and \ a.download_url_md5=md5("http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179.rar")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy379-matched by cliptitle">cy379-matched by cliptitle</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">cy-378</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>cy379</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where a.download_url_md5 = md5("http://extabit.com/file/27t15brudorpu") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "The TransFormers Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://rapid-search-engine.com/?s=cache:96483142:The+Transformers">http://rapid-search-engine.com/?s=cache:96483142:The+Transformers</a>", \ \ \ \ "sourceUrl": "<a href="http://rapid-search-engine.com/?s=cache:96483142:The+Transformers">http://rapid-search-engine.com/?s=cache:96483142:The+Transformers</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 46, \ \ \ \ "keyId": "27t15brudorpu", \ \ \ \ "fileName": "iTunes.VA.Tr...1.muzyka.rar", \ \ \ \ "downloadUrl": "<a href="http://extabit.com/file/27t15brudorpu">http://extabit.com/file/27t15brudorpu</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "TheTransformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://extabit.com/file/27t15brudorpu")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy180-filter by filetype">cy180-filter by filetype</a></td>
+<td>[Tags]</td>
+<td>cy180</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy180.exe") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download free", \ \ \ \ "clipTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download", \ \ \ \ "sourceTitle": "[ul] sum 41 - screaming bloody murder", \ \ \ \ "sourceLink": "<a href="http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html">http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW">http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW</a>", \ \ \ \ "publishDate": "2014-12-31 07:22:25", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "9whzb22v", \ \ \ \ "fileName": "Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy180", \ \ \ \ "downloadUrl": "<a href="http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy180.exe">http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy180.exe</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://uploaded.net/file/9whzb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy180.exe")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy381-filter by publish date">cy381-filter by publish date</a></td>
+<td>[Tags]</td>
+<td>cy381</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy381.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "The TransFormers Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the transformers prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2012-04-28 07:50:31", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_TransFormers_-cy381", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy381.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy381.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 } \</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy381.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy192-filter by file name phrase">cy192-filter by file name phrase</a></td>
+<td>[Tags]</td>
+<td>cy192</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy192.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "The TransFormers Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the transformers prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_Transformers_video_game-cy192", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy192.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy192.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "0418279", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy192.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy376-test match priority">cy376-test match priority</a></td>
+<td>[Tags]</td>
+<td>cy376</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy376.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "The TransFormers Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": "the transformers prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/duEriAdkmGrIonM0dr4oNB">http://www.filestube.com/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_TransFormers_-cy376", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy376.html">http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy376.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbId": "0418279", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and a.download_url_md5=md5("http://www.4shared.com/file/3B7V9Omi/The_TransFormers_-cy376.html")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy389">cy389</a></td>
+<td>[Tags]</td>
+<td>cy389</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://uploaded.net/file/9whzssb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy389.rar") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download free", \ \ \ \ "clipTitle": "Alan Silvestri The Croods OST CD 2013 DLiTE download", \ \ \ \ "sourceTitle": "[ul] sum 41 - screaming bloody murder", \ \ \ \ "sourceLink": "<a href="http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html">http://www.gempak.org/forum/385-musics/297278-sum-41-screaming-bloody-murder.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW">http://www.filestube.com/1EA3gjWFDqeRPsgxfTOupW</a>", \ \ \ \ "publishDate": "2014-12-31 07:22:25", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "9whzb22v", \ \ \ \ "fileName": "Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy179", \ \ \ \ "downloadUrl": "<a href="http://uploaded.net/file/9whzssb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy389.rar">http://uploaded.net/file/9whzssb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy389.rar</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Croods", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select key_id,download_url,matched_field from matchedFileItem a,matchedFile_trackingMeta b where a.matchedFile_id = b.matchedFile_id and \ a.download_url_md5=md5("http://uploaded.net/file/9whzssb22v/Alan_Silvestri-The_Croods-OST-CD-2013-DLiTE_cy389.rar")</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy456-linking site type is white">cy456-linking site type is white</a></td>
+<td>[Tags]</td>
+<td>cy456</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.solarmovie.so/file/3B7V9Omi/The_TransFormers_-cy456.html") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.solarmovie.so/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.solarmovie.so/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.solarmovie.so/duEriAdkmGrIonM0dr4oNB">http://www.solarmovie.so/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The_good_-cy456", \ \ \ \ "downloadUrl": "<a href="http://www.solarmovie.so/file/3B7V9Omi/The_TransFormers_-cy456.html">http://www.solarmovie.so/file/3B7V9Omi/The_TransFormers_-cy456.html</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile_trackingMeta a ,matchedFileItem b where a.matchedFile_id=b.matchedFile_id and b.download_url="http://www.solarmovie.so/file/3B7V9Omi/The_TransFormers_-cy456.html" and a.need_confirm='false'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy483-clip title intercept">cy483-clip title intercept</a></td>
+<td>[Tags]</td>
+<td>cy483</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from matchedFileItem a,matchedFile b,matchedFile_trackingMeta c where \ a.download_url_md5 = md5("http://www.4shared.com/file/3B7V9Omi/The.TransFormers.cy483.part1.rar") and a.matchedFile_id = b.id and a.matchedFile_id = c.matchedFile_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>publish message</td>
+<td>routing_key=cyberlocker.resourcefile.queue</td>
+<td>message={ \ \ \ \ "pageTitle": "The TransFormers Prime 04 de 04 L9D download free", \ \ \ \ "clipTitle": "Prime 04 de 04 L9D download", \ \ \ \ "sourceTitle": " prime 04 de 04 l9d - free download from 4shared - 4shared.net", \ \ \ \ "sourceLink": "<a href="http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html">http://www.4shared.net/download/aIFyN3fdngXJ1B2vD559RB/The-TransFormers-Prime-04-de-04-L9D.html</a>", \ \ \ \ "sourceUrl": "<a href="http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB">http://www.movie4k.to/duEriAdkmGrIonM0dr4oNB</a>", \ \ \ \ "publishDate": "2014-12-31 17:00:00", \ \ \ \ "trackingWebsiteId": 18, \ \ \ \ "keyId": "3B7V9Omi", \ \ \ \ "fileName": "The.TransFormers.cy483.part1.rar", \ \ \ \ "downloadUrl": "<a href="http://www.4shared.com/file/3B7V9Omi/The.TransFormers.cy483.part1.rar">http://www.4shared.com/file/3B7V9Omi/The.TransFormers.cy483.part1.rar</a>", \ \ \ \ "fileSize": 0, \ \ \ \ "searchKeyword": "The Transformers", \ \ \ \ "sourceType": "colander", \ \ \ \ "imdbid": "", \ \ \ \ "errorCode": 1998 }</td>
+<td>json_type=cn.vobile.cyberlocker.core.domain.ResourceInfo</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFile a ,matchedFileItem b where a.id=b.matchedFile_id and b.download_url="http://www.4shared.com/file/3B7V9Omi/The.TransFormers.cy483.part1.rar" and a.clip_title="The TransFormers cy483"</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

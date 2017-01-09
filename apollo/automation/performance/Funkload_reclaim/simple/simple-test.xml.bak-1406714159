@@ -1,0 +1,2 @@
+<response cycle="001" cvus="000" thread="001" suite="FunkloadCommon" name="test_common" step="001" number="001" type="post" result="Successful" url="/claimWeb/api/upload" code="409" description="http://192.168.1.67:8080/claimWeb/api/upload" time="1406714133.06" duration="0.0315959453583" />
+<testResult cycle="001" cvus="000" thread="001" suite="FunkloadCommon" name="test_common"  time="1406714133.06" result="Successful" steps="1" duration="0.0330080986023" connection_duration="0.0315959453583" requests="1" pages="1" xmlrpc="0" redirects="0" images="0" links="0" />

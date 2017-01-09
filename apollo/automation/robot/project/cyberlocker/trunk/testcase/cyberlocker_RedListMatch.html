@@ -1,0 +1,835 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>cyberlocker RedListMatch</title>
+</head>
+<body>
+<h1>cyberlocker RedListMatch</h1>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_cy758-redlist positive match failed">cy758-redlist positive match failed</a></td>
+<td>[Tags]</td>
+<td>cy758</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy535-redlist positive matched by metas">cy535-redlist positive matched by metas</a></td>
+<td>[Tags]</td>
+<td>cy535</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.19:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "6c98eeb2-ade9-11e3-b00f-74d43546cff3", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/search/transformers/">http://www.watchfreemovies.ch/search/transformers/</a>", \ \ \ \ \ \ "keyword":" The Transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/search/transformers/" and b.match_type='metas' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy750-redlist matched by pagetitle">cy750-redlist matched by pagetitle</a></td>
+<td>[Tags]</td>
+<td>cy750</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/Transformers-watch-movie-926372.html" and b.match_type='pagetitle' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy759-redlist fakefp-pagetitle">cy759-redlist fakefp-pagetitle</a></td>
+<td>[Tags]</td>
+<td>cy759</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>${post_url}</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy750-redlist matched by pagetitle">cy750-redlist matched by pagetitle</a></td>
+<td>[Tags]</td>
+<td>cy750</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/Transformers-watch-movie-926372.html" and b.match_type='pagetitle' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy756-redlist fakefp -metas">cy756-redlist fakefp -metas</a></td>
+<td>[Tags]</td>
+<td>cy756</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy748-redlist positive -imdbid not match">cy748-redlist positive -imdbid not match</a></td>
+<td>[Tags]</td>
+<td>cy748</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/">http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select count(*) from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watchfreemovies.ch/watch-movies/2007/watch-transformers-6525/" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy549-redlist pagetitle filter">cy549-redlist pagetitle filter</a></td>
+<td>[Tags]</td>
+<td>cy549</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update metaExtraInfo set filter_file_name='xxx;parody;pdf;book;vol;ost;iclone;xbox;psp;ufc;busty;megapack;Suite;pc;reloaded;ps3;festival;cracked;software;video game;watch' where meta_id=1297</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/Transformers-watch-movie-926372.html">http://www.movie4k.to/Transformers-watch-movie-926372.html</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/Transformers-watch-movie-926372.html" and b.match_type='pagetitle' and b.match_level='positive';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>update metaExtraInfo set filter_file_name='xxx;parody;pdf;book;vol;ost;iclone;xbox;psp;ufc;busty;megapack;Suite;pc;reloaded;ps3;festival;cracked;software;video game' where meta_id=1297</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy749-redlist confident matched by metas">cy749-redlist confident matched by metas</a></td>
+<td>[Tags]</td>
+<td>cy749</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.watch32.com/?ilc=1">http://www.watch32.com/?ilc=1</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "35558f8c-c744-11e2-9095-fa163e26fbcc", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.watch32.com/?ilc=1">http://www.watch32.com/?ilc=1</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watch32.com" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.watch32.com/?ilc=1" and b.match_type='imdbid' and b.match_level='metas';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy578-redlist fakefp -imdbid">cy578-redlist fakefp -imdbid</a></td>
+<td>[Tags]</td>
+<td>cy758</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Run Keywords</td>
+<td>Connect to db</td>
+<td>AND</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>init rabbitmq</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql String</td>
+<td>delete a.*,b.*,c.* from redMatch a,redMatch_searchEngine b,redMatch_trackingMeta c where a.url = "<a href="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009">http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009</a>" and a.id = b.redMatch_id and a.id = c.redMatch_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${response}</td>
+<td>post json data</td>
+<td>post_url=http://192.168.1.36:9999/saveRedCyberlockerData</td>
+<td>data_json={ \ \ \ \ \ "id":123, \ \ \ \ \ "jsonrpc":"2.0", \ \ \ \ \ "method":"record_red_url", \ \ \ \ \ "params": \ \ \ \ \ { \ \ \ \ \ \ \ \ \ \ "source_type":"colander", \ \ \ \ \ \ \ \ \ \ "red_urls":[ \ \ \ \ \ \ \ \ \ \ \ \ \ \ { \ \ \ \ \ \ "meta_uuid": "e7c3f0ac-ca46-11e0-9aba-080027cf46d6", \ \ \ \ \ \ "anchor_text":"", \ \ \ \ \ \ "url": "<a href="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009">http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009</a>", \ \ \ \ \ \ "keyword":" the transformers", \ \ \ \ \ \ \ "search_engine_domain": "google.com", \ \ \ \ \ \ "red_site_domain": "watchfreemovies.ch" \ \ \ \ \ \ } \ \ \ \ \ \ \ \ \ \ ] \ \ \ \ \ } }</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${flag}</td>
+<td>check request success</td>
+<td>${response}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Assert_True</td>
+<td>'${flag}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>20s</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from redMatch a,redMatch_trackingMeta b where a.id=b.redMatch_id and a.url="http://www.movie4k.to/movies.php?list=regie&amp;start=&amp;id=&amp;order=imdbrating&amp;name=Kirk+De+Micco&amp;search=&amp;securekey=sk1022511009" and b.match_type='imdbid' and b.match_level='confident';</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

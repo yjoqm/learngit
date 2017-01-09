@@ -3,9 +3,6 @@
 import os
 import sys
 
-import os
-import sys
-
 def run(program, *args):
     pid = os.fork()
     print "pid", pid

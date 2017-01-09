@@ -1,0 +1,4923 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Hubble Testcase</title>
+</head>
+<body>
+<h1>Hubble Testcase</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Selenium2Library</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/ExcelLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/hubble_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/hubble_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_空excel导入">空excel导入</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">1.提交空的ＥＸＣＥＬ批量导入\n<br>
+\n<br>
+不报异常</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>hubble-677</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${excel_file}</td>
+<td>/tmp/test.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:生成一个空的excel文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Create Blank Excel</td>
+<td>${excel_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择生成的空的excel文件，点击确认上传，查看弹出的对话框上的文字</td>
+<td>#expect:显示“导入失败！数据为空”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${excel_file}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>导入失败！数据为空\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Close All Browsers</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-691-5">hubble-691-5</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${SCRIPT_ROOT}/project/hubble/trunk/data/hubble-691.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1条数据,0条导入成功,1条导入失败。查看导出文件。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1条数据,0条导入成功,1条导入失败。查看导出文件。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_file_url} =</td>
+<td>Get Element Attribute</td>
+<td>//div[3]/div[2]/a@href</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击“查看导出文件”，下载报文文件并打开</td>
+<td>#expect:Error Info应该为Meta UUID is invalid.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[3]/div[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_list} =</td>
+<td>Call Method</td>
+<td>${return_file_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_info} =</td>
+<td>Get Cell Value</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:删除下载的文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${error_info}</td>
+<td>Meta UUID is invalid.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-691">hubble-691</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${SCRIPT_ROOT}/project/hubble/trunk/data/hubble-691.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Meta UUID项中的值插入一条数据到mddb.meta表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1条数据,1条导入成功,0条导入失败。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1条数据,1条导入成功,0条导入失败。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查看数据库hubble.seedURL表中link_url匹配上传的excel文件中的配置的数据的seed_url字段</td>
+<td>#expect:seed_url字段值和上传的excel中Download URL项相同</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查看数据库hubble.seedURL_trackingMeta表中meta_id和seedURL的id是否有关联项</td>
+<td>#expect:存在关联项数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select seed_url from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select trackingMeta_id from seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${seed_url[0][0]}</td>
+<td>${seed_info[2]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${seed_meta_id[0][0]}</td>
+<td>${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-691-2">hubble-691-2</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${SCRIPT_ROOT}/project/hubble/trunk/data/hubble-691.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Meta UUID项中的值插入一条数据到mddb.meta表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Download url项中的值插入一条数据到hubble.seedURL表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into seedURL (is_downloaded, key_id, seed_id, seed_url, link_url, need_record_seed, source_type, created_at, updated_at, created_by) values ('true', md5('${seed_info[2]}'), 0, '${seed_info[2]}', '${seed_info[1]}', 'false', 'manual', now(), now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1条数据,1条导入成功,0条导入失败。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1条数据,1条导入成功,0条导入失败。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select trackingMeta_id from seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${seed_meta_id[0][0]}</td>
+<td>${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-691-4">hubble-691-4</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${SCRIPT_ROOT}/project/hubble/trunk/data/hubble-691.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Meta UUID项中的值插入一条数据到mddb.meta表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Download url项中的值插入一条数据到hubble.seedURL表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into seedURL (is_downloaded, key_id, seed_id, seed_url, link_url, need_record_seed, source_type, created_at, updated_at, created_by) values ('true', md5('${seed_info[2]}'), 0, '${seed_info[2]}', '${seed_info[1]}', 'false', 'manual', now(), now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:在seedURL_trackingMeta中插入一条前两步插入的meta和seed_url的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>insert into seedURL_trackingMeta (seedURL_id, trackingMeta_id, created_at) values (${seed_url_id[0][0]}, ${meta_id[0][0]}, now())</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1条数据,0条导入成功,1条导入失败。查看导出文件。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1条数据,0条导入成功,1条导入失败。查看导出文件。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_file_url} =</td>
+<td>Get Element Attribute</td>
+<td>//div[3]/div[2]/a@href</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击“查看导出文件”，下载报文文件并打开</td>
+<td>#expect:Error Info应该为Meta UUID is repeated.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[3]/div[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_list} =</td>
+<td>Call Method</td>
+<td>${return_file_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_info} =</td>
+<td>Get Cell Value</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:删除下载的文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${error_info}</td>
+<td>Meta UUID is repeated.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-691-3">hubble-691-3</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${SCRIPT_ROOT}/project/hubble/trunk/data/hubble-691-3.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_info2} =</td>
+<td>Get Row Values</td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Meta UUID项中的值插入一条数据到mddb.meta表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id2} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info2[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id2}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info2[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id2} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info2[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id2}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id2[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:将excel文件中Download url项中的值插入一条数据到hubble.seedURL表中,如果不存在的话</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into seedURL (is_downloaded, key_id, seed_id, seed_url, link_url, need_record_seed, source_type, created_at, updated_at, created_by) values ('true', md5('${seed_info[2]}'), 0, '${seed_info[2]}', '${seed_info[1]}', 'false', 'manual', now(), now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:在seedURL_trackingMeta中插入一条前两步插入的meta和seed_url的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>insert into seedURL_trackingMeta (seedURL_id, trackingMeta_id, created_at) values (${seed_url_id[0][0]}, ${meta_id[0][0]}, now())</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1条数据,0条导入成功,1条导入失败。查看导出文件。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入2条数据,1条导入成功,1条导入失败。查看导出文件。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${add_seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select seedURL_id from seedURL_trackingMeta where trackingMeta_id = ${meta_id2[0][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_file_url} =</td>
+<td>Get Element Attribute</td>
+<td>//div[3]/div[2]/a@href</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击“查看导出文件”，下载报文文件并打开</td>
+<td>#expect:Error Info应该为Meta UUID is repeated.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[3]/div[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_list} =</td>
+<td>Call Method</td>
+<td>${return_file_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_info} =</td>
+<td>Get Cell Value</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:删除下载的文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${error_info}</td>
+<td>Meta UUID is repeated.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${add_seed_url_id[0][0]}</td>
+<td>${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-678">hubble-678</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{seed_info_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${TEMP_PATH}/test.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:生成1000条随即数据的种子文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Generate Random Seed Excel</td>
+<td>${test_data_excel}</td>
+<td>1000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1000</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>${i + 2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${seed_info_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${seed_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Comment</td>
+<td>#action:将excel文件中前500条数据Meta UUID项中的值插入到mddb.meta表中,如果不存在的话</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()""" and ${i} &lt; 500</td>
+<td>Execute Sql</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1000条数据,500条导入成功,500条导入失败。查看导出文件。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>30</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1000</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info_list[${i}][1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1000条数据,500条导入成功,500条导入失败。查看导出文件。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_file_url} =</td>
+<td>Get Element Attribute</td>
+<td>//div[3]/div[2]/a@href</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击“查看导出文件”，下载报文文件并打开</td>
+<td>#expect:Error Info应该为Meta UUID is repeated.共500条错误信息，Meta UUID分别对应上传的excel的后500条数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[3]/div[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_list} =</td>
+<td>Call Method</td>
+<td>${return_file_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Move File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td>/tmp/${path_list[-1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查看数据库hubble.seedURL表中link_url匹配上传的excel文件中的配置的数据的seed_url字段</td>
+<td>#expect:seed_url字段值和上传的excel中Download URL项相同</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查看数据库hubble.seedURL_trackingMeta表中meta_id和seedURL的id是否有关联项</td>
+<td>#expect:存在关联项数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>/tmp/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>500</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_url} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id, seed_url from seedURL where link_url = '${seed_info_list[${i}][1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select trackingMeta_id from seedURL_trackingMeta where seedURL_id = ${seed_url[0][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info_list[${i}][0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${seed_url[0][1]}</td>
+<td>${seed_info_list[${i}][2]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${seed_meta_id[0][0]}</td>
+<td>${meta_id[0][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${error_info} =</td>
+<td>Get Row Values</td>
+<td>${i + 2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${error_info[0]}</td>
+<td>${seed_info_list[${i + 500}][0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${error_info[3]}</td>
+<td>Meta UUID is invalid.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>/tmp/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-678-2">hubble-678-2</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{seed_info_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${TEMP_PATH}/test.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:生成1001条随即数据的种子文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Generate Random Seed Excel</td>
+<td>${test_data_excel}</td>
+<td>1001</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1001</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>${i + 2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${seed_info_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${seed_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Comment</td>
+<td>#action:将excel文件中Meta UUID项中的前500条插入到到mddb.meta表中,如果不存在的话</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()""" and ${i} &lt; 500</td>
+<td>Execute Sql</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${seed_info[0]}", 1, "Movie", "hubble_test", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“导入失败！最多支持1000条数据”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1001</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info_list[${i}][1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>导入失败！最多支持1000条数据\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-679">hubble-679</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${TEMP_PATH}/test.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:生成1000条随即数据的种子文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Generate Random Seed Excel</td>
+<td>${test_data_excel}</td>
+<td>1000</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1000</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>${i + 2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“共导入1000条数据,0条导入成功,1000条导入失败。查看导出文件。”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>10</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>共导入1000条数据,0条导入成功,1000条导入失败。查看导出文件。\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_file_url} =</td>
+<td>Get Element Attribute</td>
+<td>//div[3]/div[2]/a@href</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击“查看导出文件”，下载报文文件并打开</td>
+<td>#expect:有1000条数据，且所有的Error Info应该为Meta UUID is invalid.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[3]/div[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${path_list} =</td>
+<td>Call Method</td>
+<td>${return_file_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_info} =</td>
+<td>Get Col Values</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:删除下载的文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${path_list[-1]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get Length</td>
+<td>${error_info}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${len}</td>
+<td>${1001}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${item}</td>
+<td>IN</td>
+<td>@{error_info[1:]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Log Many</td>
+<td>${item}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${item}</td>
+<td>Meta UUID is invalid.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-679-2">hubble-679-2</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${test_data_excel}</td>
+<td>${TEMP_PATH}/test.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:生成1001条随即数据的种子文件</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Generate Random Seed Excel</td>
+<td>${test_data_excel}</td>
+<td>1001</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:读取excel中的种子信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1001</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_info} =</td>
+<td>Get Row Values</td>
+<td>${i + 2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${seed_info[0]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where id = ${meta_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '${seed_info[1]}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL_trackingMeta where seedURL_id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:选择选择准备好的excel文件并点击确认上传</td>
+<td>#expect:显示“导入失败！最多支持1000条数据”</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Choose File</td>
+<td>file</td>
+<td>${test_data_excel}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/div/form/table/tbody/tr[2]/td/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${test_data_excel}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Element Text Should Be</td>
+<td>//div[3]/div[2]</td>
+<td>导入失败！最多支持1000条数据\n<br>
+确定</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-681">hubble-681</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${uuid} =</td>
+<td>Get Uuid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:在hubble.seedURL表中插入一条随机数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '<a href="http://www.lurl.com/${uuid}">http://www.lurl.com/${uuid}</a>'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" == """()"""</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into seedURL (is_downloaded, key_id, seed_id, seed_url, link_url, need_record_seed, source_type, created_at, updated_at, created_by) values ('true', md5('http://www.durl.com/${uuid}'), 0, '<a href="http://www.durl.com/${uuid}">http://www.durl.com/${uuid}</a>', '<a href="http://www.lurl.com/${uuid}">http://www.lurl.com/${uuid}</a>', 'false', 'manual', now(), now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${seed_url_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>select id from seedURL where link_url = '<a href="http://www.lurl.com/${uuid}">http://www.lurl.com/${uuid}</a>'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"""${seed_url_id}""" != """()"""</td>
+<td>Call Method</td>
+<td>${sql}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>append</td>
+<td>delete from ${HUBBLE_DB_DBNAME_HUBBLE}.seedURL where id = ${seed_url_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开浏览器，输入http://192.168.1.146:8080/p2ptool/</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击种子状态查询</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[2]/ul/li[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:在Download URL框里写入刚插入的那条数据的Download URL地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>downloadUrl</td>
+<td><a href="http://www.durl.com/${uuid}">http://www.durl.com/${uuid}</a></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击查询</td>
+<td>#expect:查询到一条数据</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/form/div[2]/div/ul/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:点击导出报表</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/form/div[2]/div/ul[2]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${files} =</td>
+<td>Run</td>
+<td>ls -c ${CHROME_DOWNLOAD_PATH} | grep 种子查询报表</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${files} =</td>
+<td>Call Method</td>
+<td>${files}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>\n<br>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:打开导出的报表文件</td>
+<td>#expect:报表中有一条数据，且Download URL和Link URL和插入数据库的数据相同</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>${CHROME_DOWNLOAD_PATH}/${files[0]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${row}</td>
+<td>Get Row Values</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Remove File</td>
+<td>${CHROME_DOWNLOAD_PATH}/${files[0]}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Table Cell Should Contain</td>
+<td>xpath=//div[2]/div[3]/div/form/div[3]/table</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td><a href="http://www.durl.com/${uuid}">http://www.durl.com/${uuid}</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${row[0]}</td>
+<td>BT</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${row[1]}</td>
+<td><a href="http://www.lurl.com/${uuid}">http://www.lurl.com/${uuid}</a></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${row[2]}</td>
+<td><a href="http://www.durl.com/${uuid}">http://www.durl.com/${uuid}</a></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>#删除mddb.meta表中meta_uuid为上传的excel中的meta的数据，hubble.seedURL表中link_url为上传的excel文件中Linking URL的数据，以及hubble.seedURL_trackingMeta表中两者的关联数据</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-615（未完）">hubble-615（未完）</a></td>
+<td>Set Test Variable</td>
+<td>@{sql}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_num}</td>
+<td>${51}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${total_page} =</td>
+<td>Evaluate</td>
+<td>${meta_num} / 50 + int((${meta_num} % 50) ** 0.01)</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${title} =</td>
+<td>Random String</td>
+<td>abcdefghijklmnopqrstuvwxyz</td>
+<td>32</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>${meta_num}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${uuid} =</td>
+<td>Get Uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" == """()"""</td>
+<td>Execute Sql</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${uuid}", 1, "Movie", "${title}${i}", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_id} =</td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+<td>select id from meta where meta_uuid = '${uuid}'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"""${meta_id}""" != """()"""</td>
+<td>Call Method</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${sql}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>delete from ${HUBBLE_DB_DBNAME_MDDB}.meta where meta_uuid = '${uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Comment</td>
+<td>sleep</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sql_string} =</td>
+<td>Json Dumps</td>
+<td>${sql}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Browser</td>
+<td>${GS_TOOL_URL}</td>
+<td>Chrome</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:输入账号admin，密码123，点击登陆</td>
+<td>#expect:登陆成功返回首页</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Gs Tool Login</td>
+<td>${GS_TOOL_USER_ADMIN}</td>
+<td>${GS_TOOL_PASSWORD_ADMIN}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[2]/ul/li[4]/a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Input Text</td>
+<td>metaTitle</td>
+<td>${title}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/form/div/div/ul/input</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${total_text} =</td>
+<td>Get Text</td>
+<td>//div[2]/div[3]/div/form/div[3]/ul/li</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${total_text_list} =</td>
+<td>Call Method</td>
+<td>${total_text}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_num}</td>
+<td>${${total_text_list[-1]}}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>${total_page}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Input Text</td>
+<td>currentPage</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Click Element</td>
+<td>//div[2]/div[3]/div/form/div[3]/ul/li[11]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>sleep</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Execute Sql And Close Browser</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_HUBBLE}</td>
+<td>${sql_string}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_hubble-652（未完）">hubble-652（未完）</a></td>
+<td>Set Test Variable</td>
+<td>${etc}</td>
+<td>/home/p2p/hubble_backend/processor/etc/seedtracker.conf</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${etc_back}</td>
+<td>/home/p2p/hubble_backend/processor/etc/seedtracker_back.conf</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Connection</td>
+<td>192.168.1.146</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Login</td>
+<td>hubble</td>
+<td>123</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Command</td>
+<td>cp ${etc} ${etc_back}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Command</td>
+<td>sed -i 's/torrent_cache=.*/torrent_cache=\\/tmp\\/torrent_cache/g' ${etc}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Execute Command</td>
+<td>/home/p2p/hubble_backend/ks_start.sh</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Command</td>
+<td>/home/p2p/hubble_backend/seedTrack_start.sh</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Command</td>
+<td>cp ${etc_back} ${etc}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Command</td>
+<td>rm -rf ${etc_back}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Execute Command</td>
+<td>/home/p2p/hubble_backend/all_stop.sh all</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close All Connections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_test">test</a></td>
+<td>${num} =</td>
+<td>Catenate</td>
+<td>101</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Create Excel</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Add Sheet</td>
+<td>Sheet1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>:FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${${num}}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>${uuid} =</td>
+<td>Get Uuid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Sheet Write</td>
+<td>${i + 1}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>1</td>
+<td>${uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Save As</td>
+<td>/home/yan_jiawei/Desktop/${num}.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>******************************</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Open Excel</td>
+<td>/home/yan_jiawei/Desktop/${num}.xls</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${cols} =</td>
+<td>Get Col Values</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${uuid}</td>
+<td>IN</td>
+<td>@{cols}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>DELETE FROM meta WHERE \ meta_uuid = '${uuid}'</td>
+<td>false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>******************************</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Open Excel</td>
+<td>/home/yan_jiawei/Desktop/${num}.xls</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>Select Sheet</td>
+<td>index</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${cols} =</td>
+<td>Get Col Values</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${${num}}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>Execute Sql</td>
+<td>${HUBBLE_DB_HOST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${HUBBLE_DB_USERNAME}</td>
+<td>${HUBBLE_DB_PASSWORD}</td>
+<td>${HUBBLE_DB_DBNAME_MDDB}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>insert into meta (meta_uuid, company_id, meta_type, meta_title, priority, is_valid, customer_ref_id_type, duration, release_date, is_track_popularity, created_at, created_by, updated_at, updated_by) values ("${cols[${i}]}", 1, "Movie", "asdfghjkl${i}", "normal", "valid", "Other", 0, now(), "false", now(), 1, now(), 0)</td>
+<td>false</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td></td>
+<td>sleep</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Execute Sql And Close Browser">Execute Sql And Close Browser</a></td>
+<td>[Arguments]</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_name}</td>
+<td>${sql_string_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute Sql Batch</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_name}</td>
+<td>${sql_string_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Close All Browsers</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

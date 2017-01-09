@@ -1,0 +1,15 @@
+<response cycle="001" cvus="000" thread="001" suite="FunkloadCommon" name="test_common" step="001" number="001" type="post" result="Failure" url="/claimWeb/api/upload" code="409" description="http://192.168.1.67:8080/claimWeb/api/upload" time="1406714187.8" duration="0.0302910804749">
+  <headers>
+    <header name="content-length" value="20" />
+    <header name="set-cookie" value="JSESSIONID=1pz8zfm8kgxat8r9ydyw80f2;Path=/claimWeb" />
+    <header name="expires" value="Thu, 01 Jan 1970 00:00:00 GMT" />
+    <header name="server" value="Jetty(7.6.9.v20130131)" />
+    <header name="date" value="Wed, 30 Jul 2014 09:55:53 GMT" />
+    <header name="content-type" value="text/plain;charset=ISO-8859-1" />
+  </headers>
+  <body><![CDATA[
+Video file Duplicate
+]]>
+  </body>
+</response>
+<testResult cycle="001" cvus="000" thread="001" suite="FunkloadCommon" name="test_common"  time="1406714187.8" result="Failure" steps="1" duration="0.0311348438263" connection_duration="0.0302910804749" requests="1" pages="0" xmlrpc="0" redirects="0" images="0" links="0" traceback="None&#10;" />

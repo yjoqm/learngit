@@ -1,0 +1,663 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ExcelLib 关键字</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJEBoACtnfgA5cYYAERsiAEx2lAAbKkQAcazBACZCVwAcM1cAK0ucAAMDBQAnQncASG+FABkoVQAyWmgA6f8SgvH/Ij99+GLyIinyJfn/Yi//KSLzUy9iZogpIld3/4JVVTkid7vyUjNVNVJEAGOZ6Z7pXwAABpmZkRiLAAAGiJZpmGAAAEEt3SXdxAAATC7o/u3EAAC8MRZpjasAAAY1VVVTYAAABKqqqqpAAAAADKqq4AAAAAAAv4sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMADAADgAwAA4AcAAOAHAADgBwAAwAcAAOAHAADgDwAA8A8AAPg/AAD+fwAA" />
+  <style media="all" type="text/css">
+  body {
+    background: white;
+    color: black;
+    font-size: small;
+    font-family: sans-serif;
+    padding: 0 0.5em;
+  }
+  .metadata th {
+    text-align: left;
+    padding-right: 1em;
+  }
+  a.name, span.name {
+    font-style: italic;
+  }
+  a, a:link, a:visited {
+    color: #c30;
+  }
+  a img {
+    border: 1px solid #c30 !important;
+  }
+  a:hover, a:active {
+    text-decoration: underline;
+    color: black;
+  }
+  div.shortcuts {
+    margin: 1em 0;
+    font-size: 0.9em;
+  }
+  div.shortcuts a {
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    color: black;
+  }
+  div.shortcuts a::first-letter {
+    font-weight: bold;
+    font-size: 1.05em;
+    letter-spacing: 0.1em;
+  }
+  div.shortcuts a:hover {
+    text-decoration: underline;
+  }
+  table.keywords {
+    border: 2px solid black;
+    border-collapse: collapse;
+    empty-cells: show;
+    margin: 0.3em 0;
+    width: 100%;
+  }
+  table.keywords th, table.keywords td {
+    border: 2px solid black;
+    padding: 0.2em;
+    vertical-align: top;
+  }
+  table.keywords th {
+    background: #bbb;
+    color: black;
+  }
+  table.keywords td.kw {
+    width: 150px;
+    font-weight: bold;
+  }
+  table.keywords td.arg {
+    width: 300px;
+    font-style: italic;
+  }
+  /*table.keywords td.author {
+    width: 300px;
+    font-style: italic;
+  }*/
+  .footer {
+    font-size: 0.9em;
+  }
+/* Docs originating from HTML and reST are wrapped to divs. */
+.doc div > *:first-child {
+    margin-top: 0;
+}
+.doc div > *:last-child {    /* Does not work with IE8. */
+    margin-bottom: 0;
+}
+  </style>
+  <style media="print" type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 8pt;
+}
+a {
+    text-decoration: none;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+#javascript-disabled {
+    width: 600px;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    color: #2A2A2E;
+    border: 1px solid #9A9A9E;
+    background: #FAFAFF;
+}
+#javascript-disabled h1 {
+    width: 100%;
+    float: none;
+}
+#javascript-disabled ul {
+    font-size: 1.2em;
+}
+#javascript-disabled li {
+    margin: 0.5em 0;
+}
+#javascript-disabled b {
+    font-style: italic;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+.doc > * {
+    margin: 0.7em 1em 0.1em 1em;
+    padding: 0;
+}
+.doc > p, .doc > h1, .doc > h2, .doc > h3, .doc > h4 {
+    margin: 0.7em 0 0.1em 0;
+}
+.doc > *:first-child {
+    margin-top: 0.1em;
+}
+.doc table {
+    border: 1px solid gray;
+    background: transparent;
+    border-collapse: collapse;
+    empty-cells: show;
+    font-size: 0.9em;
+}
+.doc table th, .doc table td {
+    border: 1px solid gray;
+    background: transparent;
+    padding: 0.1em 0.3em;
+    height: 1.2em;
+}
+.doc table th {
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.doc pre {
+    font-size: 1.1em;
+    background: #F4F4FF;
+}
+.doc li {
+    list-style-position: inside;
+    list-style-type: square;
+}
+.doc img {
+    border: 1px solid gray;
+}
+.doc hr {
+    background: gray;
+    height: 1px;
+    border: 0;
+}
+  </style>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body>
+<h1>ExcelLib</h1>
+<table class="metadata">
+<tbody>
+<tr>
+<th>Library version:</th>
+<td>1.0.0</td>
+</tr>
+<tr>
+<th>Library scope:</th>
+<td>global</td>
+</tr>
+<tr>
+<th>Named arguments:</th>
+<td>supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Introduction">Introduction</h2>
+<div>
+<p>本库是用于Excel读写。支持后缀为xls的excel文件和后缀为xlsx的excel 2007文件，目前该库只支持文件读取。
+<br />如果某单元格的值是一个公式或者宏，该库读取到的是这个单元格最终的值而非公式本身</p>
+<p>本库的关键字中涉及的序号全部从1开始而非0开始，比如要选择表格的第一行和第三列使用关键字Get Cell Value | 1 | 3，而非Get Cell Value | 0 | 2，其他类同</p>
+<p>使用方法：<br>
+读取表格时需要先使用关键字Open Excel，然后使用关键字Select Sheet选择一张表格，之后才能使用其他的关键字读取表格中的内容，否则将出错<br />
+
+</p>
+
+单元格类型的对应关系
+<table>
+<tbody><tr>
+<td>EMPTY</td>
+<td>&nbsp;&nbsp;&nbsp;0</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>&nbsp;&nbsp;&nbsp;1</td>
+</tr>
+<tr>
+<td>NUMBER</td>
+<td>&nbsp;&nbsp;&nbsp;2</td>
+</tr>
+<tr>
+<td>DATE</td>
+<td>&nbsp;&nbsp;&nbsp;3</td>
+</tr>
+<tr>
+<td>BOOLEAN</td>
+<td>&nbsp;&nbsp;&nbsp;4</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>&nbsp;&nbsp;&nbsp;5</td>
+</tr>
+<tr>
+<td>BLANK</td>
+<td>&nbsp;&nbsp;&nbsp;6</td>
+</tr>
+</tbody></table>
+<br />
+References:<br />
++ python excel文件读取库xlrd - <a href="https://pypi.python.org/pypi/xlrd/0.9.3">https://pypi.python.org/pypi/xlrd/0.9.3</a><br />
++ python excel文件写入库xlwt - <a href="https://pypi.python.org/pypi/xlwt/0.7.5">https://pypi.python.org/pypi/xlwt/0.7.5</a><br />
++ python excel文件拷贝库xlutils - <a href="https://pypi.python.org/pypi/xlutils/1.7.1">https://pypi.python.org/pypi/xlutils/1.7.1</a><br />
+ 
+
+</div>
+<h2 id="Shortcuts">Shortcuts</h2>
+<div class="shortcuts">
+<a href="#Get Cell Type">Get Cell Type</a>
+·
+<a href="#Get Cell Value">Get Cell Value</a>
+·
+<a href="#Get Col Count">Get Col Count</a>
+·
+<a href="#Get Col Types">Get Col Types</a>
+·
+<a href="#Get Col Values">Get Col Values</a>
+·
+<a href="#Get Row Count">Get Row Count</a>
+·
+<a href="#Get Row Types">Get Row Types</a>
+·
+<a href="#Get Row Values">Get Row Values</a>
+·
+<a href="#Get Sheet Names">Get Sheet Names</a>
+·
+<a href="#Get Sheets Count">Get Sheets Count</a>
+·
+<a href="#Open Excel">Open Excel</a>
+·
+<a href="#Select Sheet">Select Sheet</a>
+</div>
+<table class="keywords" border="1" width="100%">
+  <tbody>
+    <tr>
+      <th class="keywords" align="center" width="11%">关键字 </th>
+      <th class="author" align="center" width="6%">作者 </th>
+      <th class="arg" align="center" width="8%">参数</th>
+      <th class="ret" align="center" width="10%">返回值 </th>
+      <th class="doc" align="center" width="65%">说明和示例 </th>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Get Cell Type"></a> Get Cell Type</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">row_num, col_num, display=char&nbsp;</td>
+      <td class="ret">当前单元格内容的类型</td>
+      <td class="doc">
+      返回第row_num行，第col_num列单元格的数据类型。<br />
+      display的可选值为char或者num，如果display为char则返回字符串，如果display为num则返回类型数字，类型的文字和数字的对应关系见<a href="#Introduction">Introduction</a><br />
+example:<br />
+      <table style="text-align: left; width: 381px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 25%;">测试
+            </td>
+            <td style="vertical-align: top; width: 25%;">
+            </td>
+            <td style="vertical-align: top; width: 25%;">
+            </td>
+            <td style="vertical-align: top; width: 25%;">
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">
+            </td>
+            <td style="vertical-align: top;">1
+            </td>
+            <td style="vertical-align: top;">
+            </td>
+            <td style="vertical-align: top;">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="text-align: left; width: 739px; " border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">${a} =
+            </td>
+            <td style="vertical-align: top; width: 20%;">Get Cell Type
+            </td>
+            <td style="vertical-align: top; width: 20%;">1
+            </td>
+            <td style="vertical-align: top; width: 20%;">1
+            </td>
+            <td style="vertical-align: top; width: 20%;">char
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">${b} =
+            </td>
+            <td style="vertical-align: top;">Get Cell Type
+            </td>
+            <td style="vertical-align: top;">1
+            </td>
+            <td style="vertical-align: top;">1
+            </td>
+            <td style="vertical-align: top;">num
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">${c} =
+            </td>
+            <td style="vertical-align: top;">Get Cell Type
+            </td>
+            <td style="vertical-align: top;">2
+            </td>
+            <td style="vertical-align: top;">2
+            </td>
+            <td style="vertical-align: top;">char
+            </td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">${d} =
+            </td>
+            <td style="vertical-align: top;">Get Cell Type
+            </td>
+            <td style="vertical-align: top;">2
+            </td>
+            <td style="vertical-align: top;">2
+            </td>
+            <td style="vertical-align: top;">num
+            </td>
+          </tr>
+        </tbody>
+      </table>
+&nbsp;&nbsp; ${a} 返回 TEXT<br />
+&nbsp;&nbsp; ${b} 返回 1<br />
+&nbsp;&nbsp; ${c} 返回 NUMBER<br />
+&nbsp;&nbsp; ${d} 返回 2<br />
+      </td>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Get Cell Value"></a>Get Cell Value</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">row_num, col_num</td>
+      <td class="ret">返回当前单元格的值</td>
+      <td class="doc">返回第row_num行，第col_num列单元格的值</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Col Count"></a>Get Col Count</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"></td>
+      <td class="ret">返回列当前表格的列数</td>
+      <td class="doc">返回当前表格的列数。<br />
+表格中每一行的列数不同，取最大值<br />
+example:<br />
+      <table style="text-align: left; width: 547px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">A</td>
+            <td style="vertical-align: top; width: 20%;">B</td>
+            <td style="vertical-align: top; width: 20%;">C</td>
+            <td style="vertical-align: top; width: 20%;"></td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">1</td>
+            <td style="vertical-align: top;">2</td>
+            <td style="vertical-align: top;">3</td>
+            <td style="vertical-align: top;">4</td>
+            <td style="vertical-align: top;">5</td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">你好</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>&nbsp;&nbsp;
+      Get Col Count返回<span class="name">5</span>
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Col Types"></a>Get Col Types</a></td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">col_num, display=char</td>
+      <td class="ret">返回当前列所有单元格的类型，返回类型为list</td>
+      <td class="doc">返回第rol_num列所有单元格的数据类型。<br />
+      display的可选值为char或者num，如果display为char则返回字符串，如果display为num则返回类型数字，类型的文字和数字的对应关系见<a href="#Introduction">Introduction</a><br />
+example:<br />
+      <table style="text-align: left; width: 271px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 50%;">test</td>
+            <td style="vertical-align: top; width: 50%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">5</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">ccc</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="text-align: left; width: 658px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 25%;">${a} =</td>
+            <td style="vertical-align: top; width: 25%;">Get Col Types</td>
+            <td style="vertical-align: top; width: 25%;">1</td>
+            <td style="vertical-align: top; width: 25%;">char</td>
+          </tr>
+        </tbody>
+      </table>&nbsp;&nbsp;
+      ${a} 返回["TEXT", "NUMBER", "BLANK", "TEXT"]
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Col Values"></a>Get Col Values</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">col_num</td>
+      <td class="ret">返回当前列所有单元格的内容</td>
+      <td class="doc">返回第col_num列所有单元格的内容。<br />
+example:<br />
+      <table style="text-align: left; width: 271px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 50%;">test</td>
+            <td style="vertical-align: top; width: 50%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">5</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">ccc</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="text-align: left; width: 664px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 33%;">${a} =</td>
+            <td style="vertical-align: top; width: 33%;">Get Col Values</td>
+            <td style="vertical-align: top; width: 33%;">1</td>
+          </tr>
+        </tbody>
+      </table>
+&nbsp;&nbsp; ${a} 返回 ["test", 5, "", "ccc"]
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Row Count"></a>Get Row Count</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"></td>
+      <td class="ret">返回当前表格的行数</td>
+      <td class="doc">返回当前表格的行数<br />
+example:<br />
+      <table style="text-align: left; width: 505px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 25%;">a</td>
+            <td style="vertical-align: top; width: 25%;">a</td>
+            <td style="vertical-align: top; width: 25%;">a</td>
+            <td style="vertical-align: top; width: 25%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>
+      &nbsp;&nbsp; Get Row Count 返回<span class="name">4</span>
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Row Types"></a>Get Row Types</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">row_num, display=char</td>
+      <td class="ret">返回当前行所有单元格的类型，返回类型为list</td>
+      <td class="doc">返回第row_num行所有单元格的数据类型。<br />
+
+      display的可选值为char或者num，如果display为char则返回字符串，如果display为num则返回类型数字，类型的文字和数字的对应关系见<a href="ExcelLib%20Document.html#Introduction">Introduction</a><br />
+
+example:<br />
+      <table style="text-align: left; width: 478px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">a</td>
+            <td style="vertical-align: top; width: 20%;">a</td>
+            <td style="vertical-align: top; width: 20%;">s</td>
+            <td style="vertical-align: top; width: 20%;"></td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">1</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">2</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">3</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="text-align: left; width: 528px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 25%;">${a}=</td>
+            <td style="vertical-align: top; width: 25%;">Get Row Types</td>
+            <td style="vertical-align: top; width: 25%;">3</td>
+            <td style="vertical-align: top; width: 25%;">char</td>
+          </tr>
+        </tbody>
+      </table>&nbsp;&nbsp;
+      ${a} 返回 ["BLANK", "TEXT", "BLANK", "NUMBER", "BLANK"]
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Row Values"></a>Get Row Values</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">row_num</td>
+      <td class="ret">返回当前行所有单元格的内容</td>
+      <td class="doc">返回第row_num行所有单元格的内容。<br />
+example:<br />
+      <table style="text-align: left; width: 478px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">a</td>
+            <td style="vertical-align: top; width: 20%;">a</td>
+            <td style="vertical-align: top; width: 20%;">s</td>
+            <td style="vertical-align: top; width: 20%;"></td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">1</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">2</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">a</td>
+            <td style="vertical-align: top;"></td>
+            <td style="vertical-align: top;">3</td>
+            <td style="vertical-align: top;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <table style="text-align: left; width: 526px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 33%;">${a} =</td>
+            <td style="vertical-align: top; width: 33%;">Get Row Values</td>
+            <td style="vertical-align: top; width: 33%;">3</td>
+          </tr>
+        </tbody>
+      </table>&nbsp;&nbsp;
+      ${a} 返回 ["", "a", "", 3, ""]
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Sheet Names"></a>Get Sheet Names</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"></td>
+      <td class="ret">返回当前xls文件所有表格的名字</td>
+      <td class="doc">如果当前xls文件包含三个sheet，名字分别为first, second, third则Get Sheet Names返回["first", "second", "third"]</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Get Sheets Count"></a>Get Sheets Count</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"></td>
+      <td class="ret">返回当前xls文件表格数</td>
+      <td class="doc">如果当前xls文件包含三个sheet，名字分别为first, second, third则Get Sheet Count返回<span class="name">3</span>
+</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Open Excel"></a>Open Excel</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">excel_file</td>
+      <td class="ret"></td>
+      <td class="doc">打开excel文件</td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Select Sheet"></a>Select Sheet</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">selector=index, value=1</td>
+      <td class="ret"></td>
+      <td class="doc">选中一个表格。<br />
+selector可以是index或者name<br />
+如果selector为index，则value的值为需要选择的表的序号<br />
+如果selector为name，则value的值为需要选择的表的名字<br />
+example:<br />
+假设打开的xls文件有3个sheet，分别为DEV，QA，PM<br />
+如果seletor=index，value=2，则选中了QA这张表<br />
+如果seletor=name，value=PM，则选中了PM这张表<br />
+</td>
+    </tr>
+  </tbody>
+</table>
+<p class="footer">
+Altogether 12 keywords.
+<br>
+Generated by
+<a href="http://code.google.com/p/robotframework/wiki/LibraryDocumentationTool">libdoc</a>
+on 2014-06-12 19:44:25.
+</p>
+
+</body></html>

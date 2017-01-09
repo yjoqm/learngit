@@ -1,0 +1,43 @@
+10
+
+dir
+5915
+http://192.168.10.10/svn/QA/auto_test/apollo/automation/robot/project/cyberlocker/trunk
+http://192.168.10.10/svn/QA
+
+
+
+2014-08-22T09:23:49.638257Z
+5913
+gao_jinjin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+79b6836a-105b-4f17-8112-b8533a6536cf
+
+testlib
+dir
+
+resource
+dir
+
+sut
+dir
+
+testcase
+dir
+
+doc
+dir
+

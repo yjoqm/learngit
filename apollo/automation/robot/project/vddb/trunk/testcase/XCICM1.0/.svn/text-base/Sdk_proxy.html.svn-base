@@ -1,0 +1,426 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Sdk proxy</title>
+</head>
+<body>
+<h1>Sdk proxy</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">设置代理进行lib的使用</td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_thunder.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/InterGateway.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="1">Test Cases</th>
+<th class="name" colspan="1">${proxy_type}</th>
+<th class="name" colspan="1">${proxy_host}</th>
+<th class="name" colspan="1">${proxy_port}</th>
+<th class="name" colspan="1">${proxy_usr}</th>
+<th class="name" colspan="1">${proxy_pwd}</th>
+<th class="name" colspan="1">${key}</th>
+<th class="name" colspan="1">${client_info}</th>
+<th class="name" colspan="1">${client_id}</th>
+<th class="name" colspan="1">${url}</th>
+<th class="name" colspan="1">${referer}</th>
+<th class="name" colspan="1">${private_id}</th>
+<th class="name" colspan="1">${mime}</th>
+<th class="name" colspan="1">${file_name}</th>
+<th class="name" colspan="1">${file_size}</th>
+<th class="name" colspan="1">${result}</th>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_template_gateway_get_need_params">template_gateway_get_need_params</a></td>
+<td>[Arguments]</td>
+<td>${case_no}</td>
+<td>${result}</td>
+<td>${X-URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${user-agent}</td>
+<td>${key}</td>
+<td>${hash}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${digest}</td>
+<td>${digest-algorithm}</td>
+<td>${Referer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${X-Progress}</td>
+<td>${X-Client-Address}</td>
+<td>${X-Client-ID}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${X-File-Name}</td>
+<td>${X-File-Size}</td>
+<td>${X-Mime-Type}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${seed_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">[模板]\n<br>
+针对必填字段的输入参数的校验</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${digest1}=</td>
+<td>set variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${hash1}=</td>
+<td>set variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${digest}=</td>
+<td>run keyword if</td>
+<td>"${digest}"=="empty"</td>
+<td>${digest1}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>Generate Random String</td>
+<td>25</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>[LOWER][NUMBERS]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${hash}=</td>
+<td>run keyword if</td>
+<td>"${hash}"=="empty"</td>
+<td>${hash1}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>ELSE</td>
+<td>Generate Random String</td>
+<td>25</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>[LOWER][NUMBERS]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${case_json}=</td>
+<td>Create Dictionary</td>
+<td>method=GET</td>
+<td>url=${X-URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>X-File-Name=${X-File-Name}</td>
+<td>user-agent=${user-agent}</td>
+<td>key=${key}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>digest=${digest}</td>
+<td>X-Client-Address=${X-Client-Address}</td>
+<td>digest-algorithm=${digest-algorithm}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>X-Client-ID=${X-Client-ID}</td>
+<td>X-File-Size=${X-File-Size}</td>
+<td>Referer=${Referer}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>seed_file=${seed_file}</td>
+<td>hash=${hash}</td>
+<td>X-Mime-Type=${X-Mime-Type}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>X-Progress=${X-Progress}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log</td>
+<td>${case_no}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${case_json}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${rsp_result}=</td>
+<td>req_gateway2</td>
+<td>${THEMPLATE_JSON}</td>
+<td>${case_json}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>logmany</td>
+<td>${rsp_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:结果校验</td>
+<td>#expect:code=401,{"jsonrpc": "2.0", "id": null, "error": {"message": "APIKEY Error", "code": 65539, "data": ["key"]}}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${str_result}</td>
+<td>Convert To String</td>
+<td>${rsp_result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${str_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result}</td>
+<td>${str_result}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app
+END
+case_result.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/case_result.py
+END
+schedule_result.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/schedule_result.py
+END
+case_delete.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/case_delete.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/__init__.py
+END
+tests.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/tests.py
+END
+case_add.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/case_add.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/models.py
+END
+schedule_add.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/schedule_add.py
+END
+schedule_list.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/ci_app/schedule_list.py
+END

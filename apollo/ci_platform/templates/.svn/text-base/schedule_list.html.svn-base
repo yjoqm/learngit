@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="refresh" content="15">
+        <title>Welcome to CI platform</title>
+    </head>
+    <body>
+        {% if search_err %}
+        <font color=red>请输入模块名</font>
+        <br>
+        {% endif %}
+        <table border="0">
+            <tr>
+                <td>
+                    <form action="./" method="get">
+                        <input type="text" name="module_name">
+                        <input type="submit" value="Search">
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type=button onclick="window.location='./'" value="显示全部">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        
+        <table border="1">
+        <tr>
+        <th>schedule id</th>
+        <th>模块名称</th>
+        <th>schedule状态</th>
+        <th>最后更新时间</th>
+        </tr>
+        {% for schedule in schedule_list %}
+        <tr height=23>
+        <td><a href="/apollo/schedule/{{ schedule.id }}/">{{ schedule.id }}</a></td>
+        <td><a href="./?module_name={{ schedule.module_name }}" style="text-decoration:none">{{ schedule.module_name }}</a></td>
+        <td>{{ schedule.status }}</td>
+        <td>{{ schedule.updated_at|date:"F j, Y H:i:s" }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        
+        {% if total_page %}
+        <br>
+        <table border = 0>
+            <tr>
+                <td>
+                <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="hidden" name="page" value="1">
+                        <input type="submit" value="首页" {% if first_disable %}disabled="disabled"{% endif %}>
+                </form>        
+                </td>
+                <td>
+                <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="hidden" name="page" value="{{ last_page }}">
+                        <input type="submit" value="上一页" {% if first_disable %}disabled="disabled"{% endif %}>
+                </form>        
+                </td>
+                
+                {% for page_params in page_list %}
+                <td>
+                <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="hidden" name="page" value="{{ page_params.value }}">
+                        <input type="submit" value="{{ page_params.value }}" {% if page_params.disable %}disabled="disabled"{% endif %}>
+                </form>        
+                </td>
+                {% endfor %}
+                
+                <td>
+                <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="hidden" name="page" value="{{ next_page }}">
+                        <input type="submit" value="下一页" {% if last_disable %}disabled="disabled"{% endif %}>
+                </form>        
+                </td>
+                <td>
+                <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="hidden" name="page" value="{{ total_page }}">
+                        <input type="submit" value="末页" {% if last_disable %}disabled="disabled"{% endif %}>
+                </form>        
+                </td>
+                <td>
+                    <form action="./" method="get">
+                        {% for filter_param in filter_list %}
+                        <input type="hidden" name="{{ filter_param.name }}" value="{{ filter_param.value }}">
+                        {% endfor %}
+                        <input type="text" name="page" size="2">
+                        <input type="submit" value="跳转">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        {% endif %}
+        
+    </body>
+</html>

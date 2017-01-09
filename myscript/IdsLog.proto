@@ -1,4 +1,4 @@
-option java_package = "com.zamplus.protobuf.uclog";
+option java_package = "com.zamplusback.protobuf.uclog";
 
 message Pid{
     required int32 venderId = 1;//vender id

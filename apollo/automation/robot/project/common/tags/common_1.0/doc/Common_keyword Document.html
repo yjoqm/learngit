@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Common_keyword 关键字</title>
+</head>
+
+<body>
+<h1>Common_keyword 关键字</h1>
+<p>依赖库<br />
+CommonLib.py, DatabaseLibrary</p>
+<h2 id="Shortcuts">Shortcuts</h2>
+<p><a href="#Execute Sql">Execute Sql</a>, <a href="#Mysql Connect">Mysql Connect</a>, </p>
+<table width="100%" border="1">
+  <tr>
+    <td width="11%" align="center">关键字</td>
+    <td width="6%" align="center">作者</td>
+    <td width="8%" align="center">参数</td>
+    <td width="10%" align="center">返回值</td>
+    <td width="65%" align="center">说明和示例</td>
+  </tr>
+  <tr>
+    <td><a name="Execute Sql">Execute Sql</a></td>
+    <td>严嘉蔚</td>
+    <td>db_host, db_user, db_pass, db_name, sql_string, is_query</td>
+    <td>None或者query结果</td>
+    <td><p>执行一条mysql语句，如果是增删改，则返回None，如果是查则返回查询结果<br />
+      db_host：db的ip地址<br />
+    db_user：db用户名<br />
+    db_pass：db密码    <br />
+    db_name：数据库名    <br />
+    sql_string：需要执行的sql语句    <br />
+    is_query：是否为select查询语句，true或者false</p>
+    <p>示例</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>Execute Sql</td>
+        <td>192.168.1.19</td>
+        <td>zhangjin</td>
+        <td>123</td>
+        <td>mddb_local</td>
+        <td>delete from meta where meta_uuid = &quot;xxx-xxx-xxx&quot;</td>
+        <td>false</td>
+      </tr>
+    </table>
+    <p>执行后再meta表中id为xxx-xxx-xxx的记录被删除</p>
+    <p>示例2：</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${return} =</td>
+        <td>Execute Sql</td>
+        <td>192.168.1.19</td>
+        <td>vddb</td>
+        <td>123456</td>
+        <td>mddb_local</td>
+        <td>select * from meta limit 1</td>
+        <td>true</td>
+      </tr>
+    </table>
+    <p>输出<br />
+    ((1, u'249b17ec-82c5-11e3-ae43-74d43546d037', 1, None, u'Music', u'\u5bc2\u5bde\u5bc2\u5bde', u'', u'public', u'false', u'valid', u'Other', u'', u'', u'', u'', u'', u'', 252L, datetime.date(2014, 1, 21), None, None, None, datetime.datetime(2014, 1, 21, 17, 54, 58), 1, datetime.datetime(2014, 1, 22, 11, 0, 30), datetime.datetime(2014, 1, 22, 10, 58, 42), 2, 2, 2),)    </p></td>
+  </tr>
+  <tr>
+    <td>check data from db</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><a name="Mysql Connect">Mysql Connect</a></td>
+    <td>严嘉蔚</td>
+    <td>dbname, name, passwd, host, dbport=3306, charset=utf8</td>
+    <td>无</td>
+    <td><p>连接一个mysql</p>
+    <p>dbname：数据库名<br />
+      name：mysql帐号
+        <br />
+    passwd：mysql密码    <br />
+    host：IP地址    <br />
+    dbport：db端口号，默认3306    <br />
+    charset：使用字符集，默认utf8    </p></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Roadmap</title>
+  <link href="/static/css/roadmap.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">
+            function add_platform(id)
+            {
+                var hidden_ele = document.getElementById(id);
+                var sys_name = prompt("请输入产品名称", "");
+                if(sys_name)
+                {
+                    hidden_ele.value = sys_name;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            
+            function adderror()
+            {
+                alert("{{ err_msg }}已存在");
+                window.location.href="."
+            }
+            {% if add_err %}
+            window.onload=adderror();
+            {% endif %}
+        </script></head><body style="background:#F5F5F5;">
+<h1>自动化项目沙盘</h1><br>
+
+<table id="map_table" style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;" width="50%">VDDB系列<br>
+      </th>
+      <th style="vertical-align: top;" width="50%">VideoTracker系列<br>
+      </th>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">
+      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+        <tbody>
+          {% for row_array in row_array_id1 %}
+          <tr>
+            {% for item in row_array %}
+            {% if item %}
+            {% if item == "extra" %}
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+            </td>
+            {% else %}
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+              <input class="{{ item.status }} button" type=button onclick="window.location='../project/{{ item.platform_id }}/{{ item.id }}'" value="{{ item.name }}">
+            </td>
+            {% endif %}
+            {% else %}
+            <form method="post" action=".">
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+            <input type="hidden", id="addplt1" name="addplt1" value="addplt">
+            <input class="button" type="submit", name="add" value="+" style="background: white; width:60%; height:100%;" onclick="return add_platform('addplt1');">
+            </td>
+            </form>
+            {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </td>
+      <td style="vertical-align: top;">
+      <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+        <tbody>
+          {% for row_array in row_array_id2 %}
+          <tr>
+            {% for item in row_array %}
+            {% if item %}
+            {% if item == "extra" %}
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+            </td>
+            {% else %}
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+              <input class="{{ item.status }} button" type=button onclick="window.location='../project/{{ item.platform_id }}/{{ item.id }}'" value="{{ item.name }}">
+            </td>
+            {% endif %}
+            {% else %}
+            <form method="post" action=".">
+            <td  class="table_call" style="vertical-align: top;" width="33%" height="50px">
+            <input type="hidden", id="addplt2" name="addplt2" value="addplt">
+            <input class="button" type="submit", name="add" value="+" style="background: white; width:60%; height:100%;" onclick="return add_platform('addplt2');">
+            </td>
+            </form>
+            {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<input style="background: #91bd09;color: yellow; height:30px;width:100px;" type=button value="正在开发中">
+<input style="background: red;color: white; height:30px;width:100px" type=button value="尚未自动化">
+
+
+</body></html>

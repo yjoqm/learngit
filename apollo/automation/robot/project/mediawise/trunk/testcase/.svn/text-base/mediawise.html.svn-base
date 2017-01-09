@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Mediawise</title>
+</head>
+<body>
+<h1>Mediawise</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>Set Mediawise Host</td>
+<td>192.168.1.181</td>
+<td>80</td>
+<td>http</td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/MediawiseLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/mediawise_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/mediawise_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_调用http接口action域缺失">调用http接口action域缺失</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">调用mediawise的http接口，不指定action字段，username和password指定</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用mediawise api接口，不填action字段，只输入正确的username和password，http方法为GET，url为/service/mediawise?username=test&amp;password=123</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>mediawise http api call</td>
+<td>GET</td>
+<td>${MEDIAWISE_URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>username=test</td>
+<td>password=123</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:从返回结果获取ErrorCode和ErrorMessage</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_code} =</td>
+<td>Get Element Text</td>
+<td>${return}</td>
+<td>Head/ErrorCode</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${error_msg} =</td>
+<td>Get Element Text</td>
+<td>${return}</td>
+<td>Head/ErrorMessage</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:检查ErrorCode和ErrorMessage</td>
+<td>#expect:ErrorCode为403，ErrorMessage为No command specified</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${error_code}</td>
+<td>403</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${error_msg}</td>
+<td>No command specified</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_no match">no match</a></td>
+<td>comment</td>
+<td>#action:调用submit接口，提交任务</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>mediawise http api call</td>
+<td>POST</td>
+<td>${MEDIAWISE_URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>action=submit</td>
+<td>username=${MEDIAWISE_USERNAME_TEST}</td>
+<td>password=${MEDIAWISE_PASSWORD_TEST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna=Z:\\workspace\\PythonWorkSpace\\Vobile\\apollo\\automation\\robot\\project\\mediawise\\trunk\\testlib\\test.far</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取submit接口返回结果，获取taskid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${taskid} =</td>
+<td>Get Element Text</td>
+<td>${return}</td>
+<td>Body/TaskID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:等待该taskid的任务结束</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>wait for task over</td>
+<td>${taskid}</td>
+<td>${MEDIAWISE_DB_HOST}</td>
+<td>${MEDIAWISE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${MEDIAWISE_DB_PASSWORD}</td>
+<td>${MEDIAWISE_DB_DATABASE}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:任务结束，获取该tasid的任务执行结果</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>mediawise http api call</td>
+<td>GET</td>
+<td>${MEDIAWISE_URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>action=check_status</td>
+<td>username=${MEDIAWISE_USERNAME_TEST}</td>
+<td>password=${MEDIAWISE_PASSWORD_TEST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>type=task_id</td>
+<td>id=${taskid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>#TODO：把之前写的任务match结果处理移植过来</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_match">match</a></td>
+<td>[Setup]</td>
+<td>set pyweb vddb and mediawise</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:vddb入库一个片子</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID} =</td>
+<td>vddb testdata ingest</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>${VDDB_INGEST_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_INGEST_PASSWORD}</td>
+<td>Z:\\workspace\\PythonWorkSpace\\Vobile\\apollo\\automation\\robot\\project\\mediawise\\trunk\\testlib\\test.mp3</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用submit接口，提交任务</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>mediawise http api call</td>
+<td>POST</td>
+<td>${MEDIAWISE_URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>action=submit</td>
+<td>username=${MEDIAWISE_USERNAME_TEST}</td>
+<td>password=${MEDIAWISE_PASSWORD_TEST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>dna=Z:\\workspace\\PythonWorkSpace\\Vobile\\apollo\\automation\\robot\\project\\mediawise\\trunk\\testlib\\test.far</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取submit接口返回结果，获取taskid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${taskid} =</td>
+<td>Get Element Text</td>
+<td>${return}</td>
+<td>Body/TaskID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:等待该taskid的任务结束</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>wait for task over</td>
+<td>${taskid}</td>
+<td>${MEDIAWISE_DB_HOST}</td>
+<td>${MEDIAWISE_DB_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${MEDIAWISE_DB_PASSWORD}</td>
+<td>${MEDIAWISE_DB_DATABASE}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:任务结束，获取该tasid的任务执行结果</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>mediawise http api call</td>
+<td>GET</td>
+<td>${MEDIAWISE_URL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>action=check_status</td>
+<td>username=${MEDIAWISE_USERNAME_TEST}</td>
+<td>password=${MEDIAWISE_PASSWORD_TEST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>type=task_id</td>
+<td>id=${taskid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>#TODO：把之前写的任务match结果处理移植过来</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>vddb testdata delete</td>
+<td>${VobileRefID}</td>
+<td>${VDDB_INGEST_USERNAME}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_INGEST_PASSWORD}</td>
+<td>${PYWEB_PROTOCOLS}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set pyweb vddb and mediawise">set pyweb vddb and mediawise</a></td>
+<td>set pyweb sut file</td>
+<td>${PYWEB_SUT_FILE}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb host</td>
+<td>${VDDB_INGEST_HOST}</td>
+<td>${VDDB_INGEST_PORT}</td>
+<td>${VDDB_SSL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Mediawise Host</td>
+<td>${MEDIAWISE_HOST}</td>
+<td>${MEDIAWISE_PORT}</td>
+<td>${MEDIAWISE_SSL}</td>
+</tr>
+</table>
+</body>
+</html>

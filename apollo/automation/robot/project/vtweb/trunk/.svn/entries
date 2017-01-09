@@ -1,0 +1,43 @@
+10
+
+dir
+5915
+http://192.168.10.10/svn/QA/auto_test/apollo/automation/robot/project/vtweb/trunk
+http://192.168.10.10/svn/QA
+
+
+
+2014-07-30T09:45:43.923659Z
+5859
+bao_min
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+79b6836a-105b-4f17-8112-b8533a6536cf
+
+doc
+dir
+
+testlib
+dir
+
+resource
+dir
+
+sut
+dir
+
+testcase
+dir
+

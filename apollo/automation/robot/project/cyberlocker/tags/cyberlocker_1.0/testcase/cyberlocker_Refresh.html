@@ -1,0 +1,658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>cyberlocker Refresh</title>
+</head>
+<body>
+<h1>cyberlocker Refresh</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../resource/cyberlocker_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_cy399-initialize-&gt;found_offline">cy399-initialize-&gt;found_offline</a></td>
+<td>[Tags]</td>
+<td>cy399</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=1779</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from workingRefreshTask where matchedFileItem_id=1779</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>INSERT INTO workingRefreshTask (matchedFileItem_id, task_priority,next_active_time, created_at) select id,9,now(),created_at from matchedFileItem where id=1779</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='found_offline' and id=1779</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy676-initialize-&gt;unknown">cy676-initialize-&gt;unknown</a></td>
+<td>[Tags]</td>
+<td>cy676</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=1783;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from workingRefreshTask where matchedFileItem_id=1783</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>INSERT INTO workingRefreshTask (matchedFileItem_id, task_priority,next_active_time, created_at) select id,9,now(),created_at from matchedFileItem where id=1783;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='unknown' and id=1783</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy752-initialize-&gt;online">cy752-initialize-&gt;online</a></td>
+<td>[Tags]</td>
+<td>cy752</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=115</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from workingRefreshTask where matchedFileItem_id=115</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>INSERT INTO workingRefreshTask (matchedFileItem_id, task_priority,next_active_time, created_at) select id,9,now(),created_at from matchedFileItem where id=115</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=9,next_active_time='2012-12-12' where matchedFileItem_id=115</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>2m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='online' and id=115</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy396-unknown-&gt;found_offline">cy396-unknown-&gt;found_offline</a></td>
+<td>[Tags]</td>
+<td>cy396</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='unknown' where id=119;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=7,round=1,next_active_time='2012-12-12' where matchedFileItem_id=119</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Not Exists In Database</td>
+<td>select * from matchedFileItem where status='found_offline' and id=119</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy678-unknown-&gt;unknown">cy678-unknown-&gt;unknown</a></td>
+<td>[Tags]</td>
+<td>cy678</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='unknown' where id=105;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=7,round=1,next_active_time='2012-12-12' where matchedFileItem_id=105</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='unknown' and id=105</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from workingRefreshTask where round=2 and matchedFileItem_id=105</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy677-unknown-&gt;online">cy677-unknown-&gt;online</a></td>
+<td>[Tags]</td>
+<td>cy677</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='unknown' where id=116;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=7,next_active_time='2012-12-12' where matchedFileItem_id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='online' and id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy680-online-&gt;offline">cy680-online-&gt;offline</a></td>
+<td>[Tags]</td>
+<td>cy680</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='initialize' where id=410;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=9,next_active_time='2012-12-12' where matchedFileItem_id=410</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='online' and id=410</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy398-online refresh-notice sent">cy398-online refresh-notice sent</a></td>
+<td>[Tags]</td>
+<td>cy398</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online' where id=133;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=6,round=1,is_notice_send='true',next_active_time='2012-12-12 00:00:00' where matchedFileItem_id=133</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>delete from workingRefreshTask where matchedFileItem_id &lt;&gt;133</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='online' and id=133</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from workingRefreshTask where task_priority=6 and round=2 and matchedFileItem_id=133</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_cy679-online refresh-notice not sent">cy679-online refresh-notice not sent</a></td>
+<td>[Tags]</td>
+<td>cy679</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Setup]</td>
+<td>Connect to db</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update matchedFileItem set status='online' where id=116;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>INSERT INTO workingRefreshTask (matchedFileItem_id, task_priority,next_active_time, created_at) select id,9,now(),created_at from matchedFileItem where id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Execute sql string</td>
+<td>update workingRefreshTask set task_priority=6,round=1,is_notice_send='false' where matchedFileItem_id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1.5m</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from matchedFileItem where status='online' and id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Check If Exists In Database</td>
+<td>select * from workingRefreshTask where task_priority=6 and round=2 and matchedFileItem_id=116</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Disconnect from db</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

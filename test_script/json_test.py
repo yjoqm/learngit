@@ -8,6 +8,7 @@ d2 = json.load(open('/Users/admin/json2.txt'))
 
 
 #以下可以拿出来json中的key ,value,可以通过target_key配置
+#配置Key 为nihao, 如果对应的v中存在值就返回，如果不存在返回None, v 可以是字典列表或者元组，但Key即是targent_key.
 target_key ='nihao'
 def walk_find(k,v):
     if k == target_key:

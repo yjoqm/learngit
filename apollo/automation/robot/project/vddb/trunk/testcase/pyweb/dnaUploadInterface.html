@@ -1,0 +1,1942 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>dnaUploadInterface</title>
+</head>
+<body>
+<h1>dnaUploadInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">测试用例集 : dna上传 相关接口</td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${SAMPLE_DNA_VIDEO}</td>
+<td>${SAMPLE_PATH}/dna_upload.0.dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_DNA_AUDIO}</td>
+<td>${SAMPLE_PATH}/dna_upload.1.adna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_FAR}</td>
+<td>${SAMPLE_PATH}/common.far</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_FAR_VIDEO}</td>
+<td>${SAMPLE_PATH}/common.far.merged.dna.0.dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_FAR_AUDIO}</td>
+<td>${SAMPLE_PATH}/common.far.merged.dna.1.adna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1732:创建distinct dna-video">vdna-1732:创建distinct dna-video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1732:创建distinct dna——video</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>vdna-1732</td>
+<td>上传dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:ingest one dna</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:再次调用入库同一个dna</td>
+<td>#expect:返回http格式的 response,code=409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取instance_id</td>
+<td>#expect:返回instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from db</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库的记录条数=1</td>
+<td>#expect:验证为1成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from videoInstanceTrack where instance_uuid ='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1732-2:创建distinct dna-audio">vdna-1732-2:创建distinct dna-audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1732:创建distinct dna——audio</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>vdna-1732</td>
+<td>上传dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:ingest one dna</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:再次调用入库同一个dna</td>
+<td>#expect:返回http格式的 response,code=409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取instance_id</td>
+<td>#expect:返回instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from db</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库的记录条数=1</td>
+<td>#expect:验证为1成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from audioInstanceTrack where instance_uuid ='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1553:创建 dna（可重复）——video">vdna-1553:创建 dna（可重复）——video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1553:创建 dna（可重复）——video</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:ingest one dna</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:重复再入一次dna</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_2}</td>
+<td>get meta uuid from api return</td>
+<td>${return_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_list}=</td>
+<td>Create List</td>
+<td>${meta_uuid}</td>
+<td>${meta_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td>#expect:数据库有两条记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid='${meta_uuid_2}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id_2} =</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_2} =</td>
+<td>mysql_query</td>
+<td>select instance_uuid from mediaContentInstance where meta_id='${meta_id}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Convert To String</td>
+<td>${result_2[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_2} =</td>
+<td>mysql_query</td>
+<td>select instance_uuid from mediaContentInstance where meta_id='${meta_id_2}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid_2} =</td>
+<td>Convert To String</td>
+<td>${result_2[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from videoInstanceTrack where instance_uuid in ('${inst_uuid}','${inst_uuid_2}')</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_uuid_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1553-2:创建 dna（可重复）——audio">vdna-1553-2:创建 dna（可重复）——audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1553:创建 dna（可重复）——audio</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:入库一个dna</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:重复再入一次dna</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_2}</td>
+<td>get meta uuid from api return</td>
+<td>${return_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_list}=</td>
+<td>Create List</td>
+<td>${meta_uuid}</td>
+<td>${meta_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id} =</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select id from meta where meta_uuid='${meta_uuid_2}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_id_2} =</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_2} =</td>
+<td>mysql_query</td>
+<td>select instance_uuid from mediaContentInstance where meta_id='${meta_id}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Convert To String</td>
+<td>${result_2[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_2} =</td>
+<td>mysql_query</td>
+<td>select instance_uuid from mediaContentInstance where meta_id='${meta_id_2}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid_2} =</td>
+<td>Convert To String</td>
+<td>${result_2[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from audioInstanceTrack where instance_uuid in ('${inst_uuid}','${inst_uuid_2}')</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_uuid_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1985:分段入库dna">vdna-1985:分段入库dna</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1985:分段入库dna—— video</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:更新 instance_uuid对应的 mediaContentInstance is_valid=valid</td>
+<td>#expect:成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:non_live_send_dna 分段入库</td>
+<td>#expect:返回码 200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface send dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>video</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:non_live_inst_eof nonlive 分段入库结束</td>
+<td>#expect:返回码 200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>non_live_inst_eof</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return_2}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验instance_uuid记录</td>
+<td>#expect:记录只有一条</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count_inst} =</td>
+<td>mysql_query</td>
+<td>select count(*) from mediaContentInstance where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${count_inst[0][0]}'</td>
+<td>'1'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from videoInstanceTrack where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${result[0][0]}'</td>
+<td>'1'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1985-2:分段入库dna">vdna-1985-2:分段入库dna</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1985:分段入库dna——audio</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${random_str}=</td>
+<td>Generate Random String</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用instance接口</td>
+<td>#expect:返回http格式response,包含instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:更新 instance_uuid对应的 mediaContentInstance is_valid=valid</td>
+<td>#expect:成功</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>mysql_update</td>
+<td>update mediaContentInstance set is_valid = 'valid' where instance_uuid = '${inst_uuid}'</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:non_live_send_dna 分段入库</td>
+<td>#expect:返回码 200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface send dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>audio</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${random_str}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:non_live_inst_eof nonlive 分段入库结束</td>
+<td>#expect:返回码 200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface instance</td>
+<td>${token}</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>non_live_inst_eof</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return_2}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验instance_uuid记录</td>
+<td>#expect:记录只有一条</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count_inst} =</td>
+<td>mysql_query</td>
+<td>select count(*) from mediaContentInstance where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${count_inst[0][0]}'</td>
+<td>'1'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) from audioInstanceTrack where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${result[0][0]}'</td>
+<td>'1'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1987:指定meta下挂载instance dna（不可重复）">vdna-1987:指定meta下挂载instance dna（不可重复）</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1987:meta下挂载instance dna（不可重复）</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用upload 接口挂载dna</td>
+<td>#expect:挂载成功，返回code 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface attach dna</td>
+<td>${meta_uuid}</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用upload 接口挂载dna</td>
+<td>#expect:重复挂载，返回code 409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface attach dna</td>
+<td>${meta_uuid}</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td>#expect:meta_uuid对应的 instance_uuid 有1条记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>mysql_query</td>
+<td>select count(*) from meta as a,mediaContentInstance as b where a.meta_uuid='${meta_uuid}' and b.meta_id=a.id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${count[0][0]}'</td>
+<td>'1'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1989:指定meta下挂载instance dna（可重复）">vdna-1989:指定meta下挂载instance dna（可重复）</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1989:meta下挂载instance dna（可重复）</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用upload 接口挂载dna:attach_inst_dna</td>
+<td>#expect:挂载成功，返回code 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface attach dna</td>
+<td>${meta_uuid}</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>attach_inst_dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action: 再次同一个dna调用upload 接口挂载dna:attach_inst_dna</td>
+<td>#expect:挂载成功，返回code 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface attach dna</td>
+<td>${meta_uuid}</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>attach_inst_dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return_2}</td>
+<td>303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td>#expect:meta_uuid对应的 instance_uuid 有2条记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>mysql_query</td>
+<td>select count(*) from meta as a,mediaContentInstance as b where a.meta_uuid='${meta_uuid}' and b.meta_id=a.id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${count[0][0]}'</td>
+<td>'2'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2023:ingest far文件（不可重复）">vdna-2023:ingest far文件（不可重复）</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2023:ingest far文件（不可重复）</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 upload distinct_dna接口</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_FAR}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:再次调用 upload distinct_dna接口</td>
+<td>#expect:返回http格式的 response，code=409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_FAR}</td>
+<td>distinct_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td>409</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td>#expect:meta_uuid对应的 instance_uuid 有1条记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),b.instance_uuid from meta as a,mediaContentInstance as b where a.meta_uuid='${meta_uuid}' and b.meta_id=a.id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Catenate</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2024:ingest far文件（可重复）">vdna-2024:ingest far文件（可重复）</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2023:ingest far文件（可重复）</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 upload ingest_dna接口</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_FAR}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:再次调用 upload ingest_dna接口</td>
+<td>#expect:返回http格式的 response，code=303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_2} =</td>
+<td>interface upload dna</td>
+<td>${SAMPLE_FAR}</td>
+<td>ingest_dna</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_2}</td>
+<td>get meta uuid from api return</td>
+<td>${return_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid_list}=</td>
+<td>Create List</td>
+<td>${meta_uuid}</td>
+<td>${meta_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:进行数据的校验</td>
+<td>#expect:meta_uuid对应的 instance_uuid 有1条记录,meta_uuid_2对应的 instance_uuid 有1条记录</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),b.instance_uuid from meta as a,mediaContentInstance as b where a.meta_uuid='${meta_uuid}' and b.meta_id=a.id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}=</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>Convert To String</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),b.instance_uuid from meta as a,mediaContentInstance as b where a.meta_uuid='${meta_uuid_2}' and b.meta_id=a.id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count}=</td>
+<td>Convert To String</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid_2} =</td>
+<td>Convert To String</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证 dna</td>
+<td>#expect:本地dna与server dna文件md5一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_VIDEO}</td>
+<td>video</td>
+<td>${inst_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check local dna with server</td>
+<td>${SAMPLE_FAR_AUDIO}</td>
+<td>audio</td>
+<td>${inst_uuid_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_uuid_list}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

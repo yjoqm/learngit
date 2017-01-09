@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ThunderLib 关键字</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJEBoACtnfgA5cYYAERsiAEx2lAAbKkQAcazBACZCVwAcM1cAK0ucAAMDBQAnQncASG+FABkoVQAyWmgA6f8SgvH/Ij99+GLyIinyJfn/Yi//KSLzUy9iZogpIld3/4JVVTkid7vyUjNVNVJEAGOZ6Z7pXwAABpmZkRiLAAAGiJZpmGAAAEEt3SXdxAAATC7o/u3EAAC8MRZpjasAAAY1VVVTYAAABKqqqqpAAAAADKqq4AAAAAAAv4sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMADAADgAwAA4AcAAOAHAADgBwAAwAcAAOAHAADgDwAA8A8AAPg/AAD+fwAA" />
+  <style media="all" type="text/css">
+  body {
+    background: white;
+    color: black;
+    font-size: small;
+    font-family: sans-serif;
+    padding: 0 0.5em;
+  }
+  .metadata th {
+    text-align: left;
+    padding-right: 1em;
+  }
+  a.name, span.name {
+    font-style: italic;
+  }
+  a, a:link, a:visited {
+    color: #c30;
+  }
+  a img {
+    border: 1px solid #c30 !important;
+  }
+  a:hover, a:active {
+    text-decoration: underline;
+    color: black;
+  }
+  div.shortcuts {
+    margin: 1em 0;
+    font-size: 0.9em;
+  }
+  div.shortcuts a {
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+    color: black;
+  }
+  div.shortcuts a::first-letter {
+    font-weight: bold;
+    font-size: 1.05em;
+    letter-spacing: 0.1em;
+  }
+  div.shortcuts a:hover {
+    text-decoration: underline;
+  }
+  table.keywords {
+    border: 2px solid black;
+    border-collapse: collapse;
+    empty-cells: show;
+    margin: 0.3em 0;
+    width: 100%;
+  }
+  table.keywords th, table.keywords td {
+    border: 2px solid black;
+    padding: 0.2em;
+    vertical-align: top;
+  }
+  table.keywords th {
+    background: #bbb;
+    color: black;
+  }
+  table.keywords td.kw {
+    width: 150px;
+    font-weight: bold;
+  }
+  table.keywords td.arg {
+    width: 300px;
+    font-style: italic;
+  }
+  /*table.keywords td.author {
+    width: 300px;
+    font-style: italic;
+  }*/
+  .footer {
+    font-size: 0.9em;
+  }
+/* Docs originating from HTML and reST are wrapped to divs. */
+.doc div > *:first-child {
+    margin-top: 0;
+}
+.doc div > *:last-child {    /* Does not work with IE8. */
+    margin-bottom: 0;
+}
+  </style>
+  <style media="print" type="text/css">
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 8pt;
+}
+a {
+    text-decoration: none;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+#javascript-disabled {
+    width: 600px;
+    margin: 100px auto 0 auto;
+    padding: 20px;
+    color: #2A2A2E;
+    border: 1px solid #9A9A9E;
+    background: #FAFAFF;
+}
+#javascript-disabled h1 {
+    width: 100%;
+    float: none;
+}
+#javascript-disabled ul {
+    font-size: 1.2em;
+}
+#javascript-disabled li {
+    margin: 0.5em 0;
+}
+#javascript-disabled b {
+    font-style: italic;
+}
+  </style>
+  
+  <style media="all" type="text/css">
+.doc > * {
+    margin: 0.7em 1em 0.1em 1em;
+    padding: 0;
+}
+.doc > p, .doc > h1, .doc > h2, .doc > h3, .doc > h4 {
+    margin: 0.7em 0 0.1em 0;
+}
+.doc > *:first-child {
+    margin-top: 0.1em;
+}
+.doc table {
+    border: 1px solid gray;
+    background: transparent;
+    border-collapse: collapse;
+    empty-cells: show;
+    font-size: 0.9em;
+}
+.doc table th, .doc table td {
+    border: 1px solid gray;
+    background: transparent;
+    padding: 0.1em 0.3em;
+    height: 1.2em;
+}
+.doc table th {
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+.doc pre {
+    font-size: 1.1em;
+    background: #F4F4FF;
+}
+.doc li {
+    list-style-position: inside;
+    list-style-type: square;
+}
+.doc img {
+    border: 1px solid gray;
+}
+.doc hr {
+    background: gray;
+    height: 1px;
+    border: 0;
+}
+  </style>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /><meta http-equiv="content-type" content="text/html; charset=utf-8" /></head><body>
+<h1>ThunderLib</h1>
+<table class="metadata">
+<tbody>
+<tr>
+<th>Library version:</th>
+<td>1.0.1</td>
+</tr>
+<tr>
+<th>Library scope:</th>
+<td>global</td>
+</tr>
+<tr>
+<th>Named arguments:</th>
+<td>supported</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Introduction">Introduction</h2>
+<div>
+<p>本库用于迅雷项目的sdk调用</p>
+涉及的回调函数定义：<br />
+def vcri_result_notify_t(overview, results, result_count, url, file_private_id):<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp = open("c:/vcri_result_notify_callback.txt", "w")<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp.write("overview: %s\n" % overview)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;try:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fp.write("results: %s\n" % results.contents.path)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fp.write("results: %s\n" % results.contents.result)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;except ValueError,ex:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fp.write("results: 0x00000000\n")<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp.write("result_count: %s\n" % result_count)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp.write("url: %s\n" % url)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp.write("file_private_id: %s\n" % file_private_id)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;fp.close()<br />
+<p>
+References:<br />
++ python pywin32库 - <a href="http://jaist.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.win32-py2.7.exe">http://jaist.dl.sourceforge.net/project/pywin32/pywin32/Build%20219/pywin32-219.win32-py2.7.exe</a><br />
+ 
+</p>
+</div>
+<h2 id="Shortcuts">Shortcuts</h2>
+<div class="shortcuts">
+<a href="#Dll Api Call">Dll Api Call</a>
+·
+<a href="#Get Callback Handle">Get Callback Handle</a>
+·
+<a href="#Load Dll">Load Dll</a>
+·
+<a href="#Release Dll">Release Dll</a></div>
+<table class="keywords" border="1" width="100%">
+  <tbody>
+    <tr>
+      <th class="keywords" align="center" width="11%">关键字 </th>
+      <th class="author" align="center" width="6%">作者 </th>
+      <th class="arg" align="center" width="8%">参数</th>
+      <th class="ret" align="center" width="10%">返回值 </th>
+      <th class="doc" align="center" width="65%">说明和示例 </th>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Dll Api Call"></a>Dll Api Call</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">func_name, *argv</td>
+      <td class="ret">api函数调用的返回结果</td>
+      <td class="doc">
+      调用Dll中的api接口。<br />
+      func_name: 需要调用函数的函数名。<br />
+      argv: 函数的参数<br />
+        example:<br />
+      <table border="1" cellpadding="2" cellspacing="2" style="text-align: left; width: 1000px;">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">${ret} =</td>
+            <td style="vertical-align: top; width: 20%;">Dll Api Call
+            </td>
+            <td style="vertical-align: top; width: 20%;">vcri_set_api_key
+            </td>
+            <td style="vertical-align: top; width: 20%;">this-is-TMP-apikey </td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;"><span style="vertical-align: top; width: 25%;">${ret} =</span>
+            </td>
+            <td style="vertical-align: top;"><span style="vertical-align: top; width: 25%;">Dll Api Call </span></td>
+            <td style="vertical-align: top;">vcri_init
+            </td>
+            <td style="vertical-align: top;">0</td>
+            <td style="vertical-align: top;">{&quot;port&quot;:80, &quot;host&quot;:&quot;123.32.33.44&quot;,&quot;username&quot;:&quot;user&quot;,&quot;password&quot;:&quot;pwd&quot;}</td>
+          </tr>
+        </tbody>
+    </table></td>
+    </tr>
+    <tr>
+      <td class="kw"> <a name="Get Callback Handle"></a>Get Callback Handle</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">func_name</td>
+      <td class="ret">返回该函数的函数句柄</td>
+      <td class="doc">返回函数名为func_name的函数句柄，以便某些接口需要传入回调函数的函数句柄时可用。<br />
+      example:<br />
+      <table style="text-align: left; width: 547px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">${handle} =</td>
+            <td style="vertical-align: top; width: 20%;">Get Callback Handle</td>
+            <td style="vertical-align: top; width: 20%;">vcri_result_notify_t</td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Load Dll"></a>Load Dll</td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg">dll_name</td>
+      <td class="ret">无</td>
+      <td class="doc">加载dll库<br />
+example:<br />
+      <table style="text-align: left; width: 547px;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top; width: 20%;">Load Dll</td>
+            <td style="vertical-align: top; width: 20%;">d:/sdk.dll</td>
+            <td style="vertical-align: top; width: 20%;"></td>
+            <td style="vertical-align: top; width: 20%;"></td>
+          </tr>
+          </tbody>
+      </table>
+      <p>&nbsp;</p>
+      <p>注意路径使用左斜杠，如果使用右斜杠可能会有问题</p></td>
+    </tr>
+    <tr>
+      <td class="kw"><a name="Release Dll"></a>Release Dll</a></td>
+      <td class="author">严嘉蔚</td>
+      <td class="arg"><p>&nbsp;</p>
+      <p>&nbsp;</p></td>
+      <td class="ret">无</td>
+      <td class="doc">释放dll</td>
+    </tr>
+  </tbody>
+</table>
+<p class="footer">
+Altogether 4 keywords.
+<br>
+Generated by
+<a href="http://code.google.com/p/robotframework/wiki/LibraryDocumentationTool">libdoc</a>
+on 2014-08-04 17:35:30.
+</p>
+
+</body></html>

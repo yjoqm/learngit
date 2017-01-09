@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>trackInterface</title>
+</head>
+<body>
+<h1>trackInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">2.10. track 相关接口\n<br>
+2.10.1. track_manager\n<br>
+2.10.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance的{uuid}和{track #}来获得instance的track信息\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/tracks/{track">https://host:port/mediawise/instances/{uuid}/tracks/{track</a> #}/meta\n<br>
+\ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 </td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${SAMPLE_DNA_VIDEO}</td>
+<td>${SAMPLE_PATH}/dna_upload.0.dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_DNA_AUDIO}</td>
+<td>${SAMPLE_PATH}/dna_upload.1.adna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1991:获取instance的track信息——video">vdna-1991:获取instance的track信息——video</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1991:获取instance的track信息——video\n<br>
+\n<br>
+\n<br>
+2.10. track 相关接口\n<br>
+2.10.1. track_manager\n<br>
+2.10.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance的{uuid}和{track #}来获得instance的track信息\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/tracks/{track">https://host:port/mediawise/instances/{uuid}/tracks/{track</a> #}/meta\n<br>
+\ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 </td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:入库 dna ingest</td>
+<td>#expect:返回 code:303,且返回body含 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>pyweb ingest dna</td>
+<td>${SAMPLE_DNA_VIDEO}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from db</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 track_manager 接口</td>
+<td>#expect:返回 code:200,且返回body含 instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${track_no}</td>
+<td>Set Variable</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>GET</td>
+<td>/mediawise/instances/${inst_uuid}/tracks/${track_no}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:比较数据库的meta_uuid对应的 instance_uuid与返回的 instance_uuid是否一致</td>
+<td>#exepect:结果一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_id} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body.instance_id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${video_duration} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body.video_duration</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${inst_uuid}</td>
+<td>${instance_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验数据库 videoInstanceTrack对应的 Instance_uuid记录只有一条,且 track_number,video_duration与返回值一致</td>
+<td>#exepect:结果与数据库一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*) ,track_number,video_duration from videoInstanceTrack where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'1'</td>
+<td>'${result[0][0]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${track_no}'</td>
+<td>'${result[0][1]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${video_duration}'</td>
+<td>'${result[0][2]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1991-2:获取instance的track信息——audio">vdna-1991-2:获取instance的track信息——audio</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-1991:获取instance的track信息——audio\n<br>
+\n<br>
+\n<br>
+2.10. track 相关接口\n<br>
+2.10.1. track_manager\n<br>
+2.10.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 根据instance的{uuid}和{track #}来获得instance的track信息\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/instances/{uuid}/tracks/{track">https://host:port/mediawise/instances/{uuid}/tracks/{track</a> #}/meta\n<br>
+\ \ \ 方法: get\n<br>
+\ \ \ 开始支持版本: 5.1 </td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:入库 dna ingest</td>
+<td>#expect:返回 code:303,且返回body含 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid}=</td>
+<td>pyweb ingest dna</td>
+<td>${SAMPLE_DNA_AUDIO}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${inst_uuid} =</td>
+<td>get instance uuid from db</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 track_manager 接口</td>
+<td>#expect:返回 code:200,且返回body含 instance_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${track_no} =</td>
+<td>Set Variable</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>GET</td>
+<td>/mediawise/instances/${inst_uuid}/tracks/${track_no}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:比较数据库的meta_uuid对应的 instance_uuid与返回的 instance_uuid是否一致</td>
+<td>#exepect:结果一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${instance_id} =</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body.instance_id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${inst_uuid}</td>
+<td>${instance_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验数据库 audioInstanceTrack对应的 Instance_uuid记录只有一条,且 track_number与返回值一致</td>
+<td>#exepect:结果与数据库一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*), track_number \ from audioInstanceTrack where instance_uuid='${inst_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'1'</td>
+<td>'${result[0][0]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${track_no}'</td>
+<td>'${result[0][0]}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td>${inst_uuid}</td>
+</tr>
+</table>
+</body>
+</html>

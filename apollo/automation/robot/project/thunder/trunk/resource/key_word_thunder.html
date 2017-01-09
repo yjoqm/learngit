@@ -1,0 +1,594 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Key Word Thunder</title>
+</head>
+<body>
+<h1>Key Word Thunder</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../testlib/ThunderLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>thunder_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_init_dll">init_dll</a></td>
+<td>Evaluate</td>
+<td>os.chdir("${SCRIPT_ROOT}/${THUNDER_SUT_PATH}")</td>
+<td>os</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Load Dll</td>
+<td>${SCRIPT_ROOT}/${THUNDER_SUT_PATH}/${THUNDER_DLL_NAME}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_api_key">set_api_key</a></td>
+<td>[Arguments]</td>
+<td>${api_key}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_set_api_key_ret}</td>
+<td>Dll Api Call</td>
+<td>vcri_set_api_key</td>
+<td>${api_key}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_set_api_key_ret}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_vcri_init">set_vcri_init</a></td>
+<td>[Arguments]</td>
+<td>${proxy_type}</td>
+<td>${proxy_host}</td>
+<td>${proxy_port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${proxy_user}</td>
+<td>${proxy_pwd}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">proxy_type:0/1/2/3\n<br>
+\n<br>
+host:主机ip\n<br>
+\n<br>
+proxy_port:主机端口\n<br>
+\n<br>
+proxy_user:登录用户名\n<br>
+\n<br>
+proxy_pwd:登录密码</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_proxy_t}</td>
+<td>Set Variable</td>
+<td>{"port":${proxy_port}, "host":"${proxy_host}",\"username":"${proxy_user}","password":"${proxy_pwd}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_init_ret} =</td>
+<td>Dll Api Call</td>
+<td>vcri_init</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{"port":${proxy_port}, "host":"${proxy_host}","username":"${proxy_user}","password":"${proxy_pwd}"}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_init_ret}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_prom_info">set_prom_info</a></td>
+<td>[Arguments]</td>
+<td>${client_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_set_program_info_ret}</td>
+<td>Dll Api Call</td>
+<td>vcri_set_program_info</td>
+<td>${client_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_set_program_info_ret}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_client_id">set_client_id</a></td>
+<td>[Arguments]</td>
+<td>${client_id}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${_vcri_set_client_idret}</td>
+<td>Dll Api Call</td>
+<td>vcri_set_client_id</td>
+<td>${client_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${_vcri_set_client_idret}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_vcri_identify">set_vcri_identify</a></td>
+<td>${vcri_params}</td>
+<td>set variable</td>
+<td>{"struct_size":40,"struct_version":1,"url":"www.testurl.com","referer":"referer_url","file_private_id":"private_id","mime_type":"video/mp4","file_name":"file_name","file_size":32432}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${handle} =</td>
+<td>Get Callback Handle</td>
+<td>vcri_result_notify_t</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_identify_ret} =</td>
+<td>Dll Api Call</td>
+<td>vcri_identify</td>
+<td>${handle}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${vcri_params}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_identify_ret}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_vcri_cancel">set_vcri_cancel</a></td>
+<td>${vcri_params}</td>
+<td>set variable</td>
+<td>{"struct_size":40,"struct_version":1,"url":"www.testurl.com","referer":"referer_url","file_private_id":"private_id","mime_type":"video/mp4","file_name":"file_name","file_size":32432}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_cancel_rsp}</td>
+<td>Dll Api Call</td>
+<td>vcri_cancel</td>
+<td>${vcri_params}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_cancel_rsp}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set_vcri_progress">set_vcri_progress</a></td>
+<td>[Arguments]</td>
+<td>${progress}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_params}</td>
+<td>set variable</td>
+<td>{"struct_size":40,"struct_version":1,"url":"www.testurl.com","referer":"referer_url","file_private_id":"private_id","mime_type":"video/mp4","file_name":"file_name","file_size":32432}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vcri_progress_rsp}</td>
+<td>Dll Api Call</td>
+<td>vcri_progress</td>
+<td>${vcri_params}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${progress}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${vcri_progress_rsp}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_call_vcri_fini">call_vcri_fini</a></td>
+<td>Dll Api Call</td>
+<td>vcri_fini</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_template_execute">template_execute</a></td>
+<td>[Arguments]</td>
+<td>${result}</td>
+<td>${init_flag}</td>
+<td>${key_flag}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${info_flag}</td>
+<td>${id_flag}</td>
+<td>${identify_flag}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${cancel_flag}</td>
+<td>${gress_flag}</td>
+<td>${fini_flag}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${init_flag}==True</td>
+<td>flag_execute</td>
+<td>init</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${key_flag}==True</td>
+<td>flag_execute</td>
+<td>key</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${info_flag}==True</td>
+<td>flag_execute</td>
+<td>info</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${id_flag}==True</td>
+<td>flag_execute</td>
+<td>id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${identify_flag}==True</td>
+<td>flag_execute</td>
+<td>identify</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${cancel_flag} ==True</td>
+<td>flag_execute</td>
+<td>cancel</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${gress_flag}==True</td>
+<td>flag_execute</td>
+<td>progress</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${fini_flag}==True</td>
+<td>flag_execute</td>
+<td>fini</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验结果</td>
+<td>#expect:与预期结果一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>1</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_flag_execute">flag_execute</a></td>
+<td>[Arguments]</td>
+<td>${flag_type}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="init"</td>
+<td>set vcri init</td>
+<td>0</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>127.0.0.1</td>
+<td>80</td>
+<td>user</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>pwd</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="key"</td>
+<td>set api key</td>
+<td>this is TMP key</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="info"</td>
+<td>set prom info</td>
+<td>xxxx</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="id"</td>
+<td>set client id</td>
+<td>123456</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="identify"</td>
+<td>set vcri identify</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="cancel"</td>
+<td>set vcri cancel</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="progress"</td>
+<td>set vcri progress</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>${flag_type}=="fini"</td>
+<td>call vcri fini</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_drop dll">drop dll</a></td>
+<td>Release Dll</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

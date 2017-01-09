@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Mediawise Keywords</title>
+</head>
+<body>
+<h1>Mediawise Keywords</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../vdnagen/trunk/testlib/VdnagenLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../vddb/trunk/testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="keyword">
+<tr>
+<th class="name" colspan="5">Keywords</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_vddb testdata ingest">vddb testdata ingest</a></td>
+<td>[Arguments]</td>
+<td>${host}</td>
+<td>${username}</td>
+<td>${password}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${media}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${vdnagen_ver} =</td>
+<td>check vdnagen ver</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${check_ver} =</td>
+<td>Catenate</td>
+<td>VDNAGen 3.4.5.0</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${vdnagen_ver}' \ &lt; '${check_ver}'</td>
+<td>fail</td>
+<td>VDNAGen Ver is too low</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_xml} =</td>
+<td>ingest_media_file</td>
+<td>${host}</td>
+<td>${username}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${password}</td>
+<td>${media}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorCode} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>ErrorCode</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ErrorMsg} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>ErrorMsg</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${VobileRefID} =</td>
+<td>Get Element Text</td>
+<td>${return_xml}</td>
+<td>VobileRefID</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${ErrorCode}' != '31' and '${ErrorCode}' != '0'</td>
+<td>fail</td>
+<td>Ingest ${media} fail:${ErrorMsg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${VobileRefID}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_set pyweb env">set pyweb env</a></td>
+<td>[Arguments]</td>
+<td>${sut_file}</td>
+<td>${host}</td>
+<td>${port}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${ssl}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb sut file</td>
+<td>${sut_file}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>set pyweb host</td>
+<td>${host}</td>
+<td>${port}</td>
+<td>${ssl}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_vddb testdata delete">vddb testdata delete</a></td>
+<td>[Arguments]</td>
+<td>${vobilerefid}</td>
+<td>${username}</td>
+<td>${password}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${protocols}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/auth</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>{ \ \ \ \ "protocols": [${protocols}], \ \ \ \ \ "user": "${username}", \ \ \ \ \ "password": "${password}" }</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>Get Json Element</td>
+<td>${return_msg}</td>
+<td>header.set-cookie</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/contents/${vobilerefid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${code} =</td>
+<td>Get Json Element</td>
+<td>${return_msg}</td>
+<td>code</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>run keyword if</td>
+<td>'${code}' != '200'</td>
+<td>fail</td>
+<td>Delete vddb testdata fial: return_code = ${code}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_wait for task over">wait for task over</a></td>
+<td>[Arguments]</td>
+<td>${tast_id}</td>
+<td>${db_host}</td>
+<td>${db_user}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${db_pass}</td>
+<td>${db_name}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Timeout]</td>
+<td>30 minutes</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>1800</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${db_r} =</td>
+<td>Execute Sql</td>
+<td>${db_host}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${db_user}</td>
+<td>${db_pass}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${db_name}</td>
+<td>select status from task where task_identification = '${task_id}';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>true</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>run keyword if</td>
+<td>"${db_r}" == "()"</td>
+<td>fail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>no task: ${task_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>run keyword if</td>
+<td>"${db_r[0][0]}" == "query_success" or "${db_r[0][0]}" == "query_failed"</td>
+<td>EXit for loop</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>ElSE</td>
+<td>sleep</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>2</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

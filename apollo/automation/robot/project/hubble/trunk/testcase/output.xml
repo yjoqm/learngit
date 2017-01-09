@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20140616 16:38:27.931" generator="Robot 2.8.4 (Python 2.7.3 on linux2)">
+<errors>
+<msg timestamp="20140616 16:38:28.022" level="ERROR">Unexpected error: AttributeError: 'Step' object has no attribute 'comments'
+Traceback (most recent call last):
+  None</msg>
+</errors>
+</robot>

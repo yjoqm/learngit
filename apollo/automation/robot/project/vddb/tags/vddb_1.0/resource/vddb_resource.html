@@ -1,0 +1,364 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Vddb Resource</title>
+</head>
+<body>
+<h1>Vddb Resource</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_HOST}</td>
+<td>192.168.1.20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_PORT}</td>
+<td>88</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBHOST}</td>
+<td>192.168.1.20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBUSERNAME}</td>
+<td>vddb</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBPASSWD}</td>
+<td>123456</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_DBNAME}</td>
+<td>mddb</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_USER}</td>
+<td>zhang_jin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_CENTRAL_PASSWD}</td>
+<td>123</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_HOST}</td>
+<td>192.168.1.19</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PORT}</td>
+<td>88</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBHOST}</td>
+<td>192.168.1.19</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBUSERNAME}</td>
+<td>vddb</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBPASSWD}</td>
+<td>123456</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBNAME}</td>
+<td>mddb_local</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_DBNAME_MEDIADNA}</td>
+<td>mediaDNA</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_USER}</td>
+<td>zhang_jin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PASSWD}</td>
+<td>123</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_USER_2}</td>
+<td>admin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDDB_NODE_PASSWD_2}</td>
+<td>admin123</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PYWEB_SUT_FILE}</td>
+<td>project/vddb/trunk/sut/pyweb.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SSL}</td>
+<td>http</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PYWEB_PROTOCOL}</td>
+<td>"5.2.6","5.5.0"</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MOVIE}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","country":"country","sub_type":"Movie","track_no":0,"director":"director","alternate_url":"alternate_url","alternate_info":"alternate_info"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"Movie","release_date":"2013-03-06","refresh_updated_at":"true","company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MUSIC}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"director":"director","composer":"director","album_name":"","metalink":"metalink","description":"description","country":"country","sub_type":"'Music Only'/'Music Video'/'Spoken Word'","track_no":0,"album_no":0,"alternate_url":"alternate_url","alternate_info":"alternate_info"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"Music","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":0},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_IMAGE}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"description":"description","author":"author"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"image","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${META_INFO_MANGA}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"category":"","main_character":"","chapter_no":0,"description":"","cartoonist":"","volume_no":0,"publish_owner":"","chapter_title":"","publish_magazine":""},"studio_owner":"test_studio_owner","cast":"test_cast","type":"manga","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_VIDEO_DNA}</td>
+<td>data/dna/Joe_1m_video.dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_AUDIO_DNA}</td>
+<td>data/dna/Joe_1m_audio.adna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_FAR_DNA}</td>
+<td>data/dna/Joe_1m.far</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_IDNA_FOLDER}</td>
+<td>data/frame/Joe_1m</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_SCREENSHOT_FOLDER}</td>
+<td>data/screenshot/Joe_1m</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DNA_TOOL_LOCAL}</td>
+<td>/home/wang_aiyun/vdna/dna_tools32</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DNA_FILE_NODE}</td>
+<td>/vobiledata/vdna/dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOTE_RUN_CMD_PORT}</td>
+<td>9999</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DNA_TOOL_NODE}</td>
+<td>/vobiledata/vdnaserver/pyweb/bin/tools</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${DOWNLOAD_PATH}</td>
+<td>/tmp</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_DNA_FOLDER}</td>
+<td>/home/wang_aiyun/robot_test/auto_test/trunk/data/dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_SNAPSHOT}</td>
+<td>data/snapshot/video_snapshots_1/1351_45045.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_THUMBNAIL_1}</td>
+<td>data/thumbnail/thumbnail_1.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_THUMBNAIL_2}</td>
+<td>data/thumbnail/thumbnail_2.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SNAPSHOT_FILE_NODE}</td>
+<td>/vobiledata/vdna/snapshots</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

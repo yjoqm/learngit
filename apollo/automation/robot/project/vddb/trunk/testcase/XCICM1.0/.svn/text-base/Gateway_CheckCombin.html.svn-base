@@ -1,0 +1,1734 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Gateway CheckCombin</title>
+</head>
+<body>
+<h1>Gateway CheckCombin</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">Gateway的正确组合和特殊参数校验用例</td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/InterGateway.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_thunder.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="1">Test Cases</th>
+<th class="name" colspan="1">${case_no}</th>
+<th class="name" colspan="1">${result}</th>
+<th class="name" colspan="1">${X-URL}</th>
+<th class="name" colspan="1">${user-agent}</th>
+<th class="name" colspan="1">${key}</th>
+<th class="name" colspan="1">${hash}</th>
+<th class="name" colspan="1">${digest}</th>
+<th class="name" colspan="1">${digest-algorithm}</th>
+<th class="name" colspan="1">${Referer}</th>
+<th class="name" colspan="1">${X-Progress}</th>
+<th class="name" colspan="1">${X-Client-Address}</th>
+<th class="name" colspan="1">${X-Client-ID}</th>
+<th class="name" colspan="1">${X-File-Name}</th>
+<th class="name" colspan="1">${X-File-Size}</th>
+<th class="name" colspan="1">${X-Mime-Type}</th>
+<th class="name" colspan="1">${seed_file}</th>
+</tr>
+<tr>
+<td class="name"><a name="test_TestCase_debug">TestCase_debug</a></td>
+<td>[Template]</td>
+<td>template_gateway_post_need_params</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>${EMPTY}</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_001:GET_协议必填字段校验">001:GET_协议必填字段校验</a></td>
+<td>[Template]</td>
+<td>template_gateway_get_need_params</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 262148, "data": []}}']</td>
+<td>${EMPTY}</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3</td>
+<td>[401, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "APIKEY Error", "code": 262147, "data": ["key"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["digest"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["digest-algorithm"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>${EMPTY}</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6-设计调整，此不是必填项</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>${EMPTY}</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["X-Client-ID"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>${EMPTY}</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["X-File-Name", "X-File-Size"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["X-File-Name", "X-File-Size"]}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_002:GET_正确参数组合">002:GET_正确参数组合</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">gateway get 方式的测试用例\n<br>
+\n<br>
+seed_file参数暂时没有使用</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Template]</td>
+<td>template_gateway_get_combin</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Wish">http://10.162.207.221/sample/Wish</a> You Were Here1.f4v</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Wish">http://10.162.207.221/sample/Wish</a> You Were Here1.f4v</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>-1</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Wish">http://10.162.207.221/sample/Wish</a> You Were Here1.f4v</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>1000</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Wish">http://10.162.207.221/sample/Wish</a> You Were Here1.f4v</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Wish">http://10.162.207.221/sample/Wish</a> You Were Here1.f4v</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>10</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td>${EMPTY}</td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>11</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>13</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>14</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>15</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>16</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>17</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>18</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>19</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": -1, "result": {"overall": 3}}']</td>
+<td><a href="http://10.162.207.221/sample/Lady测试素材1.f4v">http://10.162.207.221/sample/Lady测试素材1.f4v</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>1000</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_003:POST_协议必填字段校验">003:POST_协议必填字段校验</a></td>
+<td>[Template]</td>
+<td>template_gateway_post_need_params</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>${EMPTY}</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2-设计调整，此不是必填项</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>${EMPTY}</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3</td>
+<td>[401, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "APIKEY Error", "code": 262147, "data": ["key"]}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["digest"]}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["digest-algorithm"]}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>${EMPTY}</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>${EMPTY}</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6-设计调整，此不是必填项</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>${EMPTY}</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "Parameter not enough!", "code": 262144, "data": ["X-Client-ID"]}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>${EMPTY}</td>
+<td>"中国"</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>"中国"</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>10</td>
+<td>[400, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "`seed_file` required!", "code": 262144, "data": ["seed_file"]}}']</td>
+<td>"<a href="file://xxxx.txt">file://xxxx.txt</a>"</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_004:POST_正确参数组合">004:POST_正确参数组合</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">gateway get 方式的测试用例\n<br>
+\n<br>
+seed_file参数暂时没有使用</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Template]</td>
+<td>template_gateway_post_combin</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>-1</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>1000</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>MD5</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国</td>
+<td>${EMPTY}</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>中国</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>auto</td>
+<td>auto</td>
+<td>MD5</td>
+<td>${EMPTY}</td>
+<td>-1</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>10</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>1000</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>中国</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>11</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>12</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>中国</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>13</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>14</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>${EMPTY}</td>
+<td>www.vobile.cn</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>15</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>16</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>1000</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国</td>
+<td>${EMPTY}</td>
+<td>video/avi</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>17</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>1000</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>multipart/mixed</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>18</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>-1</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>image/jpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>19</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>20</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>21</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国</td>
+<td>${EMPTY}</td>
+<td>audio/mpeg</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>22</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": "1", "result": {"overall": 3}}']</td>
+<td><a href="file://test.torrent">file://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>auto</td>
+<td>sha1</td>
+<td>${EMPTY}</td>
+<td>${EMPTY}</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>en_name</td>
+<td>${EMPTY}</td>
+<td>application/zip</td>
+<td>${TORRENT_FILE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_005:torrent_特殊的校验">005:torrent_特殊的校验</a></td>
+<td>[Template]</td>
+<td>template_gateway_get_torrent</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>1</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://中国.torrent">file://c://中国.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国.torrent</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>2</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://test.torrent">file://c://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>3</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://test.torrent">file://c://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>4</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://test.torrent">file://c://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>5</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://中国.torrent">file://c://中国.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国.torrent</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>6</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://test.torrent">file://c://test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>MD5</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>video/avi</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>7</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c://">file://c://</a> 中国.torrent</td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>MD5</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国.torrent</td>
+<td>123456</td>
+<td>audio/mpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>8</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c:\test.torrent">file://c:\test.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>${EMPTY}</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>sha1</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>test.torrent</td>
+<td>123456</td>
+<td>application/zip</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>9</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c:\中国.torrent">file://c:\中国.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>sha1</td>
+<td><a href="http://www.test.net">http://www.test.net</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国.torrent</td>
+<td>123456</td>
+<td>image/jpeg</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>10</td>
+<td>[200, u'{"jsonrpc": "2.0", "id": null, "error": {"message": "hash not hit.", "code": 65538, "data": []}}']</td>
+<td><a href="file://c:\中国.torrent">file://c:\中国.torrent</a></td>
+<td>Thunder Windows Client 7.0</td>
+<td>this-is-TMP-apikey</td>
+<td>abc0123456789</td>
+<td>018e206e00bdc68374ff32bb0245d98ea703090e</td>
+<td>MD5</td>
+<td><a href="http://www.test.net/?中国">http://www.test.net/?中国</a></td>
+<td>88</td>
+<td>0.0.0.0</td>
+<td>8123456</td>
+<td>中国.torrent</td>
+<td>123456</td>
+<td>multipart/mixed</td>
+<td>${EMPTY}</td>
+</tr>
+</table>
+</body>
+</html>

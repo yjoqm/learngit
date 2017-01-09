@@ -1,0 +1,128 @@
+# FunkLoad test configuration file
+# $Id: $
+
+# ------------------------------------------------------------
+# Main section
+#
+[main]
+title=reclaim
+description=Simply testing a default static page
+# the server url to test
+url=http://192.168.1.67:8080
+ok_log=/tmp/funkload_log
+ok_log_write=true
+error_log=/tmp/funkload_errorlog
+
+# the User-Agent header to send
+#user_agent = Mozilla/5.0 Firefox/1.0.6
+
+
+# ------------------------------------------------------------
+# pages section
+#
+[pages]
+page_number=1
+test_page_list=all
+# ------------------------------------------------------------
+[page_0_section]
+need_test=true
+page_path=/claimWeb/api/upload
+page_method=POST
+#headers=X-Thunder-Client===some-pirate-client&&&X-Download-Protocol===http&&&X-Download-Type===mp4
+headers=x-signature===52bd91cfd75b15ea99a403f556f986f1&&&x-timestamp===123&&&x-nonce===123
+request_type=params
+data_type=None
+data=[["video","upload@/data/video/2.txt"],["customer","Snagfilms"],["videoType","Web Video"],["mrss","http://www.snagfilms.com/feeds/"],["title","2.txt"],["publishDate",""],["duration","12345"],["episodeTitle",""],["episodeNumber",""],["seasonNumber",""],["description","way"],["tags",""],["imdb",""],["isan",""],["eidr",""],["tmsId",""],["customId","00000146-bacf-d7ae-ab7e-ffef9ff90000"]]
+ok_codes=409
+# ------------------------------------------------------------
+# Tests description and configuration
+#
+[test_simple]
+description=Access %(nb_time)s times the main url
+nb_time=20
+
+
+
+
+# ------------------------------------------------------------
+# Credential access
+#
+[credential]
+host=localhost
+port=8007
+
+
+# ------------------------------------------------------------
+# Monitoring configuration
+#
+[monitor]
+hosts=localhost
+
+# Each host in [monitor]hosts should have a section
+# with a 'port' and 'description' keys
+[localhost]
+port=8008
+description=The benching and benched machine
+
+
+# ------------------------------------------------------------
+# Configuration for unit test mode fl-run-test
+#
+[ftest]
+
+# log_to destination =
+# console - to the screen
+# file - to a file
+log_to = console file
+
+# log_path = path and file name to store log file
+log_path = simple/simple-test.log
+
+# result_path = path to store the xml result file
+result_path = simple/simple-test.xml
+
+# ok_codes = list of successfull HTTP response code
+#ok_codes =  200:301:302
+
+# sleeptime_min = minimum amount of time in seconds to sleep between requests
+#                 to the host
+sleep_time_min = 0
+
+# sleeptime_max = maximum amount of time in seconds to sleep between requests
+#                 to the host
+sleep_time_max = 0
+
+
+# ------------------------------------------------------------
+# Configuration for bench mode fl-run-bench
+#
+[bench]
+
+# cycles = list of cycles with their number of concurrent users
+cycles = 50:75:100:125
+
+
+# duration = duration of a cycle in seconds
+duration = 60
+
+# startup_delay = time to wait between starting-up threads in seconds
+startup_delay = 0.01
+
+# sleep_time = time to wait between test in seconds
+sleep_time = 0.01
+
+# cycle_time = time to wait between cycle in seconds
+cycle_time = 1
+
+# same keys than in [ftest] section
+log_to =
+log_path = bench/bench-log.log
+result_path = bench/bench-test.xml
+#ok_codes =  200:301:302
+sleep_time_min = 0
+sleep_time_max = 0.5
+
+[distribute]
+log_path = log-distributed
+funkload_location=http://pypi.python.org/packages/source/f/funkload/funkload-1.16.1.tar.gz
+

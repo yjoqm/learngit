@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/QA/!svn/ver/5754/auto_test/apollo/automation/robot/project/hubble/trunk/testcase
+END
+report.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/QA/!svn/ver/5721/auto_test/apollo/automation/robot/project/hubble/trunk/testcase/report.html
+END
+hubble_testcase.html
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/QA/!svn/ver/5754/auto_test/apollo/automation/robot/project/hubble/trunk/testcase/hubble_testcase.html
+END
+output.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/QA/!svn/ver/5721/auto_test/apollo/automation/robot/project/hubble/trunk/testcase/output.xml
+END
+log.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/QA/!svn/ver/5721/auto_test/apollo/automation/robot/project/hubble/trunk/testcase/log.html
+END

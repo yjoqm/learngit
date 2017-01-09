@@ -1,0 +1,510 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Adv</title>
+</head>
+<body>
+<h1>Adv</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Selenium2Library</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${UUID_LIST}</td>
+<td>["27d7a7b0-c562-11e3-876b-22000ac69825","b3c4c7c8-c4f2-11e3-bc92-22000ac69825"]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${ID_FILE}</td>
+<td>/home/yan_jiawei/0416.uuid</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${OUT}</td>
+<td>/home/yan_jiawei</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_adv_auto">adv_auto</a></td>
+<td>${file} =</td>
+<td>Get File</td>
+<td>${ID_FILE}</td>
+<td>#du yiger</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${list} =</td>
+<td>Call method</td>
+<td>${file}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>\n<br>
+</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${list} =</td>
+<td>Json Loads</td>
+<td>${UUID_LIST}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${uuid}</td>
+<td>IN</td>
+<td>@{list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Open Browser</td>
+<td><a href="http://54.219.237.254/airingLog/log?spotUuid=${uuid}">http://54.219.237.254/airingLog/log?spotUuid=${uuid}</a></td>
+<td>chrome</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${text} =</td>
+<td>Get Text</td>
+<td>//pre</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Comment</td>
+<td>Close All Browsers</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${start_row_key} =</td>
+<td>Get Json Element</td>
+<td>${text}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>startRowKey</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${spot_uuid} =</td>
+<td>Evaluate</td>
+<td>"${start_row_key}".split("_")[1]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${channel} =</td>
+<td>Evaluate</td>
+<td>"${start_row_key}".split("_")[3]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${log} =</td>
+<td>Get Json Element</td>
+<td>${text}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>log</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${duration} =</td>
+<td>Get Json Element</td>
+<td>${log[0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>duration</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${duration} =</td>
+<td>Evaluate</td>
+<td>int(round(float(${duration}) / 1000))</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${start_time} =</td>
+<td>Get Json Element</td>
+<td>${log[0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>startTime</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${date} =</td>
+<td>Evaluate</td>
+<td>"${start_time}".split(" ")[0].replace("-", "")</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${time} =</td>
+<td>Evaluate</td>
+<td>"${start_time}".split(" ")[1].replace(":", "")</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Open Browser</td>
+<td><a href="http://192.168.1.110/ads.html">http://192.168.1.110/ads.html</a></td>
+<td>chrome</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Maximize Browser Window</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>sleep</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Click Element</td>
+<td>//div/div/div/form/div/button</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "CNN"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[1]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "Disney Channel"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[2]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "ESPN"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[3]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "Discovery Channel"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[4]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "CBS Sports Network"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[5]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>"${channel}" == "Food Network"</td>
+<td>Click Element</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>//div/div[1]/div[1]/form/div[1]/ul/li[6]/a</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Input Text</td>
+<td>uuid</td>
+<td>${spot_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Input Text</td>
+<td>date</td>
+<td>${date}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Input Text</td>
+<td>time</td>
+<td>${time}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Input Text</td>
+<td>duration</td>
+<td>${duration}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Click Element</td>
+<td>//div/div/div/form/div[6]/button[2]</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>sleep</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${source} =</td>
+<td>Get Source</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${loc} =</td>
+<td>Call Method</td>
+<td>${source}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>find</td>
+<td>source src="http</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${msg} =</td>
+<td>Catenate</td>
+<td>${source[${loc}:]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${items} =</td>
+<td>Call Method</td>
+<td>${msg}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>split</td>
+<td>"</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${extra} =</td>
+<td>Evaluate</td>
+<td>"${items[1]}".split(".")[-1]</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run</td>
+<td>wget -c ${items[1]} -O ${OUT}/${spot_uuid}.${extra}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Close All Browsers</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>Close All Browsers</td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

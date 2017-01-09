@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform
+END
+manage.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/QA/!svn/ver/5665/auto_test/apollo/ci_platform/manage.py
+END

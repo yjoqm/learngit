@@ -1,0 +1,5566 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>metaInterface</title>
+</head>
+<body>
+<h1>metaInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1963:创建nonlive meta">vdna-1963:创建nonlive meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查询数据库获取 meta_title,meta_type</td>
+<td>#expect:meta_title=global_test,meta_type=Move</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${db_meta_result}=</td>
+<td>mysql_query</td>
+<td>select meta_type,meta_title from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>global_test</td>
+<td>${db_meta_result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>Movie</td>
+<td>${db_meta_result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1963-2:创建nonlive meta">vdna-1963-2:创建nonlive meta</a></td>
+<td>[Template]</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>tv_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查询数据库获取 meta_title,meta_type</td>
+<td>#expect:meta_title=global_test,meta_type=TV</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${db_meta_result}=</td>
+<td>mysql_query</td>
+<td>select meta_type,meta_title from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>global_test</td>
+<td>${db_meta_result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>TV</td>
+<td>${db_meta_result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1963-3:创建nonlive meta">vdna-1963-3:创建nonlive meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>music_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:查询数据库获取 meta_title,meta_type</td>
+<td>#expect:meta_title=global_test,meta_type=TV</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${db_meta_result}=</td>
+<td>mysql_query</td>
+<td>select meta_type,meta_title from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>global_test</td>
+<td>${db_meta_result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>Music</td>
+<td>${db_meta_result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1964:show meta">vdna-1964:show meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 2.2.2. meta_manager接口</td>
+<td>#expect:返回码 200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:返回结果校验</td>
+<td>#msg:Successful,meta_uuid校验</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${content_id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_uuid}</td>
+<td>${content_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1977:edit meta">vdna-1977:edit meta</a></td>
+<td>${meta_type} =</td>
+<td>Catenate</td>
+<td>Movie</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_title} =</td>
+<td>Catenate</td>
+<td>new_movie_test</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${new_mtea_title} =</td>
+<td>Catenate</td>
+<td>{'title':'${meta_title}'}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_mtea_title}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${META_INFO_MOVIE}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>PUT</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_info}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${edit_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${edit_uuid}</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:返回结果校验</td>
+<td>#msg:Successful,meta_uuid校验</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${content_id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_uuid}</td>
+<td>${content_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:数据库结果校验</td>
+<td>#expect:数据库meta表中，meta_type,meta_title与给定的值一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>mysql_query</td>
+<td>select meta_type,meta_title from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_title}</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_type}</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1969:deleta meta">vdna-1969:deleta meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口2.2.8. delete_meta删除dna</td>
+<td>#expect:返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return_msg} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/contents/${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验数据库 database</td>
+<td>#expect:meta 表 is_valid=delete</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>mysql_query</td>
+<td>select is_valid from meta where meta_uuid = '${meta_uuid}';</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>should be equal</td>
+<td>delete</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1966:show cust_meta">vdna-1966:show cust_meta</a></td>
+<td>[Tags]</td>
+<td>bug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_type} =</td>
+<td>Catenate</td>
+<td>Movie</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_uuid} =</td>
+<td>get customer ref id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${new_customer_ref_id} =</td>
+<td>Catenate</td>
+<td>{"id":{"type":"ISRC","value":"${customer_ref_uuid}"}}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_customer_ref_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${META_INFO_MOVIE}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 2.2.2. meta_manager 接口获取 meta信息</td>
+<td>#expect:返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp code</td>
+<td>${result}</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id}</td>
+<td>${customer_ref_id_type} =</td>
+<td>get customer values</td>
+<td>${result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 2.2.2. meta_manager 接口获取 meta信息</td>
+<td>#expect:返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/custom/${customer_ref_id_type}/${customer_ref_id}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id}</td>
+<td>${customer_ref_id_type} =</td>
+<td>get customer values</td>
+<td>${result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>${sql} =</td>
+<td>Catenate</td>
+<td>select id,meta_uuid,company_id,subCompany_id,meta_type,meta_title,customer_ref_id,status,is_live,is_valid,customer_ref_id_type,right_owner,studio_owner,cast,tag,genre,rating,duration,release_date,tracking_protocol,vtweb_tracking_start_time,vtweb_tracking_stop_time,created_at,created_by,updated_at,client_updated_at,updated_by,remote_version,local_version from meta where meta_uuid = "${meta_uuid}"</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check meta info</td>
+<td>customer_ref_id</td>
+<td>${customer_ref_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${sql}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check meta info</td>
+<td>customer_ref_id_type</td>
+<td>${customer_ref_id_type}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${sql}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td># delete meta and instance | ${meta_uuid}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1967:edit cust_meta">vdna-1967:edit cust_meta</a></td>
+<td>[Tags]</td>
+<td>bug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_type} =</td>
+<td>Catenate</td>
+<td>Movie</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_title} =</td>
+<td>Catenate</td>
+<td>new_movie_test1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${new_mtea_title} =</td>
+<td>Catenate</td>
+<td>{'title':'${meta_title}'}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_mtea_title}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${META_INFO_MOVIE}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_uuid} =</td>
+<td>get customer ref id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${new_customer_ref_id} =</td>
+<td>Catenate</td>
+<td>{"id":{"type":"ISRC","value":"${customer_ref_uuid}"}}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_customer_ref_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${META_INFO_MOVIE}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/contents/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_info}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:获取返回结果参数</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id}</td>
+<td>${customer_ref_id_type} =</td>
+<td>get customer values</td>
+<td>${result}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_mtea_title}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${meta_info}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>PUT</td>
+<td>/mediawise/contents/custom/${customer_ref_id_type}/${customer_ref_id}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_info}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_inst_url} =</td>
+<td>get json element</td>
+<td>${result}</td>
+<td>header.location</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_url} =</td>
+<td>Call Method</td>
+<td>${meta_inst_url}</td>
+<td>split</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PORT}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>${meta_url[1]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${content_id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_uuid}</td>
+<td>${content_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result}=</td>
+<td>mysql_query</td>
+<td>select meta_type,meta_title,customer_ref_id,customer_ref_id_type from meta where meta_uuid = "${meta_uuid}"</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_title}</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_type}</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${customer_ref_uuid}</td>
+<td>${result[0][2]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${customer_ref_id_type}</td>
+<td>${result[0][3]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1970:delete cust_meta">vdna-1970:delete cust_meta</a></td>
+<td>[Tags]</td>
+<td>bug</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_type} =</td>
+<td>Catenate</td>
+<td>Movie</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_uuid} =</td>
+<td>get customer ref id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${new_customer_ref_id} =</td>
+<td>Catenate</td>
+<td>{"id":{"type":"ISRC","value":"${customer_ref_uuid}"}}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{update_info} =</td>
+<td>Create List</td>
+<td>${new_customer_ref_id}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_info} =</td>
+<td>update data</td>
+<td>${META_INFO_MOVIE}</td>
+<td>${update_info}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token}</td>
+<td>${meta_uuid} =</td>
+<td>non live new meta</td>
+<td>${PYWEB_PROTOCOL}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_USER}</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${meta_type}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_info}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/${meta_uuid}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id_type} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>GET</td>
+<td>/mediawise/contents/custom/${customer_ref_id_type}/${customer_ref_id}/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>convert to dict</td>
+<td>${result}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>Call Method</td>
+<td>${result}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_body} =</td>
+<td>convert to dict</td>
+<td>${result_body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result_msg} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>msg</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${result_msg}</td>
+<td>Successful</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body} =</td>
+<td>Call Method</td>
+<td>${result_body}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${id} =</td>
+<td>Call Method</td>
+<td>${body[0]}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>id</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id_type} =</td>
+<td>Call Method</td>
+<td>${id}</td>
+<td>get</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>type</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>pyweb api call</td>
+<td>DELETE</td>
+<td>/mediawise/contents/custom/${customer_ref_id_type}/${customer_ref_id}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie":"${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check meta info</td>
+<td>is_valid</td>
+<td>delete</td>
+<td>select is_valid from meta where meta_uuid = '${meta_uuid}';</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>delete meta</td>
+<td>${meta_uuid}</td>
+<td>${VDDB_NODE_USER}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${VDDB_NODE_PASSWD}</td>
+<td>${PYWEB_PROTOCOL}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1548:subscription_add_meta">vdna-1548:subscription_add_meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_db}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:循环3次调用meta接口</td>
+<td>#expect:产生3个 meta_uuid-&gt;meta_list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN RANGE</td>
+<td>3</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${meta_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_string} =</td>
+<td>json dumps</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用接口subscription_add_meta,静态订阅集的添加</td>
+<td>#expect:返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sub_id} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select id from subscription where criteria_type = 'static' limit 1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/subscription/${sub_id[0][0]}/contents/add</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_list_string}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp code</td>
+<td>${return}</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:进行数据库校验</td>
+<td>#expect:数据库记录与之前生成的3个 meta__uuid一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_query} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select metaContent_uuid from metaContent_subscription where subscription_id = ${sub_id[0][0]} and valid = 'true'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta_db}</td>
+<td>IN</td>
+<td>@{meta_list_query}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${meta_list_db}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_db[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta}</td>
+<td>IN</td>
+<td>@{meta_list}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${meta}' not in ${meta_list_db}</td>
+<td>Fail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta} do not add in subscription ${sub_id[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-1741:subscription_del_meta">vdna-1741:subscription_del_meta</a></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_db}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_del}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:循环3次调用meta接口</td>
+<td>#expect:产生3个 meta_uuid-&gt;meta_list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${index}</td>
+<td>IN RANGE</td>
+<td>3</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${meta_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_string} =</td>
+<td>json dumps</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:调用接口subscription_del_meta,静态订阅集的删除</td>
+<td>#expect:返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sub_id} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select id from subscription where criteria_type = 'static' limit 1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/subscription/${sub_id[0][0]}/contents/add</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_list_string}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp code</td>
+<td>${return}</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>call method</td>
+<td>${meta_del}</td>
+<td>append</td>
+<td>${meta_list[0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_del_string} =</td>
+<td>json dumps</td>
+<td>${meta_del}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_not_del} =</td>
+<td>deep copy</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>call method</td>
+<td>${meta_not_del}</td>
+<td>remove</td>
+<td>${meta_list[0]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/subscription/${sub_id[0][0]}/contents/delete</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_del_string}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:校验数据库的记录与给予的meta del和not del是否一致</td>
+<td>#expect:结果是一致的</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_query} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select metaContent_uuid from metaContent_subscription where subscription_id = ${sub_id[0][0]} and valid = 'true'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta_db}</td>
+<td>IN</td>
+<td>@{meta_list_query}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>call method</td>
+<td>${meta_list_db}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_db[0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta}</td>
+<td>IN</td>
+<td>@{meta_del}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${meta}' in ${meta_list_db}</td>
+<td>Fail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta} should be deleted</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${meta}</td>
+<td>IN</td>
+<td>@{meta_not_del}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Run Keyword If</td>
+<td>'${meta}' not in ${meta_list_db}</td>
+<td>Fail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta} should be in subsription</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2017:meta_search按company_id搜索">vdna-2017:meta_search按company_id搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2017:meta_search按company_id搜索</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_1}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_2}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:使用company_id=1 用户创建 meta 5个</td>
+<td>#expect:创建成功获取 meta_list,返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:使用 company_id=2再获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>create new user</td>
+<td>auto_test</td>
+<td>123456</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token_2} =</td>
+<td>interface auth token</td>
+<td>auto_test</td>
+<td>123456</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:使用company_id=2 用户创建 meta 5个</td>
+<td>#expect:创建成功获取 meta_list,返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${token_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口：2.2.13. meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "search_scope": { \ \ \ \ \ \ \ \ "company_id": 1, \ \ \ \ \ \ \ \ "including_subscription": true \ \ \ \ }, \ \ \ \ "sort_order": [{"updated_at" : "DESC"}],\ \ \ \ "page_size": 30, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list中5个 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>create list</td>
+<td>@{meta_list_2}</td>
+<td>@{meta_list_1}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2018:meta_search按including_subscription搜索">vdna-2018:meta_search按including_subscription搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2018:meta_search按including_subscription搜索——including_subscription=true</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口create meta</td>
+<td>#expect:返回生成5个 meta_uuid(meta_list),返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${META_INFO_MOVIE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_string} =</td>
+<td>json dumps</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sub_id} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select id from subscription where criteria_type = 'static'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/subscription/${sub_id[0][0]}/contents/add</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_list_string}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "search_scope": { \ \ \ \ \ \ \ \ "company_id": 1, \ \ \ \ \ \ \ \ "including_subscription": true \ \ \ \ }, \ \ \ \ "sort_order": [{"updated_at" : "DESC"}],\ \ \ \ "page_size": 30, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list中5个 meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_2}</td>
+<td>${meta_list[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2019:meta_search按season_number搜索">vdna-2019:meta_search按season_number搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2019:meta_search按season_number搜索</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口create meta,season_no=1</td>
+<td>#expect:返回生成5个 meta_uuid(meta_uuid_list1),返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口create meta,season_no=2</td>
+<td>#expect:返回生成5个 meta_uuid(meta_uuid_list1),返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":2},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td>${meta_list_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "equal_condition" : { \ \ \ \ \ \ \ \ "season_number":1 \ \ \ \ }, \ \ \ \ "sort_order": [{"updated_at" : "DESC"}],\ \ \ \ "page_size" : 30, \ \ \ \ "page_offset" : 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list_1中5个 meta_uuid,不包含 meta_list_2中 5个dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2020:meta_search按episode_number搜索">vdna-2020:meta_search按episode_number搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2020:meta_search按episode_number搜索</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口create meta,episode_no=1</td>
+<td>#expect:返回生成5个 meta_uuid(meta_uuid_list1),返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":1,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口create meta,episode_no=2</td>
+<td>#expect:返回生成5个 meta_uuid(meta_uuid_list2),返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":2,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td>${meta_list_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "equal_condition": { \ \ \ \ \ \ \ \ "episode_number": 1 \ \ \ \ },\ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ \ \ "page_size": 30, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list_1中5个 meta_uuid,不包含 meta_list_2中 5个dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2021:meta_search按complete_condition搜索">vdna-2021:meta_search按complete_condition搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2021:meta_search按complete_condition搜索——complete_condition=complete</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:创建5个 meta valid</td>
+<td>#expect:返回生成5个 meta_uuid,返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:create meta,pending</td>
+<td>#expect:返回5个 meta_uuid list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>mysql_update</td>
+<td>update meta set is_valid="pending" where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td>${meta_list_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "complete_condition" : "complete",\ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ \ "page_size" : 30, \ \ \ \ "page_offset" : 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list_1中5个 meta_uuid,不包含 meta_list_2中 5个dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>is_valid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${status}</td>
+<td>valid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2021-2:meta_search按complete_condition搜索">vdna-2021-2:meta_search按complete_condition搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2021:meta_search按complete_condition搜索——complete_condition=both</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:创建5个 meta valid</td>
+<td>#expect:返回生成5个 meta_uuid,返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:create meta,pending</td>
+<td>#expect:返回5个 meta_uuid list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>mysql_update</td>
+<td>update meta set is_valid="pending" where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{inst_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "complete_condition" : "both", \ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ \ "page_size" : 30, \ \ \ \ "page_offset" : 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list_1中5个 meta_uuid,不包含 meta_list_2中 5个dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{both}</td>
+<td>valid</td>
+<td>pending</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>is_valid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${both}</td>
+<td>${status}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del_dna_list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2021-3:meta_search按complete_condition搜索">vdna-2021-3:meta_search按complete_condition搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2021:meta_search按complete_condition搜索——complete_condition=non-complete</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>create meta,valid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:创建5个 meta alid</td>
+<td>#expect:返回生成5个 meta_uuid,返回码303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:create meta,pending</td>
+<td>#expect:返回5个 meta_uuid list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>mysql_update</td>
+<td>update meta set is_valid="pending" where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list}</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>sleep</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "complete_condition" : "non-complete", \ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ "page_size" : 100, \ \ \ \ "page_offset" : 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid包含 meta_list_1中5个 meta_uuid,不包含 meta_list_2中 5个dna</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_3}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>is_valid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${status}</td>
+<td>pending</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_3}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Not Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_1[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_3}</td>
+<td>${meta_list_2[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2021-4:meta_search按complete_condition搜索">vdna-2021-4:meta_search按complete_condition搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2021:meta_search按complete_condition搜索——complete_condition为空</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV_2}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":0,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_1}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_2}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:create meta,valid</td>
+<td>#expect:返回5个 meta_uuid list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>mysql_update</td>
+<td>update meta set is_valid="valid" where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_1}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:create meta,pending</td>
+<td>#expect:返回5个 meta_uuid list</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${i}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>/mediawise/contents/meta</td>
+<td>${meta_TV_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>mysql_update</td>
+<td>update meta set is_valid="pending" where meta_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>create List</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td>${meta_list_2}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 meta search 接口</td>
+<td>#expect:返回码 400</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "complete_condition" : "", "sort_order": [{"updated_at" : "DESC"}],\ \ \ \ "page_size": 30, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${400}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2022:meta_search按sort_order搜索">vdna-2022:meta_search按sort_order搜索</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2022:meta_search按sort_order搜索——update_at</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:再次获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token_2} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:再次获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token_3} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:再次获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token_4} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_1}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_2}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_3}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"aaa","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":1,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":1},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV_2}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"bbb","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":2,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":2},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV_3}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"ccc","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":3,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":3},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_1}=</td>
+<td>create meta list</td>
+<td>${token}</td>
+<td>${meta_TV}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_1}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_2}=</td>
+<td>create meta list</td>
+<td>${token_2}</td>
+<td>${meta_TV_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_3}=</td>
+<td>create meta list</td>
+<td>${token_3}</td>
+<td>${meta_TV_3}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_3}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_4}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${meta_TV_4}</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"BigHead"},"title":"ddd","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","episode_no":4,"country":"country","sub_type" : "'TVMovie'/'Episodic'/'Non-Episodic'/'Live Event'","track_no":0,"director":"director","episode_title":"","alternate_url":"alternate_url","alternate_info":"alternate_info","season_no":4},"studio_owner":"test_studio_owner","cast":"test_cast","type":"TV","release_date":"2013-03-06","refresh_updated_at":true,"company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_4}=</td>
+<td>create meta list</td>
+<td>${token_4}</td>
+<td>${meta_TV_4}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_4}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>@{meta_list_1}</td>
+<td>@{meta_list_2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>@{meta_list_3}</td>
+<td>@{meta_list_4}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用接口查询获取 meta</td>
+<td>#expect:返回response 返回码:200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "search_scope": { \ \ \ \ \ \ \ \ "company_id": 1 ,\ \ \ \ \ \ \ \ "including_subscription": false \ \ \ \ \ \ \ \ \ \ }, \ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ "page_size": 20, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token_2}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:校验返回结果</td>
+<td>#expect:返回的body中含的meta_uuid个数与之前生成的 meta_uuid一致，包含meta_uuid 20个</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list_5}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${status} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>is_valid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Be Equal</td>
+<td>${status}</td>
+<td>valid</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_5}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${db_result} =</td>
+<td>mysql_query</td>
+<td>select meta_uuid from meta where company_id=1 order by updated_at desc limit 20</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${db_result}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{query_meta}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>20</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${query_meta}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${db_result[${j}][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sort List</td>
+<td>${query_meta}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sort List</td>
+<td>${meta_list_5}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${meta_list_5}</td>
+<td>${query_meta}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2018:meta_search按including_subscription搜索——including_subscription=false">vdna-2018:meta_search按including_subscription搜索——including_subscription=false</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2018:meta_search按including_subscription搜索——including_subscription=false</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>meta_search</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}</td>
+<td>Set Test Variable</td>
+<td>${EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:使用company_id=1 用户创建 meta 5个</td>
+<td>#expect:创建成功获取 meta_list,返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{meta_list}=</td>
+<td>create meta list</td>
+<td>${token}</td>
+<td>${META_INFO_MOVIE}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_list_string} =</td>
+<td>json dumps</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${sub_id} =</td>
+<td>mysql_exe</td>
+<td>${VDDB_NODE_DB_MEDIADNA}</td>
+<td>select id from subscription where criteria_type = 'static'</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/subscription/${sub_id[0][0]}/contents/add</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_list_string}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:请求 meta search接口</td>
+<td>#expect:返回结果</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>${request}</td>
+<td>{ \ \ \ \ "search_scope": { \ \ \ \ \ \ \ \ "company_id": 1, \ \ \ \ \ \ \ \ "including_subscription": false \ \ \ \ }, \ \ \ \ "sort_order": [{"updated_at" : "DESC"}], \ \ \ \ \ "page_size": 30, \ \ \ \ "page_offset": 1 }</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Pyweb Api Call</td>
+<td>POST</td>
+<td>/mediawise/contents/video/search</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${request}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check rsp_code</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>check results</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${body}</td>
+<td>Get Json Element</td>
+<td>${return}</td>
+<td>body.body</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${body}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${len} =</td>
+<td>Get length</td>
+<td>${body}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{meta_list_2}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${j}</td>
+<td>IN RANGE</td>
+<td>${len}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>${meta_uuid} =</td>
+<td>Get Json Element</td>
+<td>${body[${j}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>content_id</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Call Method</td>
+<td>${meta_list_2}</td>
+<td>append</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>...</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list_2}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>: FOR</td>
+<td>${k}</td>
+<td>IN RANGE</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Should Contain</td>
+<td>${meta_list_2}</td>
+<td>${meta_list[${k}]}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Test Variable</td>
+<td>@{inst_list}</td>
+<td>@{EMPTY}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Log Many</td>
+<td>${meta_list}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del dna list</td>
+<td>${meta_list}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

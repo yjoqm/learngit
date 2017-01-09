@@ -1,0 +1,951 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>thumbnailInterface</title>
+</head>
+<body>
+<h1>thumbnailInterface</h1>
+<table border="1" id="setting">
+<tr>
+<th class="name" colspan="5">Settings</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td class="colspan4" colspan="4">2.12. thumbnail 相关接口\n<br>
+2.12.1. new thumbnail meta\n<br>
+2.12.1.1. 接口介绍\n<br>
+\n<br>
+\ \ \ 通过一张图片创建一个meta\n<br>
+\ \ \ 接口: \ <a href="https://host:port/mediawise/contents/thumbnail\n<br>
+">https://host:port/mediawise/contents/thumbnail\n<br>
+</a> \ \ \ 方法: post\n<br>
+\ \ \ 开始支持版本: 5.1</td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>set pyweb env</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>OperatingSystem</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>XML</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>DatabaseLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/DatetimeLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../../../common/trunk/testlib/CommonLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>../../testlib/VddbLib.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/vddb_keyword.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_vddb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../resource/private/biz_keyword_pyweb.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_resource.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Resource</td>
+<td>../../../../common/trunk/resource/common_keywords.html</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>SSHLibrary</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${SAMPLE_THUMB_NAIL_01}</td>
+<td>${SEALS_PATH}/thumbnail/thumbnail_1.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${SAMPLE_THUMB_NAIL_02}</td>
+<td>${SEALS_PATH}/thumbnail/thumbnail_2.jpeg</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table border="1" id="testcase">
+<tr>
+<th class="name" colspan="5">Test Cases</th>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2004:创建thumbnail meta">vdna-2004:创建thumbnail meta</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2004:创建thumbnail meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 new thumbnail meta接口</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface thumbnail</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库</td>
+<td>#expect:etaContentSampleImage 包含meta_uuid记录1条，image_Filecontent与${SAMPLE_THUMB_NAIL_01}一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),image_filecontent from meta as a, metaContentSampleImage as b where a.meta_uuid='${meta_uuid}' and b.metaContent_uuid=a.meta_uuid;</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${image_filecontent}=</td>
+<td>Catenate</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${thumbnail} =</td>
+<td>Get Binary File</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${thumbnail}'</td>
+<td>'${image_filecontent}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2005:通过meta_uuid获取thumbnail">vdna-2005:通过meta_uuid获取thumbnail</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2005:通过meta_uuid获取thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 new thumbnail meta接口</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface thumbnail</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:通过meta的{uuid}获取meta的图片(get)</td>
+<td>#expect:返回http response code:200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface download dna</td>
+<td>thumbnail_dna</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>None</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库,check database</td>
+<td>#expect:metaContentSampleImage中 meta_uuid对应的数据记录只有1条</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*), image_filecontent from metaContentSampleImage where metaContent_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${count}</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证thumbnail 文件是否一致</td>
+<td>#expect:下载thumbnail与本地文件一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${thumbnail} =</td>
+<td>Get Binary File</td>
+<td>${DOWNLOAD_PATH}/${meta_uuid}_thumbnail.jpg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${thumbnail}</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2006:通过meta_uuid修改thumbnail">vdna-2006:通过meta_uuid修改thumbnail</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2006:通过meta_uuid修改thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 new thumbnail meta接口</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface thumbnail</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 thumbnail meta接口 edit meta为 thumbnail2</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${file_2} =</td>
+<td>Catenate</td>
+<td>${SAMPLE_THUMB_NAIL_02}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface thumbnail</td>
+<td>${SAMPLE_THUMB_NAIL_02}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>303</td>
+<td>thumbnail_manager_put</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证server上thumbnail文件与${SAMPLE_THUMB_NAIL_02}是否一致</td>
+<td>#expect:文件一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${thumbnail_2} =</td>
+<td>Get Binary File</td>
+<td>${SAMPLE_THUMB_NAIL_02}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${image_filecontent} =</td>
+<td>mysql_query</td>
+<td>select image_filecontent from metaContentSampleImage where metaContent_uuid = '${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${thumbnail_2}</td>
+<td>${image_filecontent[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2007:根据customer信息获取thumbnail">vdna-2007:根据customer信息获取thumbnail</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2007:根据customer信息获取thumbnail\n<br>
+\n<br>
+19机器上运行OK \n<br>
+14机器上运行异常</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_movie}=</td>
+<td>Set Variable</td>
+<td>{"rating":"","tag":"aaaa","duration":100,"right_owner":"test_right_owner","id":{"type":"ISRC","value":"auto_test"},"title":"global_test","genre":"test_genre","typed_info":{"metalink":"metalink","description":"description","country":"country","sub_type":"Movie","track_no":0,"director":"director","alternate_url":"alternate_url","alternate_info":"alternate_info"},"studio_owner":"test_studio_owner","cast":"test_cast","type":"Movie","release_date":"2013-03-06","refresh_updated_at":"true","company_id":1,"updated_at":"0000-00-0000:00:00","created_at":"0000-00-0000:00:00","is_valid":"valid"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>pyweb api call</td>
+<td>POST</td>
+<td>/mediawise/contents/meta</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${meta_movie}</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 thumbnail meta接口 获取 meta为 thumbnail</td>
+<td>#expect:返回码:303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return}=</td>
+<td>interface thumbnail</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>303</td>
+<td>thumbnail_manager_put</td>
+<td>${meta_uuid}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>PUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>logmany</td>
+<td>xxxxxxxxx</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:通过cust_thumbnail_manager接口获取meta的图片(get)</td>
+<td>#expect:返回成功，返回码200</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer} =</td>
+<td>Get Json Element</td>
+<td>${meta_movie}</td>
+<td>id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_type} =</td>
+<td>Get Json Element</td>
+<td>${meta_movie}</td>
+<td>id.type</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id} =</td>
+<td>Get Json Element</td>
+<td>${meta_movie}</td>
+<td>id.value</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>download dna</td>
+<td>GET</td>
+<td>/mediawise/contents/custom/${customer_type}/${customer_ref_id}/thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${DOWNLOAD_PATH}/${meta_uuid}_thumbnail.jpg</td>
+<td>{"Content-type":"application/x-www-form-urlencoded","Cookie": "${token}"}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>log</td>
+<td>${return}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${200}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库metaContentSampleImage记录条数1条，且保存的文件内容与本地文件内容是否一致</td>
+<td>#expect:记录条数1条，文件内容一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),image_filecontent from metaContentSampleImage where metaContent_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${thumbnail} =</td>
+<td>Get Binary File</td>
+<td>${DOWNLOAD_PATH}/${meta_uuid}_thumbnail.jpg</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>1</td>
+<td>${count}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>${thumbnail}</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_vdna-2008:根据customer信息修改thumbnail">vdna-2008:根据customer信息修改thumbnail</a></td>
+<td>[Documentation]</td>
+<td class="colspan3" colspan="3">vdna-2008:根据customer信息修改thumbnail\n<br>
+\n<br>
+19机器上运行OK \n<br>
+14机器上运行异常</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>comment</td>
+<td>#action:获取token</td>
+<td>#expect:返回token=XXXX</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${token} =</td>
+<td>interface auth token</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用meta接口,入movie meta</td>
+<td>#expect:返回http格式response,包含meta_uuid</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>interface meta</td>
+<td>movie_meta</td>
+<td>${token}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${meta_uuid} =</td>
+<td>get meta uuid from api return</td>
+<td>${return}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 thumbnail meta接口 入 meta为 thumbnail1</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Dna Ingest</td>
+<td>PUT</td>
+<td>/mediawise/contents/${meta_uuid}/thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SAMPLE_THUMB_NAIL_01}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:调用 thumbnail meta接口 edit meta为 thumbnail2</td>
+<td>#expect:返回http response 返回码 303</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer} =</td>
+<td>Get Json Element</td>
+<td>${META_INFO_MOVIE}</td>
+<td>id</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_type} =</td>
+<td>Get Json Element</td>
+<td>${META_INFO_MOVIE}</td>
+<td>id.type</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${customer_ref_id} =</td>
+<td>Get Json Element</td>
+<td>${META_INFO_MOVIE}</td>
+<td>id.value</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${return} =</td>
+<td>Dna Ingest</td>
+<td>PUT</td>
+<td>/mediawise/contents/custom/${customer_type}/${customer_ref_id}/thumbnail</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${SAMPLE_THUMB_NAIL_02}</td>
+<td>${token}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>check rsp_code</td>
+<td>${return}</td>
+<td>${303}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Comment</td>
+<td>#action:验证数据库metaContentSampleImage记录条数1条，且保存的文件内容与本地文件内容是否一致</td>
+<td>#expect:记录条数1条，文件内容一致</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${result} =</td>
+<td>mysql_query</td>
+<td>select count(*),image_filecontent from metaContentSampleImage where metaContent_uuid='${meta_uuid}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${count} =</td>
+<td>Catenate</td>
+<td>${result[0][0]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${image_filecontent} =</td>
+<td>Catenate</td>
+<td>${result[0][1]}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${thumbnail} =</td>
+<td>Get Binary File</td>
+<td>${SAMPLE_THUMB_NAIL_02}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>1</td>
+<td>${count}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal</td>
+<td>'${thumbnail}'</td>
+<td>'${image_filecontent}'</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Teardown]</td>
+<td>del meta and instance</td>
+<td>${meta_uuid}</td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

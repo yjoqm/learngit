@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/QA/!svn/ver/5888/auto_test/apollo/automation/robot/project/thunder/trunk/sut
+END
+libcurl.dll
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/libcurl.dll
+END
+api-ms-win-core-synch-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-synch-l1-1-0.dll
+END
+ieshims.dll
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/ieshims.dll
+END
+dcomp.dll
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/dcomp.dll
+END
+msvcr71.dll
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/msvcr71.dll
+END
+msvcr90.dll
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/msvcr90.dll
+END
+vcri.dll
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/QA/!svn/ver/5888/auto_test/apollo/automation/robot/project/thunder/trunk/sut/vcri.dll
+END
+api-ms-win-core-winrt-error-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-winrt-error-l1-1-0.dll
+END
+api-ms-win-core-sysinfo-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-sysinfo-l1-1-0.dll
+END
+ssleay32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/ssleay32.dll
+END
+api-ms-win-appmodel-runtime-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-appmodel-runtime-l1-1-0.dll
+END
+api-ms-win-core-rtlsupport-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-rtlsupport-l1-1-0.dll
+END
+libeay32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/libeay32.dll
+END
+json_c.dll
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/QA/!svn/ver/5888/auto_test/apollo/automation/robot/project/thunder/trunk/sut/json_c.dll
+END
+api-ms-win-core-winrt-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-winrt-l1-1-0.dll
+END
+api-ms-win-core-interlocked-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-interlocked-l1-1-0.dll
+END
+mfc90.dll
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/mfc90.dll
+END
+api-ms-win-core-winrt-string-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-winrt-string-l1-1-0.dll
+END
+gpsvc.dll
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/gpsvc.dll
+END
+api-ms-win-core-winrt-robuffer-l1-1-0.dll
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-core-winrt-robuffer-l1-1-0.dll
+END
+api-ms-win-shcore-scaling-l1-1-1.dll
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/QA/!svn/ver/5875/auto_test/apollo/automation/robot/project/thunder/trunk/sut/api-ms-win-shcore-scaling-l1-1-1.dll
+END

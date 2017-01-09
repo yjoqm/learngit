@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 1px solid black;
+}
+th, td {
+  border: 1px solid black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+td.colspan4, th.colspan4 {
+    width: 48em;
+}
+td.colspan3, th.colspan3 {
+    width: 36em;
+}
+td.colspan2, th.colspan2 {
+    width: 24em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  height: 1.7em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Taisan Resource</title>
+</head>
+<body>
+<h1>Taisan Resource</h1>
+<table border="1" id="variable">
+<tr>
+<th class="name" colspan="5">Variables</th>
+</tr>
+<tr>
+<td class="name">${QUERY_DI}</td>
+<td>{"processor":"retriever","parameters":{"task_id":3495146763,"instruction":"DNAIdentify","website":"youku","website_type":"ugc","slideshow_process":"none","video":{"id":2983894931,"trackingWebsite_id":2,"key_id":"XNTk3NTIzOTky","clip_url":"http://v.youku.com/v_show/id_XNTk3NTIzOTky.html","source_type":"keyword_search","clip_duration":248,"download_duration":0,"max_evidence_size":0,"file_type":"video","download_url":"","post_date":"","img_url":"http://dailymotion.com/fake/x12fx2l.jpg","storage_date":"2013-10-24","storage_domain":"${TEST_DNA_HOST}","is_video_detail_exist":false,"matched_storage_date":"2013-10-24","matched_storage_domain":"${TEST_DNA_HOST}","matched_media_suffix":"flv","is_dna_full_length":false,"is_media_rebuild_index":false,"is_reprocess_enabled":false,"is_media_rebuild_index_needed":false,"manga_storage_date":"","manga_domain_path":"","slideshow_dna_count":0},"metas":[{"meta_id":1,"meta_uuid":"11111111-1111-1111-1111-111111111111","is_light_enabled":false,"query_profile":"%s"},{"meta_id":2,"meta_uuid":"22222222-2222-2222-2222-222222222222","is_light_enabled":false,"query_profile":"%s"},{"meta_id":3,"meta_uuid":"33333333-3333-3333-3333-333333333333","is_light_enabled":false,"query_profile":"%s"},{"meta_id":4,"meta_uuid":"44444444-4444-4444-4444-444444444444","is_light_enabled":false,"query_profile":"%s"},{"meta_id":5,"meta_uuid":"5555555-5555-5555-5555-555555555555","is_light_enabled":false,"query_profile":"%s"}]}}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TAISAN_HOST}</td>
+<td>192.168.1.42</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TAISAN_USERNAME}</td>
+<td>tracker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TAISAN_PASSWD}</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${CREATE_DI}</td>
+<td>echo '''%s''' &gt; /opt/taisan/crawler/current/di</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${VDNA_QUERY_CONF_PATH}</td>
+<td>/opt/taisan/app/vdna_query/fake/bin</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${CREATE_VDNA_QUERY_CONF}</td>
+<td>echo "%s" &gt; ${VDNA_QUERY_CONF_PATH}/vdna_query_conf.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PRE_DNA_PATH}</td>
+<td>/home/tracker/resource_file_dir/dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_DNA_HOST}</td>
+<td>192.168.1.246</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_DNA_USERNAME}</td>
+<td>tracker</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${TEST_DNA_PASSWD}</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${PRE_LOG_PATH}</td>
+<td>/opt/taisan/crawler/current/var/tmp/resource/dna</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${REMOVE_TARGET_DIR}</td>
+<td>/data/tmp/query_log_bak</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${RETRIEVER_PATH}</td>
+<td>/opt/taisan/crawler/current</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${QUERY_DI_NO_METAS}</td>
+<td>{"processor": "retriever","parameters": {"task_id": 3495146763,"instruction": "DNAIdentify","website": "youku","website_type": "ugc","slideshow_process": "none","video": {"id": 2983894931,"trackingWebsite_id": 2,"key_id": "XNTk3NTIzOTky","clip_url": "<a href="http://v.youku.com/v_show/id_XNTk3NTIzOTky.html&quot;,&quot;source_type">http://v.youku.com/v_show/id_XNTk3NTIzOTky.html","source_type</a>": "keyword_search","clip_duration": 248,"download_duration": 0,"max_evidence_size": 0,"file_type": "video","download_url": "","post_date": "","img_url": "<a href="http://dailymotion.com/fake/x12fx2l.jpg&quot;,&quot;storage_date">http://dailymotion.com/fake/x12fx2l.jpg","storage_date</a>": "2013-10-28","storage_domain": "192.168.1.232","is_video_detail_exist": false,"matched_storage_date": "2013-10-28","matched_storage_domain": "192.168.1.232","matched_media_suffix": "flv","is_dna_full_length": false,"is_media_rebuild_index": false,"is_reprocess_enabled": false,"is_media_rebuild_index_needed": false,"manga_storage_date": "","manga_domain_path": "","slideshow_dna_count": 0},"metas": [{"meta_id": 0,"meta_uuid": "0"}]}}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">${CRAWLER_CONF}</td>
+<td>/opt/taisan/crawler/current/etc/crawler.conf</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

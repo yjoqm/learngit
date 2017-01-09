@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>VddbLib 关键字</title>
+</head>
+
+<body>
+<h1>VddbLib 关键字</h1>
+<h2 id="Shortcuts">Shortcuts</h2>
+<p><a href="#Custom Send Idna">Custom Send Idna</a>, <a href="#Dna Ingest">Dna Ingest</a>, <a href="#Download Dna">Download Dna</a>, <a href="#Get Customer Ref Id">Get Customer Ref Id</a>, <a href="#Parse Meta Attribute From Db">Parse Meta Attribute From Db</a>, <a href="#Pyweb Api Call"> Pyweb Api Call</a>, <a href="#Send Dna">Send Dna</a>,  <a href="#Send Idna">Send Idna</a>, <a href="#Set Pyweb Host">Set Pyweb Host</a>, <a href="#Set Pyweb Sut File">Set Pyweb Sut File</a>, <a href="#update data">Update D</a><a href="#update data">ata</a></p>
+<table width="100%" height="2270" border="1">
+  <tr>
+    <td width="67" align="center">关键字</td>
+    <td width="16" align="center">作者</td>
+    <td width="95" align="center">参数</td>
+    <td width="93" align="center">返回值</td>
+    <td width="916" align="center">说明和示例</td>
+  </tr>
+  <tr>
+    <td><a name="Custom Send Idna">Custom Send Idna</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, token, *argv</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>自定义idna上传（分段入库接口）：<br />
+      可实现一次上传数据流里包含idna或者screenshot或者两者都包含，同时上传参数自定义，每次调用只能上传单个文件<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url <br />
+      token：需要在header中设置的token<br />
+      *argv：文件参数组，和输入多组参数<br />
+      接口说明：send idna接口无法自定义参数，如果@1000，而且send idna不支持多个文件合并在一个流中上传，所以导致screenshot无法单独上传。该接口可实现自定义参数，如frame @1000 v2，并且argv是文件和参数组，可实现多个文件合并在一个流上传，argv是不限参数个数的参数，但必须是偶数，每2个参数为一组，分别为文件名，参数。比如在一次请求中需要同时上传一个idna个和一个screenshot则如下：</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${return} =</td>
+          <td>pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/auth</td>
+          <td>{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${token} =</td>
+          <td>Get Json Element</td>
+          <td>${return}</td>
+          <td>header.set-cookie</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${return} =</td>
+          <td>custom send idna</td>
+          <td>POST</td>
+          <td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/${serial}</td>
+          <td>${token}</td>
+          <td>/xxx/xxx.idna</td>
+          <td>frame @1000</td>
+          <td>/xxx/xxx.jpg</td>
+          <td>screenshot @1000</td>
+        </tr>
+        <tr>
+          <td>${return} =</td>
+          <td>custom send idna</td>
+          <td>POST</td>
+          <td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/${serial}</td>
+          <td>${token}</td>
+          <td>/xxx/xxx2.idna</td>
+          <td>frame @2000</td>
+          <td>/xxx/xxx2.jpg</td>
+          <td>screenshot @2000</td>
+        </tr>
+      </table>
+      <p>如果希望一个流中增加其他screenshot或者idna，可惜继续往后追加参数，但是必须成对出现<br />
+    </p></td>
+  </tr>
+  <tr>
+    <td><a name="Dna Ingest">Dna Ingest</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, file_name, token</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>调用pyweb的接口（完整dna数据上传）<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url<br />
+      file_name：需要ingest的dna文件完整路径<br />
+    token：需要在header中设置的token</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${return} =</td>
+          <td>Pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/auth</td>
+          <td>{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${token} =</td>
+          <td>Get Json Element</td>
+          <td>${return}</td>
+          <td>header.set-cookie</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${return} =</td>
+          <td>Dna Ingest</td>
+          <td>POST</td>
+          <td>/mediawise/contents/dna</td>
+          <td>/xxxx/xxxxx/xxx.dna</td>
+          <td>${token}</td>
+        </tr>
+      </table>
+      <p>该接口的request为纯dna数据，所以如果quest body仅仅是dna数据的相关的接口，均可使用该关键字</p>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Download Dna">Download Dna</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, file_name, header</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>调用pyweb的接口（下载dna或其他数据）<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url<br />
+      file_name：需要存在dna文件的路径<br />
+    header：http请求的头</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${return} =</td>
+          <td>Pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/auth</td>
+          <td>{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${token} =</td>
+          <td>Get Json Element</td>
+          <td>${return}</td>
+          <td>header.set-cookie</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${return} =</td>
+          <td>Download Dna</td>
+          <td>GET</td>
+          <td>/mediawise/instances/${instance_uuid}/dna/avonly</td>
+          <td>/tmp/123.dna</td>
+          <td>{&quot;Content-type&quot;:&quot;application/x-www-form-urlencoded&quot;,&quot;Cookie&quot;: &quot;${token}&quot;}</td>
+        </tr>
+      </table>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td height="211"><a name="Get Customer Ref Id">Get Customer Ref Id</a></td>
+    <td>王杰</td>
+    <td>无</td>
+    <td>返回一字符串，长度为36，且不重复</td>
+    <td><p>Examples：<br />
+    </p>
+      <table width="264" border="1">
+        <tr>
+          <td width="92">${str1} =</td>
+          <td width="156">Get Customer Ref Id</td>
+        </tr>
+        <tr>
+          <td>${str2} =</td>
+          <td>Get Customer Ref Id</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+    <p>${str1} = '4185a44a-b007-11e3-b656-b8e8563aa7ec'<br />
+      ${str2} = '4b007380-b00a-11e3-af46-b8e8563aa7ec'      <br />
+  </p></td>
+  </tr>
+  <tr>
+    <td><a name="Parse Meta Attribute From Db">Parse Meta Attribute From Db</a></td>
+    <td>王杰</td>
+    <td>data,<br />
+    sql      <br /></td>
+    <td>返回一个dict，{key:values}对应值为sql中的字段所对应表中的数据</td>
+    <td><p>Examples：</p>
+      <table width="100%" border="1">
+        <tr>
+          <td width="77">${result1} =</td>
+          <td width="203">Parse Meta Attribute From Db</td>
+          <td width="59">((1),)</td>
+          <td width="381">select id from meta where meta_uuid = ''4185a44a-b007-11e3-b656-b8e8563aa7ec'</td>
+        </tr>
+        <tr>
+          <td>${result2} =</td>
+          <td>Parse Meta Attribute From Db</td>
+          <td>((1,'test'))</td>
+          <td>select id,title from meta where meta_uuid = ''4185a44a-b007-11e3-b656-b8e8563aa7ec'</td>
+        </tr>
+      </table>
+      <p>=&gt;</p>
+      <p>${result1} = {'id':'1'}<br />
+    ${result1} = {'id':'1', 'title':'test'}</p></td>
+  </tr>
+  <tr>
+    <td><a name="Pyweb Api Call">Pyweb Api Call</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, body='None', header='{}'</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+    返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>调用pyweb的接口（非数据上传）<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url<br />
+      body：http请求的request体，默认为None<br />
+    header：http请求的头，默认为{}</p>
+      <table width="100%" border="1">
+        <tr>
+          <td width="72">${return} =</td>
+          <td width="56">Pyweb api call</td>
+          <td width="51">POST</td>
+          <td width="78">/mediawise/auth</td>
+          <td width="86">{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+          <td width="141">&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${token} =</td>
+          <td>Get Json Element</td>
+          <td>${return}</td>
+          <td>header.set-cookie</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="59">${return} =</td>
+          <td>pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/contents/meta</td>
+          <td>${META_INFO_MOVIE}</td>
+          <td>{&quot;Content-type&quot;:&quot;application/x-www-form-urlencoded&quot;,&quot;Cookie&quot;: &quot;${token}&quot;}</td>
+        </tr>
+      </table>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Send Dna">Send Dna</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, file_name, dna_type, token</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>调用pyweb的接口（分段入库接口）<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url，文档中为/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/${serial_no},这里url只需要传/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna，最后的no在代码中自动生成<br />
+      file_name：需要ingest的dna文件完整路径<br />
+      dna_type：audio或者video<br />
+    token：需要在header中设置的token</p>
+      <table width="100%" border="1">
+        <tr>
+          <td>${return} =</td>
+          <td>Pyweb api call</td>
+          <td>POST</td>
+          <td>/mediawise/auth</td>
+          <td>{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${token} =</td>
+          <td>Get Json Element</td>
+          <td>${return}</td>
+          <td>header.set-cookie</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>${return} =</td>
+          <td>Send Dna</td>
+          <td>POST</td>
+          <td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna</td>
+          <td>/xxx/xxx/xxx.dna</td>
+          <td>video</td>
+          <td>${token}</td>
+        </tr>
+      </table>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Send Idna">Send Idna</a></td>
+    <td>严嘉蔚</td>
+    <td>method, url, file_name, dna_type, file_type, token</td>
+    <td>{“body”:xxxx, “code”:xxx, “header”:xxxx}<br />
+返回的为一串json格式的字符串，分别为http接口返回的body，header和code</td>
+    <td><p>调用pyweb的接口（分段入库接口上传idna）<br />
+      method：http方法，为GET，POST，PUT，DELETE等<br />
+      urlL：http请求的url，文档中为/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna/${serial_no},这里url只需要传/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna，最后的no在代码中自动生成<br />
+      file_name：需要ingest的dna文件完整路径
+      <br />
+        dna_type：frame或者screenshot，目前由于screenshot无法单独上传，所以不要使用screenshot<br />
+        file_type：folder或者file，如果是folder则file_type应指定一个目录，该接口会上传这个目录下所有的符合类型的文件，如果是file则指定一个文件。<br />
+    token：需要在header中设置的token</p>
+    <p>特别说明：如果file_type使用folder，则该目录下所有的文件的命名规则必须为*_1234.idna或者*_1234.jpg，最后一个下划线后的数字作为排序，没有数字的文件将无法被上传</p>
+    <table width="100%" border="1">
+      <tr>
+        <td>${return} =</td>
+        <td>Pyweb api call</td>
+        <td>POST</td>
+        <td>/mediawise/auth</td>
+        <td>{&quot;protocols&quot;: [&quot;5.2.6&quot;], &quot;user&quot;: &quot;zhang_jin&quot;, &quot;password&quot;: &quot;123&quot; }</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        </tr>
+      <tr>
+        <td>${token} =</td>
+        <td>Get Json Element</td>
+        <td>${return}</td>
+        <td>header.set-cookie</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        </tr>
+      <tr>
+        <td>${return} =</td>
+        <td>Send Idna</td>
+        <td>POST</td>
+        <td>/mediawise/contents/${meta_uuid}/instances/${inst_uuid}/dna</td>
+        <td>/xxx/xxx/xxx</td>
+        <td>frame</td>
+        <td>folder</td>
+        <td>${token}</td>
+        </tr>
+    </table>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><a name="Set Pyweb Host">Set Pyweb Host</a></td>
+    <td>严嘉蔚</td>
+    <td>host, port, ssl</td>
+    <td>无</td>
+    <td>设置pyweb服务器的ip地址和端口号，ssl的值为http或者https。api调用所使用的ip地址和端口依赖该关键字所指定配置，所以该关键字必须在调用api前使用。建议在Test    setup中使用</td>
+  </tr>
+  <tr>
+    <td><a name="Set Pyweb Sut File">Set Pyweb Sut File</a></td>
+    <td>严嘉蔚</td>
+    <td>sut_file</td>
+    <td>无</td>
+    <td>指定sut脚本文件路径，所有的关键字执行测试都需要调用sut文件，所以该关键字必须在测试执行前调用。建议在Test    setup中使用</td>
+  </tr>
+  <tr>
+    <td><a name="update data">Update Data</a></td>
+    <td>王杰</td>
+    <td>old_info，update_info_list</td>
+    <td>返回一个dict，且把update中得key：values更新到该字典中</td>
+    <td><p>old_info为dict类型，update_info_list为list类型，且每个元素为dict类型<br />
+      ps：目前不支持多类型嵌套或者dict嵌套<br />
+    Examples：</p>
+      <table width="733" border="1">
+        <tr>
+          <td width="81">${result} =</td>
+          <td width="167">update data</td>
+          <td width="191">{'user':'test','passwd':123,'uuid':'qwer'}</td>
+          <td width="266">[{'user':'test_123'},{'passwd':456}]</td>
+        </tr>
+      </table>
+    <p>=&gt;</p>
+    <p>${result} = {'user':'test_123', 'passwd':456, 'uuid':'qwer'}</p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
